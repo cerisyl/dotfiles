@@ -1,7 +1,6 @@
-{
-  imports = [
-    ./packages/default.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = import ./packages/default.nix;
+  programs.home-manager.enable = true;
 
   home = {
     username = "ceri";

@@ -1,3 +1,6 @@
+# This file dynamically imports configurations.
+# You should never need to touch this file.
+
 { pkgs, pkgsUnstable }: let
   # Path to ./packages
   packageDir = ./.;

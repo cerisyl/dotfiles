@@ -44,6 +44,7 @@ in {
   # Users
   users.users.ceri = {
     isNormalUser  = true;
+    shell         = pkgs.zsh;
     extraGroups   = [ "wheel" "input" "networkmanager" ];
   };
 

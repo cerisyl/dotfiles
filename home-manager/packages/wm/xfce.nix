@@ -11,5 +11,4 @@
     };
   };
   services.displayManager.defaultSession = "xfce";
-  ...
 }
