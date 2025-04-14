@@ -1,7 +1,4 @@
-{ inputs, config, pkgs, pkgsUnstable, ... }@ args: let
-  # Define hostname
-  myHostname = args.myHostname;
-
+{ inputs, myHostname, config, pkgs, pkgsUnstable, ... }: let
   # Package management
   # Use binary to determine what packages we should download
   hostIndexMap = {

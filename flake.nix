@@ -16,6 +16,7 @@
     system = "x86_64-linux";
     defHost = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
+        myHostname = hostname;
         pkgsUnstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
@@ -25,7 +26,7 @@
       modules = [ ./nixos/hosts/${hostname}/configuration.nix ];
     };
   in {
-    nixosConfigurations.vm = {
+    nixosConfigurations = {
       luxe    = defHost "luxe";
       nova    = defHost "nova";
       astore  = defHost "astore";
