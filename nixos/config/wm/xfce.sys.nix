@@ -1,6 +1,5 @@
-{config, pkgs, lib, ...}: let {
+{config, pkgs, lib, ...}:{
   nixpkgs.config.pulseaudio = true;
-  var = builtins.trace "XFCE I EXIST"
 
   services.xserver = {
     enable = true;
@@ -11,6 +10,4 @@
     };
   };
   services.displayManager.defaultSession = "xfce";
-} in {
-  var;
 }

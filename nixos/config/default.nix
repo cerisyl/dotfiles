@@ -19,21 +19,24 @@
   
   # Get all files
   findConfig = dir:
-    builtins.concatLists (map (name:
-      let
-        path = baseDir + "/${name}";
-        type = (builtins.readDir dir)."${name}";
-      in
-        builtins.trace "Scanning ${toString path} for ${role}" (
-          if type == "directory" then (findConfig name)
+    let
+      entries = builtins.attrNames (builtins.readDir dir);
+      paths = builtins.concatMap (name:
+        let
+          path = dir + "/${name}";
+          type = (builtins.readDir dir)."${name}";
+        in
+          if type == "directory" then findConfig path
           else if isNixFile name
           && matchesRole name
           && name != "default.nix"
           && !(builtins.elem name excludedFiles)
-          then builtins.trace "Found!! ${toString path}" [ (import path) ]
-          else builtins.trace "Skipped ${toString path}" []
-        )
-    ) (builtins.attrNames (builtins.readDir dir))
-  );
+          then [ path ]
+          else []
+      ) entries;
+    in
+      paths;
+  configPaths = findConfig baseDir;
 in
-  findConfig baseDir
+  builtins.map import configPaths
+
