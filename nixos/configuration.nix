@@ -1,6 +1,6 @@
-{ inputs, config, pkgs, pkgsUnstable, ... }: let
+{ inputs, config, pkgs, pkgsUnstable, ... }@ args: let
   # Define hostname
-  myHostname = "luxe";
+  myHostname = args.myHostname;
 
   # Package management
   # Use binary to determine what packages we should download
@@ -8,6 +8,7 @@
     "luxe"    = 2;
     "nova"    = 1;
     "astore"  = 0;
+    "vm"      = 1;
   };
   hostIndex = hostIndexMap.${myHostname};
 
@@ -22,10 +23,6 @@
   myPackages = map (entry: entry.pkg) enabledPackages;
 
 in {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   # Bootloader
   boot.loader.grub.enable                 = true;
   boot.loader.grub.devices                = [ "nodev" ];
@@ -41,6 +38,11 @@ in {
   # Networking
   networking.networkmanager.enable = true;
 
+  # Import proper hardware config
+  imports = [
+    ./hosts/${myHostname}/hardware-configuration.nix
+  ];
+
   # Users
   users.users.ceri = {
     isNormalUser  = true;
@@ -53,7 +55,7 @@ in {
     automatic = true;
     dates     = "weekly";
     options   = "--delete-older-than 30d";
-  }
+  };
 
   # Define packages
   nixpkgs.config.allowUnfree = true;

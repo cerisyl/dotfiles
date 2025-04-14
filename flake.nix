@@ -12,12 +12,9 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
-    let
-      system = "x86_64-linux";
-    in {
-
-    # replace nixosConfigurations.<name> with system hostname
-    nixosConfigurations.luxe = nixpkgs.lib.nixosSystem {
+  let
+    system = "x86_64-linux";
+    defHost = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
         pkgsUnstable = import nixpkgs-unstable {
           inherit system;
@@ -25,7 +22,14 @@
         };
         inherit inputs system;
       };
-      modules = [ ./nixos/configuration.nix ];
+      modules = [ ./nixos/hosts/${hostname}/configuration.nix ];
+    };
+  in {
+    nixosConfigurations.vm = {
+      luxe    = defHost "luxe";
+      nova    = defHost "nova";
+      astore  = defHost "astore";
+      vm      = defHost "vm";
     };
 
     homeConfigurations.ceri = home-manager.lib.homeManagerConfiguration {
