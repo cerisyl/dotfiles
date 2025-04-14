@@ -7,6 +7,7 @@ in
   (p "111" pkgs.floorp)
   (p "111" pkgs.fzf)
   (p "111" pkgs.git)
+  (p "111" pkgs.home-manager)
   (p "111" pkgs.keepassxc)
   (p "111" pkgs.kitty)
   ##(p "111" pkgs.linux)

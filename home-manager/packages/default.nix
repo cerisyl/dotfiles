@@ -24,11 +24,11 @@ let
       let
         fullPath = "${dir}/${file}";
       in if builtins.match ".*\\.nix" file != null
-         && file != "default.nix"
-         && !(builtins.elem fullPath excludedFiles)
-         then
-           some (baseDir + "/${fullPath}")
-         else null
+        && file != "default.nix"
+        && !(builtins.elem fullPath excludedFiles)
+        then
+          some (baseDir + "/${fullPath}")
+        else null
     ) files;
 
   # Flatten list of lists of modules

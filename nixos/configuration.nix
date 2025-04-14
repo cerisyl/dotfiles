@@ -48,6 +48,13 @@ in {
     extraGroups   = [ "wheel" "input" "networkmanager" ];
   };
 
+  # Garbage collection
+  nix.gc = {
+    automatic = true;
+    dates     = "weekly";
+    options   = "--delete-older-than 30d";
+  }
+
   # Define packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = myPackages;
