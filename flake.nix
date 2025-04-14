@@ -23,7 +23,10 @@
         };
         inherit inputs system;
       };
-      modules = [ ./nixos/hosts/${hostname}/configuration.nix ];
+      modules = [
+        ./nixos/hosts/${hostname}/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+      ];
     };
   in {
     nixosConfigurations = {
@@ -31,11 +34,6 @@
       nova    = defHost "nova";
       astore  = defHost "astore";
       vm      = defHost "vm";
-    };
-
-    homeConfigurations.ceri = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
     };
   };
 }

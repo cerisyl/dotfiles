@@ -35,17 +35,23 @@ in {
   # Networking
   networking.networkmanager.enable = true;
 
-  # Import hardware config, system module config
+  # Import hardware config
   imports = [
     ./hosts/${myHostname}/hardware-configuration.nix
-    ./config/default.nix
-  ];
+  ] ++ import ./config { role = "system"; };
 
   # Users
+  programs.zsh.enable = true;
   users.users.ceri = {
     isNormalUser  = true;
     shell         = pkgs.zsh;
     extraGroups   = [ "wheel" "input" "networkmanager" ];
+  };
+
+  # Import/set home configuration
+  home-manager.users.ceri = {
+    imports = import ./config { role = "home"; };
+    home.stateVersion = "24.11";
   };
 
   # Garbage collection

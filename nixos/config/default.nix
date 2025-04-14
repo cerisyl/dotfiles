@@ -2,34 +2,38 @@
 # You should never need to touch this file,
 # except for changing the excludedFiles list.
 
-let
+{ role }: let
   # Exlude specific .nix configurations
   excludedFiles = [
-    #"path/to/file.nix"
+    #"file.nix"
   ];
 
   baseDir = ./.;
 
-  # Get all subdirectories
-  subdirs = builtins.filter (name:
-    (builtins.readDir baseDir).${name} == "directory"
-  ) (builtins.attrNames (builtins.readDir baseDir));
+  isNixFile = name: builtins.match ".*\\.nix$" name != null;
 
-  # Get all .nix files in a given dir (excluding default.nix)
-  getModulesInDir = dir:
-    let
-      files = builtins.attrNames (builtins.readDir (baseDir + "/${dir}"));
-    in builtins.concatLists (map (file:
+  matchesRole = name:
+    if role == "system"
+    then builtins.match ".*\\.sys\\.nix$" name != null
+    else builtins.match ".*\\.sys\\.nix$" name == null; 
+  
+  # Get all files
+  findConfig = dir:
+    builtins.concatLists (map (name:
       let
-        fullPath = "${dir}/${file}";
-      in if builtins.match ".*\\.nix" file != null
-        && file != "default.nix"
-        && !(builtins.elem fullPath excludedFiles)
-        then [ "${baseDir}/${fullPath}" ]
-        else []
-    ) files);
-
-  # Flatten list of lists of modules
-  modules = builtins.concatLists (map getModulesInDir subdirs);
+        path = baseDir + "/${name}";
+        type = (builtins.readDir dir)."${name}";
+      in
+        builtins.trace "Scanning ${toString path} for ${role}" (
+          if type == "directory" then (findConfig name)
+          else if isNixFile name
+          && matchesRole name
+          && name != "default.nix"
+          && !(builtins.elem name excludedFiles)
+          then builtins.trace "Found!! ${toString path}" [ (import path) ]
+          else builtins.trace "Skipped ${toString path}" []
+        )
+    ) (builtins.attrNames (builtins.readDir dir))
+  );
 in
-  modules
+  findConfig baseDir
