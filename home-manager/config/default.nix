@@ -5,8 +5,7 @@
 let
   # Exlude specific .nix configurations
   excludedFiles = [
-    "dev/old-experiment.nix"
-    "media/spotify.nix"
+    #"path/to/file.nix"
   ];
 
   baseDir = ./.;
@@ -20,16 +19,15 @@ let
   getModulesInDir = dir:
     let
       files = builtins.attrNames (builtins.readDir (baseDir + "/${dir}"));
-    in builtins.filterMap (file:
+    in builtins.concatLists (map (file:
       let
         fullPath = "${dir}/${file}";
       in if builtins.match ".*\\.nix" file != null
         && file != "default.nix"
         && !(builtins.elem fullPath excludedFiles)
-        then
-          some (baseDir + "/${fullPath}")
-        else null
-    ) files;
+        then [ "${baseDir}/${fullPath}" ]
+        else []
+    ) files);
 
   # Flatten list of lists of modules
   modules = builtins.concatLists (map getModulesInDir subdirs);

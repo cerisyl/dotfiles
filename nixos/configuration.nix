@@ -35,9 +35,10 @@ in {
   # Networking
   networking.networkmanager.enable = true;
 
-  # Import proper hardware config
+  # Import hardware config, system module config
   imports = [
     ./hosts/${myHostname}/hardware-configuration.nix
+    ./config/default.nix
   ];
 
   # Users

@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = import ./packages/default.nix;
+  imports = import ./modules/default.nix;
   programs.home-manager.enable = true;
 
   home = {
