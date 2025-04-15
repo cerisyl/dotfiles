@@ -1,6 +1,5 @@
 { pkgs, pkgsUnstable }: let p = init: pkg: { inherit pkg init; };
-in
-[
+in [
   #(p "011" pkgs.betterbird-bin) #thunderbird
   (p "111" pkgs.btop)
   ##(p "111" pkgs.efibootmgr)

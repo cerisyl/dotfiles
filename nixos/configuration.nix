@@ -20,12 +20,6 @@
   myPackages = map (entry: entry.pkg) enabledPackages;
 
 in {
-  # Bootloader
-  boot.loader.grub.enable                 = true;
-  boot.loader.grub.devices                = [ "nodev" ];
-  boot.loader.grub.efiSupport             = true;
-  boot.loader.grub.useOSProber            = true;
-  boot.loader.efi.canTouchEfiVariables    = true;
 
   # Main params
   networking.hostName = myHostname;
