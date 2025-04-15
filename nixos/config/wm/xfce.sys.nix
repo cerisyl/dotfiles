@@ -1,6 +1,4 @@
 { config, pkgs, lib, ... }: {
-  nixpkgs.config.pulseaudio = true;
-
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
@@ -9,5 +7,8 @@
       xfce.enable = true;
     };
   };
+
+  nixpkgs.config.pulseaudio = true;
   services.displayManager.defaultSession = "xfce";
+  environment.xfce.excludePackages = [ pkgs.xfce.xfce4-terminal ];
 }
