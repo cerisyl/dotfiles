@@ -10,7 +10,7 @@
         efiSupport      = true;
         useOSProber     = true;
         #timeoutStyle    = "hidden";
-        backgroundColor = #1a1a1f;
+        backgroundColor = "#1a1a1f";
         splashImage     = null;
       };
     };
