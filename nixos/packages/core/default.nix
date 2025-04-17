@@ -3,6 +3,7 @@ in [
   #(p "011" pkgs.betterbird-bin) #thunderbird
   (p "111" pkgs.btop)
   ##(p "111" pkgs.efibootmgr)
+  (p "111" pkgs.fastfetch)
   (p "111" pkgs.floorp)
   (p "111" pkgs.fzf)
   (p "111" pkgs.git)
@@ -12,7 +13,6 @@ in [
   ##(p "111" pkgs.linux)
   ##(p "111" pkgs.linux-firmware)
   (p "111" pkgs.micro)
-  (p "111" pkgs.neofetch)
   (p "111" pkgs.oh-my-posh)
   (p "100" pkgs.openssh)
   (p "111" pkgs.p7zip)
