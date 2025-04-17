@@ -7,7 +7,7 @@
     # Background + desktop
     xfce4-desktop = {
       # Background
-      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${config.home.homeDirectory}/.nix/nixos/assets/bg.png";
+      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${config.home.homeDirectory}/.nix/nixos/assets/img/bg.png";
       # Desktop icons
       "desktop-icons/show-tooltips"               = false;
       "desktop-icons/file-icons/show-removable"   = false;

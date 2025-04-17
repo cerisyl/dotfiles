@@ -3,31 +3,33 @@
     enable    = true;
     settings  = {
       logo = {
-        source = "nixos";
-        padding = {
-          right = 1;
-        };
+        source      = "${config.home.homeDirectory}/.nix/nixos/assets/img/rida.png";
+        type        = "kitty-direct";
+        logo-width  = 30;
+        logo-height = 14;
       };
       display = {
-        size = {
-          binaryPrefix = "si";
-        };
-        color = "blue";
-        separator = "\t";
+        separator         = " ";
+        key.width         = 12;
+        color             = "blue";
+        size.binaryPrefix = "jedec";
+        freq.ndigits      = 1;
       };
       modules = [
+        "title"
         { type = "os"; format = "{name} {version}"; }
+        { type = "custom"; format = "────────────────────────────────"; }
         "host"
         "uptime"
-        "packages"
+        { type = "packages"; format = "{all}"; }
         "shell"
-        "display"
-        "wm"
-        "terminal"
+        { type = "display"; key = "Display"; }
+        { type = "wm"; format = "{pretty-name}"; }
+        { type = "terminal"; format = "{pretty-name}"; }
         "cpu"
         "gpu"
         "memory"
-        "disk"
+        { type = "disk"; key = "Disk"; }
       ];
     };
   };

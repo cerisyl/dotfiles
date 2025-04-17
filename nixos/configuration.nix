@@ -20,7 +20,6 @@
   myPackages = map (entry: entry.pkg) enabledPackages;
 
 in {
-
   # Main params
   networking.hostName = myHostname;
   time.timeZone       = "America/Chicago";
