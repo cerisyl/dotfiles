@@ -6,11 +6,11 @@
         source      = "${config.home.homeDirectory}/.nix/nixos/assets/img/rida.png";
         type        = "kitty-direct";
         width       = 32;
-        height      = 16;
+        height      = 15;
         padding     = {
-          left      = 2;
+          left      = 4;
           top       = 1;
-        }
+        };
       };
       display = {
         separator         = " ";

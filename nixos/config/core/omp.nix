@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   programs.oh-my-posh = {
     enable    = true;
-    settings  = ''{
+    settings  = builtins.fromJSON ''{
       "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
       "blocks": [
         {
