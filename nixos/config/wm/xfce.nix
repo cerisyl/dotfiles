@@ -51,13 +51,26 @@
   services.xsettingsd.settings = {
   };
   # Home directories
+  xdg.enable = true;
   xdg.userDirs = {
-    enable    = true;
-    desktop   = "${config.home.homeDirectory}/desktop";
-    download  = "${config.home.homeDirectory}/downloads";
-    documents = "${config.home.homeDirectory}/docs";
-    music     = "${config.home.homeDirectory}/music";
-    pictures  = "${config.home.homeDirectory}/pictures";
-    videos    = "${config.home.homeDirectory}/videos";
+    enable                = true;
+    createDirectories     = true;
+    desktop               = "${config.home.homeDirectory}/desktop";
+    download              = "${config.home.homeDirectory}/downloads";
+    documents             = "${config.home.homeDirectory}/docs";
+    music                 = "${config.home.homeDirectory}/music";
+    pictures              = "${config.home.homeDirectory}/pictures";
+    videos                = "${config.home.homeDirectory}/videos";
+    publicShare           = null;
+    templates             = null;
+    extraConfig = {
+      XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/captures";
+      XDG_CODE_DIR        = "${config.home.homeDirectory}/code";
+      XDG_TORRENTS_DIR    = "${config.home.homeDirectory}/deluge";
+      XDG_GAMES_DIR       = "${config.home.homeDirectory}/games";
+      XDG_SHARE_DIR       = "${config.home.homeDirectory}/sync";
+      XDG_TOOLS_DIR       = "${config.home.homeDirectory}/util";
+      XDG_VM_DIR          = "${config.home.homeDirectory}/vm";
+    };
   };
 }
