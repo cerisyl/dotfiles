@@ -5,8 +5,12 @@
       logo = {
         source      = "${config.home.homeDirectory}/.nix/nixos/assets/img/rida.png";
         type        = "kitty-direct";
-        logo-width  = 30;
-        logo-height = 14;
+        width       = 32;
+        height      = 16;
+        padding     = {
+          left      = 2;
+          top       = 1;
+        }
       };
       display = {
         separator         = " ";
@@ -16,9 +20,10 @@
         freq.ndigits      = 1;
       };
       modules = [
+        "break"
         "title"
-        { type = "os"; format = "{name} {version}"; }
         { type = "custom"; format = "────────────────────────────────"; }
+        { type = "os"; format = "{name} {version}"; }
         "host"
         "uptime"
         { type = "packages"; format = "{all}"; }
@@ -30,6 +35,9 @@
         "gpu"
         "memory"
         { type = "disk"; key = "Disk"; }
+        "break"
+        "colors"
+        "break"
       ];
     };
   };

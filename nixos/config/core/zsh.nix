@@ -67,10 +67,10 @@
       append        = true;
       share         = true;
       ignoreSpace   = true;
-      saveNoDups    = true;
+      #saveNoDups    = true; #TODO: Uncomment @ 2025.05
       ignoreDups    = true;
       ignoreAllDups = true;
-      findNoDups    = true;
+      #findNoDups    = true; #TODO: Uncomment @ 2025.05
     };
     # Aliases
     shellAliases = {
