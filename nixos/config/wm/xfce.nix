@@ -54,7 +54,7 @@
   xdg.userDirs = {
     enable    = true;
     desktop   = "${config.home.homeDirectory}/desktop";
-    downloads = "${config.home.homeDirectory}/downloads";
+    download  = "${config.home.homeDirectory}/downloads";
     documents = "${config.home.homeDirectory}/docs";
     music     = "${config.home.homeDirectory}/music";
     pictures  = "${config.home.homeDirectory}/pictures";
