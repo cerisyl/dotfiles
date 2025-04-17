@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  programs.fetch = {
+  programs.fastfetch = {
     enable    = true;
     settings  = {
       logo = {
