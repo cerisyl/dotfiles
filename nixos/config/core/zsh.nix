@@ -4,6 +4,14 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    # Plugins
+    plugins = [
+      {
+        name = "fzf-tab";
+        file = "share/fzf-tab/fzf-tab.plugin.zsh";
+        src = pkgsUnstable.zsh-fzf-tab;
+      }
+    ]
     # Init
     initExtraBeforeCompInit = ''
       # Set up / source zinit
@@ -11,10 +19,7 @@
       if [ ! -d "$ZINIT_HOME" ]; then
           mkdir -p "$(dirname $ZINIT_HOME)"
       fi
-      source ${pkgs.zinit}/share/zinit/zinit.zsh
-
-      # Add in zsh plugins
-      zinit light Aloxaf/fzf-tab
+      source ${pkgsUnstable.zinit}/share/zinit/zinit.zsh
 
       # Add in snippets
       zinit snippet OMZL::clipboard.zsh

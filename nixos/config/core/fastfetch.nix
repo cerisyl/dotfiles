@@ -8,8 +8,8 @@
         width       = 32;
         height      = 15;
         padding     = {
-          left      = 4;
-          top       = 1;
+          left      = 3;
+          top       = 2;
         };
       };
       display = {

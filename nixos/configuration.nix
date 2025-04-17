@@ -37,7 +37,7 @@ in {
   programs.zsh.enable = true;
   users.users.ceri = {
     isNormalUser  = true;
-    shell         = pkgs.zsh;
+    shell         = pkgsUnstable.zsh;
     extraGroups   = [ "wheel" "input" "networkmanager" ];
   };
 

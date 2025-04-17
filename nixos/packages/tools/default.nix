@@ -11,7 +11,7 @@ in [
   #(p "011" pkgs.libreoffice-fresh) rethink this one?
   #(p "011" pkgs.nine-or-null) manual install
   #(p "001" pkgs.ntsc-rs) manual install
-  (p "011" pkgs.obsidian)
+  (p "011" pkgsUnstable.obsidian)
   (p "011" pkgs.obs-studio)
   (p "001" pkgs.openrgb)
   (p "001" pkgs.puddletag)
