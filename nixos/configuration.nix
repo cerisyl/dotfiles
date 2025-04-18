@@ -43,9 +43,7 @@ in {
 
   # Import/set home configuration
   home-manager.users.ceri = {
-    imports = [
-      ./config/globals.nix
-    ] ++ import ./config { role = "home"; };
+    imports = import ./config/default.nix { role = "home"; };
     home.stateVersion = "24.11";
   };
 
