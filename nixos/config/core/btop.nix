@@ -2,7 +2,7 @@
   programs.btop = {
     enable    = true;
     settings  = {
-      color_theme               = "dracula.theme"; #TODO: Change to ceres
+      color_theme               = builtins.unsafeDiscardStringContext (builtins.readFile "${themeDir}/btop.theme");
       theme_background          = true;
       truecolor                 = true;
       force_tty                 = false;
