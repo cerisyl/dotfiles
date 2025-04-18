@@ -17,7 +17,7 @@
     if role == "system"
     then builtins.match ".*\\.sys\\.nix$" name != null
     else builtins.match ".*\\.sys\\.nix$" name == null; 
-  
+
   # Get all files
   findConfig = dir:
     let

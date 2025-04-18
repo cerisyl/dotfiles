@@ -21,7 +21,7 @@ in [
   (p "111" pkgs.tealdeer)
   (p "111" pkgs.unzip)
   #(p "111" pkgs.xnviewmp) needs an alternative
-  (p "111" pkgs.zinit)
+  (p "111" pkgsUnstable.zinit)
   (p "111" pkgs.zip)
   (p "111" pkgsUnstable.zsh)
   (p "111" pkgsUnstable.zsh-fzf-tab)

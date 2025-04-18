@@ -14,9 +14,16 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
+    themeFile = "./extra/theme";
+    theme = if builtins.pathExists themeFile
+            then builtins.readFile themeFile
+            else "ceres";
     defHost = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
         myHostname = hostname;
+        inherit theme;
+        themeDir = "./.nix/themes/${theme}";
+        extraDir = "./.nix/extra";
         pkgsUnstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;

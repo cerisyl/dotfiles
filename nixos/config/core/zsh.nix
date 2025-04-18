@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, pck lib, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -9,9 +9,9 @@
       {
         name = "fzf-tab";
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
-        src = pkgsUnstable.zsh-fzf-tab;
+        src = pkgs.zsh-fzf-tab;
       }
-    ]
+    ];
     # Init
     initExtraBeforeCompInit = ''
       # Set up / source zinit
@@ -19,7 +19,7 @@
       if [ ! -d "$ZINIT_HOME" ]; then
           mkdir -p "$(dirname $ZINIT_HOME)"
       fi
-      source ${pkgsUnstable.zinit}/share/zinit/zinit.zsh
+      source ${pkgs.zinit}/share/zinit/zinit.zsh
 
       # Add in snippets
       zinit snippet OMZL::clipboard.zsh
@@ -59,7 +59,7 @@
       eval "$(fzf --zsh)"
 
       # Functions
-      fpath=(${config.home.homeDirectory}/.nix/nixos/assets/zshfx $fpath);
+      fpath=(${extraDir}/zshfx $fpath);
       autoload -U $fpath[1]/*(.:t)
 
       # Init omp

@@ -3,7 +3,7 @@
     enable    = true;
     settings  = {
       logo = {
-        source      = "${config.home.homeDirectory}/.nix/nixos/assets/img/rida.png";
+        source      = "${themeDir}/img/fetch.png";
         type        = "kitty-direct";
         width       = 32;
         height      = 15;
