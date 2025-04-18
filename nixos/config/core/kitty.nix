@@ -1,17 +1,10 @@
-{ config, pkgs, lib, ... }: let
-  themeFile = "${config.home.homeDirectory}/extra/theme";
-  theme = if builtins.pathExists themeFile
-          then builtins.readFile themeFile
-          else "ceres";
-  themeDir = "${config.home.homeDirectory}/.nix/themes/${theme}";
-  extraDir = "${config.home.homeDirectory}/.nix/extra";
-in {
-  xdg.configFile."kitty/diff.conf".text = builtins.readFile "${themeDir}/kitty-diff.theme";
+{ config, pkgs, lib, ... }: {
+  xdg.configFile."kitty/diff.conf".text = builtins.readFile "${config.home.homeDirectory}/.nix/themes/ceres/kitty-diff.theme";
   programs.kitty = {
     enable    = true;
     font.name = "JetBrainsMono Nerd Font";
     font.size = 10;
-    themeFile = "${themeDir}/kitty.theme";
+    themeFile = "${config.home.homeDirectory}/.nix/themes/ceres/kitty.theme";
     shellIntegration.enableZshIntegration = true;
     settings  = {
       draw_minimal_borders        = true;

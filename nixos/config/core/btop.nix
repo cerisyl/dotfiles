@@ -1,15 +1,8 @@
-{ config, pkgs, lib, ... }: let
-  themeFile = "${config.home.homeDirectory}/extra/theme";
-  theme = if builtins.pathExists themeFile
-          then builtins.readFile themeFile
-          else "ceres";
-  themeDir = "${config.home.homeDirectory}/.nix/themes/${theme}";
-  extraDir = "${config.home.homeDirectory}/.nix/extra";
-in {
+{ config, pkgs, lib, ... }: {
   programs.btop = {
     enable    = true;
     settings  = {
-      color_theme               = builtins.unsafeDiscardStringContext (builtins.readFile "${themeDir}/btop.theme");
+      color_theme               = builtins.unsafeDiscardStringContext (builtins.readFile "${config.home.homeDirectory}/.nix/themes/ceres/btop.theme");
       theme_background          = true;
       truecolor                 = true;
       force_tty                 = false;
