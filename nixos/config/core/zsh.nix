@@ -1,4 +1,4 @@
-{ config, pkgs, pck lib, ... }: {
+{ config, pkgs, lib, extraDir, themeDir, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;

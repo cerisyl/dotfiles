@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, extraDir, themeDir, ... }: {
   gtk.gtk3.extraCss = ''
     /* main   #131316 */
     /* hover  #25252e */

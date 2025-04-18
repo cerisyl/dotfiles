@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, extraDir, themeDir, ... }: {
   programs.fastfetch = {
     enable    = true;
     settings  = {

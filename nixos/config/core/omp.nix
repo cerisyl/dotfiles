@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, extraDir, themeDir, ... }: {
   programs.oh-my-posh = {
     enable    = true;
     settings  = builtins.fromJSON ;

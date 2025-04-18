@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, extraDir, themeDir, ... }: {
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
