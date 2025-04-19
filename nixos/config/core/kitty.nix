@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   xdg.configFile = {
-    "kitty/theme.conf".text = builtins.readFile ../../../themes/ceres/kitty.theme;
+    "kitty/ceres.conf".text = builtins.readFile ../../../themes/ceres/kitty.theme;
     "kitty/diff.conf".text = builtins.readFile ../../../themes/ceres/kitty-diff.theme;
   };
   programs.kitty = {
@@ -9,7 +9,7 @@
     font.size = 10;
     shellIntegration.enableZshIntegration = true;
     settings  = {
-      include                     = "./theme.conf";
+      include                     = "./ceres.conf";
       draw_minimal_borders        = true;
       window_margin_width         = 1;
       single_window_margin_width  = -1;

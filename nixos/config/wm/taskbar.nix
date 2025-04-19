@@ -1,7 +1,7 @@
 # Shoutouts mimvoid@github
 # TODO: This is theme-contingent. Need to somehow move this into themes folder
 { config, pkgs, lib, ... }: let
-  # Make life easier
+  # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
     lib.attrsets.mapAttrs' (name: value:
       lib.attrsets.nameValuePair "${prefix}${name}" value);
@@ -50,15 +50,15 @@
     "5/mode"                = 2;
     "5/digital-date-font"   = "Barlow 11";
     "5/digital-time-font"   = "JetBrainsMonoNL Nerd Font 9";
-    "5/digital-time-format" = "&lt;span line-height=&quot;0.85px&quot;&gt;&lt;b&gt;%l:%M:%S %p%n&lt;/b&gt;%d %b %Y&lt;/span&gt;";
+    "5/digital-time-format" = "<span line-height=&quot;0.85px&quot;><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     "5/digital-date-format" = "%d %b %Y";
     "5/digital-layout"      = "3";
-    "5/timezone"            = time.timeZone;
+    "5/timezone"            = "America/Chicago"; #TODO: Pass down time.timeZone somehow
     "5/tooltip-format"      = "%A, %d %B %Y";
 
     # genmon (show desktop)
     "6"                     = "genmon";
-    "6/command"             = "sh ${config.home.homeDirectory}/.nix/extra/showdesktop-wrapper.sh";
+    "6/command"             = "sh ${config.home.homeDirectory}/.nix/extra/panel/showdesktop-wrapper.sh";
     "6/use-label"           = true;
     "6/text"                = "";
     "6/update-period"       = 86400000;

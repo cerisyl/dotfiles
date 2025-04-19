@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }: {
+  xdg.configFile."btop/themes/ceres.theme" = builtins.readFile ../../../themes/ceres/btop.theme;
   programs.btop = {
     enable    = true;
     settings  = {
-      color_theme               = builtins.unsafeDiscardStringContext (builtins.readFile ../../../themes/ceres/btop.theme);
+      color_theme               = "ceres";
       theme_background          = true;
       truecolor                 = true;
       force_tty                 = false;
