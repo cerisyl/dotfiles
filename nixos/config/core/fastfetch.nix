@@ -5,7 +5,7 @@
       logo = {
         source      = ../../../themes/ceres/img/fetch.png;
         type        = "kitty-direct";
-        width       = 32;
+        width       = 33;
         height      = 15;
         padding     = {
           left      = 3;
@@ -27,9 +27,9 @@
         "host"
         "uptime"
         { type = "packages"; format = "{all}"; }
-        "shell"
         { type = "display"; key = "Display"; }
         { type = "wm"; format = "{pretty-name}"; }
+        "shell"
         { type = "terminal"; format = "{pretty-name}"; }
         "cpu"
         "gpu"
