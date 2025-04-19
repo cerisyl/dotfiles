@@ -22,7 +22,7 @@
   };
 
   # Bookmarks
-  gtk.gtk3.bookmarks = {
+  gtk.gtk3.bookmarks = [
     "file:///${config.home.homeDirectory}/captures"
     "file:///${config.home.homeDirectory}/code"
     "file:///${config.home.homeDirectory}/desktop"
@@ -34,7 +34,7 @@
     "file:///${config.home.homeDirectory}/sync"
     "file:///${config.home.homeDirectory}/util"
     "file:///${config.home.homeDirectory}/videos"
-  };
+  ];
 
   # Folder shortcuts
   xdg.configFile."Thunar/uca.xml".text = ''
