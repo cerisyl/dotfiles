@@ -9,10 +9,10 @@
 
   # Where to unzip each type
   getTargetPath = name:
-    if lib.hasPrefix "icons" name then
-      "${config.home.homeDirectory}/.icons/ceres-${name}"
-    else
+    if lib.hasPrefix "main" name then
       "${config.home.homeDirectory}/.local/share/themes/ceres-${name}";
+    else
+      "${config.home.homeDirectory}/.icons/ceres-${name}";
 
   # Activation commands for unzipping each
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
