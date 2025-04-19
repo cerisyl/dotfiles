@@ -33,9 +33,6 @@
       zinit snippet OMZP::sudo
       zinit snippet OMZP::web-search
 
-      # Load completions
-      autoload -Uz compinit && compinit
-
       zinit cdreplay -q
 
       # Keybindings
@@ -83,14 +80,15 @@
       ls      = "ls --color=auto";
       c       = "clear";
       home    = "cd ~";
-      zshrc   = "code ~/.zshrc";
-      zshfx   = "code ~/.zshfx";
+      fetch   = "fastfetch";
 
       # Aliases: Websearch
       yt      = "youtube";
       wolfram = "wolframalpha";
 
       # Aliases: Package management
+      rebuild = "nixos-rebuild switch --flake ~/.nix/.";
+      upgrade = "cd ~/.nix && nix flake upgrade && nixos-rebuild switch --flake .";
 
       # Aliases: Python
       py      = "python";
@@ -111,8 +109,6 @@
       dev     = "npm run dev";
       deploy  = "npm run deploy";
       redev   = "npm run redev";
-      update  = "ncu -i";
-      #rev="printf 'Build %04d\n' $(git rev-list --count main)"
 
       # Aliases: RPL directories
       rpl     = "cd ~/code/rpl";

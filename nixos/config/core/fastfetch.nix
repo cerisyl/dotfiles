@@ -15,7 +15,7 @@
       display = {
         separator         = " ";
         key.width         = 12;
-        color             = "blue";
+        color             = "magenta";
         size.binaryPrefix = "jedec";
         freq.ndigits      = 1;
       };
