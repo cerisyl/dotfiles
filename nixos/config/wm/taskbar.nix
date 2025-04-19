@@ -10,7 +10,7 @@
   panels = prependAttrs "panels/panel-1/" {
     "position-locked"   = true;
     "background-style"  = 1; # solid color
-    "background-rgba"   = [ (19 / 255.0) (19 / 255.0) (22 / 255.0) 1 ]; #131316
+    "background-rgba"   = [ (19 / 255.0) (19 / 255.0) (22 / 255.0) 1.00 ]; #131316
     "position"          = "p=8;x=640;y=786";
     "length"            = 100;
     "size"              = 48;
@@ -48,11 +48,9 @@
     # clock
     "5"                     = "clock";
     "5/mode"                = 2;
-    "5/digital-date-font"   = "Barlow 11";
-    "5/digital-time-font"   = "JetBrainsMonoNL Nerd Font 9";
-    "5/digital-time-format" = "<span line-height=&quot;0.85px&quot;><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
-    "5/digital-date-format" = "%d %b %Y";
+    "5/digital-time-font"   = "JetBrainsMono Nerd Font 9";
     "5/digital-layout"      = "3";
+    "5/digital-time-format" = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     "5/timezone"            = "America/Chicago"; #TODO: Pass down time.timeZone somehow
     "5/tooltip-format"      = "%A, %d %B %Y";
 
