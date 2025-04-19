@@ -11,14 +11,14 @@
 
   allPackages = import ./packages { inherit pkgs pkgsUnstable; };
 
-  enabledPackages = builtins.filter (entry:
+  enabledPackages = entries: builtins.filter (entry:
     let flag = entry.init;
     in builtins.stringLength flag > hostIndex &&
        builtins.substring hostIndex 1 flag == "1"
   ) entries;
 
-  systemPackages = map (entry: entry.pkg) (filterByHost allPackages.system);
-  fontPackages   = map (entry: entry.pkg) (filterByHost allPackages.font);
+  systemPackages = map (entry: entry.pkg) (enabledPackages allPackages.system);
+  fontPackages   = map (entry: entry.pkg) (enabledPackages allPackages.font);
 
 in {
   # Main params
