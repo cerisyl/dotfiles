@@ -54,13 +54,13 @@ in {
 
     # Windows
     xfwm4 = {
-      "general/button-layout"     = "O|HMC";
+      "general/button_layout"     = "O|HMC";
       "general/placement_mode"    = "mouse";
-      "general/scroll-workspaces" = false;
-      "general/snap-width"        = 28;
+      "general/scroll_workspaces" = false;
+      "general/snap_width"        = 28;
       "general/theme"             = "ceres-main";
-      "general/title-alignment"   = "left";
-      "general/title-font"        = "Barlow Semi-Bold 10";
+      "general/title_alignment"   = "left";
+      "general/title_font"        = "Barlow Semi-Bold 10";
       "general/toggle_workspaces" = false;
       "general/workspace_count"   = 1;
       "general/wrap_windows"      = false;
