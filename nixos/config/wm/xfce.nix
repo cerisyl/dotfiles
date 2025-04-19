@@ -10,7 +10,7 @@
   # Where to unzip each type
   getTargetPath = name:
     if lib.hasPrefix "main" name then
-      "${config.home.homeDirectory}/.local/share/themes/ceres-${name}";
+      "${config.home.homeDirectory}/.local/share/themes/ceres-${name}"
     else
       "${config.home.homeDirectory}/.icons/ceres-${name}";
 
