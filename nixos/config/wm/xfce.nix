@@ -27,6 +27,7 @@ in {
     ".icons/ceres-cursors" = {
       source = cursorsZip;
       recursive = true;
+    };
   };
 
   xfconf.settings = {
@@ -71,7 +72,8 @@ in {
     };
   };
 
-  services.xsettings = {
+  services.xsettingsd = {
+    enable = true;
     # Net
     "Net/ThemeName"                 = "main";
     "Net/IconThemeName"             = "icons";
