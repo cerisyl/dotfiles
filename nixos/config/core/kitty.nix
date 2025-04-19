@@ -1,10 +1,13 @@
 { config, pkgs, lib, ... }: {
-  xdg.configFile."kitty/diff.conf".text = builtins.readFile ../../../themes/ceres/kitty-diff.theme;
+  xdg.configFile = {
+    "kitty/theme.conf".text = builtins.readFile ../../../themes/ceres/kitty.theme;
+    "kitty/diff.conf".text = builtins.readFile ../../../themes/ceres/kitty-diff.theme;
+  }
   programs.kitty = {
     enable    = true;
     font.name = "JetBrainsMono Nerd Font";
     font.size = 10;
-    themeFile = ../../../themes/ceres/kitty.theme;
+    themeFile = "theme";
     shellIntegration.enableZshIntegration = true;
     settings  = {
       draw_minimal_borders        = true;
