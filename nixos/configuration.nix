@@ -17,7 +17,14 @@
       builtins.substring hostIndex 1 flagString == "1"
   ) allPackages;
 
-  myPackages = map (entry: entry.pkg) enabledPackages;
+  enabledPackages = list: lib.flatten (
+    map (entry:
+      if bitIsSet entry.init hostnameIndex then [ entry.pkg ] else []
+    ) list
+  );
+
+  systemPackages = enabledPackages allPackages.systemPackages;
+  fontPackages   = enabledPackages allPackages.fontPackages;
 
 in {
   # Main params
