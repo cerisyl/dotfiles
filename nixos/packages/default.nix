@@ -3,36 +3,30 @@
 
 { pkgs, pkgsUnstable }: let
   # Path to ./packages
-  baseDir = ./.;
+  packageDir = ./.;
 
   # Read subdirectories
-  subdirs = builtins.attrNames (builtins.readDir baseDir);
+  allEntries = builtins.readDir packageDir;
+  subdirs = builtins.attrNames allEntries;
 
-  # Filter to directories only
-  subPkgs = builtins.filter (name:
-    (builtins.readDir baseDir).${name} == "directory"
-  ) subdirs;
+  # Separate out fontDir from the rest
+  regularDirs = builtins.filter (name: isDir name && name != "font") subdirs;
+  fontDir = builtins.elem "font" subdirs;
 
-  # Import each `./<subdir>/default.nix` and call it with pkgs
-  rollupPackages = map (name:
-    let
-      modulePath = baseDir + "/${name}/default.nix";
-      packages = import modulePath { inherit pkgs pkgsUnstable; };
-    in
-      if name == "fonts" then
-        { type = "fonts"; value = packages; }
-      else
-        { type = "system"; value = packages; }
-  ) subdirs;
-
+  # Import regular packages
   systemPackages = builtins.concatLists (
-    map (entry: if entry.type == "system" then entry.value else []) rollupPackages
+    map (name: import (packageDir + "/${name}") pkgs) regularDirs
   );
 
-  fontPackages = builtins.concatLists (
-    map (entry: if entry.type == "fonts" then entry.value else []) rollupPackages
-  );
+  # Import font packages
+  fontPackages = if fontDir then
+    builtins.concatLists (
+      [ (import (packageDir + "/font") pkgs) ]
+    )
+  else
+    [];
 
 in {
-  inherit systemPackages fontPackages;
+  system  = systemPackages;
+  font    = fontPackages;
 }

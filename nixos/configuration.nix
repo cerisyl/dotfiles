@@ -12,19 +12,13 @@
   allPackages = import ./packages { inherit pkgs pkgsUnstable; };
 
   enabledPackages = builtins.filter (entry:
-    let flagString = entry.init;
-    in builtins.stringLength flagString > hostIndex &&
-      builtins.substring hostIndex 1 flagString == "1"
-  ) allPackages;
+    let flag = entry.init;
+    in builtins.stringLength flag > hostIndex &&
+       builtins.substring hostIndex 1 flag == "1"
+  ) entries;
 
-  enabledPackages = list: lib.flatten (
-    map (entry:
-      if bitIsSet entry.init hostnameIndex then [ entry.pkg ] else []
-    ) list
-  );
-
-  systemPackages = enabledPackages allPackages.systemPackages;
-  fontPackages   = enabledPackages allPackages.fontPackages;
+  systemPackages = map (entry: entry.pkg) (filterByHost allPackages.system);
+  fontPackages   = map (entry: entry.pkg) (filterByHost allPackages.font);
 
 in {
   # Main params
@@ -62,8 +56,9 @@ in {
   };
 
   # Define packages
-  nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = myPackages;
+  nixpkgs.config.allowUnfree  = true;
+  environment.systemPackages  = systemPackages;
+  fonts.packages              = fontPackages;
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
