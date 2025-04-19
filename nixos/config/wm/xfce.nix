@@ -18,7 +18,7 @@
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
     echo "Installing theme: ${name}"
     rm -rf ${getTargetPath name}
-    unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
+    ${pkgs.unzip}/bin/unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
   '') themeZips);
 in {
   # Unpack zips on activation
