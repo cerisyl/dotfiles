@@ -9,6 +9,8 @@
   allEntries = builtins.readDir packageDir;
   subdirs = builtins.attrNames allEntries;
 
+  isDir = name: allEntries.${name} == "directory";
+
   # Separate out fontDir from the rest
   regularDirs = builtins.filter (name: isDir name && name != "font") subdirs;
   fontDir = builtins.elem "font" subdirs;
