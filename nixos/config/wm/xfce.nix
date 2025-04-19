@@ -16,7 +16,7 @@
 
   # Activation commands for unzipping each
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
-    echo "Installing theme: ${name}"
+    mkdir -p ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
     rm -rf ${getTargetPath name}
     ${pkgs.unzip}/bin/unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
   '') themeZips);
