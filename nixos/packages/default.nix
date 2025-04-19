@@ -17,13 +17,13 @@
 
   # Import regular packages
   systemPackages = builtins.concatLists (
-    map (name: import (packageDir + "/${name}") pkgs) regularDirs
+    map (name: import (packageDir + "/${name}") { inherit pkgs pkgsUnstable; }) regularDirs
   );
 
   # Import font packages
   fontPackages = if fontDir then
     builtins.concatLists (
-      [ (import (packageDir + "/font") pkgs) ]
+      [ (import (packageDir + "/font") { inherit pkgs pkgsUnstable; }) ]
     )
   else
     [];
