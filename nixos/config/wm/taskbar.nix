@@ -2,7 +2,9 @@
 # TODO: This is theme-contingent. Need to somehow move this into themes folder
 { config, pkgs, lib, ... }: let
   # Make life easier
-  inherit (pkgs.voids.lib) prependAttrs;
+  prependAttrs = prefix:
+    lib.attrsets.mapAttrs' (name: value:
+      lib.attrsets.nameValuePair "${prefix}${name}" value);
 
   # Define panel
   panels = prependAttrs "panels/panel-1/" {
@@ -51,7 +53,7 @@
     "5/digital-time-format" = "&lt;span line-height=&quot;0.85px&quot;&gt;&lt;b&gt;%l:%M:%S %p%n&lt;/b&gt;%d %b %Y&lt;/span&gt;";
     "5/digital-date-format" = "%d %b %Y";
     "5/digital-layout"      = "3";
-    "5/timezone"            = ${time.timeZone};
+    "5/timezone"            = time.timeZone;
     "5/tooltip-format"      = "%A, %d %B %Y";
 
     # genmon (show desktop)
