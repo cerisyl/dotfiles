@@ -15,7 +15,7 @@
     # Init
     initExtraBeforeCompInit = ''
       # Set up / source zinit
-      export ZINIT_HOME="${config.home.homeDirectory}/.zinit/"
+      export ZINIT_HOME="~/.zinit/"
       if [ ! -d "$ZINIT_HOME" ]; then
           mkdir -p "$(dirname $ZINIT_HOME)"
       fi
@@ -59,7 +59,7 @@
       eval "$(fzf --zsh)"
 
       # Functions
-      fpath=(${config.home.homeDirectory}/.nix/extra/zshfx $fpath);
+      fpath=(~/.nix/extra/zshfx $fpath);
       autoload -U $fpath[1]/*(.:t)
 
       # Init omp

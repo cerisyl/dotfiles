@@ -3,7 +3,7 @@
     enable    = true;
     settings  = {
       logo = {
-        source      = "${config.home.homeDirectory}/.nix/themes/ceres/img/fetch.png";
+        source      = ../../../themes/ceres/img/fetch.png;
         type        = "kitty-direct";
         width       = 32;
         height      = 15;

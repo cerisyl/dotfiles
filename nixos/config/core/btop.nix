@@ -2,7 +2,7 @@
   programs.btop = {
     enable    = true;
     settings  = {
-      color_theme               = builtins.unsafeDiscardStringContext (builtins.readFile "${config.home.homeDirectory}/.nix/themes/ceres/btop.theme");
+      color_theme               = builtins.unsafeDiscardStringContext (builtins.readFile ../../../themes/ceres/btop.theme);
       theme_background          = true;
       truecolor                 = true;
       force_tty                 = false;
