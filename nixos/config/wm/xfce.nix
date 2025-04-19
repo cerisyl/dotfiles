@@ -5,14 +5,14 @@
     main    = "${themeDir}/main.zip";
     icons   = "${themeDir}/icons.zip";
     cursors = "${themeDir}/cursors.zip";
-  }
+  };
 
   # Where to unzip each type
   getTargetPath = name:
     if lib.hasPrefix "icons" name then
-      "${config.home.homeDirectory}/.icons/${name}"
+      "${config.home.homeDirectory}/.icons/ceres-${name}"
     else
-      "${config.home.homeDirectory}/.local/share/themes/${name}";
+      "${config.home.homeDirectory}/.local/share/themes/ceres-${name}";
 
   # Activation commands for unzipping each
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
@@ -25,7 +25,6 @@ in {
   home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${unzipCommands}
   '';
-  }
 
   xfconf.settings = {
     # Session
