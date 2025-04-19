@@ -15,7 +15,7 @@
     "length"            = 100;
     "size"              = 48;
     "icon-size"         = 24;
-    "plugin-ids"        = pkgs.lib.lists.range 1 6;
+    "plugin-ids"        = pkgs.lib.lists.range 1 5;
   };
 
   # Define plugins / panel sections
@@ -26,42 +26,37 @@
     "1/disable-tooltips"    = true;
     "1/show-label"          = false;
 
-    # separator
-    "2"                     = "separator";
-    "2/style"               = 0; # transparent
-    "2/expand"              = true;
-
     # dockbarx
-    "3"                     = "dockbarx";
-    "3/block-autohide"      = false;
-    "3/offset"              = 0;
-    "3/max-size"            = 0;
-    "3/mode"                = 2;
-    "3/color"               = "rgb(16,16,16)";
+    "2"                     = "dockbarx";
+    "2/block-autohide"      = false;
+    "2/offset"              = 0;
+    "2/max-size"            = 0;
+    "2/mode"                = 2;
+    "2/color"               = "rgb(16,16,16)";
 
     # systray
-    "4"                     = "systray";
-    "4/icon-size"           = 22;
-    "4/square-icons"        = true;
-    "4/symbolic-icons"      = true;
+    "3"                     = "systray";
+    "3/icon-size"           = 22;
+    "3/square-icons"        = true;
+    "3/symbolic-icons"      = true;
 
     # clock
-    "5"                     = "clock";
-    "5/mode"                = 2;
-    "5/digital-time-font"   = "JetBrainsMono Nerd Font 9";
-    "5/digital-layout"      = "3";
-    "5/digital-time-format" = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
-    "5/timezone"            = "America/Chicago"; #TODO: Pass down time.timeZone somehow
-    "5/tooltip-format"      = "%A, %d %B %Y";
+    "4"                     = "clock";
+    "4/mode"                = 2;
+    "4/digital-time-font"   = "JetBrainsMono Nerd Font 9";
+    "4/digital-layout"      = 3;
+    "4/digital-time-format" = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
+    "4/timezone"            = "America/Chicago"; #TODO: Pass down time.timeZone somehow
+    "4/tooltip-format"      = "%A, %d %B %Y";
 
     # genmon (show desktop)
-    "6"                     = "genmon";
-    "6/command"             = "sh ${config.home.homeDirectory}/.nix/extra/panel/showdesktop-wrapper.sh";
-    "6/use-label"           = true;
-    "6/text"                = "";
-    "6/update-period"       = 86400000;
-    "6/enable-single-row"   = true;
-    "6/font"                = "Barlow 10";
+    "5"                     = "genmon";
+    "5/command"             = "sh ${config.home.homeDirectory}/.nix/extra/panel/showdesktop-wrapper.sh";
+    "5/use-label"           = true;
+    "5/text"                = "";
+    "5/update-period"       = 86400000;
+    "5/enable-single-row"   = true;
+    "5/font"                = "Barlow 10";
   };
 in {
 
