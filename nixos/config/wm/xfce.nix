@@ -70,29 +70,28 @@ in {
       "general/wrap_windows"      = false;
       "general/workspace_names"   = [ "main" ];
     };
-  };
 
-  services.xsettingsd = {
-    enable = true;
-    # Net
-    "Net/ThemeName"                 = "main";
-    "Net/IconThemeName"             = "icons";
-    "Net/EnableEventSounds"         = true;
-    "Net/EnableInputFeedbackSounds" = true;
-    # Gtk
-    "Gtk/ButtonImages"        = false;
-    "Gtk/ColorPalette"        = "";
-    "Gtk/CursorThemeName"     = "cursors";
-    "Gtk/CursorThemeSize"     = 24;
-    "Gtk/FontName"            = "Barlow 10";
-    "Gtk/MenuBarAccel"        = "";
-    "Gtk/MonospaceFontName"   = "JetBrainsMono Nerd Font 10";
-    "Gtk/TitlebarMiddleClick" = "";
-    "Gtk/ToolbarIconSize"     = "";
-    "Gtk/ToolbarStyle"        = "";
-    # Xfce
-    "Xfce/LastCustomDPI"  = 96;
-    "Xfce/SyncThemes"     = true;
+    xsettings = {
+      # Net
+      "Net/ThemeName"                 = "main";
+      "Net/IconThemeName"             = "icons";
+      "Net/EnableEventSounds"         = true;
+      "Net/EnableInputFeedbackSounds" = true;
+      # Gtk
+      "Gtk/ButtonImages"        = false;
+      "Gtk/ColorPalette"        = "";
+      "Gtk/CursorThemeName"     = "cursors";
+      "Gtk/CursorThemeSize"     = 24;
+      "Gtk/FontName"            = "Barlow 10";
+      "Gtk/MenuBarAccel"        = "";
+      "Gtk/MonospaceFontName"   = "JetBrainsMono Nerd Font 10";
+      "Gtk/TitlebarMiddleClick" = "";
+      "Gtk/ToolbarIconSize"     = "";
+      "Gtk/ToolbarStyle"        = "";
+      # Xfce
+      "Xfce/LastCustomDPI"  = 96;
+      "Xfce/SyncThemes"     = true;
+    };
   };
 
   # Home directories
