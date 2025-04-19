@@ -71,8 +71,6 @@ in {
     };
   };
 
-  # xsettings / theme names
-  }
   services.xsettings = {
     # Net
     "Net/ThemeName"                 = "main";
@@ -90,38 +88,39 @@ in {
     "Gtk/TitlebarMiddleClick" = "";
     "Gtk/ToolbarIconSize"     = "";
     "Gtk/ToolbarStyle"        = "";
-    Xfce
+    # Xfce
     "Xfce/LastCustomDPI"  = 96;
     "Xfce/SyncThemes"     = true;
   };
 
   # Home directories
-  xdg.enable = true;
-  xdg.userDirs = {
-    enable                = true;
-    createDirectories     = true;
-    desktop               = "${config.home.homeDirectory}/desktop";
-    download              = "${config.home.homeDirectory}/downloads";
-    documents             = "${config.home.homeDirectory}/docs";
-    music                 = "${config.home.homeDirectory}/music";
-    pictures              = "${config.home.homeDirectory}/pictures";
-    videos                = "${config.home.homeDirectory}/videos";
-    publicShare           = null;
-    templates             = null;
-    extraConfig = {
-      XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/captures";
-      XDG_CODE_DIR        = "${config.home.homeDirectory}/code";
-      XDG_TORRENTS_DIR    = "${config.home.homeDirectory}/deluge";
-      XDG_GAMES_DIR       = "${config.home.homeDirectory}/games";
-      XDG_SHARE_DIR       = "${config.home.homeDirectory}/sync";
-      XDG_TOOLS_DIR       = "${config.home.homeDirectory}/util";
-      XDG_VM_DIR          = "${config.home.homeDirectory}/vm";
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable                = true;
+      createDirectories     = true;
+      desktop               = "${config.home.homeDirectory}/desktop";
+      download              = "${config.home.homeDirectory}/downloads";
+      documents             = "${config.home.homeDirectory}/docs";
+      music                 = "${config.home.homeDirectory}/music";
+      pictures              = "${config.home.homeDirectory}/pictures";
+      videos                = "${config.home.homeDirectory}/videos";
+      publicShare           = null;
+      templates             = null;
+      extraConfig = {
+        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/captures";
+        XDG_CODE_DIR        = "${config.home.homeDirectory}/code";
+        XDG_TORRENTS_DIR    = "${config.home.homeDirectory}/deluge";
+        XDG_GAMES_DIR       = "${config.home.homeDirectory}/games";
+        XDG_SHARE_DIR       = "${config.home.homeDirectory}/sync";
+        XDG_TOOLS_DIR       = "${config.home.homeDirectory}/util";
+        XDG_VM_DIR          = "${config.home.homeDirectory}/vm";
+      };
     };
+    # Default programs
+    configFile."xfce4/helpers.rc".text = ''
+      TerminalEmulator=kitty
+      WebBrowser=floorp
+    '';
   };
-
-  # Default programs
-  xdg.configFile."xfce4/helpers.rc".text = ''
-    TerminalEmulator=kitty
-    WebBrowser=floorp
-  '';
 }
