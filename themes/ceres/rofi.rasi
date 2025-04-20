@@ -1,10 +1,15 @@
 configuration {
   display-drun: "";
-  display-filebrowser: "";
+  display-recursivebrowser: "";
   display-clipboard: "";
   /* Theme config */
   font: "Barlow Regular 12";
   icon-theme: "ceres-icons";
+  /* TODO: This is here until home-manager supports recursivebrowser settings. */
+  recursivebrowser {
+    directory: "/home/ceri";
+    filter-regex: "(.*\.(desktop|git)|.*node_modules.*|~\/(code|itg|fl|games|steam|util).*)";
+  }
 }
 
 * {

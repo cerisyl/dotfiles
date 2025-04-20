@@ -12,15 +12,15 @@
     # Lock computer
     "<Super>l" = "xflock4";
     # btop / Task manager
-    "<Primary><Shift>Escape"    = "kitty --hold btop";
-    # Windows key (rofi "start menu")
-    "Super_L" = "rofi -show";
+    "<Primary><Shift>Escape" = "kitty --hold btop";
+    # Windows key (toggle rofi "start menu")
+    "Super_L" = "if pgrep -x rofi; then killall rofi else rofi -show fi";
     # Emoji/symbol picker (rofimoji)
     "<Super>e" = "rofimoji";
     # Show clipboard history (rofi-greenclip)
     "<Super>c" = "rofi -modi \"clipboard:greenclip print\" -show clipboard -no-show-icons";
     # Show desktop toggle
-    "<Super>d" = "sh /home/ceri/.config/xfce4/panel/genmon/showdesktop.sh";
+    "<Super>d" = "sh /home/ceri/.nix/extra/panel/showdesktop.sh";
     # Show file explorer
     "<Super>f" = "thunar";
   };

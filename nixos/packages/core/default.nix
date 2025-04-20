@@ -8,6 +8,7 @@ in [
   (p "111" pkgsUnstable.git)
   (p "111" pkgs.home-manager)
   (p "111" pkgsUnstable.keepassxc)
+  (p "111" pkgsUnstable.killall)
   (p "111" pkgsUnstable.kitty)
   (p "111" pkgs.micro)
   (p "111" pkgsUnstable.oh-my-posh)
