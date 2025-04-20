@@ -13,20 +13,21 @@
 
   # Separate out fontDir from the rest
   regularDirs = builtins.filter (name: isDir name && name != "font") subdirs;
-  fontDir = builtins.elem "font" subdirs;
+  hasFontDir = builtins.elem "font" subdirs;
 
   # Import regular packages
   systemPackages = builtins.concatLists (
-    map (name: import (packageDir + "/${name}") { inherit pkgs pkgsUnstable; }) regularDirs
+    map (name:
+      import (packageDir + "/${name}/default.nix") { inherit pkgs pkgsUnstable; }
+    ) regularDirs
   );
 
   # Import font packages
-  fontPackages = if fontDir then
-    builtins.concatLists (
-      [ (import (packageDir + "/font") { inherit pkgs pkgsUnstable; }) ]
-    )
-  else
-    [];
+  fontPackages = if hasFontDir then
+    builtins.concatLists [
+      import (packageDir + "/font/default.nix") { inherit pkgs pkgsUnstable; }
+    ]
+  else [];
 
 in {
   system  = systemPackages;
