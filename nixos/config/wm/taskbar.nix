@@ -22,7 +22,7 @@
   plugins = prependAttrs "plugins/plugin-" {
     # rofi / launcher
     "1"                     = "launcher";
-    "1/items"               = "${config.home.homeDirectory}/.nix/extra/panel/rofi.desktop";
+    "1/items"               = [ "${config.home.homeDirectory}/.nix/extra/panel/rofi.desktop" ];
     "1/disable-tooltips"    = true;
     "1/show-label"          = false;
 
