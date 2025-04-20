@@ -15,11 +15,12 @@
     # Init
     initExtraBeforeCompInit = ''
       # Set up / source zinit
+      # TODO: Remove the need for surpressing source output
       export ZINIT_HOME="${config.home.homeDirectory}/.local/share/zinit/"
       if [ ! -d "$ZINIT_HOME" ]; then
           mkdir -p "$(dirname $ZINIT_HOME)"
       fi
-      source ${pkgs.zinit}/share/zinit/zinit.zsh
+      source ${pkgs.zinit}/share/zinit/zinit.zsh > /dev/null 2>&1
 
       # Add in snippets
       zinit snippet OMZL::clipboard.zsh

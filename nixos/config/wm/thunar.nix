@@ -14,7 +14,6 @@
     last-details-view-visible-columns = "THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE";
     misc-recursive-permissions        = "THUNAR_RECURSIVE_PERMISSIONS_ALWAYS";
     hidden-bookmarks = [
-      "file:///${config.home.homeDirectory}/desktop"
       "trash:///"
       "recent:///"
       "network:///"
@@ -25,7 +24,6 @@
   gtk.gtk3.bookmarks = [
     "file:///${config.home.homeDirectory}/captures"
     "file:///${config.home.homeDirectory}/code"
-    "file:///${config.home.homeDirectory}/desktop"
     "file:///${config.home.homeDirectory}/docs"
     "file:///${config.home.homeDirectory}/downloads"
     "file:///${config.home.homeDirectory}/games"
