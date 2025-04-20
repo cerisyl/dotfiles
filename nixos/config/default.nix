@@ -6,7 +6,6 @@
   # Exlude specific .nix configurations
   excludedFiles = [
     #"file.nix"
-    "autostart.nix"
   ];
 
   baseDir = ./.;
