@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }: {
   # Actual theme file
-  xdg.configFile."rofi/rofi.theme".source = ../../../themes/ceres/rofi.theme;
+  xdg.configFile."rofi/rofi.rasi".source = ../../../themes/ceres/rofi.rasi;
   programs.rofi = {
     enable    = true;
     terminal  = "kitty";
-    # Grid config (used in place as base theme, imports rofi.theme)
+    # Grid config (used in place as base theme, imports rofi.rasi)
     theme     = ../../../extra/main.rasi;
     extraConfig = {
       modi                = "drun,filebrowser";
