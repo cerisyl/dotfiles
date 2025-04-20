@@ -14,6 +14,7 @@
       me-select-entry     = "";
       me-accept-entry     = [ "MousePrimary" "MouseSecondary" "MouseDPrimary" ];
       run-shell-command   = "kitty --hold {cmd}";
+      kb-cancel           = "Escape,Super_L"
     };
   };
   xdg.configFile = {

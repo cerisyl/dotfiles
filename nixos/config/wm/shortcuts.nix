@@ -14,7 +14,7 @@
     # btop / Task manager
     "<Primary><Shift>Escape" = "kitty --hold btop";
     # Windows key (toggle rofi "start menu")
-    "Super_L" = "if pgrep -x rofi; then killall rofi else rofi -show fi";
+    "Super_L" = "rofi -show";
     # Emoji/symbol picker (rofimoji)
     "<Super>e" = "rofimoji";
     # Show clipboard history (rofi-greenclip)

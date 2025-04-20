@@ -1,6 +1,6 @@
 configuration {
   display-drun: "";
-  display-recursivebrowser: "";
+  display-filebrowser: "";
   display-clipboard: "";
   /* Theme config */
   font: "Barlow Regular 12";

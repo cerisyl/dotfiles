@@ -12,8 +12,7 @@ in [
   (p "111" pkgs.plymouth)
   #(p "111" pkgs.plymouth-theme-arch10) # may have to manual install
   (p "111" pkgs.pulseaudio)
-  (p "111" pkgsUnstable.rofi)
-  #(p "111" pkgs.rofi-file-browser) #might be fucked, might want to use unstable...idk
+  (p "111" pkgsUnstable.rofi-unwrapped)
   (p "111" pkgs.rofimoji)
   (p "111" pkgs.wmctrl)
   (p "111" pkgs.xclip)
