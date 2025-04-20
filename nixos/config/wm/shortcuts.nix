@@ -1,6 +1,12 @@
-{ config, pkgs, lib, ... }: {
-  xfconf.settings.xfce4-keyboard-shortcuts = {
-    "commands/custom/override"  = true;
+{ config, pkgs, lib, ... }: let
+  # TODO: Put this in a util .nix file or something
+  # Make life easier - prefixes a key in an attribute set
+  prependAttrs = prefix:
+    lib.attrsets.mapAttrs' (name: value:
+      lib.attrsets.nameValuePair "${prefix}${name}" value);
+
+  shortcuts = prependAttrs "commands/custom/" {
+    "override"  = true;
     # Kill current task
     "<Primary><Alt>Escape" = "xkill";
     # Lock computer
@@ -18,4 +24,6 @@
     # Show file explorer
     "<Super>f" = "thunar";
   };
+in {
+  xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;
 }
