@@ -9,7 +9,7 @@
   };
   hostIndex = hostIndexMap.${myHostname};
 
-  allPackages = import ./packages { inherit pkgs pkgsUnstable; };
+  allPackages = (import ./packages) { inherit pkgs pkgsUnstable; };
 
   enabledPackages = entries: builtins.filter (entry:
     let flag = entry.init;

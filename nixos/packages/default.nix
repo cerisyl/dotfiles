@@ -24,9 +24,7 @@
 
   # Import font packages
   fontPackages = if hasFontDir then
-    builtins.concatLists [
-      import (packageDir + "/font/default.nix") { inherit pkgs pkgsUnstable; }
-    ]
+    [ import (packageDir + "/font/default.nix") { inherit pkgs pkgsUnstable; } ]
   else [];
 
 in {
