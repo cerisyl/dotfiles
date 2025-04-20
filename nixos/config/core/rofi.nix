@@ -24,7 +24,7 @@
     hidden-descriptions = true
     selector-args = "-theme ~/.config/rofi/grid.rasi"
     files = [emojis, math, miscellaneous, supplemental, alchemical_symbols, dingbats]
-  ''
+  '';
   # Grid config for rofimoji
   xdg.configFile."rofi/grid.rasi".source = ../../../extra/grid.rasi;
 }

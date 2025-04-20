@@ -48,10 +48,6 @@ in {
       "desktop-icons/icon-size"                   = 48;
     };
 
-    # TODO: Keyboard shortcuts
-    xfce4-keyboard-shortcuts = {
-    };
-
     # Windows
     xfwm4 = {
       "general/button_layout"     = "O|HMC";
