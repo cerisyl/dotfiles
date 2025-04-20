@@ -1,4 +1,4 @@
-@import "rofi.theme"
+@import "rofi.rasi"
 
 listview {
   columns: 8;

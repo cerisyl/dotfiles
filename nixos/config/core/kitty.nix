@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   xdg.configFile = {
-    "kitty/ceres.conf".text = builtins.readFile ../../../themes/ceres/kitty.theme;
-    "kitty/diff.conf".text = builtins.readFile ../../../themes/ceres/kitty-diff.theme;
+    "kitty/ceres.conf".text = builtins.readFile ../../../themes/ceres/kitty.conf;
+    "kitty/diff.conf".text = builtins.readFile ../../../themes/ceres/kitty-diff.conf;
   };
   programs.kitty = {
     enable    = true;
