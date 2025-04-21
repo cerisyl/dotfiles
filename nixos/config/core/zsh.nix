@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.zsh = {
     enable = true;
+    package = pkgMap.zsh;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -9,7 +10,7 @@
       {
         name = "fzf-tab";
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
-        src = pkgs.zsh-fzf-tab;
+        src = pkgMap.zsh-fzf-tab;
       }
     ];
     # Init
@@ -20,7 +21,7 @@
       if [ ! -d "$ZINIT_HOME" ]; then
           mkdir -p "$(dirname $ZINIT_HOME)"
       fi
-      source ${pkgs.zinit}/share/zinit/zinit.zsh > /dev/null 2>&1
+      source ${pkgMap.zinit}/share/zinit/zinit.zsh > /dev/null 2>&1
 
       # Add in snippets
       zinit snippet OMZL::clipboard.zsh

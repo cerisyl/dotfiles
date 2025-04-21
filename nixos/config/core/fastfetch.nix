@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.fastfetch = {
     enable    = true;
+    package   = pkgMap.fastfetch;
     settings  = {
       logo = {
         source      = ../../../themes/ceres/img/fetch.png;

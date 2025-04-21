@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.git = {
-    enable = true;
+    enable    = true;
+    package   = pkgMap.git;
     userName  = "Spencer Gunning";
     userEmail = "csit@cering.dev";
   };

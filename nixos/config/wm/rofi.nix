@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.rofi = {
     enable    = true;
+    package   = pkgMap.rofi;
     terminal  = "kitty";
     # Grid config (used in place as base theme, imports rofi.rasi)
     theme     = ../../../themes/ceres/rofi.rasi;

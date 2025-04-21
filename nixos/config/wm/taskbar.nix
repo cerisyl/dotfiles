@@ -1,6 +1,6 @@
 # Shoutouts mimvoid@github
 # TODO: This is theme-contingent. Need to somehow move this into themes folder
-{ config, pkgs, lib, ... }: let
+{ config, pkgMap, lib, ... }: let
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
     lib.attrsets.mapAttrs' (name: value:
@@ -15,7 +15,7 @@
     "length"            = 100;
     "size"              = 48;
     "icon-size"         = 24;
-    "plugin-ids"        = pkgs.lib.lists.range 1 5;
+    "plugin-ids"        = [ 1 2 3 4 5 ];
   };
 
   # Define plugins / panel sections

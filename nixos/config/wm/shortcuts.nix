@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: let
+{ config, pkgMap, lib, ... }: let
   # TODO: Put this in a util .nix file or something
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:

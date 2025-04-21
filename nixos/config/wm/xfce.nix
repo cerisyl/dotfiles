@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: let
+{ config, pkgMap, lib, ... }: let
   # Define themes
   themeDir    = ../../../themes/ceres;
   themeZips = {
@@ -18,7 +18,7 @@
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
     mkdir -p ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
     rm -rf ${getTargetPath name}
-    ${pkgs.unzip}/bin/unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
+    ${pkgMap.unzip}/bin/unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
   '') themeZips);
 in {
   # Unpack zips on activation
@@ -29,7 +29,7 @@ in {
   xfconf.settings = {
     # Session
     xfce-session = {
-      "general/LockCommand" = "${pkgs.lightdm}/bin/dm-tool lock";
+      "general/LockCommand" = "${pkgMap.lightdm}/bin/dm-tool lock";
     };
 
     # Background + desktop

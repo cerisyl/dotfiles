@@ -1,7 +1,8 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   xdg.configFile."btop/themes/ceres.theme".text = builtins.readFile ../../../themes/ceres/btop.theme;
   programs.btop = {
     enable    = true;
+    package   = pkgMap.btop;
     settings  = {
       color_theme               = "ceres";
       theme_background          = true;

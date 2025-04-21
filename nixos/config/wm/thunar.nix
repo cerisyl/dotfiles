@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   # Default settings
   xfconf.settings.thunar = {
     last-separator-position           = 160;
