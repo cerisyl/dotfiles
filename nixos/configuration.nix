@@ -64,7 +64,7 @@ in {
     pkgs.noto-fonts-color-emoji
     pkgs.barlow
     pkgsUnstable.nerd-fonts.jetbrains-mono
-  ]
+  ];
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
