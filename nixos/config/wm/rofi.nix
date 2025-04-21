@@ -1,4 +1,4 @@
-{ config, pkgMap, lib, ... }: {
+{ config, lib, ... }: {
   programs.rofi = {
     enable    = true;
     package   = pkgMap.rofi;

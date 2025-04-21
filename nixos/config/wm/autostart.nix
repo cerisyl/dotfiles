@@ -1,5 +1,5 @@
 # Automatically reads in anything in extra/autostart
-{ config, pkgMap, lib, ... }: let
+{ config, lib, ... }: let
   baseDir = ../../../extra/autostart;
 
   filenames = builtins.filter (name:

@@ -60,7 +60,7 @@ in {
   # Import hardware config
   imports = [
     ./hosts/${myHostname}/hardware-configuration.nix
-  ] ++ import ./config { inherit pkgMap; role = "system"; };
+  ] ++ import ./config { role = "system"; };
 
   # Users
   programs.zsh.enable = true;
@@ -72,8 +72,9 @@ in {
 
   # Import/set home configuration
   home-manager.users.ceri = {
-    imports = import ./config/default.nix { inherit pkgMap; role = "home"; };
+    imports = import ./config/default.nix {  role = "home"; };
     home.stateVersion = "24.11";
+    extraSpecialArgs = { inherit pkgMap; }
   };
 
   # Garbage collection
