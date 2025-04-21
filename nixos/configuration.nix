@@ -14,7 +14,7 @@
   enabledPackages = entries: builtins.filter (entry:
     let flag = entry.init;
     in builtins.stringLength flag > hostIndex &&
-       builtins.substring hostIndex 1 flag == "1"
+      builtins.substring hostIndex 1 flag == "1"
   ) entries;
 
   systemPackages = map (entry: entry.pkg) (enabledPackages allPackages.system);
