@@ -17,7 +17,7 @@
       builtins.substring hostIndex 1 flagString == "1"
   ) allPackages;
 
-  myPackages = map (entry: entry.pkg) enabledPackages;
+  systemPackages = map (entry: entry.pkg) enabledPackages;
 
 in {
   # Main params
