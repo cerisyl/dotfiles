@@ -2,7 +2,7 @@
 # You should never need to touch this file,
 # except for changing the excludedFiles list.
 
-{ pkgList, role }: let
+{ pkgMap, role }: let
   # Exlude specific .nix configurations
   excludedFiles = [
     #"file.nix"
@@ -30,13 +30,16 @@
           if type == "directory"
             then findConfig path
           else if matchesRole name && name != "default.nix" && !(builtins.elem name excludedFiles)
-            then [ import path { inherit pkgMap; } ]
+            then [ path ]
           else
             []
       ) entries;
     in
       paths;
   configPaths = findConfig baseDir;
+  configImports = map (path:
+    import path {inherit pkgMap; }
+  ) configPaths;
 in
-  builtins.map import configPaths
+  configImports
 
