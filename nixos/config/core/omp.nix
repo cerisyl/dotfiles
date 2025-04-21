@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.oh-my-posh = {
     enable    = true;
     package   = pkgMap.oh-my-posh;

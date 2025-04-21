@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.fastfetch = {
     enable    = true;
     package   = pkgMap.fastfetch;

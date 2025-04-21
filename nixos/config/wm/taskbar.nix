@@ -1,6 +1,6 @@
 # Shoutouts mimvoid@github
 # TODO: This is theme-contingent. Need to somehow move this into themes folder
-{ config, lib, ... }: let
+{ config, pkgMap, lib, ... }: let
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
     lib.attrsets.mapAttrs' (name: value:

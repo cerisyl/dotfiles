@@ -74,7 +74,7 @@ in {
   home-manager.users.ceri = {
     imports = import ./config/default.nix {  role = "home"; };
     home.stateVersion = "24.11";
-    extraSpecialArgs = { inherit pkgMap; }
+    extraSpecialArgs = { inherit pkgMap; };
   };
 
   # Garbage collection

@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   xdg.configFile."btop/themes/ceres.theme".text = builtins.readFile ../../../themes/ceres/btop.theme;
   programs.btop = {
     enable    = true;

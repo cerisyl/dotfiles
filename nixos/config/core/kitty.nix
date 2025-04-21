@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   xdg.configFile = {
     "kitty/ceres.conf".text = builtins.readFile ../../../themes/ceres/kitty.conf;
     "kitty/diff.conf".text = builtins.readFile ../../../themes/ceres/kitty-diff.conf;

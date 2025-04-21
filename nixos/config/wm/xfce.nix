@@ -1,4 +1,4 @@
-{ config, lib, ... }: let
+{ config, pkgMap, lib, ... }: let
   # Define themes
   themeDir    = ../../../themes/ceres;
   themeZips = {

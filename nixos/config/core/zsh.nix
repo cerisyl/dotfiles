@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, pkgMap, lib, ... }: {
   programs.zsh = {
     enable = true;
     package = pkgMap.zsh;
