@@ -1,5 +1,6 @@
-{ pkgs, pkgsUnstable }: let p = init: pkg: { inherit pkg init; };
+# Social media and other messaging programs.
+let p = init: pkg: isUnstable ? false: { inherit pkg init isUnstable; };
 in [
-  (p "011" pkgs.discord)
-  (p "011" pkgs.telegram-desktop)
+  (p "011" "discord" true)
+  (p "011" "telegram-desktop" true)
 ]

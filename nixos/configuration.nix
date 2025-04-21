@@ -1,23 +1,52 @@
 { inputs, myHostname, config, pkgs, pkgsUnstable, ... }: let
+  # Utility functions to translate 
+  # TODO: Move this in its own file.
+  getAttrByList = set: pathList:
+    if pathList == [] then set
+    else getAttrByList (set.${builtins.head pathList}) (builtins.tail pathList) ;
+  getAttrByStr = set: pathStr:
+    let
+      _path = builtins.split "\\." pathStr;
+      path = builtins.filter (x: x != []) _path;
+    in
+      getAttrByList set path;
+
   # Package management
   # Use binary to determine what packages we should download
   hostIndexMap = {
     "luxe"    = 2;
     "nova"    = 1;
     "astore"  = 0;
-    "vm"      = 1;
+    "vm"      = 0;
   };
   hostIndex = hostIndexMap.${myHostname};
 
-  allPackages = import ./packages { inherit pkgs pkgsUnstable; };
+  allPackages = import ./packages;
 
+  # Only import packages with an init flag in the
+  # specified hostIndexMap position marked "1"
   enabledPackages = builtins.filter (entry:
     let flagString = entry.init;
     in builtins.stringLength flagString > hostIndex &&
       builtins.substring hostIndex 1 flagString == "1"
   ) allPackages;
 
-  systemPackages = map (entry: entry.pkg) enabledPackages;
+  # TODO: Would be cool if we can combine these two blocks into
+  # a single call- research later.
+
+  # Get our packages using the specified channel of choice (isUnstable)
+  systemPackages = map (entry:
+    if entry.isUnstable == true
+    then getAttrByStr pkgsUnstable entry.pkg
+    else getAttrByStr pkgs entry.pkg
+  ) enabledPackages;
+
+  # Also spawn an object to use in loading proper packages in config
+  pkgMap = builtins.listToAttrs (map (entry:
+    if entry.isUnstable == true
+    then { name = entry.pkg; value =  getAttrByStr pkgsUnstable entry.pkg; }
+    else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
+  ) enabledPackages);
 
 in {
   # Main params
@@ -31,7 +60,7 @@ in {
   # Import hardware config
   imports = [
     ./hosts/${myHostname}/hardware-configuration.nix
-  ] ++ import ./config { role = "system"; };
+  ] ++ import ./config { inherit pkgMap; role = "system"; };
 
   # Users
   programs.zsh.enable = true;
@@ -43,7 +72,7 @@ in {
 
   # Import/set home configuration
   home-manager.users.ceri = {
-    imports = import ./config/default.nix { role = "home"; };
+    imports = import ./config/default.nix { inherit pkgMap; role = "home"; };
     home.stateVersion = "24.11";
   };
 
@@ -58,7 +87,7 @@ in {
   # TODO: Find a way to get fonts back in ./packages
   nixpkgs.config.allowUnfree  = true;
   environment.systemPackages  = systemPackages;
-  fonts.packages              = [
+  fonts.packages = [
     pkgs.inter
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-color-emoji

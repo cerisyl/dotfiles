@@ -1,8 +1,9 @@
-{ pkgs, pkgsUnstable }: let p = init: pkg: { inherit pkg init; };
+# Development tools.
+let p = init: pkg: isUnstable ? false: { inherit pkg init isUnstable; };
 in [
-  (p "111" pkgsUnstable.bun)
-  (p "111" pkgs.python313)
-  (p "111" pkgs.qemu_full)
-  (p "111" pkgs.virt-manager)
-  (p "111" pkgsUnstable.vscode-with-extensions)
+  (p "111" "bun" true)
+  (p "111" "python313")
+  (p "111" "qemu_full")
+  (p "111" "virt-manager")
+  (p "111" "vscode-with-extensions" true)
 ]

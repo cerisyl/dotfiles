@@ -1,8 +1,8 @@
-# This file dynamically imports configurations,
+# This file dynamically imports configurations.
 # You should never need to touch this file,
 # except for changing the excludedFiles list.
 
-{ role }: let
+{ pkgList, role }: let
   # Exlude specific .nix configurations
   excludedFiles = [
     #"file.nix"
@@ -14,25 +14,25 @@
 
   matchesRole = name:
     if role == "system"
-    then builtins.match ".*\\.sys\\.nix$" name != null
-    else builtins.match ".*\\.sys\\.nix$" name == null; 
+    then isNixFile name && builtins.match ".*\\.sys\\.nix$" name != null
+    else isNixFile name && builtins.match ".*\\.sys\\.nix$" name == null; 
 
   # Get all files
   findConfig = dir:
     let
-      entries = builtins.attrNames (builtins.readDir dir);
+      dirSet = builtins.readDir dir;
+      entries = builtins.attrNames dirSet;
       paths = builtins.concatMap (name:
         let
           path = dir + "/${name}";
-          type = (builtins.readDir dir)."${name}";
+          type = dirSet."${name}";
         in
-          if type == "directory" then findConfig path
-          else if isNixFile name
-          && matchesRole name
-          && name != "default.nix"
-          && !(builtins.elem name excludedFiles)
-          then [ path ]
-          else []
+          if type == "directory"
+            then findConfig path
+          else if matchesRole name && name != "default.nix" && !(builtins.elem name excludedFiles)
+            then [ import path { inherit pkgMap; } ]
+          else
+            []
       ) entries;
     in
       paths;

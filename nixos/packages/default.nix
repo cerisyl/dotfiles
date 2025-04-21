@@ -1,21 +1,21 @@
 # This file dynamically imports configurations.
 # You should never need to touch this file.
 
-{ pkgs, pkgsUnstable }: let
+let
   # Path to ./packages
-  packageDir = ./.;
+  baseDir = ./.;
 
-  # Read subdirectories
-  subdirs = builtins.attrNames (builtins.readDir packageDir);
+  # Get all subdirectory names
+  subdirs = builtins.attrNames (builtins.readDir baseDir);
 
   # Filter to directories only
   subPkgs = builtins.filter (name:
-    (builtins.readDir packageDir).${name} == "directory"
+    (builtins.readDir baseDir).${name} == "directory"
   ) subdirs;
 
-  # Import each `./<subdir>/default.nix` and call it with pkgs
+  # Import each default.nix file from the subdirectories
   packageLists = map (name:
-    import (packageDir + "/${name}") { inherit pkgs pkgsUnstable; }
+    import (baseDir + "/${name}")
   ) subPkgs;
 
 in
