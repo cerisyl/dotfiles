@@ -21,13 +21,7 @@
   # Networking
   networking.networkmanager.enable = true;
 
-  # Import hardware config
-  imports = [
-    ./hosts/${myHostname}/hardware-configuration.nix
-  ] ++ import ./config { role = "system"; };
-
   # Users
-  programs.zsh.enable = true;
   users.users.ceri = {
     isNormalUser  = true;
     extraGroups   = [ "wheel" "input" "networkmanager" ];
