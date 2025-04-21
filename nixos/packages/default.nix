@@ -6,28 +6,17 @@
   packageDir = ./.;
 
   # Read subdirectories
-  allEntries = builtins.readDir packageDir;
-  subdirs = builtins.attrNames allEntries;
+  subdirs = builtins.attrNames (builtins.readDir packageDir);
 
-  isDir = name: allEntries.${name} == "directory";
+  # Filter to directories only
+  subPkgs = builtins.filter (name:
+    (builtins.readDir packageDir).${name} == "directory"
+  ) subdirs;
 
-  # Separate out fontDir from the rest
-  regularDirs = builtins.filter (name: isDir name && name != "font") subdirs;
-  hasFontDir = builtins.elem "font" subdirs;
+  # Import each `./<subdir>/default.nix` and call it with pkgs
+  packageLists = map (name:
+    import (packageDir + "/${name}") { inherit pkgs pkgsUnstable; }
+  ) subPkgs;
 
-  # Import regular packages
-  systemPackages = builtins.concatLists (
-    map (name:
-      import (packageDir + "/${name}/default.nix") { inherit pkgs pkgsUnstable; }
-    ) regularDirs
-  );
-
-  # Import font packages
-  fontPackages = if hasFontDir then
-    import (packageDir + "/font/default.nix") { inherit pkgs pkgsUnstable; }
-  else [];
-
-in {
-  system  = systemPackages;
-  font    = fontPackages;
-}
+in
+  builtins.concatLists packageLists

@@ -9,16 +9,15 @@
   };
   hostIndex = hostIndexMap.${myHostname};
 
-  allPackages = (import ./packages) { inherit pkgs pkgsUnstable; };
+  allPackages = import ./packages { inherit pkgs pkgsUnstable; };
 
-  enabledPackages = entries: builtins.filter (entry:
-    let flag = entry.init;
-    in builtins.stringLength flag > hostIndex &&
-      builtins.substring hostIndex 1 flag == "1"
-  ) entries;
+  enabledPackages = builtins.filter (entry:
+    let flagString = entry.init;
+    in builtins.stringLength flagString > hostIndex &&
+      builtins.substring hostIndex 1 flagString == "1"
+  ) allPackages;
 
-  systemPackages = map (entry: entry.pkg) (enabledPackages allPackages.system);
-  fontPackages   = map (entry: entry.pkg) (enabledPackages allPackages.font);
+  myPackages = map (entry: entry.pkg) enabledPackages;
 
 in {
   # Main params
@@ -56,9 +55,16 @@ in {
   };
 
   # Define packages
+  # TODO: Find a way to get fonts back in ./packages
   nixpkgs.config.allowUnfree  = true;
   environment.systemPackages  = systemPackages;
-  fonts.packages              = fontPackages;
+  fonts.packages              = [
+    pkgs.inter
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-color-emoji
+    pkgs.barlow
+    pkgsUnstable.nerd-fonts.jetbrains-mono
+  ]
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
