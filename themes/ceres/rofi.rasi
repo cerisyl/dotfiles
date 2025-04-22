@@ -8,7 +8,7 @@ configuration {
   /* TODO: This is here until home-manager supports recursivebrowser settings. */
   recursivebrowser {
     directory: "/home/ceri";
-    filter-regex: "(.*node_modules.*|.*\.(sm|old|ogg|xml)|\..*)";
+    filter-regex: "^/home/ceri/(captures|deluge|desktop|docs|downloads|fl/projects|itg|music|pictures|sync|videos).*$";
   }
 }
 
@@ -80,6 +80,7 @@ textbox-search {
   expand: false;
   content: "";
   font: "JetBrainsMono Nerd Font 12";
+  padding: 0 6px 0 0;
 }
 
 entry {
