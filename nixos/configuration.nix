@@ -71,10 +71,10 @@ in {
   };
 
   # Import/set home configuration
+  home-manager.extraSpecialArgs = { inherit pkgMap; };
   home-manager.users.ceri = {
     imports = import ./config/default.nix {  role = "home"; };
     home.stateVersion = "24.11";
-    extraSpecialArgs = { inherit pkgMap; };
   };
 
   # Garbage collection
