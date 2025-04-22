@@ -8,6 +8,7 @@ in [
   (p "011" false  "freac")
   (p "011" false  "gftp")
   (p "011" false  "handbrake")
+  (p "111" false  "imagemagick")
   (p "001" false  "imgbrd-grabber")
   #(p "011" false  "libreoffice-fresh") rethink this one?
   #(p "011" false  "nine-or-null") manual install

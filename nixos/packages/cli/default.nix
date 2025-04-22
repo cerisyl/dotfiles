@@ -1,8 +1,9 @@
-# Essential/system command line tools.
+# Essential/system commands and CLI tools.
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
   (p "111" false  "btop")
   (p "111" false  "fastfetch")
+  (p "111" true   "fd")
   (p "111" true   "fzf")
   (p "111" true   "git")
   (p "111" false  "home-manager")

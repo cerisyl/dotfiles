@@ -83,7 +83,7 @@
       c       = "clear";
       home    = "cd ~";
       fetch   = "fastfetch";
-      f       = "fastfetch";
+      ff      = "fastfetch";
 
       # Aliases: Websearch
       yt      = "youtube";
@@ -91,6 +91,7 @@
 
       # Aliases: Package management
       rebuild = "sudo nixos-rebuild switch --flake ~/.nix/.";
+      rbl     = "rebuild";
       upgrade = "cd ~/.nix && sudo nix flake upgrade && rebuild";
 
       # Aliases: Python
