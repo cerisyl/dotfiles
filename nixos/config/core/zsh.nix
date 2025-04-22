@@ -83,14 +83,15 @@
       c       = "clear";
       home    = "cd ~";
       fetch   = "fastfetch";
+      f       = "fastfetch";
 
       # Aliases: Websearch
       yt      = "youtube";
       wolfram = "wolframalpha";
 
       # Aliases: Package management
-      rebuild = "nixos-rebuild switch --flake ~/.nix/.";
-      upgrade = "cd ~/.nix && nix flake upgrade && nixos-rebuild switch --flake .";
+      rebuild = "sudo nixos-rebuild switch --flake ~/.nix/.";
+      upgrade = "cd ~/.nix && sudo nix flake upgrade && rebuild";
 
       # Aliases: Python
       py      = "python";

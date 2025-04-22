@@ -20,5 +20,5 @@ in [
   (p "111" true   "zsh-autosuggestions")
   (p "111" true   "zsh-completions")
   (p "111" true   "zsh-fzf-tab")
-  (p "111" true   "zsh-zsh-syntax-highlighting")
+  (p "111" true   "zsh-syntax-highlighting")
 ]
