@@ -17,5 +17,8 @@ in [
   (p "111" true   "zinit" )
   (p "111" false  "zip")
   (p "111" true   "zsh")
+  (p "111" true   "zsh-autosuggestions")
+  (p "111" true   "zsh-completions")
   (p "111" true   "zsh-fzf-tab")
+  (p "111" true   "zsh-zsh-syntax-highlighting")
 ]
