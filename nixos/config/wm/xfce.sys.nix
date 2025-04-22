@@ -23,4 +23,4 @@
     xfce4-terminal
     xfce4-themes
   ];
-}w
+}
