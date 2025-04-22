@@ -1,13 +1,13 @@
 # Essential programs for everyday use.
-let p = init: pkg: isUnstable ? false: { inherit pkg init isUnstable; };
+let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
-  #(p "011" "betterbird-bin") #thunderbird
-  (p "111" "floorp" true)
-  (p "111" "keepassxc" true)
-  (p "111" "kitty" true)
-  (p "111" "peazip" true) # replaced engrampa
-  (p "111" "rustdesk")
-  (p "111" "syncthing" true)
-  (p "111" "syncthingtray" true)
-  #(p "111" "xnviewmp") needs an alternative
+  #(p "011" false  "betterbird-bin") #thunderbird
+  (p "111" true   "floorp")
+  (p "111" true   "keepassxc")
+  (p "111" true   "kitty")
+  (p "111" true   "peazip") # replaced engrampa
+  (p "111" false  "rustdesk")
+  (p "111" true   "syncthing")
+  (p "111" true   "syncthingtray")
+  #(p "111" false  "xnviewmp") needs an alternative
 ]

@@ -1,7 +1,7 @@
 # Programs for creative output.
-let p = init: pkg: isUnstable ? false: { inherit pkg init isUnstable; };
+let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
-  (p "001" "blender")
-  #(p "011" "fadein") manual install
-  (p "011" "kdePackages.kdenlive")
+  (p "001" false  "blender")
+  #(p "011" false  "fadein") manual install
+  (p "011" false  "kdePackages.kdenlive")
 ]

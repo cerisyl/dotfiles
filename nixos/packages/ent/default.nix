@@ -1,14 +1,14 @@
 # Entertainment / gaming programs.
-let p = init: pkg: isUnstable ? false: { inherit pkg init isUnstable; };
+let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
-  (p "001" "arduino-ide")
-  (p "111" "deluge-gtk")
-  (p "011" "dolphin-emu")
-  #(p "011" "itgmania-bin") manual install
-  (p "011" "melonDS")
-  (p "011" "prismlauncher")
-  (p "011" "soulseekqt")
-  (p "011" "steam-unwrapped")
-  (p "011" "tauon")
-  (p "111" "vlc")
+  (p "001" false  "arduino-ide")
+  (p "111" false  "deluge-gtk")
+  (p "011" false  "dolphin-emu")
+  #(p "011" true   "itgmania-bin") manual install
+  (p "011" false  "melonDS")
+  (p "011" false  "prismlauncher")
+  (p "011" false  "soulseekqt")
+  (p "011" false  "steam-unwrapped")
+  (p "011" false  "tauon")
+  (p "111" false  "vlc")
 ]

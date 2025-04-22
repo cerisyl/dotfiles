@@ -1,7 +1,7 @@
 # Cloud file storage services.
-let p = init: pkg: isUnstable ? false: { inherit pkg init isUnstable; };
+let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
-  (p "001" "grive2")
-  (p "001" "dropbox")
-  (p "001" "xfce.thunar-dropbox-plugin")
+  (p "001" false  "grive2")
+  (p "001" false  "dropbox")
+  (p "001" false  "xfce.thunar-dropbox-plugin")
 ]
