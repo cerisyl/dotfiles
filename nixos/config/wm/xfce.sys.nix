@@ -16,7 +16,6 @@
 		parole
 		ristretto
     xfce4-appfinder
-    xfce4-about
     xfce4-icon-theme
     xfce4-screenshooter
 		xfce4-taskmanager
