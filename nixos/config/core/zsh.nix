@@ -42,17 +42,17 @@
       bindkey '^p' history-search-backward
       bindkey '^n' history-search-forward
       bindkey '^[w' kill-region
-      bindkey "^[[C" forward-word
-      bindkey "^[[D" backward-word
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
 
       # Mute beeps
       unsetopt BEEP
     '';
     initExtra = ''
       # Completion styling
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-      zstyle ':completion:*' menu select
+      # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      # zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+      # zstyle ':completion:*' menu select
 
       # Shell integrations
       eval "$(fzf --zsh)"

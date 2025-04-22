@@ -14,7 +14,7 @@
     "position"          = "p=8;x=640;y=786";
     "length"            = 100;
     "size"              = 48;
-    "icon-size"         = 24;
+    "icon-size"         = 32;
     "plugin-ids"        = [ 1 2 3 4 5 6 ];
   };
 
