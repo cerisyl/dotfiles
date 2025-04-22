@@ -6,9 +6,21 @@
       xterm.enable = false;
       xfce.enable = true;
     };
+    excludePackages = [ pkgs.xterm ];
   };
 
   nixpkgs.config.pulseaudio = true;
   services.displayManager.defaultSession = "xfce";
-  environment.xfce.excludePackages = [ pkgs.xfce.xfce4-terminal ];
-}
+  environment.xfce.excludePackages = with pkgs.xfce // pkgs; [
+		mousepad
+		parole
+		ristretto
+    xfce4-appfinder
+    xfce4-about
+    xfce4-icon-theme
+    xfce4-screenshooter
+		xfce4-taskmanager
+    xfce4-terminal
+    xfce4-themes
+  ];
+}w
