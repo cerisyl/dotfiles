@@ -12,7 +12,7 @@ in [
   (p "111" false  "pavucontrol")
   (p "111" false  "plymouth")
   #(p "111" false  "plymouth-theme-arch10") # may have to manual install
-  (p "111" "pulseaudio")
+  (p "111" false  "pulseaudio")
   (p "111" true   "rofi")
   (p "111" false  "rofimoji")
   (p "111" false  "wmctrl")
