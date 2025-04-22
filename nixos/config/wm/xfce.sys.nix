@@ -20,6 +20,6 @@
     xfce4-screenshooter
 		xfce4-taskmanager
     xfce4-terminal
-    xfce4-themes
+    xfwm4-themes
   ];
 }
