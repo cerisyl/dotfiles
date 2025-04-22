@@ -20,7 +20,7 @@ in [
   (p "111" false  "xfce.thunar-archive-plugin")
   (p "111" false  "xfce.thunar-media-tags-plugin")
   (p "010" false  "xfce.xfce4-battery-plugin")
-  (p "010" false  "xfce.xfce4-docklike-plugin")
+  (p "111" false  "xfce.xfce4-docklike-plugin")
   (p "111" false  "xfce.xfce4-genmon-plugin")
   (p "111" false  "xfce.xfce4-mailwatch-plugin")
   (p "111" false  "xfce.xfce4-notifyd")
