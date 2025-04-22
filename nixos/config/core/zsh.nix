@@ -19,7 +19,7 @@
       # TODO: Remove the need for surpressing source output
       export ZINIT_HOME="${config.home.homeDirectory}/.local/share/zinit/"
       if [ ! -d "$ZINIT_HOME" ]; then
-          mkdir -p "$(dirname $ZINIT_HOME)"
+        mkdir -p "$(dirname $ZINIT_HOME)"
       fi
       source ${pkgMap.zinit}/share/zinit/zinit.zsh > /dev/null 2>&1
 
@@ -42,8 +42,8 @@
       bindkey '^p' history-search-backward
       bindkey '^n' history-search-forward
       bindkey '^[w' kill-region
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[1;5D" backward-word
+      bindkey "^[[C" forward-word
+      bindkey "^[[D" backward-word
 
       # Mute beeps
       unsetopt BEEP
@@ -71,10 +71,10 @@
       append        = true;
       share         = true;
       ignoreSpace   = true;
-      #saveNoDups    = true; #TODO: Uncomment @ 2025.05
+      saveNoDups    = true;
       ignoreDups    = true;
       ignoreAllDups = true;
-      #findNoDups    = true; #TODO: Uncomment @ 2025.05
+      findNoDups    = true;
     };
     # Aliases
     shellAliases = {
