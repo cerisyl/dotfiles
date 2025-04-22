@@ -6,7 +6,7 @@
     # Grid config (used in place as base theme, imports rofi.rasi)
     theme     = ../../../themes/ceres/rofi.rasi;
     extraConfig = {
-      modi                = "drun,recursivebrowser";
+      modi                = "drun,filebrowser";
       show-icons          = true;
       icon-theme          = "ceres-icons";
       drun-display-format = "{name}";
