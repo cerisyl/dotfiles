@@ -1,5 +1,5 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: let
-  mediaplayer = "vlc.desktop";
+  mediaPlayer = "vlc.desktop";
   imgViewer   = "nsxiv.desktop";
   browser     = "floorp.desktop";
   editor      = "code.desktop";
