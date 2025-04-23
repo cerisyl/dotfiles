@@ -30,8 +30,10 @@
     "xdg-email"
     "xdg-open"
   ];
-  mappedRemovals = map (entry: entry.noDisplay) removeLaunchers;
+  mappedRemovals = map (
+    entry: xdg.desktopEntries.${"entry"}.noDisplay
+  ) removeLaunchers;
 in {
   xdg.desktopEntries = {
-  } // mappedRemovals;
+  };
 }
