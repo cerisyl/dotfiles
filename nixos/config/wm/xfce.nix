@@ -13,7 +13,7 @@
     else
       "${config.home.homeDirectory}/.icons/${theme}-${name}";
 
-  # Activation commands for unzipping each
+  # Activation commands for unzipping each theme
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
     mkdir -p ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
     rm -rf ${getTargetPath name}
@@ -34,7 +34,7 @@ in {
     # Background + desktop
     xfce4-desktop = {
       # Background
-      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = (getThemeFile "img/bg.png");
+      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${config.home.homeDirectory}/.nix/themes/${theme}/img/bg.png";
       # Desktop icons
       "desktop-icons/show-tooltips"               = false;
       "desktop-icons/file-icons/show-removable"   = false;

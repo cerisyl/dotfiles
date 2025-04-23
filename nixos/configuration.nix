@@ -11,20 +11,20 @@
     in
       getAttrByList set path;
 
-  # Utility function to determine what theme file should be loaded
+  # Variable + utility function to determine what theme file should be loaded
   themeFallback = "ceres";
-  theme = if builtins.pathExists ../.current_theme
+  theme = if (builtins.pathExists ../.current_theme)
     then let
       themeName = builtins.readFile ../.current_theme;
       themePath = ../themes + "/${themeName}";
-    in if builtins.pathExists themePath
+    in if (builtins.pathExists themePath)
       then themeName
       else themeFallback
     else themeFallback;
   getThemeFile = file: (
     let path = ../themes + "/${theme}/${file}";
     in
-      if builtins.pathExists (path) then path
+      if (builtins.pathExists path) then path
       else ../themes + "/ceres/${file}"
   );
 
