@@ -1,9 +1,9 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: let
-  mediaPlr  = "vlc.desktop";
-  imgViewer = "nsxiv.desktop";
-  browser   = "floorp.desktop";
-  editor    = "code.desktop";
-  archiver  = "peazip.desktop";
+  mediaplayer = "vlc.desktop";
+  imgViewer   = "nsxiv.desktop";
+  browser     = "floorp.desktop";
+  editor      = "code.desktop";
+  archiver    = "peazip.desktop";
   fileAssociations = {
     # audio
     "audio/flac"    = mediaPlayer;
