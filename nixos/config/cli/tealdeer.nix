@@ -1,5 +1,5 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
-  programs.tealdear = {
+  programs.teeldeer = {
     enable = true;
     settings.updates.auto_update = true;
   };
