@@ -1,35 +1,37 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+  removeLaunchers = [
+    "btop++"
+    "cups"
+    "kitty"
+    "micro"
+    "nixos-help"
+    "pavucontrol"
+    "rofi"
+    "rofi-theme-selector"
+    "thunar-bulk-rename"
+    "thunar-settings"
+    "thunar-volman-settings"
+    "xfce4-about"
+    "xfce4-accessibility-settings"
+    "xfce4-appearance-settings"
+    "xfce4-color-settings"
+    "xfce4-keyboard-settings"
+    "xfce4-mime-settings"
+    "xfce4-mouse-settings"
+    "xfce4-notifyd-settings"
+    "xfce4-panel"
+    "xfce4-session-logout"
+    "xfce4-session-settings"
+    "xfce4-screensaver-preferences"
+    "xfdesktop-settings"
+    "xfwm4-settings"
+    "xfwm4-tweaks-settings"
+    "xfwm4-workspace-settings"
+    "xdg-email"
+    "xdg-open"
+  ];
+  mappedRemovals = map (entry: entry.noDisplay) removeLaunchers;
+in {
   xdg.desktopEntries = {
-    btop.noDisplay                          = true;
-    kitty.noDisplay                         = true;
-    micro.noDisplay                         = true;
-    nixos-help.noDisplay                    = true;
-    pavucontrol.noDisplay                   = true;
-    rofi.noDisplay                          = true;
-    rofi-theme-selector.noDisplay           = true;
-    thunar-bulk-rename.noDisplay            = true;
-    thunar-setting.noDisplay                = true;
-    thunar-volman-settings.noDisplay        = true;
-    xfce4-about.noDisplay                   = true;
-    xfce4-accessibility-settings.noDisplay  = true;
-    xfce4-appearance-settings.noDisplay     = true;
-    xfce4-color-settings.noDisplay          = true;
-    xfce4-keyboard-settings.noDisplay       = true;
-    xfce4-mime-settings.noDisplay           = true;
-    xfce4-mouse-settings.noDisplay          = true;
-    xfce4-notifyd-settings.noDisplay        = true;
-    xfce4-session-logout.noDisplay          = true;
-    xfce4-session-settings.noDisplay        = true;
-    xfce4-screensaver-preferences.noDisplay = true;
-    xfdesktop-settings.noDisplay            = true;
-    xfwm4-settings.noDisplay                = true;
-    xfwm4-tweaks-settings.noDisplay         = true;
-    xfwm4-workspace-settings.noDisplay      = true;
-    xdg-email.noDisplay                     = true;
-    xdg-open.noDisplay                      = true;
-  };
+  } // mappedRemovals;
 }
-
-# Still to find:
-  # Manage Printing
-  # Panel
