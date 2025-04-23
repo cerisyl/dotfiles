@@ -51,7 +51,7 @@
       <directories/>
     </action>
     <action>
-      <icon>visual-studio-code</icon>
+      <icon>vscode</icon>
       <name>Open Folder as VS Code Project</name>
       <submenu></submenu>
       <unique-id>1725554266135535-1</unique-id>

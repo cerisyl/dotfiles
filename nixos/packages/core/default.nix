@@ -5,7 +5,7 @@ in [
   (p "111" true   "floorp")
   (p "111" true   "keepassxc")
   (p "111" true   "kitty")
-  (p "111" false  "nsxiv") # replaced xnviewmp
+  (p "111" false  "imv") # replaced xnviewmp
   (p "111" true   "peazip") # replaced engrampa
   (p "111" false  "rustdesk")
   (p "111" true   "syncthing")

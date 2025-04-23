@@ -43,8 +43,8 @@
 
     # systray
     "4"                     = "systray";
-    "4/icon-size"           = 22;
-    "4/square-icons"        = true;
+    "4/icon-size"           = 16;
+    "4/square-icons"        = false;
     "4/symbolic-icons"      = true;
 
     # clock
