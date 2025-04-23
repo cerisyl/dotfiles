@@ -30,7 +30,7 @@
     "xdg-email"
     "xdg-open"
   ];
-  mappedLaunchers = builtins.listToAttrs map (entry: (name: {
+  mappedLaunchers = builtins.listToAttrs (map (name: {
     inherit name;
     value.noDisplay = true;
   }) removeLaunchers);
