@@ -109,10 +109,5 @@ in {
         XDG_VM_DIR          = "${config.home.homeDirectory}/vm";
       };
     };
-    # Default programs
-    configFile."xfce4/helpers.rc".text = ''
-      TerminalEmulator=kitty
-      WebBrowser=floorp
-    '';
   };
 }

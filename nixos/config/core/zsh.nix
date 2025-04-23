@@ -78,23 +78,24 @@
     };
     # Aliases
     shellAliases = {
-      # Aliases: General
+      # General
       ls      = "ls --color=auto";
       c       = "clear";
       home    = "cd ~";
       fetch   = "fastfetch";
       ff      = "fastfetch";
 
-      # Aliases: Websearch
+      # Websearch
       yt      = "youtube";
       wolfram = "wolframalpha";
 
-      # Aliases: Package management
+      # Package management
       rebuild = "sudo nixos-rebuild switch --flake ~/.nix/.";
       rbl     = "rebuild";
       upgrade = "cd ~/.nix && sudo nix flake upgrade && rebuild";
+      homelog = "journalctl -xe --unit home-manager-ceri";
 
-      # Aliases: Python
+      # Python
       py      = "python";
       pipin   = "python -m pip install";
       pipun   = "python -m pip uninstall";
@@ -102,19 +103,19 @@
       pyvin   = "pyv -m pip install";
       pyvun   = "pyv -m pip uninstall";
 
-      # Aliases: Instant run
+      # Instant run
       chatter = "cd ~/code/sites/chatter && npm run dev";
       dalle   = "for file in *; do mv \"$file\" \"${file:0:26}.png\"; done";
       package = "~/itg/package.sh";
 
-      # Aliases: NPM
+      # NPM
       npmi    = "npm install";
       run     = "npm run";
       dev     = "npm run dev";
       deploy  = "npm run deploy";
       redev   = "npm run redev";
 
-      # Aliases: RPL directories
+      # RPL directories
       rpl     = "cd ~/code/rpl";
       www     = "cd ~/code/rpl/www";
     };
