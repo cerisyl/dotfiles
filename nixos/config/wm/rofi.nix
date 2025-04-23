@@ -1,14 +1,14 @@
-{ config, pkgMap, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }: {
   programs.rofi = {
     enable    = true;
     package   = pkgMap.rofi;
     terminal  = "kitty";
     # Grid config (used in place as base theme, imports rofi.rasi)
-    theme     = ../../../themes/ceres/rofi.rasi;
+    theme     = (getThemeFile "rofi.rasi");
     extraConfig = {
       modi                = "drun,filebrowser";
       show-icons          = true;
-      icon-theme          = "ceres-icons";
+      icon-theme          = "${theme}-icons";
       drun-display-format = "{name}";
       hover-select        = true;
       scrollbar           = true;

@@ -1,4 +1,4 @@
-{ config, pkgMap, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }: {
   boot = {
     consoleLogLevel = 0;
     kernelParams = [ "quiet" "udev.log_level=0" "splash" ];

@@ -1,18 +1,17 @@
-{ config, pkgMap, lib, ... }: let
-  # Define themes
-  themeDir    = ../../../themes/ceres;
+{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+  # Define theme zips
   themeZips = {
-    main    = "${themeDir}/main.zip";
-    icons   = "${themeDir}/icons.zip";
-    cursors = "${themeDir}/cursors.zip";
+    main    = (getThemeFile "main.zip");
+    icons   = (getThemeFile "icons.zip");
+    cursors = (getThemeFile "cursors.zip");
   };
 
   # Where to unzip each type
   getTargetPath = name:
     if lib.hasPrefix "main" name then
-      "${config.home.homeDirectory}/.local/share/themes/ceres-${name}"
+      "${config.home.homeDirectory}/.local/share/themes/${theme}-${name}"
     else
-      "${config.home.homeDirectory}/.icons/ceres-${name}";
+      "${config.home.homeDirectory}/.icons/${theme}-${name}";
 
   # Activation commands for unzipping each
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
@@ -35,7 +34,7 @@ in {
     # Background + desktop
     xfce4-desktop = {
       # Background
-      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${config.home.homeDirectory}/.nix/themes/ceres/img/bg.png";
+      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = (getThemeFile "img/bg.png");
       # Desktop icons
       "desktop-icons/show-tooltips"               = false;
       "desktop-icons/file-icons/show-removable"   = false;
@@ -54,7 +53,7 @@ in {
       "general/placement_mode"    = "mouse";
       "general/scroll_workspaces" = false;
       "general/snap_width"        = 28;
-      "general/theme"             = "ceres-main";
+      "general/theme"             = "${theme}-main";
       "general/title_alignment"   = "left";
       "general/title_font"        = "Barlow Semi-Bold 10";
       "general/toggle_workspaces" = false;
@@ -65,14 +64,14 @@ in {
 
     xsettings = {
       # Net
-      "Net/ThemeName"                 = "ceres-main";
-      "Net/IconThemeName"             = "ceres-icons";
+      "Net/ThemeName"                 = "${theme}-main";
+      "Net/IconThemeName"             = "${theme}-icons";
       "Net/EnableEventSounds"         = true;
       "Net/EnableInputFeedbackSounds" = true;
       # Gtk
       "Gtk/ButtonImages"        = false;
       "Gtk/ColorPalette"        = "";
-      "Gtk/CursorThemeName"     = "ceres-cursors";
+      "Gtk/CursorThemeName"     = "${theme}-cursors";
       "Gtk/CursorThemeSize"     = 24;
       "Gtk/FontName"            = "Barlow 10";
       "Gtk/MenuBarAccel"        = "";

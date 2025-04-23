@@ -1,10 +1,10 @@
-{ config, pkgMap, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }: {
   programs.fastfetch = {
     enable    = true;
     package   = pkgMap.fastfetch;
     settings  = {
       logo = {
-        source      = ../../../themes/ceres/img/fetch.png;
+        source      = (getThemeFile "img/fetch.png");
         type        = "kitty-direct";
         width       = 33;
         height      = 15;

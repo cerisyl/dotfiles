@@ -11,13 +11,30 @@
     in
       getAttrByList set path;
 
+  # Utility function to determine what theme file should be loaded
+  themeFallback = "ceres";
+  theme = if builtins.pathExists ../.current_theme
+    then let
+      themeName = builtins.readFile ../.current_theme;
+      themePath = ../themes + "/${themeName}";
+    in if builtins.pathExists themePath
+      then themeName
+      else themeFallback
+    else themeFallback;
+  getThemeFile = file: (
+    let path = ../themes + "/${theme}/${file}";
+    in
+      if builtins.pathExists (path) then path
+      else ../themes + "/ceres/${file}"
+  );
+
   # Package management
   # Use binary to determine what packages we should download
   hostIndexMap = {
     "luxe"    = 2;
     "nova"    = 1;
     "astore"  = 0;
-    "vm"      = 0;
+    "vm"      = 1;
   };
   hostIndex = hostIndexMap.${myHostname};
 
@@ -71,7 +88,7 @@ in {
   };
 
   # Import/set home configuration
-  home-manager.extraSpecialArgs = { inherit pkgMap; };
+  home-manager.extraSpecialArgs = { inherit pkgMap theme getThemeFile; };
   home-manager.users.ceri = {
     imports = import ./config/default.nix {  role = "home"; };
     home.stateVersion = "24.11";
