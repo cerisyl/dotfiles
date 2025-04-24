@@ -1,4 +1,5 @@
 { config, pkgs, pkgMap, theme, getThemeFile, lib, ... }: let
+  # List of launchers to remove
   removeLaunchers = [
     "btop"
     "cups"
@@ -33,21 +34,7 @@
     };
   }) removeLaunchers);
 in {
+  # List of new launchers to create
   xdg.desktopEntries = {
   } // mappedLaunchers;
-  # Removal overrides (for things that aren't working)
-  services.xdg.menu.itemOverrides = [
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-appearance-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-notifyd-config.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop"; noDisplay = true; }
-    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop"; noDisplay = true; }
-  ];
 }
-
