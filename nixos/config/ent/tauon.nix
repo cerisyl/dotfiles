@@ -1,6 +1,6 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
   xdg.dataFile = {
-    "TauonMusicBox/theme/${theme}.ttheme".text = (getThemeFile "tauon.ttheme");
+    "TauonMusicBox/theme/${theme}.ttheme".source = (getThemeFile "tauon.ttheme");
     "TauonMusicBox/tauon.conf".text = ''
       [audio]
       seek-interval = 15              # In s. Interval to seek when using keyboard shortcut. Default is 15.
