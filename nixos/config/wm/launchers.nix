@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgs, pkgMap, theme, getThemeFile, lib, ... }: let
   removeLaunchers = [
     "btop"
     "cups"
@@ -16,19 +16,9 @@
     "syncthing-ui"
     "winetricks"
     "xfce4-about"
-    "xfce4-accessibility-settings"
-    "xfce4-appearance-settings"
     "xfce-backdrop-settings"
-    "xfce4-color-settings"
-    "xfce-keyboard-settings"
-    "xfce4-mail-reader"
-    "xfce4-mime-settings"
-    "xfce-mouse-settings"
-    "xfce4-notifyd-config"
-    "xfce4-session-logout"
-    "xfce-session-settings"
-    "xfce4-settings-editor"
     "xfce4-screensaver-preferences"
+    "xfce-ui-settings"
     "xfce4-web-browser"
     "xfce-wm-settings"
     "xfce-wmtweaks-settings"
@@ -45,4 +35,19 @@
 in {
   xdg.desktopEntries = {
   } // mappedLaunchers;
+  # Removal overrides (for things that aren't working)
+  services.xdg.menu.itemOverrides = [
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-appearance-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-notifyd-config.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop"; noDisplay = true; }
+  ];
 }
+
