@@ -9,8 +9,6 @@
     "org.pulseaudio.pavucontrol"
     "panel-preferences"
     "peazip"
-    "rofi"
-    "rofi-theme-selector"
     "thunar"
     "thunar-bulk-rename"
     "thunar-settings"
@@ -36,5 +34,8 @@
 in {
   # List of new launchers to create
   xdg.desktopEntries = {
+    xfce4-notifyd-config.noDisplay  = true;
+    rofi.noDisplay                  = true;
+    rofi-theme-selector.noDisplay   = true;
   } // mappedLaunchers;
 }
