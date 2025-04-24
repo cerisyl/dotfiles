@@ -60,5 +60,10 @@ in {
       exec = "shutdown now";
       icon = "xfsm-shutdown";
     };
+    "discordchatexporter" = {
+      name = "Discord Chat Exporter";
+      exec = "discordchatexporter";
+      icon = "discord";
+    };
   } // mappedLaunchers;
 }

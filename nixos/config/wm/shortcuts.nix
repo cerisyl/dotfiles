@@ -23,6 +23,12 @@
     "<Super>d" = "sh /home/ceri/.nix/extra/panel/showdesktop.sh";
     # Show file explorer
     "<Super>f" = "thunar";
+    # Capture full-screen screenshot (xfce4-screenshooter)
+    "<Primary><Shift>3" = "xfce4-screenshooter -f -c -s $XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png";
+    # Capture area screenshot (xfce4-screenshooter)
+    "<Primary><Shift>4" = "xfce4-screenshooter -r -c -s $XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png";
+    # Capture area screenshot with OCR (xfce4-screenshooter + tesseract)
+    "<Primary><Shift>O" = "xfce4-screenshooter -r -s /tmp/save.png && tesseract /tmp/save.png - | xclip";
   };
 in {
   xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;

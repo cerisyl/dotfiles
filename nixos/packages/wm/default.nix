@@ -24,5 +24,6 @@ in [
   (p "111" false  "xfce.xfce4-mailwatch-plugin")
   (p "111" false  "xfce.xfce4-notifyd")
   (p "111" false  "xfce.xfce4-pulseaudio-plugin")
+  (p "111" false  "xfce.xfce4-screenshooter")
   (p "111" false  "xfce.xfwm4")
 ]

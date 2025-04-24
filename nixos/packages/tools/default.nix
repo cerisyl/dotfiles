@@ -20,6 +20,7 @@ in [
   (p "111" false  "qdirstat")
   (p "111" false  "qdiskinfo")
   (p "001" false  "rubyripper")
+  (p "011" false  "tesseract")
   #(p "001" false  "unmined-gui") manual install
   (p "011" false  "wineWowPackages.stable")
   (p "011" false  "winetricks")

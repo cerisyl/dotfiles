@@ -17,7 +17,6 @@
 		ristretto
     xfce4-appfinder
     xfce4-icon-theme
-    xfce4-screenshooter
 		xfce4-taskmanager
     xfce4-terminal
     xfwm4-themes
