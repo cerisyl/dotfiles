@@ -4,7 +4,7 @@ in [
   (p "001" false  "arduino-ide")
   (p "111" false  "deluge-gtk")
   (p "011" false  "dolphin-emu")
-  #(p "011" true   "itgmania-bin") manual install
+  (p "011" true   "itgmania")
   (p "011" false  "melonDS")
   (p "011" false  "prismlauncher")
   (p "011" false  "soulseekqt")

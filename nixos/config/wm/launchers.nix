@@ -40,11 +40,25 @@
     exec = name;
     value = {
       inherit name;
-      exec = "";
       noDisplay = true;
     };
   }) removeLaunchers);
 in {
   xdg.desktopEntries = {
+    "lock" = {
+      name = "Lock";
+      exec = "xflock4";
+      icon = "xfsm-lock";
+    };
+    "restart" = {
+      name = "Restart";
+      exec = "reboot";
+      icon = "xfsm-reboot";
+    };
+    "shutdown" = {
+      name = "Shutdown";
+      exec = "shutdown now";
+      icon = "xfsm-shutdown";
+    };
   } // mappedLaunchers;
 }
