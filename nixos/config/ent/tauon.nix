@@ -1,7 +1,8 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
-  xdg.dataFile = {
-    "TauonMusicBox/theme/${theme}.ttheme".source = (getThemeFile "tauon.ttheme");
-    "TauonMusicBox/tauon.conf".text = ''
+  xdg.dataFile."TauonMusicBox/theme/${theme}.ttheme".source = (getThemeFile "tauon.ttheme");
+  home.file.".local/shareTauonMusicBox/tauon.conf" = {
+    force = true;
+    source = builtins.toFile "tauon.conf" ''
       [audio]
       seek-interval = 15              # In s. Interval to seek when using keyboard shortcut. Default is 15.
       cross-fade-time = 700           # In ms. Min: 200, Max: 2000, Default: 700. Applies to track change crossfades. End of track is always gapless.

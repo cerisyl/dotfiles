@@ -24,9 +24,9 @@
     # Show file explorer
     "<Super>f" = "thunar";
     # Capture full-screen screenshot (xfce4-screenshooter)
-    "<Primary><Shift>#" = "mkdir -p $XDG_SCREENSHOTS_DIR/$(date +%Y-%m) && xfce4-screenshooter -f -c -s $XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png";
+    "<Primary><Shift>numbersign" = "mkdir -p $XDG_SCREENSHOTS_DIR/$(date +%Y-%m) && xfce4-screenshooter -f -c -s \"$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png\"";
     # Capture area screenshot (xfce4-screenshooter)
-    "<Primary><Shift>$" = "mkdir -p $XDG_SCREENSHOTS_DIR/$(date +%Y-%m) && xfce4-screenshooter -r -c -s $XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png";
+    "<Primary><Shift>dollar" = "mkdir -p $XDG_SCREENSHOTS_DIR/$(date +%Y-%m) && xfce4-screenshooter -r -c -s \"$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png\"";
     # Capture area screenshot with OCR (xfce4-screenshooter + tesseract)
     "<Primary><Shift>O" = "xfce4-screenshooter -r -s /tmp/save.png && tesseract /tmp/save.png - | xclip";
   };
