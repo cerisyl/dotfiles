@@ -21,4 +21,6 @@
     xfce4-terminal
     xfwm4-themes
   ];
+
+  xdg.menus.enable = false;
 }
