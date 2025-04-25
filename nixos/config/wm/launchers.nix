@@ -15,27 +15,12 @@
     "winetricks"
     "xfce4-about"
     "xfce-backdrop-settings"
-    "xfce4-color-settings"
     "xfce4-notifyd-config"
     "xfce4-screensaver-preferences"
     "xfce-wm-settings"
     "xfce-wmtweaks-settings"
     "xfce-workspaces-settings"
-    # Currently not working- see other method
-    #### rofi
-    #"rofi"
-    #"rofi-theme-selector"
-    #### xfce4-settings
-    #"xfce4-appearance-settings"
-    #"xfce-keyboard-settings"
-    #"xfce4-mail-reader"
-    #"xfce4-mime-settings"
-    #"xfce-mouse-settings"
-    #"xfce4-session-logout"
-    #"xfce-session-settings"
-    #"xfce4-settings-editor"
-    #"xfce-ui-settings"
-    #"xfce4-web-browser"
+    "xfce4-screenshooter"
   ];
   mappedLaunchers = builtins.listToAttrs (map (name: {
     inherit name;
@@ -71,8 +56,19 @@ in {
   } // mappedLaunchers;
   # Remove hard-to-delete launchers
   home.activation.removeMoreLaunchers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -s ${pkgMap."rofi"}/share/applications/*.desktop /dev/null
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/*.desktop /dev/null
+    ln -s ${pkgMap."rofi"}/share/applications/rofi.desktop /dev/null
+    ln -s ${pkgMap."rofi"}/share/applications/rofi-theme-selector.desktop /dev/null
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop /dev/null # Accessibility
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-ui-settings.desktop /dev/null             # Appearance
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop /dev/null         # Color Profiles
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop /dev/null          # Default Applications
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop /dev/null       # Keyboard
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop /dev/null         # Log Out
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop /dev/null            # Mail Reader
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop /dev/null          # Mouse & Trackpad
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop /dev/null        # Session & Startup
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop /dev/null        # Settings Editor
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-web-browser.desktop /dev/null            # Web Browser
   '';
 }
 
