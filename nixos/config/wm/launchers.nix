@@ -21,6 +21,20 @@
     "xfce-wmtweaks-settings"
     "xfce-workspaces-settings"
     "xfce4-screenshooter"
+    ## TODO: Figure out how to actually remove these
+    "rofi"
+    "rofi-theme-selector"
+    "xfce4-accessibility-settings"
+    "xfce-ui-settings"
+    "xfce4-color-settings"
+    "xfce4-mime-settings"
+    "xfce-keyboard-settings"
+    "xfce4-session-logout"
+    "xfce4-mail-reader"
+    "xfce-mouse-settings"
+    "xfce-session-settings"
+    "xfce4-settings-editor"
+    "xfce4-web-browser"
   ];
   mappedLaunchers = builtins.listToAttrs (map (name: {
     inherit name;

@@ -42,6 +42,9 @@
       bindkey '^p' history-search-backward
       bindkey '^n' history-search-forward
       bindkey '^[w' kill-region
+
+      # Forward/backward word + wordchars
+      local WORDCHARS='*?_[]~=&;!#$%^(){}<>'
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;5D" backward-word
 
