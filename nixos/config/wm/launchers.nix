@@ -8,32 +8,34 @@
     "org.pulseaudio.pavucontrol"
     "panel-preferences"
     "peazip"
-    "rofi"
-    "rofi-theme-selector"
     "thunar"
     "thunar-bulk-rename"
     "thunar-settings"
     "syncthing-ui"
     "winetricks"
     "xfce4-about"
-    "xfce4-accessibility-settings"
-    "xfce4-appearance-settings"
     "xfce-backdrop-settings"
     "xfce4-color-settings"
-    "xfce-keyboard-settings"
-    "xfce4-mail-reader"
-    "xfce4-mime-settings"
-    "xfce-mouse-settings"
     "xfce4-notifyd-config"
-    "xfce4-session-logout"
-    "xfce-session-settings"
-    "xfce4-settings-editor"
     "xfce4-screensaver-preferences"
-    "xfce-ui-settings"
-    "xfce4-web-browser"
     "xfce-wm-settings"
     "xfce-wmtweaks-settings"
     "xfce-workspaces-settings"
+    # Currently not working- see other method
+    #### rofi
+    #"rofi"
+    #"rofi-theme-selector"
+    #### xfce4-settings
+    #"xfce4-appearance-settings"
+    #"xfce-keyboard-settings"
+    #"xfce4-mail-reader"
+    #"xfce4-mime-settings"
+    #"xfce-mouse-settings"
+    #"xfce4-session-logout"
+    #"xfce-session-settings"
+    #"xfce4-settings-editor"
+    #"xfce-ui-settings"
+    #"xfce4-web-browser"
   ];
   mappedLaunchers = builtins.listToAttrs (map (name: {
     inherit name;
@@ -44,6 +46,7 @@
     };
   }) removeLaunchers);
 in {
+  # Create custom launchers here
   xdg.desktopEntries = {
     "lock" = {
       name = "Lock";
@@ -66,4 +69,10 @@ in {
       icon = "discord";
     };
   } // mappedLaunchers;
+  # Remove hard-to-delete launchers
+  home.activation.removeMoreLaunchers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ln -s ${pkgMap."rofi"}/share/applications/*.desktop /dev/null
+    ln -s ${pkgMap."xfce.xfce4-settings"}/share/applications/*.desktop /dev/null
+  '';
 }
+
