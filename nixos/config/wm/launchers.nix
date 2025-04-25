@@ -55,20 +55,20 @@ in {
     };
   } // mappedLaunchers;
   # Remove hard-to-delete launchers
-  home.activation.removeMoreLaunchers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    echo "" > ${pkgMap."rofi"}/share/applications/rofi.desktop
-    echo "" > ${pkgMap."rofi"}/share/applications/rofi-theme-selector.desktop
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop # Accessibility
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-ui-settings.desktop             # Appearance
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop         # Color Profiles
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop          # Default Applications
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop       # Keyboard
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop         # Log Out
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop            # Mail Reader
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop          # Mouse & Trackpad
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop        # Session & Startup
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop        # Settings Editor
-    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-web-browser.desktop            # Web Browser
-  '';
+  config.services.xdg.menu = [
+    { source = "${pkgMap.rofi}/share/applications/rofi.desktop"; noDisplay = true; }
+    { source = "${pkgMap.rofi}/share/applications/rofi-theme-selector.desktop"; noDisplay = true; }
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop"; noDisplay = true; } # Accessibility
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-ui-settings.desktop" noDisplay = true; }              # Appearance
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop" noDisplay = true; }          # Color Profiles
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop" noDisplay = true; }           # Default Applications
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop" noDisplay = true; }        # Keyboard
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop" noDisplay = true; }          # Log Out
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop" noDisplay = true; }             # Mail Reader
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop" noDisplay = true; }           # Mouse & Trackpad
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop" noDisplay = true; }         # Session & Startup
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop" noDisplay = true; }         # Settings Editor
+    { source = "${pkgs.xfce.xfce4-settings}/share/applications/xfce4-web-browser.desktop" noDisplay = true; }             # Web Browser
+  ];
 }
 
