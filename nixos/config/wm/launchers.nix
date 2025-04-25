@@ -56,19 +56,19 @@ in {
   } // mappedLaunchers;
   # Remove hard-to-delete launchers
   home.activation.removeMoreLaunchers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -s ${pkgMap."rofi"}/share/applications/rofi.desktop /dev/null
-    ln -s ${pkgMap."rofi"}/share/applications/rofi-theme-selector.desktop /dev/null
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop /dev/null # Accessibility
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-ui-settings.desktop /dev/null             # Appearance
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop /dev/null         # Color Profiles
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop /dev/null          # Default Applications
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop /dev/null       # Keyboard
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop /dev/null         # Log Out
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop /dev/null            # Mail Reader
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop /dev/null          # Mouse & Trackpad
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop /dev/null        # Session & Startup
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop /dev/null        # Settings Editor
-    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-web-browser.desktop /dev/null            # Web Browser
+    echo "" > ${pkgMap."rofi"}/share/applications/rofi.desktop
+    echo "" > ${pkgMap."rofi"}/share/applications/rofi-theme-selector.desktop
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-accessibility-settings.desktop # Accessibility
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-ui-settings.desktop             # Appearance
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-color-settings.desktop         # Color Profiles
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mime-settings.desktop          # Default Applications
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-keyboard-settings.desktop       # Keyboard
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-session-logout.desktop         # Log Out
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-mail-reader.desktop            # Mail Reader
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-mouse-settings.desktop          # Mouse & Trackpad
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce-session-settings.desktop        # Session & Startup
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-settings-editor.desktop        # Settings Editor
+    echo "" > ${pkgs.xfce.xfce4-settings}/share/applications/xfce4-web-browser.desktop            # Web Browser
   '';
 }
 
