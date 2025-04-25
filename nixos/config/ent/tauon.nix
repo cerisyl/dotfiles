@@ -1,9 +1,9 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
   xdg.dataFile."TauonMusicBox/theme/${theme}.ttheme".source = (getThemeFile "tauon.ttheme");
   home.activation.tauonConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    config="$XDG_DATA_HOME/TauonMusicBox/tauon.conf"
+    config="/home/ceri/.local/share/TauonMusicBox/tauon.conf"
     if [ ! -f "$config" ]; then
-      mkdir -p "$XDG_DATA_HOME/TauonMusicBox"
+      mkdir -p "/home/ceri/.local/share/TauonMusicBox"
     fi
     cat > "$config" << EOF
       [audio]
