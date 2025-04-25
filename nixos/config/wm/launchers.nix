@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgs, pkgMap, theme, getThemeFile, lib, ... }: let
   removeLaunchers = [
     "btop"
     "cups"
@@ -72,7 +72,7 @@ in {
   # Remove hard-to-delete launchers
   home.activation.removeMoreLaunchers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ln -s ${pkgMap."rofi"}/share/applications/*.desktop /dev/null
-    ln -s ${pkgMap."xfce.xfce4-settings"}/share/applications/*.desktop /dev/null
+    ln -s ${pkgs.xfce.xfce4-settings}/share/applications/*.desktop /dev/null
   '';
 }
 
