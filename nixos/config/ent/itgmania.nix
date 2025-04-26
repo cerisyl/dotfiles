@@ -9,8 +9,8 @@ in {
       recursive = true;
     };
     # Source extra judgment files
-    ".itgmania/Themes/${zmodRev}/Graphics/_judgments/NJSRT2 Chroma 2x7 (doubleres).png".source      = ./../../extra/itg/judge.png;
-    ".itgmania/Themes/${zmodRev}/Graphics/_HoldJudgments/NJSRT2 Chroma 1x2 (doubleres).png".source  = ./../../extra/itg/holdjudge.png;
+    ".itgmania/Themes/${zmodRev}/Graphics/_judgments/NJSRT2 Chroma 2x7 (doubleres).png".source      = ../../../extra/itg/judge.png;
+    ".itgmania/Themes/${zmodRev}/Graphics/_HoldJudgments/NJSRT2 Chroma 1x2 (doubleres).png".source  = ../../../extra/itg/holdjudge.png;
     # Default preferences
     ".itgmania/Save/Prefernces.ini".text = ''
       [Options]
