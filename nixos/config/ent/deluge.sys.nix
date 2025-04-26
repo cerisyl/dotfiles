@@ -1,8 +1,8 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgs, theme, getThemeFile, lib, ... }: {
   services.deluge = {
     enable      = true;
     declarative = true;
-    package     = pkgMap.deluge-gtk;
+    package     = pkgs.deluge-gtk;
     config = {
       "dht"                       = false;
       "download_location"         = "/home/ceri/deluge";
