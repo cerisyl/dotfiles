@@ -24,11 +24,13 @@
     # Show file explorer
     "<Super>f" = "thunar";
     # Capture full-screen screenshot (xfce4-screenshooter)
-    "<Primary><Shift>numbersign" = "mkdir -p $XDG_SCREENSHOTS_DIR/$(date +%Y-%m) && xfce4-screenshooter -f -c -s \"$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png\"";
-    # Capture area screenshot (xfce4-screenshooter)
-    "<Primary><Shift>dollar" = "mkdir -p $XDG_SCREENSHOTS_DIR/$(date +%Y-%m) && xfce4-screenshooter -r -c -s \"$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png\"";
-    # Capture area screenshot with OCR (xfce4-screenshooter + tesseract)
-    "<Primary><Shift>O" = "xfce4-screenshooter -r -s /tmp/save.png && tesseract /tmp/save.png - | xclip";
+    "<Primary><Shift>numbersign" = "sh /home/ceri/.nix/extra/screenshot/capture-full.sh";
+    # Capture partial-area screenshot (xfce4-screenshooter)
+    "<Primary><Shift>dollar" = "sh /home/ceri/.nix/extra/screenshot/capture-partial.sh";
+    # Capture and OCR via partial-area screenshot (xfce4-screenshooter + tesseract)
+    "<Primary><Shift>O" = "sh /home/ceri/.nix/extra/screenshot/ocr.sh";
+    # Pick a color and return it into the clipboard as HEX
+    "<Primary><Shift>C" = "sh /home/ceri/.nix/extra/screenshot/ocr.sh";
   };
 in {
   xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;

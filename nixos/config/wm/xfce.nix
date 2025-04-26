@@ -31,6 +31,12 @@ in {
       "general/LockCommand" = "${pkgMap.lightdm}/bin/dm-tool lock";
     };
 
+    # Disable screensaver
+    xfce4-screensaver = {
+      "saver/enabled" = false;
+      "saver/idle-activation/enabled" = false;
+    };
+
     # Background + desktop
     xfce4-desktop = {
       # Background

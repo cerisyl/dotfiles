@@ -8,6 +8,7 @@ in [
   (p "111" true   "git")
   (p "111" false  "home-manager")
   (p "111" false  "killall")
+  (p "111" false  "libnotify")
   (p "111" false  "micro")
   (p "111" true   "oh-my-posh")
   (p "100" false  "openssh")

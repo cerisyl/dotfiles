@@ -4,7 +4,6 @@ in [
   (p "011" false  "bcompare")
   (p "011" true   "discordchatexporter-desktop")
   (p "011" false  "ffmpeg")
-  (p "011" false  "flameshot")
   (p "011" false  "freac")
   (p "011" false  "gftp")
   (p "011" false  "handbrake")
@@ -26,4 +25,5 @@ in [
   (p "011" false  "winetricks")
   (p "011" true   "yt-dlg")
   (p "011" true   "yt-dlp")
+  (p "011" false  "zenity") # color picker
 ]
