@@ -23,16 +23,16 @@
   xdg.configFile = {
     # Bookmarks
     "gtk-3.0/bookmarks".text = ''
-      "file://home/ceri/captures"
-      "file://home/ceri/code"
-      "file://home/ceri/docs"
-      "file://home/ceri/downloads"
-      "file://home/ceri/games"
-      "file://home/ceri/music"
-      "file://home/ceri/pictures"
-      "file://home/ceri/sync"
-      "file://home/ceri/util"
-      "file://home/ceri/videos"
+      "file://${config.home.homeDirectory}/captures"
+      "file://${config.home.homeDirectory}/code"
+      "file://${config.home.homeDirectory}/docs"
+      "file://${config.home.homeDirectory}/downloads"
+      "file://${config.home.homeDirectory}/games"
+      "file://${config.home.homeDirectory}/music"
+      "file://${config.home.homeDirectory}/pictures"
+      "file://${config.home.homeDirectory}/sync"
+      "file://${config.home.homeDirectory}/util"
+      "file://${config.home.homeDirectory}/videos"
     '';
 
     # Folder shortcuts
