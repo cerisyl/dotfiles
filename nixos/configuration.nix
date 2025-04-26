@@ -84,7 +84,7 @@ in {
   users.users.ceri = {
     isNormalUser  = true;
     shell         = pkgsUnstable.zsh;
-    extraGroups   = [ "wheel" "input" "networkmanager" ];
+    extraGroups   = [ "wheel" "input" "networkmanager" "deluge" ];
   };
 
   # Import/set home configuration

@@ -12,7 +12,7 @@ in {
     ".itgmania/Themes/${zmodRev}/Graphics/_judgments/NJSRT2 Chroma 2x7 (doubleres).png".source      = ../../../extra/itg/judge.png;
     ".itgmania/Themes/${zmodRev}/Graphics/_HoldJudgments/NJSRT2 Chroma 1x2 (doubleres).png".source  = ../../../extra/itg/holdjudge.png;
     # Default preferences
-    ".itgmania/Save/Prefernces.ini".text = ''
+    ".itgmania/Save/Preferences.ini".text = ''
       [Options]
       AdditionalCourseFoldersReadOnly=
       AdditionalCourseFoldersWritable=
@@ -400,7 +400,7 @@ in {
   };
   # Load our noteskins
   home.activation.loadNoteskins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "/home/ceri/.itgmania/Noteskins/dance"
-    ${pkgMap.unzip}/bin/unzip -qq -o "/home/ceri/.nix/extra/itg/noteskins.zip" -d "/home/ceri/.itgmania/Noteskins/dance"
+    mkdir -p "/home/ceri/.itgmania/NoteSkins/dance"
+    ${pkgMap.unzip}/bin/unzip -qq -o "/home/ceri/.nix/extra/itg/noteskins.zip" -d "/home/ceri/.itgmania/NoteSkins/dance"
   '';
 }
