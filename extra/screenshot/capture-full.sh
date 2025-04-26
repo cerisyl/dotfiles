@@ -2,13 +2,14 @@
 # Capture a full-size screenshot of all screens.
 
 # Check if the target directory exists
-mkdir -p "~/captures/$(date +%Y-%m)"
+mkdir -p "/home/ceri/captures/$(date +%Y-%m)"
 
 # Take the screeshot and save it to the directory
-fname="~/captures/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png"
+fname="/home/ceri/captures/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png"
 xfce4-screenshooter -f -c -s "$fname"
 
 # Copy to clipboard
 xclip -selection clipboard -t image/png -i "$fname"
 
-# TODO: Display a notification that the image was copied
+# Display a notification that the image was copied
+notify-send -i "$fname" -t 4000 "Capture" "Saved and copied to clipboard"

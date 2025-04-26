@@ -26,6 +26,7 @@ blue_hex=$(printf "%02X" "$blue")
 hex_color="#$red_hex$green_hex$blue_hex"
 
 # Copy the color to the clipboard for use in other applications
-echo -n "$hex_color" | xclip
+echo -n "$hex_color" | xclip -sel clip
 
-# TODO: Display a notification that the hex was copied
+# Display a notification that the hex was copied
+notify-send -i "/tmp/save.png" -t 4000 "Copied text" "$hex_color"
