@@ -4,7 +4,7 @@
     declarative   = true;
     package       = pkgs.deluge-gtk;
     openFirewall  = true;
-    authFile      = pkgs.writeText "localclient:notsecure:10";
+    authFile      = pkgs.writeText "" ''localclient:notsecure:10'';
     config = {
       "dht"                       = false;
       "download_location"         = "/home/ceri/deluge";
