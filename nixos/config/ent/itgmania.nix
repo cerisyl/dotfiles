@@ -400,6 +400,7 @@ in {
   };
   # Load our noteskins
   home.activation.loadNoteskins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgMap.unzip}/bin/unzip -qq -o /home/ceri/.nix/extra/itg/noteskips.zip -d /home/ceri/.itgmania/Noteskins/dance
+    mkdir -p "/home/ceri/.itgmania/Noteskins/dance"
+    ${pkgMap.unzip}/bin/unzip -qq -o "/home/ceri/.nix/extra/itg/noteskips.zip" -d "/home/ceri/.itgmania/Noteskins/dance"
   '';
 }

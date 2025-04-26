@@ -20,47 +20,49 @@
     ];
   };
 
-  # Bookmarks
-  gtk.gtk3.bookmarks = [
-    "file://${config.home.homeDirectory}/captures"
-    "file://${config.home.homeDirectory}/code"
-    "file://${config.home.homeDirectory}/docs"
-    "file://${config.home.homeDirectory}/downloads"
-    "file://${config.home.homeDirectory}/games"
-    "file://${config.home.homeDirectory}/music"
-    "file://${config.home.homeDirectory}/pictures"
-    "file://${config.home.homeDirectory}/sync"
-    "file://${config.home.homeDirectory}/util"
-    "file://${config.home.homeDirectory}/videos"
-  ];
+  xdg.configFile = {
+    # Bookmarks
+    "gtk-3.0/bookmarks" = [
+      "file://${config.home.homeDirectory}/captures"
+      "file://${config.home.homeDirectory}/code"
+      "file://${config.home.homeDirectory}/docs"
+      "file://${config.home.homeDirectory}/downloads"
+      "file://${config.home.homeDirectory}/games"
+      "file://${config.home.homeDirectory}/music"
+      "file://${config.home.homeDirectory}/pictures"
+      "file://${config.home.homeDirectory}/sync"
+      "file://${config.home.homeDirectory}/util"
+      "file://${config.home.homeDirectory}/videos"
+    ];
 
-  # Folder shortcuts
-  xdg.configFile."Thunar/uca.xml".text = ''
-    <?xml version="1.0" encoding="UTF-8"?>
-    <actions>
-    <action>
-      <icon>utilities-terminal</icon>
-      <name>Open Terminal Here</name>
-      <submenu></submenu>
-      <unique-id>1724779490245433-1</unique-id>
-      <command>exo-open --working-directory %f --launch TerminalEmulator</command>
-      <description>Opens in terminal</description>
-      <range></range>
-      <patterns>*</patterns>
-      <startup-notify/>
-      <directories/>
-    </action>
-    <action>
-      <icon>vscode</icon>
-      <name>Open Folder as VS Code Project</name>
-      <submenu></submenu>
-      <unique-id>1725554266135535-1</unique-id>
-      <command>code %f</command>
-      <description>Opens folder in VS Code</description>
-      <range>*</range>
-      <patterns>*</patterns>
-      <directories/>
-    </action>
-    </actions>
-  '';
+    # Folder shortcuts
+    "Thunar/uca.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <actions>
+      <action>
+        <icon>utilities-terminal</icon>
+        <name>Open Terminal Here</name>
+        <submenu></submenu>
+        <unique-id>1724779490245433-1</unique-id>
+        <command>exo-open --working-directory %f --launch TerminalEmulator</command>
+        <description>Opens in terminal</description>
+        <range></range>
+        <patterns>*</patterns>
+        <startup-notify/>
+        <directories/>
+      </action>
+      <action>
+        <icon>vscode</icon>
+        <name>Open Folder as VS Code Project</name>
+        <submenu></submenu>
+        <unique-id>1725554266135535-1</unique-id>
+        <command>code %f</command>
+        <description>Opens folder in VS Code</description>
+        <range>*</range>
+        <patterns>*</patterns>
+        <directories/>
+      </action>
+      </actions>
+    '';
+  };
 }
