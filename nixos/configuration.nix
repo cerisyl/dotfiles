@@ -1,4 +1,4 @@
-{ inputs, myHostname, config, pkgs, pkgsUnstable, ... }: let
+{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, ... }: let
   # Utility functions to translate 
   # TODO: Move this in its own file.
   getAttrByList = set: pathList:
@@ -88,7 +88,10 @@ in {
   };
 
   # Import/set home configuration
-  home-manager.extraSpecialArgs = { inherit pkgMap theme getThemeFile; };
+  home-manager.extraSpecialArgs = {
+    inherit pkgMap theme getThemeFile;
+    zmod = pkgsGit.zmod;
+  };
   home-manager.users.ceri = {
     imports = import ./config/default.nix {  role = "home"; };
     home.stateVersion = "24.11";
