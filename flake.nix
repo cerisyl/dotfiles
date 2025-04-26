@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    zmod.url = "github:zarzob/Simply-Love-SM5";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -11,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, zmod, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     defHost = hostname: nixpkgs.lib.nixosSystem {
@@ -21,7 +22,7 @@
           inherit system;
           config.allowUnfree = true;
         };
-        inherit inputs system;
+        inherit inputs system zmod;
       };
       modules = [
         ./nixos/hosts/${hostname}/configuration.nix

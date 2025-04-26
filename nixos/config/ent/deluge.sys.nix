@@ -1,0 +1,18 @@
+{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+  services.deluge = {
+    enable      = true;
+    declarative = true;
+    package     = pkgMap.deluge-gtk;
+    config = {
+      "dht"                       = false;
+      "download_location"         = "/home/ceri/deluge";
+      "listen_ports"              = [ 6881 6881 ];
+      "listen_random_port"        = 62503;
+      "max_active_downloading"    = 100;
+      "max_active_limit"          = 100;
+      "max_active_seeding"        = 100;
+      "max_half_open_connections" = 50;
+      "utpex"                     = false;
+    };
+  };
+}
