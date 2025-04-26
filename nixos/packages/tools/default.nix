@@ -13,7 +13,6 @@ in [
   #(p "011" false  "nine-or-null") manual install
   #(p "001" false  "ntsc-rs") manual install
   (p "011" true   "obsidian")
-  (p "011" false  "obs-studio")
   (p "001" false  "openrgb")
   (p "001" false  "puddletag")
   (p "111" false  "qdirstat")
