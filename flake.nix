@@ -25,8 +25,8 @@
           inherit system;
           config.allowUnfree = true;
         };
-        pkgsGit = { inherit zmod };
-        inherit inputs system pkgsGit;
+        pkgsGit = { inherit zmod; };
+        inherit inputs system;
       };
       modules = [
         ./nixos/hosts/${hostname}/configuration.nix
