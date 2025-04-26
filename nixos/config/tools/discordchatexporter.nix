@@ -1,5 +1,5 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
-  xdg.configFile."discordchatexporter/Settings.dat" = ''
+  xdg.configFile."discordchatexporter/Settings.dat".text = ''
     {
       "IsUkraineSupportMessageEnabled": false,
       "Theme": 2,
