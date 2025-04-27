@@ -87,7 +87,7 @@ body {
   /* text colors */
   --text-0: var(--bg-4); /* text on colored elements */
   --text-1: #f2f3f5; /* other normally white text */
-  --text-2: #b8b8c7; /* headings and important text */
+  --text-2: #f2f3f5; /* headings and important text */
   --text-3: #b8b8c7; /* normal text */
   --text-4: #b8b8c7; /* icon buttons and channels */
   --text-5: #515167; /* muted channels/chats and timestamps */

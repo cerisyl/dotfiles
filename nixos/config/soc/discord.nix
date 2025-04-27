@@ -12,7 +12,7 @@
 
     config = {
       useQuickCss = true;
-      frameless = true;
+      frameless   = false;
       plugins = {
         alwaysTrust.enable          = true;
         betterGifPicker.enable      = true;
