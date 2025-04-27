@@ -21,20 +21,6 @@
     "xfce-wmtweaks-settings"
     "xfce-workspaces-settings"
     "xfce4-screenshooter"
-    ## TODO: Figure out how to actually remove these
-    "rofi"
-    "rofi-theme-selector"
-    "xfce4-accessibility-settings"
-    "xfce-ui-settings"
-    "xfce4-color-settings"
-    "xfce4-mime-settings"
-    "xfce-keyboard-settings"
-    "xfce4-session-logout"
-    "xfce4-mail-reader"
-    "xfce-mouse-settings"
-    "xfce-session-settings"
-    "xfce4-settings-editor"
-    "xfce4-web-browser"
   ];
   mappedLaunchers = builtins.listToAttrs (map (name: {
     inherit name;
@@ -44,6 +30,35 @@
       noDisplay = true;
     };
   }) removeLaunchers);
+  
+  # Used when removeLaunchers simply doesn't cut it.
+  # These files go into .local/share/applications
+  overwrite = name: filename: exec: { inherit name filename exec; };
+  overwriteLaunchers = [
+    #overwrite Name,                    .desktop file,                  Exec (true if == .desktop file)
+    (overwrite "Rofi"                   "rofi"                          "rofi -show")
+    (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
+    (overwrite "Accessibility"          "xfce4-accessibility-settings"  true)
+    (overwrite "Appearance"             "xfce-ui-settings"              "xfce4-appearance-settings")
+    (overwrite "Color Profiles"         "xfce4-color-settings"          true)
+    (overwrite "Default Applications"   "xfce4-mime-settings"           true)
+    (overwrite "Keyboard"               "xfce-keyboard-settings"        "xfce4-keyboard-settings")
+    (overwrite "Log Out"                "xfce4-session-logout"          true)
+    (overwrite "Mail Reader"            "xfce4-mail-reader"             "exo-open --launch MailReader %u")
+    (overwrite "Mouse and Touchpad"     "xfce-mouse-settings"           "xfce4-mouse-settings")
+    (overwrite "Session and Startup"    "xfce-session-settings"         "xfce4-session-settings")
+    (overwrite "Settings Editor"        "xfce4-settings-editor"         true)
+    (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
+  ];
+  mappedOverwrites = builtins.listToAttrs (map (obj: {
+    name = "applications/${obj.filename}.desktop";
+    text = ''
+      [Desktop Entry]
+      Name=${obj.name}
+      Exec=${if obj.exec == true then obj.filename else obj.exec}
+      NoDisplay=true
+    '';
+  }) overwriteLaunchers);
 in {
   # Create custom launchers here
   xdg.desktopEntries = {
@@ -68,37 +83,30 @@ in {
       icon = "discord";
     };
   } // mappedLaunchers;
-  # Testing, overrides
-  xdg.dataFile."applications/rofi.desktop".text = ''
-    [Desktop Entry]
-    NoDisplay=true
-  '';
-  xdg.dataFile."applications/rofi-theme-selector.desktop".text = ''
-    [Desktop Entry]
-    NoDisplay=true
-  '';
-  xdg.dataFile."applications/floorp.desktop".text = ''
-    [Desktop Entry]
-    Actions=new-private-window;new-window;profile-manager-window
-    Categories=Network;WebBrowser
-    Exec=floorp
-    GenericName=Web Browser
-    Icon=floorp
-    MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https
-    Name=Floorp
-    StartupNotify=true
-    StartupWMClass=floorp
-    Terminal=false
-    Type=Application
-    Version=1.4
+  xdg.dataFile = {
+    "applications/floorp.desktop".text = ''
+      [Desktop Entry]
+      Actions=new-private-window;new-window;profile-manager-window
+      Categories=Network;WebBrowser
+      Exec=floorp
+      GenericName=Web Browser
+      Icon=floorp
+      MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https
+      Name=Floorp
+      StartupNotify=true
+      StartupWMClass=floorp
+      Terminal=false
+      Type=Application
+      Version=1.4
 
-    [Desktop Action new-private-window]
-    Exec=floorp --private-window
-    Name=New Private Window
+      [Desktop Action new-private-window]
+      Exec=floorp --private-window
+      Name=New Private Window
 
-    [Desktop Action new-window]
-    Exec=floorp --new-window
-    Name=New Window
-  '';
+      [Desktop Action new-window]
+      Exec=floorp --new-window
+      Name=New Window
+    '';
+  } // mappedOverwrites;
 }
 

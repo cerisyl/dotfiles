@@ -38,5 +38,5 @@
       paths;
   configPaths = findConfig baseDir;
 in
-  builtins.map import configPaths
+  map import configPaths
 

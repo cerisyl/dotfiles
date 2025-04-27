@@ -6,7 +6,7 @@
     name != "." && name != ".." && lib.hasSuffix ".desktop" name
   ) (builtins.attrNames (builtins.readDir baseDir));
 
-  autostartFiles = builtins.listToAttrs (builtins.map (name: {
+  autostartFiles = builtins.listToAttrs (map (name: {
     name = "autostart/${name}";
     value = {
       text = builtins.readFile (baseDir + "/${name}");
