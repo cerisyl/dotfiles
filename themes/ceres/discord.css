@@ -105,14 +105,14 @@ body {
   /* accent colors */
   --accent-1:       var(--purple-1); /* links and other accent text */
   --accent-2:       var(--purple-2); /* small accent elements */
-  --accent-3:       var(--purple-3); /* accent buttons */
-  --accent-4:       var(--purple-4); /* accent buttons when hovered */
-  --accent-5:       var(--purple-5); /* accent buttons when clicked */
+  --accent-3:       var(--purple-1); /* accent buttons */
+  --accent-4:       var(--purple-3); /* accent buttons when hovered */
+  --accent-5:       var(--purple-4); /* accent buttons when clicked */
   --accent-new:     #ef4444; /* stuff that's normally red like mute/deafen buttons */
-  --mention:        #c084fca0; /* background of messages that mention you */
-  --mention-hover:  #c084fcd0; /* background of messages that mention you when hovered */
-  --reply:          #b8b8c7a0; /* background of messages that reply to you */
-  --reply-hover:    #b8b8c7d0; /* background of messages that reply to you when hovered */
+  --mention:        #c084fc30; /* background of messages that mention you */
+  --mention-hover:  #c084fc50; /* background of messages that mention you when hovered */
+  --reply:          #b8b8c730; /* background of messages that reply to you */
+  --reply-hover:    #b8b8c750; /* background of messages that reply to you when hovered */
 
   /* status indicator colors */
   --online:     #4ade80; /* change to #40a258 for default */
