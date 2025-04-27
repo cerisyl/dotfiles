@@ -89,7 +89,7 @@ body {
   --text-1: #f2f3f5; /* other normally white text */
   --text-2: #b8b8c7; /* headings and important text */
   --text-3: #b8b8c7; /* normal text */
-  --text-4: #515167; /* icon buttons and channels */
+  --text-4: #b8b8c7; /* icon buttons and channels */
   --text-5: #515167; /* muted channels/chats and timestamps */
 
   /* background and dark colors */
@@ -97,9 +97,9 @@ body {
   --bg-2:           oklch(0.28 0.0097 285.58); /* dark buttons */
   --bg-3:           oklch(0.25 0.0097 285.58); /* spacing, secondary elements */
   --bg-4:           #1a1a1f; /* main background color */
-  --hover:          oklch(54% 0 0 / 0.1); /* channels and buttons when hovered */
-  --active:         oklch(54% 0 0 / 0.2); /* channels and buttons when clicked or selected */
-  --active-2:       oklch(54% 0 0 / 0.3); /* extra state for transparent buttons */
+  --hover:          oklch(50% 0 0 / 0.1); /* channels and buttons when hovered */
+  --active:         oklch(50% 0 0 / 0.2); /* channels and buttons when clicked or selected */
+  --active-2:       oklch(50% 0 0 / 0.3); /* extra state for transparent buttons */
   --message-hover:  var(--hover); /* messages when hovered */
 
   /* accent colors */
@@ -109,17 +109,17 @@ body {
   --accent-4:       var(--purple-4); /* accent buttons when hovered */
   --accent-5:       var(--purple-5); /* accent buttons when clicked */
   --accent-new:     #ef4444; /* stuff that's normally red like mute/deafen buttons */
-  --mention:        linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
-  --mention-hover:  linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
-  --reply:          linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
-  --reply-hover:    linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+  --mention:        #c084fca0; /* background of messages that mention you */
+  --mention-hover:  #c084fcd0; /* background of messages that mention you when hovered */
+  --reply:          #b8b8c7a0; /* background of messages that reply to you */
+  --reply-hover:    #b8b8c7d0; /* background of messages that reply to you when hovered */
 
   /* status indicator colors */
   --online:     #4ade80; /* change to #40a258 for default */
   --dnd:        #ef4444; /* change to #d83a41 for default */
   --idle:       #fde047; /* change to #cc954c for default */
   --streaming:  #855ee8; /* change to ##9147ff for default */
-  --offline:      var(--text-4); /* change to #82838b for default offline color */
+  --offline:      var(--text-5); /* change to #82838b for default offline color */
 
   /* border colors */
   --border-light:   var(--hover); /* general light border color */
@@ -129,13 +129,32 @@ body {
 
   /* base colors */
   --red-1: #ef4444;
+  --red-2: oklch(0.60 0.2 25.33);
+  --red-3: oklch(0.56 0.2 25.33);
+  --red-4: oklch(0.52 0.18 25.33);
+  --red-5: oklch(0.48 0.16 25.33);
+
   --green-1: #4ade80;
+  --green-2: oklch(0.76 0.18 151.71);
+  --green-3: oklch(0.72 0.18 151.71);
+  --green-4: oklch(0.68 0.16 151.71);
+  --green-5: oklch(0.64 0.14 151.71);
+
   --blue-1: #855ee8;
+  --blue-2: oklch(0.55 0.19 292.25);
+  --blue-3: oklch(0.51 0.19 292.25);
+  --blue-4: oklch(0.47 0.17 292.25);
+  --blue-5: oklch(0.43 0.15 292.25);
+
   --yellow-1: #fde047;
+  --yellow-2: oklch(0.87 0.16 98.11);
+  --yellow-3: oklch(0.83 0.16 98.11);
+  --yellow-4: oklch(0.79 0.14 98.11);
+  --yellow-5: oklch(0.75 0.12 98.11);
 
   --purple-1: #c084fc;
   --purple-2: oklch(0.67 0.17 305.5);
-  --purple-3: oklch(0.62 0.15 305.5)
-  --purple-4: oklch(0.59 0.13 305.5)
-  --purple-5: oklch(0.56 0.11 305.5)
+  --purple-3: oklch(0.62 0.15 305.5);
+  --purple-4: oklch(0.59 0.13 305.5);
+  --purple-5: oklch(0.56 0.11 305.5);
 }
