@@ -55,6 +55,7 @@
     value.text = ''
       [Desktop Entry]
       Name=${obj.name}
+      Type=Application
       Exec=${if obj.exec == true then obj.filename else obj.exec}
       NoDisplay=true
     '';
