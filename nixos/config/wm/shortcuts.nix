@@ -30,7 +30,7 @@
     # Capture and OCR via partial-area screenshot (xfce4-screenshooter + tesseract)
     "<Primary><Shift>O" = "sh /home/ceri/.nix/extra/screenshot/ocr.sh";
     # Pick a color and return it into the clipboard as HEX
-    "<Primary><Shift>C" = "sh /home/ceri/.nix/extra/screenshot/ocr.sh";
+    "<Super><Alt>C" = "sh /home/ceri/.nix/extra/screenshot/ocr.sh";
   };
 in {
   xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;

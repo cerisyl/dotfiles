@@ -25,9 +25,8 @@
     };
     keybindings = {
       # Clipboard
-      "ctrl+c"            = "copy_to_clipboard";
-      "ctrl+v"            = "paste_from_clipboard";
-      "ctrl+shift+c"      = "send_text all \\x03";
+      "ctrl+shift+c"      = "copy_to_clipboard";
+      "ctrl+shift+v"      = "paste_from_clipboard";
       # Window selection
       "alt+up"            = "neighboring_window up";
       "alt+down"          = "neighboring_window down";
