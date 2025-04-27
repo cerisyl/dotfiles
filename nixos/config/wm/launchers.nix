@@ -69,8 +69,14 @@ in {
     };
   } // mappedLaunchers;
   # Testing, overrides
-  xdg.dataFile."applications/rofi.desktop".text = "";
-  xdg.dataFile."applications/rofi-theme-selector.desktop".text = "";
+  xdg.dataFile."applications/rofi.desktop".text = ''
+    [Desktop Entry]
+    NoDisplay=true
+  '';
+  xdg.dataFile."applications/rofi-theme-selector.desktop".text = ''
+    [Desktop Entry]
+    NoDisplay=true
+  '';
   xdg.dataFile."applications/floorp.desktop".text = ''
     [Desktop Entry]
     Actions=new-private-window;new-window;profile-manager-window
