@@ -40,9 +40,9 @@
           home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
           system.configurationRevision = self.rev or null;
           system.nixos.label =
-            if self.sourceInfo ? lastModifiedDate && self.sourceInfo ? shortRev
-            then "${self.sourceInfo.shortRev}"
-            else "${self.sourceInfo.shortRev}-dirty";
+            if (self.sourceInfo ? lastModifiedDate)
+            then "${builtins.substring 0 8 self.rev}"
+            else "${builtins.substring 0 8 self.rev}-dirty";
         }
       ];
     };
