@@ -1,11 +1,12 @@
-{ inputs, config, pkgMap, theme, getThemeFile, lib, ... }: {
-  imports = [inputs.nixcord.homeManagerModules.nixcord];
-
+{ config, pkgMap, theme, getThemeFile, lib, ... }: {
   programs.nixcord = {
     enable = true;
 
     discord.enable = false;
-    vesktop.enable = true;
+    vesktop = {
+      enable  = true;
+      package = pkgMap.vesktop;
+    };
 
     quickCss = builtins.readFile (getThemeFile "discord.css");
 
@@ -30,13 +31,7 @@
         userMessagesPronouns.enable = true;
         validUser.enable            = true;
         youtubeAdblock.enable       = true;
-        clientTheme = {
-          enable = true;
-          color = "0f0f0f";
-        };
       };
     };
   };
 }
-
-
