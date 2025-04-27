@@ -36,7 +36,14 @@
       modules = [
         ./nixos/hosts/${hostname}/configuration.nix
         inputs.home-manager.nixosModules.home-manager
-        { home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ]; }
+        {
+          home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
+          system.configurationRevision = self.rev or null;
+          system.nixos.label =
+            if self.sourceInfo ? lastModifiedDate && self.sourceInfo ? shortRev
+            then "${self.sourceInfo.shortRev}"
+            else "${self.sourceInfo.shortRev}-dirty";
+        }
       ];
     };
   in {

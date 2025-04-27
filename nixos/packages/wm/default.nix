@@ -4,7 +4,6 @@ in [
   (p "111" false  "gvfs")
   (p "111" false  "haskellPackages.greenclip")
   (p "111" false  "lightdm")
-  (p "111" false  "lightlocker")
   (p "111" false  "networkmanager")
   (p "111" false  "networkmanagerapplet")
   #(p "111" false  "nody-greeter") # may have to manual install

@@ -85,6 +85,7 @@ in {
     };
   } // mappedLaunchers;
   xdg.dataFile = {
+    # Floorp
     "applications/floorp.desktop".text = ''
       [Desktop Entry]
       Actions=new-private-window;new-window;profile-manager-window
@@ -107,6 +108,14 @@ in {
       [Desktop Action new-window]
       Exec=floorp --new-window
       Name=New Window
+    '';
+    # Vesktop
+    "applications/vesktop.desktop".text = ''
+      [Desktop Entry]
+      Name=Vesktop
+      Type=Application
+      Exec=vesktop
+      Icon=discord
     '';
   } // mappedOverwrites;
 }

@@ -6,4 +6,4 @@ $output = $(tesseract /tmp/save.png)
 echo $output | xclip -sel clip
 
 # Display a notification that the text was copied
-notify-send -i "/tmp/save.png" -t 4000 "Copied text" "$output"
+notify-send -i clipit-trayicon -t 5000 "Copied text" "$output"

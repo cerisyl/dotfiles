@@ -22,7 +22,7 @@ in [
   #(p "001" false  "unmined-gui") manual install
   (p "011" false  "wineWowPackages.stable")
   (p "011" false  "winetricks")
+  (p "011" false  "xcolor") # color picker
   (p "011" true   "yt-dlg")
   (p "011" true   "yt-dlp")
-  (p "011" false  "zenity") # color picker
 ]

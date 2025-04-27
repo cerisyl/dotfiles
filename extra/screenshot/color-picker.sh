@@ -29,4 +29,4 @@ hex_color="#$red_hex$green_hex$blue_hex"
 echo -n "$hex_color" | xclip -sel clip
 
 # Display a notification that the hex was copied
-notify-send -i "/tmp/save.png" -t 4000 "Copied text" "$hex_color"
+notify-send -i xfce4-color-settings -t 5000 "Copied text" "$hex_color"
