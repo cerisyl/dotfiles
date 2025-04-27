@@ -52,7 +52,7 @@
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";
-    text = ''
+    value.text = ''
       [Desktop Entry]
       Name=${obj.name}
       Exec=${if obj.exec == true then obj.filename else obj.exec}
