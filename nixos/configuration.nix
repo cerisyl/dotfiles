@@ -88,13 +88,16 @@ in {
   };
 
   # Import/set home configuration
-  home-manager.extraSpecialArgs = {
-    inherit pkgMap theme getThemeFile;
-    zmod = pkgsGit.zmod;
-  };
-  home-manager.users.ceri = {
-    imports = import ./config/default.nix {  role = "home"; };
-    home.stateVersion = "24.11";
+  home-manager = {
+    backupFileExtension = "old";
+    extraSpecialArgs = {
+      inherit pkgMap theme getThemeFile;
+      zmod = pkgsGit.zmod;
+    };
+    users.ceri = {
+      imports = import ./config/default.nix {  role = "home"; };
+      home.stateVersion = "24.11";
+    };
   };
 
   # Garbage collection
