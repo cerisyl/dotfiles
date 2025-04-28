@@ -10,7 +10,7 @@ xfce4-screenshooter -r -s $fname
 # Copy to clipboard
 # Display a notification that the image was copied
 if [ -f $fname ]; then
-  $output="$(tesseract $fname -)"
+  output="$(tesseract $fname -)"
   echo $output | xclip -sel clip
   notify-send -i clipit-trayicon -t 5000 "Copied text" "$output"
 fi
