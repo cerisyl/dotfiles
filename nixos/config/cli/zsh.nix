@@ -93,9 +93,11 @@
       wolfram = "wolframalpha";
 
       # Package management
-      rebuild = "sudo nixos-rebuild switch --flake ~/.nix/.";
+      rebuild = ''sudo nixos-rebuild switch --flake ~/.nix/. &> ~/.switch.log || 
+      (cat ~/.switch.log | grep --color error && false)'';
       rbl     = "rebuild";
-      upgrade = "cd ~/.nix && sudo nix flake upgrade && rebuild";
+      upgrade = ''cd ~/.nix && (sudo nix flake upgrade && git commit -am "Update flake" && rebuild) ||
+      (echo "Some error occured!)'';
       homelog = "journalctl -xe --unit home-manager-ceri";
 
       # Python
@@ -124,3 +126,4 @@
     };
   };
 }
+

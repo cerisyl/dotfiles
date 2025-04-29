@@ -19,6 +19,7 @@ if [[ ! -z "$1" ]]; then
   else
     download "%(title)s" "" "--write-description"
   fi
+  echo "Finished download! @ $XDG_MUSIC_DIR/queue/[$timestamp] $meta"
 else
   echo "Error: No URL specified"
   exit 1
