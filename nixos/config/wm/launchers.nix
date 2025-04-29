@@ -7,6 +7,7 @@
     "nixos-manual"
     "org.pulseaudio.pavucontrol"
     "panel-preferences"
+    "pasystray"
     "peazip"
     "thunar"
     "thunar-bulk-rename"
@@ -48,6 +49,7 @@
     (overwrite "Mouse and Touchpad"     "xfce-mouse-settings"           "xfce4-mouse-settings")
     (overwrite "Session and Startup"    "xfce-session-settings"         "xfce4-session-settings")
     (overwrite "Settings Editor"        "xfce4-settings-editor"         true)
+    (overwrite "Settings Manager"       "xfce4-settings-manager"        true)
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
