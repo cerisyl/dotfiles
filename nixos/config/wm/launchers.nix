@@ -14,6 +14,7 @@
     "thunar-settings"
     "syncthing-ui"
     "winetricks"
+    "XColor"
     "xfce4-about"
     "xfce-backdrop-settings"
     "xfce4-notifyd-config"
@@ -31,7 +32,7 @@
       noDisplay = true;
     };
   }) removeLaunchers);
-  
+
   # Used when removeLaunchers simply doesn't cut it.
   # These files go into .local/share/applications
   overwrite = name: filename: exec: { inherit name filename exec; };
@@ -92,7 +93,7 @@ in {
       [Desktop Entry]
       Actions=new-private-window;new-window;profile-manager-window
       Categories=Network;WebBrowser
-      Exec=floorp
+      Exec=floorp --enable-blink-features=MiddleClickAutoscroll
       GenericName=Web Browser
       Icon=floorp
       MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https
@@ -104,11 +105,11 @@ in {
       Version=1.4
 
       [Desktop Action new-private-window]
-      Exec=floorp --private-window
+      Exec=floorp --private-window --enable-blink-features=MiddleClickAutoscroll
       Name=New Private Window
 
       [Desktop Action new-window]
-      Exec=floorp --new-window
+      Exec=floorp --new-window --enable-blink-features=MiddleClickAutoscroll
       Name=New Window
     '';
     # Vesktop
@@ -116,7 +117,7 @@ in {
       [Desktop Entry]
       Name=Discord
       Type=Application
-      Exec=vesktop
+      Exec=vesktop --enable-blink-features=MiddleClickAutoscroll
       Icon=discord
     '';
   } // mappedOverwrites;

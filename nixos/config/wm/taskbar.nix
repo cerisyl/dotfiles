@@ -45,7 +45,7 @@
     "4"                     = "systray";
     "4/icon-size"           = 16;
     "4/square-icons"        = false;
-    "4/symbolic-icons"      = true;
+    "4/symbolic-icons"      = false;
     "4/single-row"          = true;
 
     # clock
