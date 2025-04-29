@@ -1,7 +1,7 @@
 # Templated file, do not touch!
-{ inputs, config, pkgs, pkgsUnstable, pkgsGit, ... }: let
+{ inputs, config, pkgs, pkgsUnstable, pkgsGit, lib, ... }: let
   myHostname = "luxe";
 in
 import ../../configuration.nix {
-  inherit inputs config pkgs pkgsUnstable pkgsGit myHostname;
+  inherit inputs config pkgs pkgsUnstable pkgsGit myHostname lib;
 }

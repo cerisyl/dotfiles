@@ -112,7 +112,7 @@ in {
     # Vesktop
     "applications/vesktop.desktop".text = ''
       [Desktop Entry]
-      Name=Vesktop
+      Name=Discord
       Type=Application
       Exec=vesktop
       Icon=discord
