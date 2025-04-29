@@ -1,0 +1,28 @@
+if [[ ! -z "$1" ]]; then
+  # Set up vars and funcs
+  url="$1"
+  timestamp=$(date '+%Y%m%d')
+  download () {
+    meta=$("/c/luxe/util/yt-dlp/yt-dlp.exe" $url -I 1 -q --no-warnings --skip-download --print "$1")
+    mkdir -p "~/music/queue/[$timestamp] $meta"
+    "/c/luxe/util/yt-dlp/yt-dlp.exe" $url -P "~/music/queue/[$timestamp] $meta" -q -x --audio-format mp3 --no-warnings --add-metadata --embed-thumbnail -o "$2%(title)s" $3;
+  }
+
+  # If from Bandcamp, Directly get the artist + album name.
+  if [[ $url == *"bandcamp"* ]]; then
+    download "%(album_artist)s - %(album)s" "%(track_number)s "
+  # If a YouTube playlist, get the playlist title.
+  elif [[ $url == *"playlist"* ]]; then
+    download "%(playlist_title)s" "%(playlist_index)s "
+  # If a YouTube video, get the video title
+  # + download the description for reference.
+  else
+    download "%(title)s" "" "--write-description"
+  fi
+
+  # Open tauon
+  tauon &
+else
+  echo "Error: No URL specified"
+  exit 1
+fi

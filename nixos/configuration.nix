@@ -1,4 +1,4 @@
-{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, ... }: let
+{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, lib, ... }: let
   # Utility functions to translate 
   # TODO: Move this in its own file.
   getAttrByList = set: pathList:
@@ -89,15 +89,19 @@ in {
 
   # Import/set home configuration
   home-manager = {
-    backupFileExtension = "old";
-    extraSpecialArgs = {
-      inherit pkgMap theme getThemeFile;
-      zmod = pkgsGit.zmod;
-    };
+    # Users
     users.ceri = {
       imports = import ./config/default.nix {  role = "home"; };
       home.stateVersion = "24.11";
     };
+    # Packages, etc.
+    extraSpecialArgs = {
+      inherit pkgMap theme getThemeFile;
+      zmod = pkgsGit.zmod;
+    };
+    # Handle backup files
+    backupFileExtension = "63a4305d";
+    home.activation.removeBackups = lib.hm.dag.entryAfter [ "writeBoundary" ] ''fd ".*\.63a4305d$" ~ -X rm'';
   };
 
   # Garbage collection
