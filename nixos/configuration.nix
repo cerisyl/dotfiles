@@ -101,7 +101,6 @@ in {
     };
     # Handle backup files
     backupFileExtension = "63a4305d";
-    home.activation.removeBackups = lib.hm.dag.entryAfter [ "writeBoundary" ] ''fd ".*\.63a4305d$" ~ -X rm'';
   };
 
   # Garbage collection

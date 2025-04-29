@@ -25,6 +25,9 @@ in {
     ${unzipCommands}
   '';
 
+  # Remove backup files on activation
+  home.activation.removeBackups = lib.hm.dag.entryAfter [ "writeBoundary" ] ''${pkgMap.fd} ".*\.63a4305d$" ~ -X rm'';
+
   xfconf.settings = {
     # Session
     xfce-session = {
