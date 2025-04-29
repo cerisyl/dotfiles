@@ -1,7 +1,12 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
-  dconf.settings = {
-    "/org/gnome/desktop/interface/gtk-theme"                = "${theme}-main";
-    "/org/gnome/desktop/interface/icon-theme"               = "${theme}-icons";
-    "/org/gnome/desktop/interface/gtk-enable-primary-paste" = false;
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        gtk-theme                 = "${theme}-main";
+        icon-theme                = "${theme}-icons";
+        gtk-enable-primary-paste  = false;
+      };
+    };
   };
 }
