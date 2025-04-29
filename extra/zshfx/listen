@@ -3,9 +3,9 @@ if [[ ! -z "$1" ]]; then
   url="$1"
   timestamp=$(date '+%Y%m%d')
   download () {
-    meta=$("/c/luxe/util/yt-dlp/yt-dlp.exe" $url -I 1 -q --no-warnings --skip-download --print "$1")
+    meta=$(yt-dlp $url -I 1 -q --no-warnings --skip-download --print "$1")
     mkdir -p "~/music/queue/[$timestamp] $meta"
-    "/c/luxe/util/yt-dlp/yt-dlp.exe" $url -P "~/music/queue/[$timestamp] $meta" -q -x --audio-format mp3 --no-warnings --add-metadata --embed-thumbnail -o "$2%(title)s" $3;
+    yt-dlp $url -P "~/music/queue/[$timestamp] $meta" -q -x --audio-format mp3 --no-warnings --add-metadata --embed-thumbnail -o "$2%(title)s" $3;
   }
 
   # If from Bandcamp, Directly get the artist + album name.
