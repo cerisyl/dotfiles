@@ -1,4 +1,4 @@
-{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, lib, ... }: let
+{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, ... }: let
   # Utility functions to translate 
   # TODO: Move this in its own file.
   getAttrByList = set: pathList:
