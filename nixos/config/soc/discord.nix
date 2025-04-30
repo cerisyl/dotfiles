@@ -35,4 +35,4 @@ if pkgMap ? "vesktop" then {
       };
     };
   };
-}
+} else {}

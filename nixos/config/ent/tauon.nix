@@ -176,4 +176,4 @@ if pkgMap ? "tauon" then {
       chart-font = "Monospace 10"     # Format is fontname + size. Default is Monospace 10
     EOF
   '';
-}
+} else {}

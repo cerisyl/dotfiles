@@ -4,4 +4,4 @@ if pkgMap ? "obs-studio" then {
     enable      = true;
     package     = pkgMap.obs-studio;
   };
-}
+} else {}

@@ -64,14 +64,10 @@
     then { name = entry.pkg; value =  getAttrByStr pkgsUnstable entry.pkg; }
     else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
   ) enabledPackages);
-
-  # Define timezone, to pass to our config
-  timezone = "America/Chicago";
-
 in {
   # Main params
   networking.hostName = myHostname;
-  time.timeZone       = timezone;
+  time.timeZone       = "America/Chicago";
   i18n.defaultLocale  = "en_US.UTF-8";
 
   # Networking
@@ -100,8 +96,8 @@ in {
     # Packages, etc.
     extraSpecialArgs = {
       inherit pkgMap theme getThemeFile;
-      homedir  = home.homeDirectory;
-      timezone = timezone;
+      homedir  = "/home/ceri";
+      timezone = config.time.timeZone;
       zmod = pkgsGit.zmod;
     };
     # Handle backup files

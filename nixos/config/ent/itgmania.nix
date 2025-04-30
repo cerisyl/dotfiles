@@ -403,4 +403,4 @@ in if pkgMap ? "itgmania" then {
     mkdir -p "${homedir}/.itgmania/NoteSkins/dance"
     ${pkgMap.unzip}/bin/unzip -qq -o "${homedir}/.nix/extra/itg/noteskins.zip" -d "${homedir}/.itgmania/NoteSkins/dance"
   '';
-}
+} else {}

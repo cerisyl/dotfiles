@@ -20,4 +20,4 @@ if pkgMap ? "discordchatexporter-desktop" then {
       "LastAssetsDirPath": null
     }
   '';
-}
+} else {}

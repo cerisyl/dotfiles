@@ -5,4 +5,4 @@ if pkgMap ? "steam" then {
     remotePlay.openFirewall       = true;
     dedicatedServer.openFirewall  = true;
   };
-}
+} else {}
