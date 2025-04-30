@@ -2,7 +2,7 @@
 # You should never need to touch this file,
 # except for changing the excludedFiles list.
 
-{ role }: let
+{ role, pkgMap }: let
   # Exlude specific .nix configurations
   excludedFiles = [
     #"file.nix"
@@ -38,5 +38,4 @@
       paths;
   configPaths = findConfig baseDir;
 in
-  map import configPaths
-
+  map import configPaths { inherit pkgMap; }

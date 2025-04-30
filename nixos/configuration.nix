@@ -61,7 +61,7 @@
   # Also spawn an object to use in loading proper packages in config
   pkgMap = builtins.listToAttrs (map (entry:
     if entry.isUnstable == true
-    then { name = entry.pkg; value =  getAttrByStr pkgsUnstable entry.pkg; }
+    then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
     else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
   ) enabledPackages);
 in {
@@ -76,7 +76,7 @@ in {
   # Import hardware config
   imports = [
     ./hosts/${myHostname}/hardware-configuration.nix
-  ] ++ import ./config { role = "system"; };
+  ] ++ import ./config { role = "system"; inherit pkgMap; };
 
   # Users
   programs.zsh.enable = true;
@@ -91,11 +91,11 @@ in {
     # Users
     users.ceri = {
       home.stateVersion  = "24.11";
-      imports = import ./config/default.nix { role = "home"; };
+      imports = import ./config/default.nix { role = "home"; inherit pkgMap; };
     };
     # Packages, etc.
     extraSpecialArgs = {
-      inherit pkgMap theme getThemeFile;
+      inherit theme getThemeFile;
       homedir  = "/home/ceri";
       timezone = config.time.timeZone;
       zmod = pkgsGit.zmod;

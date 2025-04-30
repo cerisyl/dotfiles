@@ -1,4 +1,4 @@
-{ config, pkgs, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, lib, ... }: let
   removeLaunchers = [
     "btop"
     "cups"

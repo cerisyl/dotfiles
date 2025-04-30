@@ -1,13 +1,13 @@
-{ config, pkgs, theme, getThemeFile, homedir, lib, ... }: {
+{ config, pkgMap, pkgs, lib, ... }: {
   services.deluge = {
     enable        = true;
     declarative   = true;
-    package       = pkgs.deluge-gtk;
+    package       = pkgMap.deluge-gtk;
     openFirewall  = true;
     authFile      = pkgs.writeText "" ''localclient:notsecure:10'';
     config = {
       "dht"                       = false;
-      "download_location"         = "${homedir}/deluge";
+      "download_location"         = "/home/ceri/deluge";
       "listen_ports"              = [ 6881 6891 ];
       "listen_random_port"        = 62503;
       "max_active_downloading"    = 100;

@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }:
+{ config, pkgMap, lib, ... }:
 if pkgMap ? "steam" then {
   programs.steam = {
     enable = true;
