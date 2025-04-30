@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: {
   programs.zsh = {
     enable = true;
     package = pkgMap.zsh;
@@ -17,7 +17,7 @@
     initExtraBeforeCompInit = ''
       # Set up / source zinit
       # TODO: Remove the need for surpressing source output
-      export ZINIT_HOME="${config.home.homeDirectory}/.local/share/zinit/"
+      export ZINIT_HOME="${homedir}/.local/share/zinit/"
       if [ ! -d "$ZINIT_HOME" ]; then
         mkdir -p "$(dirname $ZINIT_HOME)"
       fi

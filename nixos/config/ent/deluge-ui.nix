@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: {
   xdg.configFile."deluge/gtk3ui.conf".text = ''
     {
       "file": 1,
@@ -9,7 +9,7 @@
       "autoconnect_host_id": null,
       "autostart_localhost": false,
       "check_new_releases": true,
-      "choose_directory_dialog_path": "/home/ceri/downloads",
+      "choose_directory_dialog_path": "${homedir}/downloads",
       "close_to_tray": true,
       "connection_limit_list": [
         50,

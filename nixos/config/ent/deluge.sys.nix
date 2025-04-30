@@ -1,4 +1,4 @@
-{ config, pkgs, theme, getThemeFile, lib, ... }: {
+{ config, pkgs, theme, getThemeFile, homedir, lib, ... }: {
   services.deluge = {
     enable        = true;
     declarative   = true;
@@ -7,7 +7,7 @@
     authFile      = pkgs.writeText "" ''localclient:notsecure:10'';
     config = {
       "dht"                       = false;
-      "download_location"         = "/home/ceri/deluge";
+      "download_location"         = "${homedir}/deluge";
       "listen_ports"              = [ 6881 6891 ];
       "listen_random_port"        = 62503;
       "max_active_downloading"    = 100;

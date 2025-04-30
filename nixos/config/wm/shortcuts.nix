@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: let
   # TODO: Put this in a util .nix file or something
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
@@ -20,17 +20,17 @@
     # Show clipboard history (rofi-greenclip)
     "<Super>c" = "rofi -modi \"clipboard:greenclip print\" -show clipboard -no-show-icons";
     # Show desktop toggle
-    "<Super>d" = "sh /home/ceri/.nix/extra/panel/showdesktop.sh";
+    "<Super>d" = "sh ${homedir}/.nix/extra/panel/showdesktop.sh";
     # Show file explorer
     "<Super>f" = "thunar";
     # Capture full-screen screenshot (xfce4-screenshooter)
-    "<Primary><Shift>numbersign" = "sh /home/ceri/.nix/extra/screenshot/capture-full.sh";
+    "<Primary><Shift>numbersign" = "sh ${homedir}/.nix/extra/screenshot/capture-full.sh";
     # Capture partial-area screenshot (xfce4-screenshooter)
-    "<Primary><Shift>dollar" = "sh /home/ceri/.nix/extra/screenshot/capture-partial.sh";
+    "<Primary><Shift>dollar" = "sh ${homedir}/.nix/extra/screenshot/capture-partial.sh";
     # Capture and OCR via partial-area screenshot (xfce4-screenshooter + tesseract)
-    "<Primary><Shift>O" = "sh /home/ceri/.nix/extra/screenshot/ocr.sh";
+    "<Primary><Shift>O" = "sh ${homedir}/.nix/extra/screenshot/ocr.sh";
     # Pick a color and return it into the clipboard as HEX
-    "<Super><Alt>C" = "sh /home/ceri/.nix/extra/screenshot/color-picker.sh";
+    "<Super><Alt>C" = "sh ${homedir}/.nix/extra/screenshot/color-picker.sh";
   };
 in {
   xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;

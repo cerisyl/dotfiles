@@ -1,6 +1,6 @@
 # Shoutouts mimvoid@github
 # TODO: This is theme-contingent. Need to somehow move this into themes folder
-{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, timezone, homedir, lib, ... }: let
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
     lib.attrsets.mapAttrs' (name: value:
@@ -22,7 +22,7 @@
   plugins = prependAttrs "plugins/plugin-" {
     # rofi / launcher
     "1"                     = "launcher";
-    "1/items"               = [ "${config.home.homeDirectory}/.nix/extra/panel/rofi.desktop" ]; # TODO: Change this to a dynamic import based on theme
+    "1/items"               = [ "${homedir}/.nix/extra/panel/rofi.desktop" ]; # TODO: Change this to a dynamic import based on theme
     "1/disable-tooltips"    = true;
     "1/show-label"          = false;
 
@@ -45,8 +45,15 @@
     "4"                     = "systray";
     "4/icon-size"           = 16;
     "4/square-icons"        = false;
-    "4/symbolic-icons"      = false;
     "4/single-row"          = true;
+    "4/menu-is-primary"     = false;
+    "4/symbolic-icons"      = false;
+    # order of icons (legacy, hidden)
+    # chrome_status_icon_1 -> discord/vesktop
+    "4/hidden-legacy-items" = [ "deluge" ];
+    "4/known-legacy-items"  = [ "deluge" "networkmanager applet" ];
+    "4/hidden-items"        = [ "chrome_status_icon_1" "vlc" "obs" ];
+    "4/known-items"         = [ "pasystray" "KeePassXC" "chrome_status_icon_1" "vlc" "obs" ];
 
     # clock
     "5"                     = "clock";
@@ -54,12 +61,12 @@
     "5/digital-time-font"   = "JetBrainsMono Nerd Font 9";
     "5/digital-layout"      = 3;
     "5/digital-time-format" = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
-    "5/timezone"            = "America/Chicago"; #TODO: Pass down time.timeZone somehow
+    "5/timezone"            = timezone;
     "5/tooltip-format"      = "%A, %d %B %Y";
 
     # genmon (show desktop)
     "6"                     = "genmon";
-    "6/command"             = "sh ${config.home.homeDirectory}/.nix/extra/panel/showdesktop-wrapper.sh";
+    "6/command"             = "sh ${homedir}/.nix/extra/panel/showdesktop-wrapper.sh";
     "6/use-label"           = true;
     "6/text"                = "";
     "6/update-period"       = 86400000;

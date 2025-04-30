@@ -25,7 +25,7 @@
     let path = ../themes + "/${theme}/${file}";
     in
       if (builtins.pathExists path) then path
-      else ../themes + "/ceres/${file}"
+      else ../themes + "/${themeFallback}/${file}"
   );
 
   # Package management
@@ -91,12 +91,14 @@ in {
   home-manager = {
     # Users
     users.ceri = {
-      imports = import ./config/default.nix {  role = "home"; };
-      home.stateVersion = "24.11";
+      home.stateVersion  = "24.11";
+      imports = import ./config/default.nix { role = "home"; };
     };
     # Packages, etc.
     extraSpecialArgs = {
       inherit pkgMap theme getThemeFile;
+      homedir  = home.homeDirectory;
+      timezone = time.timeZone;
       zmod = pkgsGit.zmod;
     };
     # Handle backup files

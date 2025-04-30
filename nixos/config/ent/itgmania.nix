@@ -1,7 +1,7 @@
-{ config, pkgMap, theme, getThemeFile, zmod, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, homedir, zmod, lib, ... }: let
   # Get commit shortstring
   zmodRev = "zmod_${builtins.substring 0 8 zmod.rev}";
-in {
+in if pkgMap ? "itgmania" then {
   home.file = {
     # Load latest zmod
     ".itgmania/Themes/${zmodRev}" = {
@@ -400,7 +400,7 @@ in {
   };
   # Load our noteskins
   home.activation.loadNoteskins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "/home/ceri/.itgmania/NoteSkins/dance"
-    ${pkgMap.unzip}/bin/unzip -qq -o "/home/ceri/.nix/extra/itg/noteskins.zip" -d "/home/ceri/.itgmania/NoteSkins/dance"
+    mkdir -p "${homedir}/.itgmania/NoteSkins/dance"
+    ${pkgMap.unzip}/bin/unzip -qq -o "${homedir}/.nix/extra/itg/noteskins.zip" -d "${homedir}/.itgmania/NoteSkins/dance"
   '';
 }

@@ -1,4 +1,5 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }:
+if pkgMap ? "vesktop" then {
   programs.nixcord = {
     enable = true;
 

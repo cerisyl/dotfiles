@@ -1,4 +1,5 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }:
+if pkgMap ? "discordchatexporter-desktop" then {
   xdg.configFile."discordchatexporter/Settings.dat".text = ''
     {
       "IsUkraineSupportMessageEnabled": false,

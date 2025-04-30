@@ -1,4 +1,5 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, lib, ... }:
+if pkgMap ? "steam" then {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall       = true;

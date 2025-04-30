@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: {
   # Default settings
   xfconf.settings.thunar = {
     last-separator-position           = 160;
@@ -23,16 +23,16 @@
   xdg.configFile = {
     # Bookmarks
     "gtk-3.0/bookmarks".text = ''
-      file://${config.home.homeDirectory}/captures
-      file://${config.home.homeDirectory}/code
-      file://${config.home.homeDirectory}/docs
-      file://${config.home.homeDirectory}/downloads
-      file://${config.home.homeDirectory}/games
-      file://${config.home.homeDirectory}/music
-      file://${config.home.homeDirectory}/pictures
-      file://${config.home.homeDirectory}/sync
-      file://${config.home.homeDirectory}/util
-      file://${config.home.homeDirectory}/videos
+      file://${homedir}/captures
+      file://${homedir}/code
+      file://${homedir}/docs
+      file://${homedir}/downloads
+      file://${homedir}/games
+      file://${homedir}/music
+      file://${homedir}/pictures
+      file://${homedir}/sync
+      file://${homedir}/util
+      file://${homedir}/videos
     '';
 
     # Folder shortcuts

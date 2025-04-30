@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: let
   # Define theme zips
   themeZips = {
     main    = (getThemeFile "main.zip");
@@ -9,9 +9,9 @@
   # Where to unzip each type
   getTargetPath = name:
     if lib.hasPrefix "main" name then
-      "${config.home.homeDirectory}/.local/share/themes/${theme}-${name}"
+      "${homedir}/.local/share/themes/${theme}-${name}"
     else
-      "${config.home.homeDirectory}/.icons/${theme}-${name}";
+      "${homedir}/.icons/${theme}-${name}";
 
   # Activation commands for unzipping each theme
   unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
@@ -45,7 +45,7 @@ in {
     # Background + desktop
     xfce4-desktop = {
       # Background
-      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${config.home.homeDirectory}/.nix/themes/${theme}/img/bg.png";
+      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
       # Desktop icons
       "desktop-icons/show-tooltips"               = false;
       "desktop-icons/file-icons/show-removable"   = false;
@@ -102,22 +102,22 @@ in {
     userDirs = {
       enable                = true;
       createDirectories     = true;
-      desktop               = "${config.home.homeDirectory}/desktop";
-      download              = "${config.home.homeDirectory}/downloads";
-      documents             = "${config.home.homeDirectory}/docs";
-      music                 = "${config.home.homeDirectory}/music";
-      pictures              = "${config.home.homeDirectory}/pictures";
-      videos                = "${config.home.homeDirectory}/videos";
+      desktop               = "${homedir}/desktop";
+      download              = "${homedir}/downloads";
+      documents             = "${homedir}/docs";
+      music                 = "${homedir}/music";
+      pictures              = "${homedir}/pictures";
+      videos                = "${homedir}/videos";
       publicShare           = null;
       templates             = null;
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/captures";
-        XDG_CODE_DIR        = "${config.home.homeDirectory}/code";
-        XDG_TORRENTS_DIR    = "${config.home.homeDirectory}/deluge";
-        XDG_GAMES_DIR       = "${config.home.homeDirectory}/games";
-        XDG_SHARE_DIR       = "${config.home.homeDirectory}/sync";
-        XDG_TOOLS_DIR       = "${config.home.homeDirectory}/util";
-        XDG_VM_DIR          = "${config.home.homeDirectory}/vm";
+        XDG_SCREENSHOTS_DIR = "${homedir}/captures";
+        XDG_CODE_DIR        = "${homedir}/code";
+        XDG_TORRENTS_DIR    = "${homedir}/deluge";
+        XDG_GAMES_DIR       = "${homedir}/games";
+        XDG_SHARE_DIR       = "${homedir}/sync";
+        XDG_TOOLS_DIR       = "${homedir}/util";
+        XDG_VM_DIR          = "${homedir}/vm";
       };
     };
   };

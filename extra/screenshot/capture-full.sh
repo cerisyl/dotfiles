@@ -2,10 +2,10 @@
 # Capture a full-size screenshot of all screens.
 
 # Check if the target directory exists
-mkdir -p "/home/ceri/captures/$(date +%Y-%m)"
+mkdir -p "$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)"
 
 # Take the screeshot and save it to the directory
-fname="/home/ceri/captures/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png"
+fname="$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png"
 xfce4-screenshooter -f -c -s "$fname"
 
 # Copy to clipboard
