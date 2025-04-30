@@ -76,7 +76,7 @@ in {
   # Import hardware config
   imports = [
     ./hosts/${myHostname}/hardware-configuration.nix
-  ] ++ import ./config { role = "system"; inherit pkgMap; };
+  ] ++ import ./config { role = "system"; };
 
   # Users
   programs.zsh.enable = true;
@@ -91,11 +91,11 @@ in {
     # Users
     users.ceri = {
       home.stateVersion  = "24.11";
-      imports = import ./config/default.nix { role = "home"; inherit pkgMap; };
+      imports = import ./config/default.nix { role = "home"; };
     };
     # Packages, etc.
     extraSpecialArgs = {
-      inherit theme getThemeFile;
+      inherit pkgMap theme getThemeFile;
       homedir  = "/home/ceri";
       timezone = config.time.timeZone;
       zmod = pkgsGit.zmod;

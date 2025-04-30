@@ -1,8 +1,8 @@
-{ config, pkgMap, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   services.deluge = {
     enable        = true;
     declarative   = true;
-    package       = pkgMap.deluge-gtk;
+    package       = pkgs.deluge-gtk;
     openFirewall  = true;
     authFile      = pkgs.writeText "" ''localclient:notsecure:10'';
     config = {
