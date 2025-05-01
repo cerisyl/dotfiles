@@ -38,8 +38,6 @@
   overwrite = name: filename: exec: { inherit name filename exec; };
   overwriteLaunchers = [
     #overwrite Name,                    .desktop file,                  Exec (true if == .desktop file)
-    (overwrite "Rofi"                   "rofi"                          "rofi -show")
-    (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
     (overwrite "Accessibility"          "xfce4-accessibility-settings"  true)
     (overwrite "Appearance"             "xfce-ui-settings"              "xfce4-appearance-settings")
     (overwrite "Color Profiles"         "xfce4-color-settings"          true)
@@ -52,6 +50,9 @@
     (overwrite "Settings Editor"        "xfce4-settings-editor"         true)
     (overwrite "Settings Manager"       "xfce4-settings-manager"        true)
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
+    (overwrite "Rofi"                   "rofi"                          "rofi -show")
+    (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
+    (overwrite "Peazip"                 "peazip"                        true)
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";
