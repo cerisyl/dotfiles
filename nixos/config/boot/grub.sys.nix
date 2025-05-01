@@ -5,12 +5,13 @@
     initrd.verbose = false;
     loader = {
       efi.canTouchEfiVariables = true;
+      timeout = 0;
       grub = {
         enable          = true;
         devices         = [ "nodev" ];
         efiSupport      = true;
         useOSProber     = true;
-        #timeoutStyle    = "hidden";
+        timeoutStyle    = "hidden";
         backgroundColor = "#1a1a1f";
         splashImage     = null;
         theme           = "/home/ceri/.nix/themes/ceres/grub";
