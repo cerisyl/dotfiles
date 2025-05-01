@@ -2,6 +2,6 @@
   boot.plymouth = {
     enable = true;
     theme  = "spinner";
-    logo   = "/home/ceri/.nix/themes/ceres/img/boot.png";
+    logo   = ../../../themes/ceres/img/boot.png;
   };
 }
