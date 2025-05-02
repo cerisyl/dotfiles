@@ -5,8 +5,8 @@
     main    = (getThemeFile "main.zip");
     icons   = (getThemeFile "icons.zip");
     cursors = (getThemeFile "cursors.zip");
-  } // (if builtins.pathExists ../../../themes + "/${theme}/windows.zip"
-  then { window = (getThemeFile "cursors.zip"); } else {});
+  } // lib.optionalAttrs builtins.pathExists ../../../themes + "/${theme}/windows.zip"
+  { window = (getThemeFile "cursors.zip"); };
 
   # Where to unzip each type
   getTargetPath = name:
