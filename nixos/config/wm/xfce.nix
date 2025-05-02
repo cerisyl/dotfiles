@@ -26,7 +26,7 @@
     ceres = {
       font              = "Barlow Regular 10";
       fontTitle         = "Barlow Semi-Bold 10";
-      desktopFontSize   = 9;
+      desktopFontSize   = 10;
       cursorSize        = 24;
       dpi               = 96;
       antialias         = 1;
