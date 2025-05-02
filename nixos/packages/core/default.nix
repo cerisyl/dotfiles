@@ -2,7 +2,7 @@
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
   #(p "011" false  "betterbird-bin") #thunderbird
-  (p "111" true   "engrampa")
+  (p "111" true   "mate.engrampa")
   (p "111" true   "floorp")
   (p "111" true   "keepassxc")
   (p "111" true   "kitty")
