@@ -1,12 +1,14 @@
 { config, pkgMap, theme, getThemeFile, homedir, lib, ... }: let
+  # Define window.zip to themeZips, if it exists
+  windowZip = if builtins.pathExists ../../../themes + "/${theme}/windows.zip"
+  then { window = (getThemeFile "window.zip"); } else {};
+
   # Define theme zips
-  # Add window.zip to themeZips, if it exists
   themeZips = {
     main    = (getThemeFile "main.zip");
     icons   = (getThemeFile "icons.zip");
     cursors = (getThemeFile "cursors.zip");
-  } // lib.optionalAttrs builtins.pathExists ../../../themes + "/${theme}/windows.zip"
-  { window = (getThemeFile "cursors.zip"); };
+  } // windowZip;
 
   # Where to unzip each type
   getTargetPath = name:
