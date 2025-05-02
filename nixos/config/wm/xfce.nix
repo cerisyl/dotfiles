@@ -34,8 +34,8 @@
       windowTheme       = "${theme}-main";
     };
     aero = {
-      font              = "Segoe 10";
-      fontTitle         = "Segoe 9";
+      font              = "Segoe UI Regular 10";
+      fontTitle         = "Segoe UI Regular 9";
       desktopFontSize   = 9;
       cursorSize        = 24;
       dpi               = 98;

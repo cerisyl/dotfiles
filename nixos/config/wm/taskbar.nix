@@ -27,7 +27,7 @@
       bgImage           = "file://${homedir}/.nix/themes/aero/img/taskbar.png";
       showLabels        = false;
       flatButtons       = true;
-      font              = "Segoe 10";
+      font              = "Segoe UI Regular 10";
       symbolicIcons     = true;
     };
   };

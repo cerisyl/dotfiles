@@ -1,6 +1,6 @@
 #launcher-arrow {
   padding: 0 12px;
-  background-color: transparent;
+  background-color: #bfccd900;
 }
 
 #launcher-arrow:hover {
@@ -8,7 +8,7 @@
 }
 
 #sn-button {
-  background-color: transparent;
+  background-color: #bfccd900;
   padding: 0 3px;
 }
 
@@ -18,7 +18,7 @@
 
 #clock-button {
   padding: 0 8px;
-  background-color: transparent;
+  background-color: #bfccd900;
   margin-right: 6px;
 }
 
@@ -28,7 +28,7 @@
 
 #genmon-6 .genmon_imagebutton {
   border-left: 1px solid #8fa8cd;
-  background-color: transparent;
+  background-color: #bfccd900;
 }
 
 #genmon-6 .genmon_imagebutton:hover {
