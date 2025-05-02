@@ -119,7 +119,8 @@ in {
     pkgs.inter
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-color-emoji
-    pkgs.barlow
+    #pkgs.barlow - Gives issues with QT apps
+    pkgs.roboto
     pkgsUnstable.nerd-fonts.jetbrains-mono
   ];
 

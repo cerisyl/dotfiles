@@ -6,7 +6,6 @@ Terminal=false
 Exec=rofi -show
 Name=Rofi
 Icon=distributor-logo-windows
-X-XFCE-Source=file:///usr/share/applications/rofi.desktop
 Comment=
 Path=
 StartupNotify=false

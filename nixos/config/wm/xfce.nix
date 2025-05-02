@@ -1,14 +1,16 @@
 { config, pkgMap, theme, getThemeFile, homedir, lib, ... }: let
   # Define theme zips
+  # Add window.zip to themeZips, if it exists
   themeZips = {
     main    = (getThemeFile "main.zip");
     icons   = (getThemeFile "icons.zip");
     cursors = (getThemeFile "cursors.zip");
-  };
+  } // (if builtins.pathExists ../../../themes + "/${theme}/windows.zip"
+  then { window = (getThemeFile "cursors.zip"); } else {});
 
   # Where to unzip each type
   getTargetPath = name:
-    if lib.hasPrefix "main" name then
+    if (lib.hasPrefix "main" name) || (lib.hasPrefix "window" name) then
       "${homedir}/.local/share/themes/${theme}-${name}"
     else
       "${homedir}/.icons/${theme}-${name}";
@@ -19,6 +21,31 @@
     rm -rf ${getTargetPath name}
     ${pkgMap.unzip}/bin/unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
   '') themeZips);
+
+  # Theme-specific properties
+  themeProps = {
+    ceres = {
+      font              = "Barlow Regular 10";
+      fontTitle         = "Barlow Semi-Bold 10";
+      desktopFontSize   = 9;
+      cursorSize        = 24;
+      dpi               = 96;
+      syncThemes        = true;
+      windowTitleAlign  = "left";
+      windowTheme       = "${theme}-main";
+    };
+    aero = {
+      font              = "Segoe 10";
+      fontTitle         = "Segoe 9";
+      desktopFontSize   = 9;
+      cursorSize        = 24;
+      dpi               = 98;
+      syncThemes        = false;
+      windowTitleAlign  = "left";
+      windowTheme       = "${theme}-window";
+    };
+  };
+
 in {
   # Unpack zips on activation
   home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -27,7 +54,7 @@ in {
 
   # Remove backup files on activation
   home.activation.removeBackups = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgMap.fd}/bin/fd ".*\.63a4305d$" ~ -X rm
+    ${pkgMap.fd}/bin/fd -H ".*\.63a4305d$" ~ -X rm
   '';
 
   xfconf.settings = {
@@ -54,7 +81,7 @@ in {
       "desktop-icons/file-icons/show-home"        = true;
       "desktop-icons/show-hidden-files"           = false;
       "desktop-icons/single-click"                = true;
-      "desktop-icons/font-size"                   = 9;
+      "desktop-icons/font-size"                   = themeProps."${theme}".desktopFontSize;
       "desktop-icons/icon-size"                   = 48;
     };
 
@@ -64,9 +91,9 @@ in {
       "general/placement_mode"    = "mouse";
       "general/scroll_workspaces" = false;
       "general/snap_width"        = 28;
-      "general/theme"             = "${theme}-main";
-      "general/title_alignment"   = "left";
-      "general/title_font"        = "Barlow Semi-Bold 10";
+      "general/theme"             = themeProps."${theme}".windowTheme; # Window theme
+      "general/title_alignment"   = themeProps."${theme}".windowTitleAlign;
+      "general/title_font"        = themeProps."${theme}".fontTitle;
       "general/toggle_workspaces" = false;
       "general/workspace_count"   = 1;
       "general/wrap_windows"      = false;
@@ -75,7 +102,7 @@ in {
 
     xsettings = {
       # Net
-      "Net/ThemeName"                 = "${theme}-main";
+      "Net/ThemeName"                 = "${theme}-main"; # General theme
       "Net/IconThemeName"             = "${theme}-icons";
       "Net/EnableEventSounds"         = true;
       "Net/EnableInputFeedbackSounds" = true;
@@ -84,15 +111,20 @@ in {
       "Gtk/ColorPalette"        = "";
       "Gtk/CursorThemeName"     = "${theme}-cursors";
       "Gtk/CursorThemeSize"     = 24;
-      "Gtk/FontName"            = "Barlow 10";
+      "Gtk/FontName"            = themeProps."${theme}".font;
       "Gtk/MenuBarAccel"        = "";
       "Gtk/MonospaceFontName"   = "JetBrainsMono Nerd Font 10";
       "Gtk/TitlebarMiddleClick" = "";
       "Gtk/ToolbarIconSize"     = "";
       "Gtk/ToolbarStyle"        = "";
       # Xfce
-      "Xfce/LastCustomDPI"  = 96;
-      "Xfce/SyncThemes"     = true;
+      "Xfce/LastCustomDPI"      = themeProps."${theme}".dpi;
+      "Xfce/SyncThemes"         = themeProps."${theme}".syncThemes;
+      # Xft
+      "Xft/DPI"                 = themeProps."${theme}".dpi;
+      "Xft/Antialias"           = 1; # On
+      "Xft/Hinting"             = 1; # On
+      "Xft/HintStyle"           = "hinfull";
     };
   };
 
