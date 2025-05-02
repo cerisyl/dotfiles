@@ -3,7 +3,7 @@
   imgViewer   = "imv-dir.desktop";
   browser     = "floorp.desktop";
   editor      = "code.desktop";
-  archiver    = "peazip.desktop";
+  archiver    = "engrampa.desktop";
   fileAssociations = {
     # audio
     "audio/flac"    = mediaPlayer;

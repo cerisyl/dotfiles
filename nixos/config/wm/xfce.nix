@@ -29,6 +29,7 @@
       desktopFontSize   = 9;
       cursorSize        = 24;
       dpi               = 96;
+      antialias         = 1;
       syncThemes        = true;
       windowTitleAlign  = "left";
       windowTheme       = "${theme}-main";
@@ -36,12 +37,24 @@
     aero = {
       font              = "Segoe UI Regular 10";
       fontTitle         = "Segoe UI Regular 9";
-      desktopFontSize   = 9;
+      desktopFontSize   = 10;
       cursorSize        = 24;
       dpi               = 98;
+      antialias         = 1;
       syncThemes        = false;
       windowTitleAlign  = "left";
       windowTheme       = "${theme}-window";
+    };
+    luna = {
+      font              = "Trebuchet MS Bold 9";
+      fontTitle         = "Tahoma Regular 8";
+      desktopFontSize   = 8;
+      cursorSize        = 24;
+      dpi               = 96;
+      antialias         = 0;
+      syncThemes        = true;
+      windowTitleAlign  = "left";
+      windowTheme       = "${theme}-main";
     };
   };
 
@@ -74,12 +87,13 @@ in {
       "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
       # Desktop icons
       "desktop-icons/show-tooltips"               = false;
-      "desktop-icons/file-icons/show-removable"   = false;
-      "desktop-icons/file-icons/show-filesystem"  = false;
       "desktop-icons/file-icons/show-trash"       = true;
       "desktop-icons/file-icons/show-home"        = true;
+      "desktop-icons/file-icons/show-filesystem"  = false;
+      "desktop-icons/file-icons/show-removable"   = false;
       "desktop-icons/show-hidden-files"           = false;
       "desktop-icons/single-click"                = true;
+      "desktop-icons/use-custon-font-size"        = true;
       "desktop-icons/font-size"                   = themeProps."${theme}".desktopFontSize;
       "desktop-icons/icon-size"                   = 48;
     };
@@ -121,9 +135,9 @@ in {
       "Xfce/SyncThemes"         = themeProps."${theme}".syncThemes;
       # Xft
       "Xft/DPI"                 = themeProps."${theme}".dpi;
-      "Xft/Antialias"           = 1; # On
+      "Xft/Antialias"           = themeProps."${theme}".antialias;
       "Xft/Hinting"             = 1; # On
-      "Xft/HintStyle"           = "hinfull";
+      "Xft/HintStyle"           = "hintfull";
     };
   };
 

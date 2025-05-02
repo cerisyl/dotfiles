@@ -17,18 +17,35 @@
       showLabels        = false;
       flatButtons       = false;
       font              = "Barlow Regular 10";
+      iconSize          = 32;
+      trayIconSize      = 16;
       symbolicIcons     = false;
     };
     aero = {
       height            = 48;
-      darkMode          = true;
+      darkMode          = false;
       bgStyle           = 2; # image;
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = "file://${homedir}/.nix/themes/aero/img/taskbar.png";
       showLabels        = false;
-      flatButtons       = true;
+      flatButtons       = false;
       font              = "Segoe UI Regular 10";
+      iconSize          = 32;
+      trayIconSize      = 22;
       symbolicIcons     = true;
+    };
+    luna = {
+      height            = 28;
+      darkMode          = false;
+      bgStyle           = 0; # n/a;
+      bgColor           = [ (30 / 255.0) (93 / 255.0) (220 / 255.0) 1.00 ]; #1e5ddc
+      bgImage           = null;
+      showLabels        = true;
+      flatButtons       = false;
+      font              = "Tahoma Regular 8";
+      iconSize          = 16;
+      trayIconSize      = 16;
+      symbolicIcons     = false;
     };
   };
 
@@ -40,7 +57,7 @@
     "position"          = "p=8;x=640;y=786";
     "length"            = 100;
     "size"              = themeProps."${theme}".height;
-    "icon-size"         = 32;
+    "icon-size"         = themeProps."${theme}".iconSize;
     "plugin-ids"        = [ 1 2 3 4 5 6 ];
   };
 
@@ -69,11 +86,11 @@
 
     # systray
     "4"                     = "systray";
-    "4/icon-size"           = 16;
+    "4/icon-size"           = themeProps."${theme}".trayIconSize;
     "4/square-icons"        = false;
     "4/single-row"          = true;
     "4/menu-is-primary"     = false;
-    "4/symbolic-icons"      = false;
+    "4/symbolic-icons"      = themeProps."${theme}".symbolicIcons;
     # order of icons (legacy, hidden)
     # chrome_status_icon_1 -> discord/vesktop
     "4/hidden-legacy-items" = [ "deluge" ];

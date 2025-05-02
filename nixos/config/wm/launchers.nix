@@ -8,7 +8,6 @@
     "org.pulseaudio.pavucontrol"
     "panel-preferences"
     "pasystray"
-    "peazip"
     "thunar"
     "thunar-bulk-rename"
     "thunar-settings"
@@ -52,7 +51,6 @@
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
     (overwrite "Rofi"                   "rofi"                          "rofi -show")
     (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
-    (overwrite "Peazip"                 "peazip"                        true)
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";
@@ -70,17 +68,17 @@ in {
     "lock" = {
       name = "Lock";
       exec = "xflock4";
-      icon = "xfsm-lock";
+      icon = "system-lock";
     };
     "restart" = {
       name = "Restart";
       exec = "reboot";
-      icon = "xfsm-reboot";
+      icon = "system-reboot";
     };
     "shutdown" = {
       name = "Shutdown";
       exec = "shutdown now";
-      icon = "xfsm-shutdown";
+      icon = "system-shutdown";
     };
     "discordchatexporter" = {
       name = "Discord Chat Exporter";
