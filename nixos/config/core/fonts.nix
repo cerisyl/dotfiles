@@ -1,4 +1,4 @@
-{ config, pkgMap, homeDir, lib, ... }: {
+{ config, pkgMap, homedir, lib, ... }: {
   # Load our fonts
   home.activation.loadFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "${homedir}/.local/share/fonts"
