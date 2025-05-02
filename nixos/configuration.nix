@@ -112,9 +112,10 @@ in {
   };
 
   # Define packages
-  # TODO: Find a way to get fonts back in ./packages
   nixpkgs.config.allowUnfree  = true;
   environment.systemPackages  = systemPackages;
+
+  # Fonts
   fonts.packages = [
     pkgs.inter
     pkgs.noto-fonts-cjk-sans
