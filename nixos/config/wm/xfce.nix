@@ -46,9 +46,20 @@
       windowTheme       = "${theme}-window";
     };
     luna = {
-      font              = "Trebuchet MS Bold 9";
-      fontTitle         = "Tahoma Regular 8";
+      font              = "Tahoma Regular 8";
+      fontTitle         = "Trebuchet MS Bold 10";
       desktopFontSize   = 8;
+      cursorSize        = 24;
+      dpi               = 96;
+      antialias         = 0;
+      syncThemes        = true;
+      windowTitleAlign  = "left";
+      windowTheme       = "${theme}-main";
+    };
+    memphis = {
+      font              = "MS Sans Serif Regular 10";
+      fontTitle         = "MS Sans Serif Bold 10";
+      desktopFontSize   = 10;
       cursorSize        = 24;
       dpi               = 96;
       antialias         = 0;

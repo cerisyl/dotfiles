@@ -12,12 +12,12 @@
 ## Luna
 - **XFCE/GTK:** ???
 - **Icons:** [B00merang Windows XP Icons](https://github.com/B00merang-Artwork/Windows-XP)
-- **Cursors:** [Classic Flat White](https://www.gnome-look.org/p/999623)
+- **Cursors:** [Chicago 95 White](https://github.com/grassmunk/Chicago95)
 
 ## Memphis
-- **XFCE/GTK:** 
-- **Icons:** 
-- **Cursors:** [Classic Flat White](https://www.gnome-look.org/p/999623)
+- **XFCE/GTK:** [Chicago 95](https://github.com/grassmunk/Chicago95)
+- **Icons:** [Chicago 95](https://github.com/grassmunk/Chicago95)
+- **Cursors:** [Chicago 95 White](https://github.com/grassmunk/Chicago95)
 
 ## Note
 - **XFCE/GTK:** 

@@ -31,18 +31,31 @@
       flatButtons       = false;
       font              = "Segoe UI Regular 10";
       iconSize          = 32;
-      trayIconSize      = 22;
-      symbolicIcons     = true;
+      trayIconSize      = 16;
+      symbolicIcons     = false;
     };
     luna = {
-      height            = 28;
+      height            = 32;
       darkMode          = false;
       bgStyle           = 0; # n/a;
-      bgColor           = [ (30 / 255.0) (93 / 255.0) (220 / 255.0) 1.00 ]; #1e5ddc
+      bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = true;
       flatButtons       = false;
       font              = "Tahoma Regular 8";
+      iconSize          = 16;
+      trayIconSize      = 16;
+      symbolicIcons     = false;
+    };
+    memphis = {
+      height            = 32;
+      darkMode          = false;
+      bgStyle           = 0; # n/a;
+      bgColor           = [ 1.00 1.00 1.00 1.00 ];
+      bgImage           = null;
+      showLabels        = true;
+      flatButtons       = false;
+      font              = "MS Sans Serif Regular 10";
       iconSize          = 16;
       trayIconSize      = 16;
       symbolicIcons     = false;
