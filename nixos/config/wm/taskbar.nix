@@ -1,5 +1,4 @@
 # Shoutouts mimvoid@github
-# TODO: This is theme-contingent. Need to somehow move this into themes folder
 { config, pkgMap, theme, getThemeFile, timezone, homedir, lib, ... }: let
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
@@ -20,6 +19,8 @@
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
+      clockFont         = "JetBrainsMono Nerd Font 9";
+      clockDisplay      = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     };
     aero = {
       height            = 48;
@@ -33,6 +34,8 @@
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
+      clockFont         = "Segoe UI Regular 9";
+      clockDisplay      = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     };
     luna = {
       height            = 32;
@@ -46,6 +49,8 @@
       iconSize          = 16;
       trayIconSize      = 16;
       symbolicIcons     = false;
+      clockFont         = "Verdana Regular 8";
+      clockDisplay      = "<b>%l:%M:%S %p</b>";
     };
     memphis = {
       height            = 24;
@@ -59,6 +64,8 @@
       iconSize          = 16;
       trayIconSize      = 16;
       symbolicIcons     = false;
+      clockFont         = "JetBrainsMono Nerd Font 8";
+      clockDisplay      = "<b>%l:%M:%S %p</b>";
     };
     note = {
       height            = 48;
@@ -72,9 +79,11 @@
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
+      clockFont         = "Roboto Regular 9";
+      clockDisplay      = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     };
     osx = {
-      height            = 48;
+      height            = 26;
       darkMode          = false;
       bgStyle           = 0; # n/a;
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
@@ -85,6 +94,8 @@
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
+      clockFont         = "JetBrainsMono Nerd Font 9";
+      clockDisplay      = "<b>%l:%M:%S %p</b>";
     };
   };
 

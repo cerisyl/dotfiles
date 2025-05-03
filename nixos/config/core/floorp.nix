@@ -9,7 +9,7 @@
     "browser.tabs.loadInBackground"           = true;   # When you open a link, image or media in a new tab, switch to it immediately
     "browser.tabs.warnOnClose"                = false;  # Confirm before closing multiple tabs
     "browser.taskbar.previews.enable"         = false;  # Show tab previews in the Windows taskbar
-    "floorp.tabsleep.enabled"                 = true;   # Enable Sleeping Tabs
+    "floorp.tabsleep.enabled"                 = false;  # Enable Sleeping Tabs
     "floorp.tabsleep.tabTimeoutMinutes"       = 10;
     "floorp.tabsleep.excludeHosts"            = "youtube.com,emkooz.github.io,synergism.cc,orteil.dashnet.org";
     "toolkit.tabbox.switchByScrolling"        = false;  # Switch tabs by scrolling with your mouse

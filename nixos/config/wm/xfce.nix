@@ -1,26 +1,4 @@
 { config, pkgMap, theme, getThemeFile, homedir, lib, ... }: let
-  # Define theme zips
-  themeZips = {
-    main    = (getThemeFile "main.zip");
-    icons   = (getThemeFile "icons.zip");
-    cursors = (getThemeFile "cursors.zip");
-    window  = (getThemeFile "window.zip");
-  };
-
-  # Where to unzip each type
-  getTargetPath = name:
-    if (lib.hasPrefix "main" name) || (lib.hasPrefix "window" name) then
-      "${homedir}/.local/share/themes/${theme}-${name}"
-    else
-      "${homedir}/.icons/${theme}-${name}";
-
-  # Activation commands for unzipping each theme
-  unzipCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (name: path: ''
-    mkdir -p ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
-    rm -rf ${getTargetPath name}
-    ${pkgMap.unzip}/bin/unzip -qq ${path} -d ${lib.removeSuffix "/${name}.zip" (getTargetPath name)}
-  '') themeZips);
-
   # Theme-specific properties
   themeProps = {
     ceres = {
@@ -80,10 +58,10 @@
     };
     osx = {
       font              = "Helvetica Neue Regular 9";
-      fontTitle         = "Helvetica Neue Regular 10";
+      fontTitle         = "Inter SemiBold 9";
       desktopFontSize   = 10;
       cursorSize        = 24;
-      dpi               = 96;
+      dpi               = 101;
       antialias         = 1;
       syncThemes        = false;
       windowTitleAlign  = "center";
@@ -92,9 +70,22 @@
   };
 
 in {
-  # Unpack zips on activation
+  # Download, unpack zips on activation
   home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${unzipCommands}
+    git clone --quiet https://github.com/cerisyl/dotfile-themes /tmp/themes
+    for zip in $(${pkgMap.fd}/bin/fd ".*\.zip$" /tmp/themes); do
+      theme=$(basename $(dirname $zip))
+      file=$(basename $zip)
+      type=''\${file%.*}
+      if [[ $zip == *"main"* ]] || [[ $zip == *"window"* ]]; then
+        rm -rf "${homedir}/.local/share/themes/$theme-$type"
+        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes/$theme-$type -d "${homedir}/.local/share/themes/$theme-$type"
+      else
+        rm -rf "${homedir}/.icons/$theme-$type"
+        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes/$theme-$type -d "${homedir}/.icons/$theme-$type"
+      fi
+    done
+    rm -rf /tmp/themes
   '';
 
   # Remove backup files on activation
