@@ -68,7 +68,7 @@ in {
     "lock" = {
       name = "Lock";
       exec = "xflock4";
-      icon = "system-lock";
+      icon = "lock";
     };
     "restart" = {
       name = "Restart";

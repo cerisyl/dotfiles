@@ -3,8 +3,8 @@ configuration {
   display-filebrowser: "";
   display-clipboard: "";
   /* Theme config */
-  font: "Roboto Regular 11";
-  icon-theme: "note-icons";
+  font: "Helvetica Neue Regular 10";
+  icon-theme: "osx-icons";
   /* TODO: This is here until home-manager supports filebrowser settings. */
   filebrowser {
     directory: "/home/ceri";

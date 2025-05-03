@@ -19,10 +19,10 @@
 
 ## Note
 - **GTK:** [B00merang Android Kitkat](https://github.com/B00merang-Project/Android-Kitkat)
-- **XFWM:** 
+- **XFWM:** [xfwm4-breeze](https://github.com/mjkim0727/xfwm4-breeze)
 - **Icons:** [Flat Remix (Yellow)](https://www.gnome-look.org/p/1012430)
 
 ## OSX
-- **GTK/XFWM:** 
-- **Icons:** 
-- **Cursors:** 
+- **GTK:** [B00merang OS X Leopard](https://github.com/B00merang-Project/OS-X-Leopard)
+- **XFWM:** [McOS XFCE Edition](https://github.com/paullinuxthemer/McOS-XFCE-Edition)
+- **Icons:** [B00merang OS X Lion Icons](https://github.com/B00merang-Artwork/Mac-OS-X-Lion)

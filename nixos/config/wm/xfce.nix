@@ -78,6 +78,17 @@
       windowTitleAlign  = "left";
       windowTheme       = "${theme}-window";
     };
+    osx = {
+      font              = "Helvetica Neue Regular 9";
+      fontTitle         = "Helvetica Neue Regular 10";
+      desktopFontSize   = 10;
+      cursorSize        = 24;
+      dpi               = 96;
+      antialias         = 1;
+      syncThemes        = false;
+      windowTitleAlign  = "center";
+      windowTheme       = "${theme}-window";
+    };
   };
 
 in {

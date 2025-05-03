@@ -62,13 +62,26 @@
     };
     note = {
       height            = 48;
-      darkMode          = false;
-      bgStyle           = 0; # solid color;
+      darkMode          = true;
+      bgStyle           = 0; # n/a;
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = false;
       flatButtons       = false;
       font              = "Roboto Regular 9";
+      iconSize          = 32;
+      trayIconSize      = 16;
+      symbolicIcons     = false;
+    };
+    osx = {
+      height            = 48;
+      darkMode          = false;
+      bgStyle           = 0; # n/a;
+      bgColor           = [ 1.00 1.00 1.00 1.00 ];
+      bgImage           = null;
+      showLabels        = false;
+      flatButtons       = false;
+      font              = "Helvetica Neue Regular 10";
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
