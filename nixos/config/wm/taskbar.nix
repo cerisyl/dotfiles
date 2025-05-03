@@ -48,7 +48,7 @@
       symbolicIcons     = false;
     };
     memphis = {
-      height            = 32;
+      height            = 24;
       darkMode          = false;
       bgStyle           = 0; # n/a;
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
@@ -57,6 +57,19 @@
       flatButtons       = false;
       font              = "MS Sans Serif Regular 10";
       iconSize          = 16;
+      trayIconSize      = 16;
+      symbolicIcons     = false;
+    };
+    note = {
+      height            = 48;
+      darkMode          = false;
+      bgStyle           = 0; # solid color;
+      bgColor           = [ 1.00 1.00 1.00 1.00 ];
+      bgImage           = null;
+      showLabels        = false;
+      flatButtons       = false;
+      font              = "Roboto Regular 9";
+      iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
     };

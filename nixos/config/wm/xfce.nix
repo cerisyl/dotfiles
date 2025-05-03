@@ -57,15 +57,26 @@
       windowTheme       = "${theme}-main";
     };
     memphis = {
-      font              = "MS Sans Serif Regular 10";
-      fontTitle         = "MS Sans Serif Bold 10";
-      desktopFontSize   = 10;
+      font              = "MS Sans Serif Regular 9";
+      fontTitle         = "MS Sans Serif Bold Regular 9";
+      desktopFontSize   = 9;
       cursorSize        = 24;
-      dpi               = 96;
+      dpi               = 92;
       antialias         = 0;
       syncThemes        = true;
       windowTitleAlign  = "left";
       windowTheme       = "${theme}-main";
+    };
+    note = {
+      font              = "Roboto Regular 9";
+      fontTitle         = "Roboto Bold 10";
+      desktopFontSize   = 10;
+      cursorSize        = 24;
+      dpi               = 95;
+      antialias         = 1;
+      syncThemes        = false;
+      windowTitleAlign  = "left";
+      windowTheme       = "${theme}-window";
     };
   };
 
