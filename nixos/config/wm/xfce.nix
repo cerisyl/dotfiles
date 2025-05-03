@@ -72,7 +72,7 @@
 in {
   # Download, unpack zips on activation
   home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    git clone --quiet https://github.com/cerisyl/dotfile-themes /tmp/themes
+    ${pkgMap.git}/bin/git clone --quiet https://github.com/cerisyl/dotfile-themes /tmp/themes
     for zip in $(${pkgMap.fd}/bin/fd ".*\.zip$" /tmp/themes); do
       theme=$(basename $(dirname $zip))
       file=$(basename $zip)
