@@ -79,10 +79,10 @@ in {
       type=''\${file%.*}
       if [[ $zip == *"main"* ]] || [[ $zip == *"window"* ]]; then
         rm -rf "${homedir}/.local/share/themes/$theme-$type"
-        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes/$theme-$type -d "${homedir}/.local/share/themes/$theme-$type"
+        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes/$theme/$type -d "${homedir}/.local/share/themes/$theme-$type"
       else
         rm -rf "${homedir}/.icons/$theme-$type"
-        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes/$theme-$type -d "${homedir}/.icons/$theme-$type"
+        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes/$theme/$type -d "${homedir}/.icons/$theme-$type"
       fi
     done
     rm -rf /tmp/themes
