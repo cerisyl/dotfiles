@@ -25,7 +25,7 @@
     aero = {
       height            = 48;
       darkMode          = false;
-      bgStyle           = 2; # image;
+      bgStyle           = 0; # n/a;
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = "file://${homedir}/.nix/themes/aero/img/taskbar.png";
       showLabels        = false;

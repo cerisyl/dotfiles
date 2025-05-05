@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, homedir, myHostname, lib, ... }: let
   # Theme-specific properties
   themeProps = {
     ceres = {
@@ -69,6 +69,20 @@
     };
   };
 
+  # Get a list of displays and prep them for xfce4-desktop (for backgrounds)
+  displays = {
+    luxe = {};
+    nova = {
+      "backdrop/screen0/monitorLaptop/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+    };
+    astore = {
+      "backdrop/screen0/monitorHDMI-0/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+    };
+    nova = {
+      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+    };
+  };
+
 in {
   # Download, unpack zips on activation
   home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -107,8 +121,6 @@ in {
 
     # Background + desktop
     xfce4-desktop = {
-      # Background
-      "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
       # Desktop icons
       "desktop-icons/show-tooltips"               = false;
       "desktop-icons/file-icons/show-trash"       = true;
@@ -120,7 +132,7 @@ in {
       "desktop-icons/use-custon-font-size"        = true;
       "desktop-icons/font-size"                   = themeProps."${theme}".desktopFontSize;
       "desktop-icons/icon-size"                   = 48;
-    };
+    } // displays.myHostname;
 
     # Windows
     xfwm4 = {

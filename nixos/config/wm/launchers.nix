@@ -68,22 +68,72 @@ in {
     "lock" = {
       name = "Lock";
       exec = "xflock4";
-      icon = "lock";
+      icon = "ceri-lock";
     };
     "restart" = {
       name = "Restart";
       exec = "reboot";
-      icon = "system-reboot";
+      icon = "ceri-reboot";
     };
     "shutdown" = {
       name = "Shutdown";
       exec = "shutdown now";
-      icon = "system-shutdown";
+      icon = "ceri-shutdown";
     };
     "discordchatexporter" = {
       name = "Discord Chat Exporter";
       exec = "discordchatexporter";
-      icon = "discord";
+      icon = "ceri-cord";
+    };
+    "deluge" = {
+      name = "Deluge";
+      exec = "deluge";
+      icon = "ceri-deluge";
+    };
+    "itgmania" = {
+      name = "ITGmania";
+      exec = "itgmania";
+      icon = "ceri-itg";
+    };
+    "org.prismlauncher.PrismLauncher" = {
+      name = "Minecraft";
+      exec = "prismlauncher";
+      icon = "ceri-mc";
+    };
+    "com.obsproject.Studio" = {
+      name = "OBS Studio";
+      exec = "obs";
+      icon = "ceri-obs";
+    };
+    "org.kde.kdenlive" = {
+      name = "Kdenlive";
+      exec = "kdenlive";
+      icon = "ceri-kden";
+    };
+    "steam" = {
+      name = "Steam";
+      exec = "steam";
+      icon = "ceri-steam";
+    };
+    "vlc" = {
+      name = "VLC Media Player";
+      exec = "vlc";
+      icon = "ceri-media";
+    };
+    "tauonmb" = {
+      name = "Tauon";
+      exec = "tauon";
+      icon = "ceri-music";
+    };
+    "virt-manager" = {
+      name = "Virtual Machine Manager";
+      exec = "virt-manager";
+      icon = "ceri-vm";
+    };
+    "org.keepassxc.KeePassXC" = {
+      name = "KeePassXC";
+      exec = "keepassxc";
+      icon = "ceri-pass";
     };
   } // mappedLaunchers;
   xdg.dataFile = {
@@ -94,7 +144,7 @@ in {
       Categories=Network;WebBrowser
       Exec=floorp --enable-blink-features=MiddleClickAutoscroll
       GenericName=Web Browser
-      Icon=floorp
+      Icon=ceri-web
       MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https
       Name=Floorp
       StartupNotify=true
@@ -117,7 +167,7 @@ in {
       Name=Discord
       Type=Application
       Exec=vesktop --enable-blink-features=MiddleClickAutoscroll
-      Icon=discord
+      Icon=ceri-cord
     '';
   } // mappedOverwrites;
 }
