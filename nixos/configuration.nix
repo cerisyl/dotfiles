@@ -95,7 +95,7 @@ in {
     };
     # Packages, etc.
     extraSpecialArgs = {
-      inherit pkgMap theme getThemeFile;
+      inherit pkgMap theme getThemeFile myHostname;
       homedir  = "/home/ceri";
       timezone = config.time.timeZone;
       zmod = pkgsGit.zmod;
