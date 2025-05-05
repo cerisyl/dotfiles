@@ -78,7 +78,7 @@
     astore = {
       "backdrop/screen0/monitorHDMI-0/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };
-    nova = {
+    vm = {
       "backdrop/screen0/monitorVirtual-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };
   };
@@ -132,7 +132,7 @@ in {
       "desktop-icons/use-custon-font-size"        = true;
       "desktop-icons/font-size"                   = themeProps."${theme}".desktopFontSize;
       "desktop-icons/icon-size"                   = 48;
-    } // displays.myHostname;
+    } // displays.${"myHostname"};
 
     # Windows
     xfwm4 = {
