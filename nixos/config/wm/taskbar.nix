@@ -118,7 +118,7 @@
   };
 
   # Define plugins / panel sections
-  startMenuFile = "${if themeProps."${theme}".cssIcon != true then "rofi" else "rofi-alt"}.desktop";
+  startMenuFile = "${if themeProps."${theme}".cssStartMenu != true then "rofi" else "rofi-alt"}.desktop";
   plugins = prependAttrs "plugins/plugin-" {
     # rofi / start menu / launcher
     "1"                     = "launcher";
