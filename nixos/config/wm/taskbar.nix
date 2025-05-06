@@ -10,7 +10,7 @@
     ceres = {
       height            = 48;
       darkMode          = true;
-      bgStyle           = 1; # solid color;
+      bgStyle           = 1; # solid color
       bgColor           = [ (19 / 255.0) (19 / 255.0) (22 / 255.0) 1.00 ]; #131316
       bgImage           = null;
       showLabels        = false;
@@ -26,7 +26,7 @@
     aero = {
       height            = 48;
       darkMode          = false;
-      bgStyle           = 0; # n/a;
+      bgStyle           = 2; # image
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = "file://${homedir}/.nix/themes/aero/img/taskbar.png";
       showLabels        = false;
@@ -42,7 +42,7 @@
     luna = {
       height            = 32;
       darkMode          = false;
-      bgStyle           = 0; # n/a;
+      bgStyle           = 0; # n/a
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = true;
@@ -58,7 +58,7 @@
     memphis = {
       height            = 24;
       darkMode          = false;
-      bgStyle           = 0; # n/a;
+      bgStyle           = 0; # n/a
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = true;
@@ -74,7 +74,7 @@
     note = {
       height            = 48;
       darkMode          = true;
-      bgStyle           = 0; # n/a;
+      bgStyle           = 0; # n/a
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = false;
@@ -90,7 +90,7 @@
     osx = {
       height            = 26;
       darkMode          = false;
-      bgStyle           = 0; # n/a;
+      bgStyle           = 0; # n/a
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = false;
@@ -158,9 +158,9 @@
     # clock
     "5"                     = "clock";
     "5/mode"                = 2;
-    "5/digital-time-font"   = "JetBrainsMono Nerd Font 9";
+    "5/digital-time-font"   = themeProps."${theme}".clockFont;
     "5/digital-layout"      = 3;
-    "5/digital-time-format" = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
+    "5/digital-time-format" = themeProps."${theme}".clockDisplay;
     "5/timezone"            = timezone;
     "5/tooltip-format"      = "%A, %d %B %Y";
 
