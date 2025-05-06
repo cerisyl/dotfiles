@@ -1,6 +1,11 @@
-#launcher-arrow {
-  padding: 0 12px;
-  background-color: #bfccd900;
+#launcher-1 box button {
+  padding: 0 27px;
+  margin-left: 2px;
+  background-color: transparent;
+  background-position: center;
+  background-image: url("file:///home/ceri/.nix/extra/panel/icons/memphis.png");
+  background-repeat: no-repeat;
+  background-size: 54px;
 }
 
 #launcher-arrow:hover {

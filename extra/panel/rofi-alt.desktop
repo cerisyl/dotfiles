@@ -5,7 +5,6 @@ Type=Application
 Terminal=false
 Exec=rofi -show
 Name=Rofi
-Icon=ceri-start
 Comment=
 Path=
 StartupNotify=false

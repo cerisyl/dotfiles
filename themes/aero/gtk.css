@@ -1,10 +1,15 @@
-#launcher-arrow {
-  padding: 0 12px;
-  background-color: #bfccd900;
+#launcher-1 box button {
+  padding: 0 28px;
+  margin-right: 8px;
+  background-color: transparent;
+  background-position: center;
+  background-image: url("file:///home/ceri/.nix/extra/panel/icons/aero.png");
+  background-repeat: no-repeat;
+  background-size: 56px;
 }
 
-#launcher-arrow:hover {
-  background-color: #bfccd966;
+#launcher-1 box button:hover {
+  background-image: url("file:///home/ceri/.nix/extra/panel/icons/aero-hover.png");
 }
 
 #sn-button {

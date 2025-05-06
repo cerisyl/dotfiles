@@ -16,6 +16,7 @@
       showLabels        = false;
       flatButtons       = false;
       font              = "Barlow Regular 10";
+      cssStartMenu      = false;
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
@@ -31,6 +32,7 @@
       showLabels        = false;
       flatButtons       = false;
       font              = "Segoe UI Regular 10";
+      cssStartMenu      = true;
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
@@ -46,6 +48,7 @@
       showLabels        = true;
       flatButtons       = false;
       font              = "Tahoma Regular 8";
+      cssStartMenu      = true;
       iconSize          = 16;
       trayIconSize      = 16;
       symbolicIcons     = false;
@@ -61,6 +64,7 @@
       showLabels        = true;
       flatButtons       = false;
       font              = "MS Sans Serif Regular 10";
+      cssStartMenu      = true;
       iconSize          = 16;
       trayIconSize      = 16;
       symbolicIcons     = false;
@@ -76,6 +80,7 @@
       showLabels        = false;
       flatButtons       = false;
       font              = "Roboto Regular 9";
+      cssStartMenu      = false;
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
@@ -91,6 +96,7 @@
       showLabels        = false;
       flatButtons       = false;
       font              = "Helvetica Neue Regular 10";
+      cssStartMenu      = false;
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
@@ -112,10 +118,11 @@
   };
 
   # Define plugins / panel sections
+  startMenuFile = "${if themeProps."${theme}".cssIcon != true then "rofi" else "rofi-alt"}.desktop";
   plugins = prependAttrs "plugins/plugin-" {
-    # rofi / launcher
+    # rofi / start menu / launcher
     "1"                     = "launcher";
-    "1/items"               = [ "${homedir}/.nix/extra/panel/rofi.desktop" ];
+    "1/items"               = [ "${homedir}/.nix/extra/panel/${startMenuFile}" ];
     "1/disable-tooltips"    = true;
     "1/show-label"          = false;
 

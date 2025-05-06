@@ -1,10 +1,15 @@
-#launcher-arrow {
-  padding: 0 12px;
-  background-color: #bfccd900;
+#launcher-1 box button {
+  padding: 0 48.5px;
+  margin-right: 6px;
+  background-color: transparent;
+  background-position: center;
+  background-image: url("file:///home/ceri/.nix/extra/panel/icons/luna.png");
+  background-repeat: no-repeat;
+  background-size: 97px;
 }
 
-#launcher-arrow:hover {
-  background-color: #bfccd900; /**/
+#launcher-1 box button:hover {
+  background-image: url("file:///home/ceri/.nix/extra/panel/icons/luna-hover.png");
 }
 
 #sn-button {
