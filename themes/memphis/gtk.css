@@ -1,0 +1,45 @@
+#launcher-1 box button {
+  padding: 0 27px;
+  margin-left: 2px;
+  background-color: transparent;
+  background-position: center;
+  background-image: url("file:///home/ceri/.nix/themes/memphis/img/start.png");
+  background-repeat: no-repeat;
+  background-size: 54px;
+}
+
+#launcher-arrow:hover {
+  background-color: #bfccd900; /**/
+}
+
+#sn-button {
+  background-color: #bfccd900;
+  padding: 0 3px;
+}
+
+#sn-button:hover {
+  background-color: #bfccd900; /**/
+}
+
+#clock-button {
+  padding: 0 8px;
+  background-color: #bfccd900;
+  margin-right: 6px;
+}
+
+#clock-button:hover {
+  background-color: #bfccd900; /**/
+}
+
+#genmon-6 .genmon_imagebutton {
+  border-left: 1px solid #bfccd900; /***/
+  background-color: #bfccd900;
+}
+
+#genmon-6 .genmon_imagebutton:hover {
+  background-color: #bfccd900; /**/
+}
+
+#genmon-6 image {
+  -gtk-icon-transform: scale(0);
+}
