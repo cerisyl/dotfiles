@@ -1,9 +1,12 @@
+/*
+  Heavily based off of archy-co's Windows XP rofi rice:
+  https://github.com/archy-co/win_xp
+  TODO: Probably just clean up and make look better code-wise.
+*/
+
 configuration {
-  display-drun: "";
-  display-filebrowser: "";
-  display-clipboard: "";
   /* Theme config */
-  font: "Tahoma 10";
+  font: "Tahoma 9";
   icon-theme: "luna-icons";
   /* TODO: This is here until home-manager supports filebrowser settings. */
   filebrowser {
@@ -14,135 +17,355 @@ configuration {
 }
 
 * {
+  text-color: #000000;
+  separator-style: "none";
+  border: 0;
   margin: 0;
   padding: 0;
   spacing: 0;
-  /* Theme colors */
-  bg-dark: #131316;
-  bg: #1a1a1f;
-  selected: #25252e;
-  fg: #b8b8c7;
-  fg-lite: #f2f3f5;
-  comment: #515167;
-  accent: #855ee8;
   background-color: transparent;
-  scrollbar-bg: @selected;
-  scrollbar-fg: @comment;
-  text-color: @fg;
-  text-selected: @fg;
-}
-
-element-icon, element-text, scrollbar {
-  cursor: pointer;
 }
 
 window {
-  location: center;
-  width: 520px;
-  height: 552px;
-
-  background-color: @bg;
-  border-radius: 8px;
+  padding: 0px;
+  location: south west;
+  anchor: south west;
+  width: 570px;
+  height: 652px;
+  margin: 0 0 32px 0;
+  orientation: vertical;
+  children: [top-deco, mainbox, bottom-deco];
+  border-radius: 8px 8px 0px 0px;
+  background-image: url("/home/ceri/desktop/rofi-top.png");
+  boarder-aa: false;
 }
 
-mainbox {
-  padding: 16px;
-  spacing: 16px;
-}
-
-textbox {
+top-deco {
   vertical-align: 0.5;
-  horizontal-align: 0.5;
-}
-
-textbox-search, entry, element-icon, element-text {
-  vertical-align: 0.5;
-}
-
-inputbar {
-  children: [ searchbar, mode-switcher ];
-  spacing: 16px;
-}
-
-searchbar {
-  children: [ textbox-search, entry ];
-  padding: 8px 12px;
-  border: 2px;
-  border-color: @accent;
-  border-radius: 6px;
-  background-color: @bg-dark;
-  spacing: 0.5em;
-  spacing: 18px;
+  expand: false;
+  width: 100%;
+  padding: 11px;
+  margin: 0 0 1px 0;
   orientation: horizontal;
+  children: [icon-top, textbox-top];
+  spacing: 12px;
+}
+icon-top {
+  expand: false;
+  size: 56px;
+  filename: "/home/ceri/desktop/syl-fx.jpg";
+	border: 2px solid;
+  border-color: #ccd6eb;
+  border-radius: 2px;
+}
+textbox-top {
+  vertical-align: 0.5;
+  expand: false;
+  str: "ceri";
+  font: "Franklin Gothic Medium 14";
+  text-color: white;
+}
+
+bottom-deco {
+  expand: false;
+  padding: 15px;
+  background-color: rgb(72,141,237);
+  background-image: url("/home/ceri/desktop/rofi-bottom.png");
+  orientation: horizontal;
+  children: [spacer, logoff, shutdown];
+  spacing: 16px;
+}
+
+logoff, button-shutdown, icon-shutdown, icon-logoff, textbox-shutdown, textbox-logoff {
+  expand: false;
+}
+
+shutdown, logoff {
+  orientation: horizontal;
+  expand: false;
+  spacing: 8px;
+}
+
+spacer { 
   expand: true;
 }
 
-textbox-search {
+logoff {
+  children: [icon-logoff, textbox-logoff];
+}
+
+shutdown {
+  children: [icon-shutdown, textbox-shutdown];
+}
+
+textbox-logoff, textbox-shutdown {
+  vertical-align: 0.5;
+  text-color: white;
+  font: "Tahoma 9";
+}
+
+icon-logoff {
+  filename: "/home/ceri/.icons/luna-icons/48x48/apps/ceri-lock.png";
+  size: 24px;
+}
+textbox-logoff{
+  str: "Log Off";
+}
+
+icon-shutdown {
+  filename: "/home/ceri/.icons/luna-icons/48x48/apps/ceri-shutdown.png";
+  size: 24px;
+}
+textbox-shutdown {
+  str: "Shut Down";
+}
+
+mainbox {
+  border: 0;
+  padding: 0;
+	children: [ left-half, right-half ];
+  orientation: horizontal;
+  fixed-columns: true;
+  background-color: white;
+  border: 0 1px solid;
+  border-color: #3970c2;
+}
+
+left-half {
+  width: 283px;
+  padding: 8px;
   expand: false;
-  content: "";
-  font: "JetBrainsMono Nerd Font 12";
-  padding: 0 6px 0 0;
+	children: [ listview, delim-left, searchbar ];
+	border: 0 1px solid 0 0;
+	border-color: #BED4ED;
+}
+searchbar {
+  expand: false;
+  children: [ entry, icon-more ];
+  orientation: horizontal;
 }
 
 entry {
-  placeholder: "Type here to search";
-  placeholder-color: @comment;
-  cursor: text;
+  expand: false;
+  font: "Tahoma 9";
+  padding: 12px;
+  placeholder: "Search all programs...";
+  color: black;
 }
 
-mode-switcher {
-  spacing: 16px;
+icon-more {
+  expand: false;
+  size: 1.1em;
+  filename: "~/Documents/arch/win_xp/icons/more_green_tri.ico";
 }
 
-button {
-  padding: 10px 21px 10px 15px;
-  border-radius: 6px;
-  background-color: @selected;
-  cursor: pointer;
-  font: "JetBrainsMono Nerd Font 12";
+right-half{
+  width: 283px;
+  padding: 8px;
+  expand: false;
+	cycle: true;
+  orientation: vertical;
+  children: [ docs, recent, pics, musc, comp, delim-right, cpanel, connect, print, delim-right, info, find, run ];
+  background-color: #D3E5FB;
+	border: 0 0 solid 0 1px;
+	border-color: #BED4ED;
+	spacing: 0.13em;
 }
 
-button selected {
-  background-color: @accent;
-  text-color: @fg-lite;
+docs, recent, pics, musc, comp, info, find, print, connect, cpanel, run {
+  padding: 4px;
+  orientation: horizontal;
+	expand: false;
+  spacing: 8px;
+}
+docs{
+  children: [icon-docs,textbox-docs];
+}
+recent{
+  children: [icon-recent,textbox-recent];
+}
+pics{
+  children: [icon-pics,textbox-pics];
+}
+musc{
+  children: [icon-musc,textbox-musc];
+}
+comp{
+  children: [icon-comp,textbox-comp];
+}
+connect{
+  children: [icon-connect,textbox-connect];
+}
+find {
+  children: [icon-find,textbox-find];
+}
+appearence{
+  children: [icon-appearence,textbox-appearence];
+}
+info{
+  children: [icon-info,textbox-info];
+}
+cpanel {
+  children: [icon-cpanel,textbox-cpanel];
+}
+print{
+  children: [icon-print,textbox-print];
+}
+run{
+  children: [icon-run,textbox-run];
+}
+
+textbox-docs, textbox-recent, textbox-pics, textbox-musc, textbox-comp, textbox-info, textbox-run, textbox-find, textbox-connect, textbox-appearence, textbox-cpanel, textbox-print{
+  font: "Tahoma 9";
+  text-color: #0a246a;
+  vertical-align: 0.5;
+}
+
+textbox-docs, textbox-recent, textbox-pics, textbox-musc, textbox-comp, textbox-vids{
+  font: "Tahoma Bold 9";
+}
+
+icon-docs, icon-recent, icon-pics, icon-musc, icon-comp, icon-info, icon-run, icon-find, icon-connect, icon-appearence, icon-cpanel, icon-print{
+  padding: 0px;
+  expand: false;
+  size: 28px;
+}
+
+textbox-docs{
+  str: "My Documents";
+}
+icon-docs{
+  filename: "/home/ceri/.icons/luna-icons/128x128/places/folder-documents.png";
+}
+
+textbox-recent{
+  str: "My Recent Documents";
+}
+icon-recent{
+  filename: "/home/ceri/.icons/luna-icons/128x128/apps/document-open-recent1.png";
+}
+
+textbox-pics{
+  str: "My Pictures";
+}
+icon-pics{
+  filename: "/home/ceri/.icons/luna-icons/128x128/places/folder-pictures.png";
+}
+
+textbox-musc{
+  str: "My Music";
+}
+icon-musc{
+  filename: "/home/ceri/.icons/luna-icons/128x128/places/folder-music.png";
+}
+
+textbox-comp{
+  str: "My Computer";
+}
+icon-comp{
+  filename: "/home/ceri/.icons/luna-icons/128x128/places/computer.png";
+}
+
+textbox-cpanel {
+  str: "Control Panel";
+}
+icon-cpanel {
+  filename: "/home/ceri/.icons/luna-icons/128x128/categories/gnome-control-center.png";
+}
+
+textbox-connect{
+  str: "Connect To";
+}
+icon-connect{
+  filename: "/home/ceri/.icons/luna-icons/128x128/devices/ethernet.png";
+}
+
+textbox-print{
+  str: "Printers and Faxes";
+}
+icon-print{
+  filename: "/home/ceri/.icons/luna-icons/48x48/devices/printer.png";
+}
+
+textbox-find {
+  str: "Search";
+}
+icon-find {
+  filename: "/home/ceri/.icons/luna-icons/128x128/apps/search.png";
+}
+
+textbox-info{
+  str: "Help and Support";
+}
+icon-info{
+  filename: "/home/ceri/.icons/luna-icons/128x128/apps/help.png";
+}
+
+textbox-run{
+  str: "Run...";
+}
+icon-run{
+  filename: "/home/ceri/.icons/luna-icons/128x128/apps/system-run.png";
+}
+
+
+textbox-appearence{
+  str: "Customize Appearence";
+}
+icon-appearence{
+  filename: "~/.icons/luna-icons/24x24/appearence.ico";
+}
+
+delim-left {
+  expand: false;
+  background-image: linear-gradient(to right, #FFFFFF, #e6e6e6, #e6e6e6, #FFFFFF);
+  background-color: black;
+  padding: 1px 0 0 0;
+  margin: 2px 0 3px 20px;
+}
+
+delim-right {
+  expand: false;
+  background-image: linear-gradient(to right, #D3E5FB, #b1bdd9, #b1bdd9, #D3E5FB);
+  padding: 1px 0 0 0;
+  margin: 10px 0 8px 0;
 }
 
 listview {
   columns: 1;
-  spacing: 4px;
-  fixed-height: true;
-  fixed-columns: true;
-  scrollbar: true;
-}
-
-scrollbar {
-  handle-width: 4px;
-  margin: 0 0 0 4px;
-  handle-color: @scrollbar-fg;
-  border-radius: 100%;
-  background-color: @scrollbar-bg;
+	spacing: 0.13em;
+	dynamic: false;
+  font: "Tahoma 9";
+  scrollbar: false;
+  border: none;
 }
 
 element {
-  spacing: 0.5em;
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 4px;
+  background-color: white;
 }
 
-element selected {
-  background-color: @selected;
-  text-color: @text-selected;
+element normal.normal {
+  background-color: white;
+}
+element alternate.normal {
+  background-color: white;
 }
 
-element selected urgent {
-  background-color: @accent;
-  text-color: @text-selected;
+element-text  {
+  font: "Tahoma 9";
+	text-color: #000000;
+  vertical-align: 0.5;
+}
+
+element selected normal {
+  background-color: #316ac5;
+}
+
+element-text selected {
+	text-color: white;
 }
 
 element-icon {
-  size: 1.25em;
-}
-
-element-text {
-  text-color: inherit;
+  size: 32px;
 }
