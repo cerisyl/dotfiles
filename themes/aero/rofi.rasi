@@ -1,9 +1,6 @@
 configuration {
-  display-drun: "";
-  display-filebrowser: "";
-  display-clipboard: "";
   /* Theme config */
-  font: "Segoe UI Regular 11";
+  font: "Segoe UI 10";
   icon-theme: "aero-icons";
   /* TODO: This is here until home-manager supports filebrowser settings. */
   filebrowser {
@@ -14,135 +11,227 @@ configuration {
 }
 
 * {
+  text-color: #000000;
+  separator-style: "none";
+  border: 0;
   margin: 0;
   padding: 0;
   spacing: 0;
-  /* Theme colors */
-  bg-dark: #131316;
-  bg: #1a1a1f;
-  selected: #25252e;
-  fg: #b8b8c7;
-  fg-lite: #f2f3f5;
-  comment: #515167;
-  accent: #855ee8;
   background-color: transparent;
-  scrollbar-bg: @selected;
-  scrollbar-fg: @comment;
-  text-color: @fg;
-  text-selected: @fg;
-}
-
-element-icon, element-text, scrollbar {
-  cursor: pointer;
 }
 
 window {
-  location: center;
-  width: 520px;
-  height: 552px;
-
-  background-color: @bg;
-  border-radius: 8px;
+  padding: 0px;
+  location: south west;
+  anchor: south west;
+  width: 530px;
+  height: 680px;
+  margin: 0 0 48px 0;
+  orientation: vertical;
+  children: [mainbox];
+  border-radius: 8px 8px 0px 0px;
+  border: 1px solid;
+  border-color: #5f6572;
+  boarder-aa: false;
 }
 
 mainbox {
-  padding: 16px;
-  spacing: 16px;
+  border: 0;
+  padding: 10px;
+	children: [ left-half, right-half ];
+  orientation: horizontal;
+  fixed-columns: true;
+  background-image: linear-gradient(to bottom, #8ea1ba, #434d57, #434d57, #7d9eb3);
 }
 
-textbox {
-  vertical-align: 0.5;
-  horizontal-align: 0.5;
+left-half {
+  width: 333px;
+  expand: false;
+	children: [ listview, textbox-all, search-wrapper ];
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid;
+  border-color: #6d7e90;
 }
 
-textbox-search, entry, element-icon, element-text {
-  vertical-align: 0.5;
+textbox-all {
+  margin: 0 16px;
+  padding: 6px 0 10px;
+  expand: false;
+  background-color: white;
+  border: 1px 0 solid 0 0;
+  border-color: #dadde4;
+  str: "▸      All Programs";
 }
 
-inputbar {
-  children: [ searchbar, mode-switcher ];
-  spacing: 16px;
+search-wrapper {
+  padding: 12px;
+  children: [ searchbar, search-icon ];
+  expand: false;
+  background-image: linear-gradient(to bottom, #e9edf6, #ffffff);
+  border: 1px 0 solid 0 0;
+  border-color: #dadde4;
 }
 
 searchbar {
-  children: [ textbox-search, entry ];
-  padding: 8px 12px;
-  border: 2px;
-  border-color: @accent;
-  border-radius: 6px;
-  background-color: @bg-dark;
-  spacing: 0.5em;
-  spacing: 18px;
-  orientation: horizontal;
-  expand: true;
-}
-
-textbox-search {
   expand: false;
-  content: "";
-  font: "JetBrainsMono Nerd Font 12";
-  padding: 0 6px 0 0;
+  children: [ entry, icon-search ];
+  orientation: horizontal;
+  padding: 4px 8px;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid;
+  border-color: #6d7e90;
 }
 
 entry {
-  placeholder: "Type here to search";
-  placeholder-color: @comment;
+  expand: true;
+  placeholder: "Search programs and files";
+  placeholder-color: #a0a0a0;
   cursor: text;
 }
 
-mode-switcher {
-  spacing: 16px;
+icon-search {
+  expand: false;
+  filename: "/home/ceri/.icons/aero-icons/actions/16/system-search.svg";
 }
 
-button {
-  padding: 10px 21px 10px 15px;
-  border-radius: 6px;
-  background-color: @selected;
-  cursor: pointer;
-  font: "JetBrainsMono Nerd Font 12";
+right-half {
+  width: 193px;
+  padding: 0 10px;
+  expand: false;
+	cycle: true;
+  orientation: vertical;
+  children: [ icon-user, textbox-user, textbox-docs, textbox-pics, textbox-musc, delim, textbox-games, textbox-comp, delim, textbox-cpanel, textbox-print, textbox-defaults, textbox-info, shutdown];
+	spacing: 0.13em;
 }
 
-button selected {
-  background-color: @accent;
-  text-color: @fg-lite;
+icon-user {
+  expand: false;
+  size: 105px;
+  filename: "/home/ceri/.nix/themes/aero/img/icon.png";
+  margin: -8px 0 0 0;
+}
+
+textbox-user, textbox-docs, textbox-pics, textbox-musc, textbox-comp, textbox-games, textbox-info, textbox-run, textbox-find, textbox-defaults, textbox-appearence, textbox-cpanel, textbox-print {
+  text-color: white;
+  vertical-align: 0.5;
+  padding: 10px;
+  orientation: horizontal;
+	expand: false;
+}
+
+textbox-user{
+  str: "ceri";
+}
+textbox-docs{
+  str: "Documents";
+}
+textbox-pics{
+  str: "Pictures";
+}
+textbox-musc{
+  str: "Music";
+}
+textbox-games{
+  str: "Games";
+}
+textbox-comp{
+  str: "Computer";
+}
+textbox-cpanel {
+  str: "Control Panel";
+}
+textbox-defaults{
+  str: "Default Programs";
+}
+textbox-print{
+  str: "Devices and Printers";
+}
+textbox-info{
+  str: "Help and Support";
+}
+
+delim {
+  expand: false;
+  background-image: linear-gradient(to bottom, #414b57, #545e6a);
+  padding: 1px 0 0 0;
+  margin: 4px 12px;
+}
+
+shutdown {
+  expand: false;
+  orientation: horizontal;
+  children: [ shutdown-main, spacer ];
+  margin: 12px 0 0 0;
+}
+shutdown-main {
+  expand: false;
+  orientation: horizontal;
+  children: [ textbox-shutdown, textbox-arrow ];
+  background-image: linear-gradient(to bottom, #c6d0de, #8594ab, #a3b5cb);
+  border: 1px solid;
+  border-color: #5f6572;
+  border-radius: 2px;
+}
+textbox-shutdown {
+  expand: false;
+  text-color: white;
+  str: "Shut down";
+  padding: 2px 12px;
+  border: 1px 1px solid 1px 0px;
+  border-color: #b6c2ca;
+  border-radius: 0px 2px 2px 0px;
+}
+textbox-arrow {
+  expand: false;
+  border: 1px 1px solid 1px 0px;
+  border-color: #b6c2ca;
+  border-radius: 0px 2px 2px 0px;
+  padding: 2px 4px;
+  str: "▸";
+  text-color: white;
 }
 
 listview {
+  padding: 8px;
   columns: 1;
-  spacing: 4px;
-  fixed-height: true;
-  fixed-columns: true;
-  scrollbar: true;
+	spacing: 0.13em;
+	dynamic: false;
+  scrollbar: false;
+  border: none;
+  expand: true;
 }
 
-scrollbar {
-  handle-width: 4px;
-  margin: 0 0 0 4px;
-  handle-color: @scrollbar-fg;
-  border-radius: 100%;
-  background-color: @scrollbar-bg;
+element, element-icon, element-text {
+  cursor: pointer; 
 }
 
 element {
-  spacing: 0.5em;
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 4px;
+  background-color: white;
+  spacing: 8px;
+  border-radius: 2px;
 }
 
-element selected {
-  background-color: @selected;
-  text-color: @text-selected;
+element normal.normal {
+  background-color: white;
+}
+element alternate.normal {
+  background-color: white;
 }
 
-element selected urgent {
-  background-color: @accent;
-  text-color: @text-selected;
+element-text  {
+  text-color: #000000;
+  vertical-align: 0.5;
+}
+
+element selected normal {
+  background-image: linear-gradient(to bottom, #d9e7fc, #b8d7f9);
+  border: 1px solid;
+  border-color: #8baad0;
 }
 
 element-icon {
-  size: 1.25em;
-}
-
-element-text {
-  text-color: inherit;
+  size: 32px;
 }

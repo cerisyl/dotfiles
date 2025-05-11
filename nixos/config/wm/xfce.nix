@@ -36,7 +36,7 @@
     };
     memphis = {
       font              = "MS Sans Serif Regular 9";
-      fontTitle         = "MS Sans Serif Bold Regular 9";
+      fontTitle         = "MS Sans Serif Bold Bold 9";
       desktopFontSize   = 9;
       cursorSize        = 24;
       dpi               = 92;

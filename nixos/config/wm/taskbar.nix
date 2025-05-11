@@ -88,20 +88,20 @@
       clockDisplay      = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     };
     osx = {
-      height            = 26;
+      height            = 48;
       darkMode          = false;
       bgStyle           = 0; # n/a
       bgColor           = [ 1.00 1.00 1.00 1.00 ];
       bgImage           = null;
       showLabels        = false;
-      flatButtons       = false;
+      flatButtons       = true;
       font              = "Helvetica Neue Regular 10";
       cssStartMenu      = false;
       iconSize          = 32;
       trayIconSize      = 16;
       symbolicIcons     = false;
       clockFont         = "JetBrainsMono Nerd Font 9";
-      clockDisplay      = "<b>%l:%M:%S %p</b>";
+      clockDisplay      = "<span line-height=\"0.85px\"><b>%l:%M:%S %p%n</b>%d %b %Y</span>";
     };
   };
 

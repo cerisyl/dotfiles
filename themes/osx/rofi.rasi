@@ -1,9 +1,9 @@
 configuration {
-  display-drun: "";
-  display-filebrowser: "";
-  display-clipboard: "";
+  display-drun: "APPLICATIONS";
+  display-filebrowser: "FILES & FOLDERS";
+  display-clipboard: "CLIPBOARD";
   /* Theme config */
-  font: "Helvetica Neue Regular 10";
+  font: "Inter Regular 11";
   icon-theme: "osx-icons";
   /* TODO: This is here until home-manager supports filebrowser settings. */
   filebrowser {
@@ -18,18 +18,14 @@ configuration {
   padding: 0;
   spacing: 0;
   /* Theme colors */
-  bg-dark: #131316;
-  bg: #1a1a1f;
-  selected: #25252e;
-  fg: #b8b8c7;
-  fg-lite: #f2f3f5;
-  comment: #515167;
-  accent: #855ee8;
+  bg: #ffffff;
+  selected: #4b90ff;
+  fg-lite: #f2f2f7;
+  comment: #909090;
+  accent: @selected;
   background-color: transparent;
-  scrollbar-bg: @selected;
+  scrollbar-bg: @fg-lite;
   scrollbar-fg: @comment;
-  text-color: @fg;
-  text-selected: @fg;
 }
 
 element-icon, element-text, scrollbar {
@@ -38,16 +34,33 @@ element-icon, element-text, scrollbar {
 
 window {
   location: center;
-  width: 520px;
-  height: 552px;
-
+  width: 840px;
+  height: 620px;
   background-color: @bg;
+  border: 1px solid;
+  border-color: #aaaaaa;
   border-radius: 8px;
 }
 
 mainbox {
-  padding: 16px;
-  spacing: 16px;
+  children: [ inputbar, mode-switcher, listview];
+}
+
+mode-switcher {
+  background-color: @fg-lite;
+  padding: 12px 24px;
+}
+
+button {
+  font: "Inter Regular 10";
+  horizontal-align: 0;
+  text-color: @comment;
+  margin: -12px 0;
+}
+
+button selected {
+  text-color: black;
+  enabled: true;
 }
 
 textbox {
@@ -60,19 +73,16 @@ textbox-search, entry, element-icon, element-text {
 }
 
 inputbar {
-  children: [ searchbar, mode-switcher ];
-  spacing: 16px;
+  children: [ searchbar ];
+  border: 0 0 solid 1px 0;
+  border-color: #aaaaaa;
 }
 
 searchbar {
   children: [ textbox-search, entry ];
-  padding: 8px 12px;
-  border: 2px;
-  border-color: @accent;
-  border-radius: 6px;
-  background-color: @bg-dark;
+  padding: 16px 24px;
   spacing: 0.5em;
-  spacing: 18px;
+  spacing: 20px;
   orientation: horizontal;
   expand: true;
 }
@@ -80,36 +90,21 @@ searchbar {
 textbox-search {
   expand: false;
   content: "";
-  font: "JetBrainsMono Nerd Font 12";
-  padding: 0 6px 0 0;
+  font: "JetBrainsMono Nerd Font 24";
+  padding: 0 12px 0 0;
+  margin: 0 -4px 0 0;
+  text-color: @comment;
 }
 
 entry {
   placeholder: "Type here to search";
   placeholder-color: @comment;
   cursor: text;
-}
-
-mode-switcher {
-  spacing: 16px;
-}
-
-button {
-  padding: 10px 21px 10px 15px;
-  border-radius: 6px;
-  background-color: @selected;
-  cursor: pointer;
-  font: "JetBrainsMono Nerd Font 12";
-}
-
-button selected {
-  background-color: @accent;
-  text-color: @fg-lite;
+  font: "Inter Regular 24";
 }
 
 listview {
   columns: 1;
-  spacing: 4px;
   fixed-height: true;
   fixed-columns: true;
   scrollbar: true;
@@ -117,16 +112,16 @@ listview {
 
 scrollbar {
   handle-width: 4px;
-  margin: 0 0 0 4px;
+  margin: 16px 8px;
   handle-color: @scrollbar-fg;
   border-radius: 100%;
   background-color: @scrollbar-bg;
+  handle-rounded-corners: false;
 }
 
 element {
-  spacing: 0.5em;
-  padding: 2px 8px;
-  border-radius: 4px;
+  spacing: 25px;
+  padding: 6px 20px;
 }
 
 element selected {
@@ -139,8 +134,12 @@ element selected urgent {
   text-color: @text-selected;
 }
 
+element-text selected {
+  text-color: white;
+}
+
 element-icon {
-  size: 1.25em;
+  size: 24px;
 }
 
 element-text {

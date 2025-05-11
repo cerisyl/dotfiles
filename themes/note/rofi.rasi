@@ -18,13 +18,13 @@ configuration {
   padding: 0;
   spacing: 0;
   /* Theme colors */
-  bg-dark: #131316;
-  bg: #1a1a1f;
-  selected: #25252e;
+  bg-dark: #1a2028;
+  bg: #20262c;
+  selected: #263039;
   fg: #b8b8c7;
   fg-lite: #f2f3f5;
-  comment: #515167;
-  accent: #855ee8;
+  comment: #465866;
+  accent: #0088ff;
   background-color: transparent;
   scrollbar-bg: @selected;
   scrollbar-fg: @comment;
@@ -38,8 +38,8 @@ element-icon, element-text, scrollbar {
 
 window {
   location: center;
-  width: 520px;
-  height: 552px;
+  width: 620px;
+  height: 682px;
 
   background-color: @bg;
   border-radius: 8px;
@@ -47,7 +47,7 @@ window {
 
 mainbox {
   padding: 16px;
-  spacing: 16px;
+  spacing: 8px;
 }
 
 textbox {
@@ -61,7 +61,7 @@ textbox-search, entry, element-icon, element-text {
 
 inputbar {
   children: [ searchbar, mode-switcher ];
-  spacing: 16px;
+  spacing: 8px;
 }
 
 searchbar {
@@ -69,7 +69,7 @@ searchbar {
   padding: 8px 12px;
   border: 2px;
   border-color: @accent;
-  border-radius: 6px;
+  border-radius: 100%;
   background-color: @bg-dark;
   spacing: 0.5em;
   spacing: 18px;
@@ -91,12 +91,12 @@ entry {
 }
 
 mode-switcher {
-  spacing: 16px;
+  spacing: 8px;
 }
 
 button {
-  padding: 10px 21px 10px 15px;
-  border-radius: 6px;
+  padding: 10px 19px 10px 13px;
+  border-radius: 999px;
   background-color: @selected;
   cursor: pointer;
   font: "JetBrainsMono Nerd Font 12";
@@ -108,8 +108,12 @@ button selected {
 }
 
 listview {
-  columns: 1;
-  spacing: 4px;
+  columns: 4;
+  cycle: true;
+  dynamic: true;
+  layout: vertical;
+  flow: horizontal;
+  reverse: false;
   fixed-height: true;
   fixed-columns: true;
   scrollbar: true;
@@ -124,9 +128,10 @@ scrollbar {
 }
 
 element {
-  spacing: 0.5em;
-  padding: 2px 8px;
+  spacing: 4px;
+  padding: 12px 16px;
   border-radius: 4px;
+  orientation: vertical;
 }
 
 element selected {
@@ -140,9 +145,12 @@ element selected urgent {
 }
 
 element-icon {
-  size: 1.25em;
+  size: 56px;
 }
 
 element-text {
   text-color: inherit;
+  horizontal-align: 0.5;
+  font: "Roboto Regular 10";
+  width: 900px;
 }

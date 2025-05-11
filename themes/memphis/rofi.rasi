@@ -1,9 +1,6 @@
 configuration {
-  display-drun: "";
-  display-filebrowser: "";
-  display-clipboard: "";
   /* Theme config */
-  font: "Tahoma 10";
+  font: "MS Sans Serif Raster 9";
   icon-theme: "memphis-icons";
   /* TODO: This is here until home-manager supports filebrowser settings. */
   filebrowser {
@@ -14,135 +11,105 @@ configuration {
 }
 
 * {
+  text-color: #000000;
+  separator-style: "none";
+  border: 0;
   margin: 0;
   padding: 0;
   spacing: 0;
-  /* Theme colors */
-  bg-dark: #131316;
-  bg: #1a1a1f;
-  selected: #25252e;
-  fg: #b8b8c7;
-  fg-lite: #f2f3f5;
-  comment: #515167;
-  accent: #855ee8;
   background-color: transparent;
-  scrollbar-bg: @selected;
-  scrollbar-fg: @comment;
-  text-color: @fg;
-  text-selected: @fg;
-}
-
-element-icon, element-text, scrollbar {
-  cursor: pointer;
 }
 
 window {
-  location: center;
-  width: 520px;
-  height: 552px;
-
-  background-color: @bg;
-  border-radius: 8px;
+  padding: 0px;
+  location: south west;
+  anchor: south west;
+  width: 400px;
+  height: 680px;
+  margin: 0 0 25px 0;
+  orientation: vertical;
+  children: [mainbox];
+  border: 1px solid;
+  border-color: #505050;
 }
 
 mainbox {
-  padding: 16px;
-  spacing: 16px;
+  padding: 4px;
+  children: [ icon-ribbon, search-wrapper ];
+  orientation: horizontal;
+  fixed-columns: true;
+  background-color: #c0c0c0;
 }
 
-textbox {
-  vertical-align: 0.5;
-  horizontal-align: 0.5;
+icon-ribbon {
+  expand: false;
+  size: 644px;
+  margin: calc(-1 * (680px / 2 - 38px));
+  filename: "/home/ceri/desktop/banner.png";
 }
 
-textbox-search, entry, element-icon, element-text {
-  vertical-align: 0.5;
-}
-
-inputbar {
-  children: [ searchbar, mode-switcher ];
-  spacing: 16px;
+search-wrapper {
+  children: [ listview, delim, searchbar ];
 }
 
 searchbar {
-  children: [ textbox-search, entry ];
-  padding: 8px 12px;
-  border: 2px;
-  border-color: @accent;
-  border-radius: 6px;
-  background-color: @bg-dark;
-  spacing: 0.5em;
-  spacing: 18px;
-  orientation: horizontal;
-  expand: true;
-}
-
-textbox-search {
   expand: false;
-  content: "";
-  font: "JetBrainsMono Nerd Font 12";
-  padding: 0 6px 0 0;
+  children: [ entry ];
+  orientation: horizontal;
+  padding: 12px;
 }
 
 entry {
-  placeholder: "Type here to search";
-  placeholder-color: @comment;
+  expand: true;
+  placeholder: "Search programs and files";
+  placeholder-color: #808080;
   cursor: text;
+  vertical-align: 0.5;
 }
 
-mode-switcher {
-  spacing: 16px;
-}
-
-button {
-  padding: 10px 21px 10px 15px;
-  border-radius: 6px;
-  background-color: @selected;
-  cursor: pointer;
-  font: "JetBrainsMono Nerd Font 12";
-}
-
-button selected {
-  background-color: @accent;
-  text-color: @fg-lite;
+delim {
+  expand: false;
+  background-image: linear-gradient(to bottom, #808080, #c0c0c0, #e7e7e7);
+  padding: 3px 0 0 0;
 }
 
 listview {
   columns: 1;
-  spacing: 4px;
-  fixed-height: true;
-  fixed-columns: true;
-  scrollbar: true;
+  dynamic: false;
+  scrollbar: false;
+  border: none;
+  expand: true;
 }
 
-scrollbar {
-  handle-width: 4px;
-  margin: 0 0 0 4px;
-  handle-color: @scrollbar-fg;
-  border-radius: 100%;
-  background-color: @scrollbar-bg;
+element, element-icon, element-text {
+  cursor: pointer; 
 }
 
 element {
-  spacing: 0.5em;
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 4px 8px;
+  spacing: 8px;
 }
 
-element selected {
-  background-color: @selected;
-  text-color: @text-selected;
+element normal.normal {
+  background-color: #c0c0c0;
+}
+element alternate.normal {
+  background-color: #c0c0c0;
 }
 
-element selected urgent {
-  background-color: @accent;
-  text-color: @text-selected;
+element-text  {
+  text-color: #000000;
+  vertical-align: 0.5;
+}
+
+element selected normal {
+  background-color: #00007f;
+}
+
+element-text selected normal {
+  text-color: white;
 }
 
 element-icon {
-  size: 1.25em;
-}
-
-element-text {
-  text-color: inherit;
+  size: 32px;
 }
