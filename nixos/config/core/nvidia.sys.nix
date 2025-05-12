@@ -1,4 +1,4 @@
-{ config, lib, myHostname, ... }}:
+{ config, lib, myHostname, ... }:
 if myHostname == "lux" then {
   # Enable OpenGL
   hardware.graphics.enable = true;
