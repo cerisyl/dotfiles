@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Telgram
+Type=Application
+Exec=telegram-desktop
+Icon=org.telegram.desktop

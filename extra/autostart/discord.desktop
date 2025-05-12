@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Discord
+Type=Application
+Exec=vesktop --enable-blink-features=MiddleClickAutoscroll
+Icon=ceri-cord

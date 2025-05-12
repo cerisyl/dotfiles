@@ -48,7 +48,7 @@
     };
   in {
     nixosConfigurations = {
-      luxe    = defHost "luxe";
+      lux     = defHost "lux";
       nova    = defHost "nova";
       astore  = defHost "astore";
       vm      = defHost "vm";

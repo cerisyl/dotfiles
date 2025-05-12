@@ -31,7 +31,7 @@
   # Package management
   # Use binary to determine what packages we should download
   hostIndexMap = {
-    "luxe"    = 2;
+    "lux"     = 2;
     "nova"    = 1;
     "astore"  = 0;
     "vm"      = 1;
