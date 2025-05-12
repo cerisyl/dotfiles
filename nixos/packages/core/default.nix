@@ -4,6 +4,7 @@ in [
   (p "011" false  "birdtray")
   (p "111" true   "mate.engrampa")
   (p "111" true   "floorp")
+  (p "111" true   "gnome-keyring")
   (p "111" true   "keepassxc")
   (p "111" true   "kitty")
   (p "111" false  "imv")
