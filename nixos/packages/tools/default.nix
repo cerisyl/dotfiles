@@ -16,6 +16,7 @@ in [
   (p "001" false  "puddletag")
   (p "111" false  "qdirstat")
   (p "111" false  "qdiskinfo")
+  (p "101" false  "rclone")
   (p "001" false  "rubyripper")
   (p "011" false  "tesseract")
   #(p "001" false  "unmined-gui") manual install
