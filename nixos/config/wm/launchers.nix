@@ -135,6 +135,16 @@ in {
       exec = "keepassxc";
       icon = "ceri-pass";
     };
+    "xfce4-file-manager" = {
+      name = "File Manager";
+      exec = "exo-open --launch FileManager %u";
+      icon = "ceri-files";
+    };
+    "thunderbird" = {
+      name = "Email";
+      exec = "thunderbird";
+      icon = "ceri-email";
+    };
   } // mappedLaunchers;
   xdg.dataFile = {
     # Floorp

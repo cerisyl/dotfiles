@@ -93,7 +93,7 @@
       wolfram = "wolframalpha";
 
       # Package management
-      rebuild = ''sudo nixos-rebuild switch --flake ~/.nix/. && xfce4-panel -r &> ~/.switch.log || 
+      rebuild = ''((sudo nixos-rebuild switch --flake ~/.nix/. &> ~/.switch.log) && xfce4-panel -r) || 
       (cat ~/.switch.log | grep --color error && false)'';
       rbl     = "rebuild";
       upgrade = ''cd ~/.nix && (sudo nix flake upgrade && git commit -am "Update flake" && rebuild) ||

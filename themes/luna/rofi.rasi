@@ -36,7 +36,7 @@ window {
   orientation: vertical;
   children: [top-deco, mainbox, bottom-deco];
   border-radius: 8px 8px 0px 0px;
-  background-image: url("/home/ceri/desktop/rofi-top.png");
+  background-image: url("/home/ceri/.nix/extra/img/rofi-top.png");
   boarder-aa: false;
 }
 
@@ -53,7 +53,7 @@ top-deco {
 icon-top {
   expand: false;
   size: 56px;
-  filename: "/home/ceri/desktop/syl-fx.jpg";
+  filename: "/home/ceri/.nix/extra/img/fetch.png";
 	border: 2px solid;
   border-color: #ccd6eb;
   border-radius: 2px;
@@ -69,8 +69,8 @@ textbox-top {
 bottom-deco {
   expand: false;
   padding: 15px;
-  background-color: rgb(72,141,237);
-  background-image: url("/home/ceri/desktop/rofi-bottom.png");
+  background-color: #488ded;
+  background-image: url("/home/ceri/.nix/extra/img/rofi-bottom.png");
   orientation: horizontal;
   children: [spacer, logoff, shutdown];
   spacing: 16px;
@@ -308,7 +308,6 @@ icon-run{
   filename: "/home/ceri/.icons/luna-icons/128x128/apps/system-run.png";
 }
 
-
 textbox-appearence{
   str: "Customize Appearence";
 }
@@ -343,6 +342,7 @@ listview {
 element {
   padding: 4px;
   background-color: white;
+  spacing: 8px;
 }
 
 element normal.normal {
