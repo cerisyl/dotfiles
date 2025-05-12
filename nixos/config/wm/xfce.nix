@@ -73,7 +73,7 @@
   displays = {
     lux = {};
     nova = {
-      "backdrop/screen0/monitorLaptop/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+      "backdrop/screen0/monitorDP-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };
     astore = {
       "backdrop/screen0/monitorHDMI-0/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
