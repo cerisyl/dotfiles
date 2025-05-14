@@ -1,4 +1,3 @@
-#!/bin/bash
 # Capture a partial-area screenshot.
 
 # Check if the target directory exists

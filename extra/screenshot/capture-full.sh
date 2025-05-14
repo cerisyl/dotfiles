@@ -1,4 +1,3 @@
-#!/bin/bash
 # Capture a full-size screenshot of all screens.
 
 # Check if the target directory exists

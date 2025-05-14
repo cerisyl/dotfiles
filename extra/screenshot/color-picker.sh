@@ -1,4 +1,3 @@
-#!/bin/bash
 # Pick a color and return it into the clipboard as HEX
 
 color=$(xcolor -P 160)

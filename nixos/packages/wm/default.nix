@@ -9,7 +9,6 @@ in [
   #(p "111" false  "nody-greeter") # may have to manual install
   (p "111" false  "pasystray") # Replaces pavucontrol
   (p "111" false  "plymouth")
-  #(p "111" false  "plymouth-theme-arch10") # may have to manual install
   (p "111" false  "pulseaudio")
   (p "111" true   "rofi")
   (p "111" false  "rofimoji")
@@ -25,4 +24,5 @@ in [
   (p "111" false  "xfce.xfce4-pulseaudio-plugin")
   (p "111" false  "xfce.xfce4-screenshooter")
   (p "111" false  "xfce.xfwm4")
+  (p "111" false  "xmousepasteblock")
 ]

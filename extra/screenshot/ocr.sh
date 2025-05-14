@@ -1,4 +1,3 @@
-#!/bin/bash
 # Extract text from a partial-area screenshot using OCR
 
 # Define temporary filename location

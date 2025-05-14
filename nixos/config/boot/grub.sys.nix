@@ -4,7 +4,7 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
-      efi.canTouchEfiVariables = true;
+      #efi.canTouchEfiVariables = true;
       timeout = 0;
       grub = {
         enable          = true;
@@ -15,6 +15,7 @@
         backgroundColor = "#1a1a1f";
         splashImage     = null;
         theme           = "/home/ceri/.nix/themes/ceres/grub";
+        efiInstallAsRemovable = true;
       };
     };
   };
