@@ -179,12 +179,12 @@ in {
       "Xft/Hinting"             = 1; # On
       "Xft/HintStyle"           = "hintfull";
     };
-  };
 
-  # Notifications
-  xfce4-notifyd = {
-    "applications/muted_applications" = [ "pasystray" ];
-    "notify-location" = "bottom-right";
+    # Notifications
+    xfce4-notifyd = {
+      "applications/muted_applications" = [ "pasystray" ];
+      "notify-location" = "bottom-right";
+    };
   };
 
   # Home directories
