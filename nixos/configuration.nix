@@ -115,6 +115,10 @@ in {
   nixpkgs.config.allowUnfree  = true;
   environment.systemPackages  = systemPackages;
 
+  # Allow dynamically linked executables
+  programs.nix-ld.enable    = true;
+  programs.nix-ld.libraries = [];
+
   # Fonts
   fonts.packages = [
     pkgs.inter
