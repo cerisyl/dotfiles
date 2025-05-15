@@ -31,9 +31,9 @@
     "<Super><Alt>C"               = "sh ${homedir}/.nix/extra/screenshot/color-picker.sh";
 
     # Volume 
-    "AudioLowerVolume"  = "pactl set-sink-volume @DEFAULT_SINK@ -1%"
-    "AudioLowerVolume"  = "pactl set-sink-volume @DEFAULT_SINK@ +1%"
-    "AudioMute"         = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    "AudioLowerVolume"  = "pactl set-sink-volume @DEFAULT_SINK@ -1%";
+    "AudioRaiseVolume"  = "pactl set-sink-volume @DEFAULT_SINK@ +1%";
+    "AudioMute"         = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
   };
 in {
   xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;
