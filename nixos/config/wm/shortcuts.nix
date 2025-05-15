@@ -23,14 +23,17 @@
     "<Super>d" = "sh ${homedir}/.nix/extra/panel/showdesktop.sh";
     # Show file explorer
     "<Super>f" = "thunar";
-    # Capture full-screen screenshot (xfce4-screenshooter)
-    "<Primary><Shift>numbersign" = "sh ${homedir}/.nix/extra/screenshot/capture-full.sh";
-    # Capture partial-area screenshot (xfce4-screenshooter)
-    "<Primary><Shift>dollar" = "sh ${homedir}/.nix/extra/screenshot/capture-partial.sh";
-    # Capture and OCR via partial-area screenshot (xfce4-screenshooter + tesseract)
-    "<Primary><Shift>O" = "sh ${homedir}/.nix/extra/screenshot/ocr.sh";
-    # Pick a color and return it into the clipboard as HEX
-    "<Super><Alt>C" = "sh ${homedir}/.nix/extra/screenshot/color-picker.sh";
+
+    # Screenshots
+    "<Primary><Shift>numbersign"  = "sh ${homedir}/.nix/extra/screenshot/capture-full.sh";
+    "<Primary><Shift>dollar"      = "sh ${homedir}/.nix/extra/screenshot/capture-partial.sh";
+    "<Primary><Shift>O"           = "sh ${homedir}/.nix/extra/screenshot/ocr.sh";
+    "<Super><Alt>C"               = "sh ${homedir}/.nix/extra/screenshot/color-picker.sh";
+
+    # Volume 
+    "AudioLowerVolume"  = "pactl set-sink-volume @DEFAULT_SINK@ -1%"
+    "AudioLowerVolume"  = "pactl set-sink-volume @DEFAULT_SINK@ +1%"
+    "AudioMute"         = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   };
 in {
   xfconf.settings.xfce4-keyboard-shortcuts = shortcuts;

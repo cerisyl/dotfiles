@@ -94,9 +94,11 @@ in {
       file=$(basename $zip)
       type=''\${file%.*}
       if [[ $zip == *"main"* ]] || [[ $zip == *"window"* ]]; then
+        mkdir -p "${homedir}/.local/share/themes/$theme-$type"
         rm -rf "${homedir}/.local/share/themes/$theme-$type"
         ${pkgMap.unzip}/bin/unzip -qq $zip -d "${homedir}/.local/share/themes/$theme-$type"
       else
+        mkdir -p "${homedir}/.icons/$theme-$type"
         rm -rf "${homedir}/.icons/$theme-$type"
         ${pkgMap.unzip}/bin/unzip -qq $zip -d "${homedir}/.icons/$theme-$type"
       fi
@@ -177,6 +179,12 @@ in {
       "Xft/Hinting"             = 1; # On
       "Xft/HintStyle"           = "hintfull";
     };
+  };
+
+  # Notifications
+  xfce4-notifyd = {
+    "applications/muted_applications" = [ "pasystray" ];
+    "notify-location" = "bottom-right";
   };
 
   # Home directories

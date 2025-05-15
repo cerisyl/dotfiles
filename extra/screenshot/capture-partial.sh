@@ -1,10 +1,11 @@
 # Capture a partial-area screenshot.
 
 # Check if the target directory exists
-mkdir -p "$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)"
+$screenshots="/home/ceri/captures"
+mkdir -p "$screenshots/$(date +%Y-%m)"
 
 # Take the screeshot and save it to the directory
-fname="$XDG_SCREENSHOTS_DIR/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png"
+fname="$screenshots/$(date +%Y-%m)/$(date +%Y-%m-%d_%H-%M-%S).png"
 xfce4-screenshooter -r -c -s "$fname"
 
 # Copy to clipboard

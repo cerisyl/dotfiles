@@ -30,7 +30,6 @@
     "x-scheme-handler/chrome"       = browser;
     "x-scheme-handler/spotify"      = browser;
     "application/pdf"               = browser;
-    "video/x-matroska"              = browser; # mkv
     "application/x-extension-htm"   = browser;
     "application/x-extension-html"  = browser;
     "application/x-extension-shtml" = browser;
@@ -38,13 +37,14 @@
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht"   = browser;
     # videos
-    "video/x-flv"     = mediaPlayer;
-    "video/mp4"       = mediaPlayer;
-    "video/mov"       = mediaPlayer;
-    "video/quicktime" = mediaPlayer;
-    "video/vnd.avi"   = mediaPlayer;
-    "video/webm"      = mediaPlayer;
-    "video/x-ms-wmv"  = mediaPlayer;
+    "video/x-flv"       = mediaPlayer;
+    "video/mp4"         = mediaPlayer;
+    "video/mov"         = mediaPlayer;
+    "video/quicktime"   = mediaPlayer;
+    "video/vnd.avi"     = mediaPlayer;
+    "video/webm"        = mediaPlayer;
+    "video/x-ms-wmv"    = mediaPlayer;
+    "video/x-matroska"  = mediaPlayer; # mkv
     # code
     "text/x-c"                  = editor;
     "text/x-c++"                = editor;
