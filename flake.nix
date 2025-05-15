@@ -32,7 +32,7 @@
         ./nixos/hosts/${hostname}/configuration.nix
         inputs.home-manager.nixosModules.home-manager
         {
-          home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
+          home-manager.sharedModules = [ ];
           system.configurationRevision = self.rev or null;
           system.nixos.label =
             if (self.sourceInfo ? lastModifiedDate) && (self.sourceInfo ? shortRev)
