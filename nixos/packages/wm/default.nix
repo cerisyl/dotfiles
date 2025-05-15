@@ -7,7 +7,7 @@ in [
   (p "111" false  "networkmanager")
   (p "111" false  "networkmanagerapplet")
   #(p "111" false  "nody-greeter") # may have to manual install
-  (p "111" false  "pavucontrol")
+  (p "111" false  "patray")
   (p "111" false  "plymouth")
   (p "111" false  "pulseaudio")
   (p "111" true   "rofi")

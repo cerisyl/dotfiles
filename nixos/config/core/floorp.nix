@@ -19,7 +19,7 @@
     "floorp.browser.tabs.tabMinHeight"        = 30;     # Minimum height of tabs
     "privacy.userContext.enabled"             = false;  # Enable Container Tabs
     ## Browsing
-    "general.autoScroll"                      = false;  # Use autoscrolling
+    "general.autoScroll"                      = true;   # Use autoscrolling + enable scrollwheel
     "general.smoothScroll"                    = false;  # Use smooth scrolling
     "ui.osk.enabled"                          = false;  # Show a touch keyboard when necessary
     "accessibility.browsewithcaret"           = false;  # Always use the cursor keys to navigate within pages

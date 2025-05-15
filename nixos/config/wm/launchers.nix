@@ -7,7 +7,6 @@
     "nixos-manual"
     "org.pulseaudio.pavucontrol"
     "panel-preferences"
-    "pasystray"
     "thunar"
     "thunar-bulk-rename"
     "thunar-settings"
@@ -171,12 +170,12 @@ in {
       Exec=floorp --new-window --enable-blink-features=MiddleClickAutoscroll
       Name=New Window
     '';
-    # Vesktop
-    "applications/vesktop.desktop".text = ''
+    # Discord
+    "applications/discord.desktop".text = ''
       [Desktop Entry]
       Name=Discord
       Type=Application
-      Exec=vesktop --enable-blink-features=MiddleClickAutoscroll
+      Exec=discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling
       Icon=ceri-cord
     '';
   } // mappedOverwrites;
