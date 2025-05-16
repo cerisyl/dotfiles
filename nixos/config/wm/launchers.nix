@@ -11,6 +11,8 @@
     "thunar-bulk-rename"
     "thunar-settings"
     "syncthing-ui"
+    "syncthingtray"
+    "volctl"
     "winetricks"
     "XColor"
     "xfce4-about"

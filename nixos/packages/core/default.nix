@@ -2,7 +2,7 @@
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
   (p "011" false  "birdtray")
-  (p "001" true   "chromium")
+  (p "001" true   "ungoogled-chromium") # Specifically for WebFSR
   (p "111" true   "mate.engrampa")
   (p "111" true   "floorp")
   (p "111" true   "gnome-keyring")

@@ -82,7 +82,7 @@ in if pkgMap ? "itgmania" then {
       DisplayAspectRatio=1.777778
       DisplayColorDepth=32
       DisplayHeight=1440
-      DisplayId=
+      DisplayId=DP-0
       DisplayWidth=2560
       Disqualification=0
       EasterEggs=0
@@ -358,45 +358,45 @@ in if pkgMap ? "itgmania" then {
       nice=2
     '';
     # Keymaps
-    ".itgmania/Save/Keymaps.ini".text = ''
-      [dance]
-      1_Back=
-      1_Coin=
-      1_Down=:Joy1_B3
-      1_EffectDown=
-      1_EffectUp=
-      1_Left=:Joy1_B2
-      1_MenuDown=:Key_down
-      1_MenuLeft=:Key_left
-      1_MenuRight=:Key_right
-      1_MenuUp=:Key_up
-      1_Operator=
-      1_Restart=
-      1_Right=:Joy1_B5
-      1_Select=
-      1_Start=
-      1_Up=:Joy1_B4
-      1_UpLeft=
-      1_UpRight=
-      2_Back=
-      2_Coin=
-      2_Down=
-      2_EffectDown=
-      2_EffectUp=
-      2_Left=
-      2_MenuDown=
-      2_MenuLeft=
-      2_MenuRight=
-      2_MenuUp=
-      2_Operator=
-      2_Restart=
-      2_Right=
-      2_Select=
-      2_Start=
-      2_Up=
-      2_UpLeft=
-      2_UpRight=
-    '';
+    # ".itgmania/Save/Keymaps.ini".text = ''
+    #   [dance]
+    #   1_Back=
+    #   1_Coin=
+    #   1_Down=:Joy1_B3
+    #   1_EffectDown=
+    #   1_EffectUp=
+    #   1_Left=:Joy1_B2
+    #   1_MenuDown=:Key_down
+    #   1_MenuLeft=:Key_left
+    #   1_MenuRight=:Key_right
+    #   1_MenuUp=:Key_up
+    #   1_Operator=
+    #   1_Restart=
+    #   1_Right=:Joy1_B5
+    #   1_Select=
+    #   1_Start=
+    #   1_Up=:Joy1_B4
+    #   1_UpLeft=
+    #   1_UpRight=
+    #   2_Back=
+    #   2_Coin=
+    #   2_Down=
+    #   2_EffectDown=
+    #   2_EffectUp=
+    #   2_Left=
+    #   2_MenuDown=
+    #   2_MenuLeft=
+    #   2_MenuRight=
+    #   2_MenuUp=
+    #   2_Operator=
+    #   2_Restart=
+    #   2_Right=
+    #   2_Select=
+    #   2_Start=
+    #   2_Up=
+    #   2_UpLeft=
+    #   2_UpRight=
+    # '';
   };
   # Load our noteskins
   home.activation.loadNoteskins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
