@@ -1,7 +1,7 @@
 # Capture a partial-area screenshot.
 
 # Check if the target directory exists
-$screenshots="/home/ceri/captures"
+screenshots="/home/ceri/captures"
 mkdir -p "$screenshots/$(date +%Y-%m)"
 
 # Take the screeshot and save it to the directory

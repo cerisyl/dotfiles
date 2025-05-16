@@ -1,7 +1,7 @@
 # Capture a full-size screenshot of all screens.
 
 # Check if the target directory exists
-$screenshots="/home/ceri/captures"
+screenshots="/home/ceri/captures"
 mkdir -p "$screenshots/$(date +%Y-%m)"
 
 # Take the screeshot and save it to the directory
