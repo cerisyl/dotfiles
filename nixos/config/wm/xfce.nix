@@ -182,7 +182,7 @@ in {
 
     # Notifications
     xfce4-notifyd = {
-      "applications/muted_applications" = [ "pasystray" ];
+      "applications/muted_applications" = [ ];
       "notify-location" = "bottom-right";
     };
   };

@@ -3,6 +3,11 @@
     [General]
     ConfigVersion=2
 
+    [Browser]
+    CustomProxyLocation=
+    Enabled=true
+    SearchInAllDatabases=true
+
     [PasswordGenerator]
     AdditionalChars=!@#?%_-+&
     ExcludedChars=
@@ -50,6 +55,7 @@
   # TODO: Uncomment after 25.05 release
   # programs.keepassxc = {
   #   enable = true;
+  #   browserIntegration.firefox = true;
   #   settings = {
   #     General = {
   #       ConfigVersion = 2;
