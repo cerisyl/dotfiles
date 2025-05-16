@@ -7,11 +7,11 @@ in [
   (p "111" false  "networkmanager")
   (p "111" false  "networkmanagerapplet")
   #(p "111" false  "nody-greeter") # may have to manual install
-  (p "111" false  "patray")
   (p "111" false  "plymouth")
   (p "111" false  "pulseaudio")
   (p "111" true   "rofi")
   (p "111" false  "rofimoji")
+  (p "111" false  "volctl")
   (p "111" false  "wmctrl")
   (p "111" false  "xclip")
   (p "111" false  "xfce.thunar-archive-plugin")

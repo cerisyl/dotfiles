@@ -153,7 +153,7 @@
     "4/hidden-legacy-items" = [ "deluge" ];
     "4/known-legacy-items"  = [ "deluge" "networkmanager applet" ];
     "4/hidden-items"        = [ "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
-    "4/known-items"         = [ "patray" "KeePassXC" "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
+    "4/known-items"         = [ "volctl" "KeePassXC" "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
 
     # clock
     "5"                     = "clock";
