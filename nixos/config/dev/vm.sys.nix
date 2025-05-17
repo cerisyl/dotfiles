@@ -4,8 +4,8 @@
       enable = true;
       qemu = {
         swtpn.enable = true;
-        ovnf.enable = true;
-        ovnf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
     spiceUSBRedirection.enable = true;
