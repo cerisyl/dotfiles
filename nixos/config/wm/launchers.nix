@@ -52,6 +52,7 @@
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
     (overwrite "Rofi"                   "rofi"                          "rofi -show")
     (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
+    (overwrite "Syncthing Tray"         "syncthingtray"                 "syncthingtray --wait")
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";

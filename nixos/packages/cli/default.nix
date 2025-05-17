@@ -12,6 +12,7 @@ in [
   (p "111" false  "micro")
   (p "111" true   "oh-my-posh")
   (p "100" false  "openssh")
+  (p "111" false  "pciutils") # mainly for lspci
   (p "111" false  "p7zip")
   (p "010" false  "sof-firmware")
   (p "111" false  "tealdeer")
