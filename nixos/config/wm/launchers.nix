@@ -1,4 +1,9 @@
-{ config, pkgMap, theme, getThemeFile, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
+  # Shortcut for nvidia strings
+  nvidia = program: (if myHostname == "luxe"
+    then "__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only exec ${program}"
+    else program);
+
   removeLaunchers = [
     "btop"
     "cups"
@@ -24,7 +29,7 @@
     "xfce-workspaces-settings"
     "xfce4-screenshooter"
   ];
-  mappedLaunchers = builtins.listToAttrs (map (name: {
+  mappedRemovals = builtins.listToAttrs (map (name: {
     inherit name;
     exec = name;
     value = {
@@ -32,6 +37,37 @@
       noDisplay = true;
     };
   }) removeLaunchers);
+
+  custom = name: filename: exec: icon: { inherit name filename exec icon; };
+  customLaunchers = [
+    #custom Name,                     .desktop file,                    Exec (true if == .desktop file),    icon (true if == .desktop file)
+    (custom "lock"                    "Lock"                            "xflock4"                           true)
+    (custom "Restart"                 "restart"                         "reboot"                            "reboot")
+    (custom "Shutdown"                "shutdown"                        "shutdown now"                      true)
+    (custom "Discord Chat Exporter"   "discordchatexporter"             true                                "cord")
+    (custom "Deluge"                  "deluge"                          true                                true)
+    (custom "ITGmania"                "itgmania"                        (nvidia "itgmania")                 "itg")
+    (custom "Minecraft"               "org.prismlauncher.PrismLauncher" "prismlauncher"                     "mc")
+    (custom "OBS Studio"              "com.obsproject.Studio"           "obs"                               "obs")
+    (custom "Kdenlive"                "org.kde.kdenlive"                "kdenlive"                          "kden")
+    (custom "Steam"                   "steam"                           true                                true)
+    (custom "VLC Media Player"        "vlc"                             true                                "media")
+    (custom "Tauon"                   "tauonmb"                         "tauon"                             "music")
+    (custom "Virtual Machine Manager" "virt-manager"                    true                                "vm")
+    (custom "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                         "pass")
+    (custom "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"  "files")
+    (custom "Email"                   "thunderbird"                     true                                "email")
+  ];
+  mappedCustoms = builtins.listToAttrs (map (obj: {
+    name = "applications/${obj.filename}.desktop";
+    value.text = ''
+      [Desktop Entry]
+      Name=${obj.name}
+      Type=Application
+      Exec=${if obj.exec == true then obj.filename else obj.exec}
+      Icon=${if obj.icon == true then "ceri-${obj.filename}" else "ceri-${obj.icon}"}
+    '';
+  }) customLaunchers);
 
   # Used when removeLaunchers simply doesn't cut it.
   # These files go into .local/share/applications
@@ -66,88 +102,7 @@
   }) overwriteLaunchers);
 in {
   # Create custom launchers here
-  xdg.desktopEntries = {
-    "lock" = {
-      name = "Lock";
-      exec = "xflock4";
-      icon = "ceri-lock";
-    };
-    "restart" = {
-      name = "Restart";
-      exec = "reboot";
-      icon = "ceri-reboot";
-    };
-    "shutdown" = {
-      name = "Shutdown";
-      exec = "shutdown now";
-      icon = "ceri-shutdown";
-    };
-    "discordchatexporter" = {
-      name = "Discord Chat Exporter";
-      exec = "discordchatexporter";
-      icon = "ceri-cord";
-    };
-    "deluge" = {
-      name = "Deluge";
-      exec = "deluge";
-      icon = "ceri-deluge";
-    };
-    "itgmania" = {
-      name = "ITGmania";
-      exec = "itgmania";
-      icon = "ceri-itg";
-    };
-    "org.prismlauncher.PrismLauncher" = {
-      name = "Minecraft";
-      exec = "prismlauncher";
-      icon = "ceri-mc";
-    };
-    "com.obsproject.Studio" = {
-      name = "OBS Studio";
-      exec = "obs";
-      icon = "ceri-obs";
-    };
-    "org.kde.kdenlive" = {
-      name = "Kdenlive";
-      exec = "kdenlive";
-      icon = "ceri-kden";
-    };
-    "steam" = {
-      name = "Steam";
-      exec = "steam";
-      icon = "ceri-steam";
-    };
-    "vlc" = {
-      name = "VLC Media Player";
-      exec = "vlc";
-      icon = "ceri-media";
-    };
-    "tauonmb" = {
-      name = "Tauon";
-      exec = "tauon";
-      icon = "ceri-music";
-    };
-    "virt-manager" = {
-      name = "Virtual Machine Manager";
-      exec = "virt-manager";
-      icon = "ceri-vm";
-    };
-    "org.keepassxc.KeePassXC" = {
-      name = "KeePassXC";
-      exec = "keepassxc";
-      icon = "ceri-pass";
-    };
-    "xfce4-file-manager" = {
-      name = "File Manager";
-      exec = "exo-open --launch FileManager %u";
-      icon = "ceri-files";
-    };
-    "thunderbird" = {
-      name = "Email";
-      exec = "thunderbird";
-      icon = "ceri-email";
-    };
-  } // mappedLaunchers;
+  xdg.desktopEntries = mappedCustoms // mappedRemovals;
   xdg.dataFile = {
     # Floorp
     "applications/floorp.desktop".text = ''
@@ -180,6 +135,19 @@ in {
       Type=Application
       Exec=discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling
       Icon=ceri-cord
+    '';
+    # Blender
+    "applications/blender.desktop".text = ''
+      [Desktop Entry]
+      Version=1.0
+      Type=Application
+      Name=Blender
+      Comment=3D modeling, animation, rendering and post-production
+      Exec=${nvidia "blender"} %f
+      Icon=blender
+      Path=
+      Terminal=false
+      StartupNotify=false
     '';
   } // mappedOverwrites;
 }
