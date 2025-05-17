@@ -51,7 +51,7 @@
     (custom "Virtual Machine Manager" "virt-manager"                    true                                "vm")
     (custom "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                         "pass")
     (custom "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"  "files")
-    (custom "Email"                   "thunderbird"                     true                                "email")                              "email")
+    (custom "Email"                   "thunderbird"                     true                                "email")
   ];
   mappedCustoms = builtins.listToAttrs (map (obj: {
     name = obj.filename;
