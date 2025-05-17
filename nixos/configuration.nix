@@ -83,7 +83,7 @@ in {
   users.users.ceri = {
     isNormalUser  = true;
     shell         = pkgsUnstable.zsh;
-    extraGroups   = [ "wheel" "input" "networkmanager" "deluge" ];
+    extraGroups   = [ "wheel" "input" "networkmanager" "deluge" "libvirtd" ];
   };
 
   # Import/set home configuration
