@@ -149,9 +149,9 @@
     "4/menu-is-primary"     = false;
     "4/symbolic-icons"      = themeProps."${theme}".symbolicIcons;
     # order of icons (legacy, hidden)
-    # chrome_status_icon_1 -> discord/vesktop
+    # chrome_status_icon_1 = discord
     "4/hidden-legacy-items" = [ "deluge" ];
-    "4/known-legacy-items"  = [ "deluge" "networkmanager applet" "volctl" ];
+    "4/known-legacy-items"  = [ "deluge" "networkmanager applet" ".volctl_wrapped" ];
     "4/hidden-items"        = [ "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
     "4/known-items"         = [ "KeePassXC" "Syncthing Tray" "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
 

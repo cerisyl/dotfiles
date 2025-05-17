@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, myHostname, homedir, lib, ... }: let
   removeLaunchers = [
     "btop"
     "cups"
@@ -51,7 +51,7 @@
     (custom "Virtual Machine Manager" "virt-manager"                    true                                "vm")
     (custom "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                         "pass")
     (custom "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"  "files")
-    (custom "Email"                   "thunderbird"                     true                                "email")
+    (custom "Email"                   "thunderbird"                     true                                "email")                              "email")
   ];
   mappedCustoms = builtins.listToAttrs (map (obj: {
     name = obj.filename;
@@ -81,7 +81,7 @@
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
     (overwrite "Rofi"                   "rofi"                          "rofi -show")
     (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
-    (overwrite "Syncthing Tray"         "syncthingtray"                 "syncthingtray --wait")
+    (overwrite "Syncthing Tray"         "syncthingtray"                 ''"syncthingtray" qt-widgets-gui --single-instance --wait'')
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";
@@ -128,6 +128,14 @@ in {
       Type=Application
       Exec=discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling
       Icon=ceri-cord
+    '';
+    # ArrowVortex
+    "applications/arrowvortex.desktop".text = ''
+      [Desktop Entry]
+      Name=ArrowVortex
+      Type=Application
+      Exec=wine ${homedir}/games/ArrowVortex/ArrowVortex.exe
+      Icon=${homedir}/games/ArrowVortex/av.ico
     '';
   } // mappedOverwrites;
 }

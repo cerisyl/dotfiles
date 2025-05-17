@@ -81,8 +81,9 @@
     "application/zip"               = archiver;
     "application/x-zip-compressed"  = archiver;
     # misc applications
-    "x-scheme-handler/discord"    = "discord.desktop";
-    "x-scheme-handler/magnet"     = "deluge.desktop";
+    "x-scheme-handler/discord" = "discord.desktop";
+    "x-scheme-handler/magnet"  = "deluge.desktop";
+    "application/vnd.microsoft.portable-executable" = "wine.desktop";
   };
 in {
   xdg = {

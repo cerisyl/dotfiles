@@ -100,9 +100,6 @@
       (echo "Some error occured! Check ~/.switch.log!")'';
       homelog = "journalctl -xe --unit home-manager-ceri";
 
-      # Nvidia
-      prime-run = ''__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only exec "$@"'';
-
       # Python
       py      = "python";
       pipin   = "python -m pip install";

@@ -104,7 +104,7 @@ in if pkgMap ? "itgmania" then {
       FrameLimitPercent=0.000000
       FullscreenIsBorderlessWindow=1
       GetRankingName=On
-      GlobalOffsetSeconds=-0.036234
+      GlobalOffsetSeconds=-0.054000
       HarshHotLifePenalty=1
       HiddenSongs=0
       HideIncompleteCourses=0
@@ -119,7 +119,7 @@ in if pkgMap ? "itgmania" then {
       Interlaced=0
       Language=en
       LastSeenInputDevices=
-      LastSeenVideoDriver=
+      LastSeenVideoDriver=OpenGL
       LifeDifficultyScale=1.000000
       LightsAheadSeconds=0.050000
       LightsBassParallel=0
