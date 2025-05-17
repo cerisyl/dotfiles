@@ -59,14 +59,13 @@
     (custom "Email"                   "thunderbird"                     true                                "email")
   ];
   mappedCustoms = builtins.listToAttrs (map (obj: {
-    name = "applications/${obj.filename}.desktop";
-    value.text = ''
-      [Desktop Entry]
-      Name=${obj.name}
-      Type=Application
-      Exec=${if obj.exec == true then obj.filename else obj.exec}
-      Icon=${if obj.icon == true then "ceri-${obj.filename}" else "ceri-${obj.icon}"}
-    '';
+    name = obj.filename;
+    exec = obj.exec;
+    icon = obj.icon;
+    value = {
+      inherit exec icon;
+      name = obj.name;
+    };
   }) customLaunchers);
 
   # Used when removeLaunchers simply doesn't cut it.
