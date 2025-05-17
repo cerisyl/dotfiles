@@ -7,6 +7,7 @@ in [
   (p "111" false  "spice-protocol") # for vms
   (p "111" false  "qemu_full")
   (p "111" false  "virt-manager")
+  (p "111" false  "virtiofsd") # for vms
   (p "111" true   "vscode-fhs")
   (p "111" false  "win-virtio") # for vms
   (p "111" false  "win-spice") # for vms
