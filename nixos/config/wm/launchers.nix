@@ -60,11 +60,10 @@
   ];
   mappedCustoms = builtins.listToAttrs (map (obj: {
     name = obj.filename;
-    exec = obj.exec;
-    icon = obj.icon;
     value = {
-      inherit exec icon;
       name = obj.name;
+      exec = if obj.exec == true then obj.filename else obj.exec;
+      icon = if obj.icon == true then "ceri-${obj.filename}" else "ceri-${obj.icon}";
     };
   }) customLaunchers);
 
