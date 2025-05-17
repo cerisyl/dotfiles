@@ -7,8 +7,8 @@
         ovnf.enable = true;
         ovnf.packages = [ pkgs.OVMFFull.fd ];
       };
-      spiceUSBRedirection.enable = true;
     };
-    services.spice-vdagentd.epable = true;
+    spiceUSBRedirection.enable = true;
   };
+  services.spice-vdagentd.enable = true;
 }
