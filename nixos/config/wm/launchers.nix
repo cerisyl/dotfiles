@@ -1,6 +1,6 @@
 { config, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
   # Shortcut for nvidia strings
-  nvidia = program: (if myHostname == "luxe"
+  nvidia = program: (if myHostname == "lux"
     then "__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only exec ${program}"
     else program);
 
