@@ -41,7 +41,7 @@
     (custom "Shutdown"                "shutdown"                        "shutdown now"                      true)
     (custom "Discord Chat Exporter"   "discordchatexporter"             true                                "cord")
     (custom "Deluge"                  "deluge"                          true                                true)
-    (custom "ITGmania"                "itgmania"                        (nvidia "itgmania")                 "itg")
+    (custom "ITGmania"                "itgmania"                        "itgmania"                          "itg")
     (custom "Minecraft"               "org.prismlauncher.PrismLauncher" "prismlauncher"                     "mc")
     (custom "OBS Studio"              "com.obsproject.Studio"           "obs"                               "obs")
     (custom "Kdenlive"                "org.kde.kdenlive"                "kdenlive"                          "kden")
