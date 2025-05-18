@@ -1,16 +1,25 @@
 { config, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
   passthrough = if myHostname == "lux"
-    then [ "intel_iommu=on" "immou=pt" ''vfio-pci.ids="10de:2482,10de:228b"'' ]
+    then [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ]
     else [];
   passthroughExtra = if myHostname == "lux" then {
-    kernelModules = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
-    blacklistedKernelModules = [ "nouveau" ];
+    initrd.kernelModules      = [ "vfio_pci"  ];
+    kernelModules             = [ "vfio" "vfio_iommu_type1" ];
+    blacklistedKernelModules  = [ "nvidia" "nouveau" ];
+    extraModprobeConfig = ''
+      options vfio-pci ids=10de:2482,10de:228b
+      softdep nvidia pre: vfio-pci
+      softdep nvidia_modeset pre: vfio-pci
+    '';
   } else {
-    kernelModules = [];
-    blacklistedKernelModules = [];
+    kernelModules                 = [];
+    initrd.kernelModules          = [];
+    blacklistedKernelModules      = [];
+    extraModprobeConfig           = "";
   };
 in {
   boot = {
+    kernelParams = passthrough;
     kernelParams = [
       "quiet" "splash" "boot.shell_on_fail" "loglevel=3"
       "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3"
