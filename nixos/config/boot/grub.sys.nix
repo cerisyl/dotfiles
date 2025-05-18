@@ -5,14 +5,9 @@
   passthroughExtra = if myHostname == "lux" then {
     kernelModules = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
     blacklistedKernelModules = [ "nouveau" ];
-    extraModprobeConfig = ''
-      vfio-pci ids=10de:2482,10de:228b
-      softdep nvidia pre: vfio-pci
-    '';
   } else {
     kernelModules = [];
     blacklistedKernelModules = [];
-    modprobeConfig = "";
   };
 in {
   boot = {
