@@ -72,7 +72,7 @@
   # Get a list of displays and prep them for xfce4-desktop (for backgrounds)
   displays = {
     lux = {
-      "backdrop/screen0/monitorDP-0/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+      "backdrop/screen0/monitorDP-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };
     nova = {
       "backdrop/screen0/monitorDP-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
