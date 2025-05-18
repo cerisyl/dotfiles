@@ -1,11 +1,11 @@
 { config, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
-  passthrough = if myHostname == lux
+  passthrough = if myHostname == "lux"
     then [ "intel_iommu=on" "immou=pt" ''vfio-pci.ids="10de:2482,10de:228b"'' ]
     else [];
-  passthroughExtra = if myHostname == lux then {
+  passthroughExtra = if myHostname == "lux" then {
     kernelModules = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
     blacklistedKernelModules = [ "nouveau" ];
-    modprobeConfig = ''
+    extraModprobeConfig = ''
       vfio-pci ids=10de:2482,10de:228b
       softdep nvidia pre: vfio-pci
     '';
