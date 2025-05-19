@@ -23,6 +23,6 @@
 
   # For looking-glass
   services.udev.extraRules = ''
-    SUBSYSTEM=="kvmfr", OWNER="ceri", GROUP="libvirtd", MODE="0660"
+    SUBSYSTEM=="kvmfr", OWNER="ceri", GROUP="kvm", MODE="0660"
   '';
 }
