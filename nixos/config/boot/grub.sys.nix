@@ -3,9 +3,9 @@
     then [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ]
     else [];
   passthroughExtra = if myHostname == "lux" then {
-    initrd.kernelModules      = [ "vfio_pci" ];
-    kernelModules             = [ "vfio" "vfio_iommu_type1" "kvmfr" ];
-    extraModulePackages       = [ pkgs.linuxKernel.packages.linux_6_6.kvmfr ];
+    initrd.kernelModules      = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
+    kernelModules             = [ "kvmfr" ];
+    extraModulePackages       = with config.boot.kernelPackages; [ kvmfr ];
     blacklistedKernelModules  = [ "nvidia" "nouveau" ];
     extraModprobeConfig = ''
       options vfio-pci ids=10de:2482,10de:228b
