@@ -1,6 +1,6 @@
 { config, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
   passthrough = if myHostname == "lux"
-    then [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" "kvmfr.static_size_mb=32" ]
+    then [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" "kvmfr.static_size_mb=128" ]
     else [];
   passthroughExtra = if myHostname == "lux" then {
     initrd.kernelModules      = [ "vfio_pci" ];
@@ -11,6 +11,7 @@
       options vfio-pci ids=10de:2482,10de:228b
       softdep nvidia pre: vfio-pci
       softdep nvidia_modeset pre: vfio-pci
+      options kvmfr static_size_mb=128
     '';
   } else {
     kernelModules                 = [];
