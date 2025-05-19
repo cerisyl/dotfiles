@@ -13,7 +13,7 @@
   services.spice-vdagentd.enable = true;
 
   # For looking-glass
-  systemd.tmpfiles.rules = [
-    "f /dev/shm/looking-glass 0660 ceri qemu-libvirtd -"
-  ];
+  services.udev.extraRules = ''
+    SUBSYSTEM=="kvmfr", OWNER="ceri", GROUP="kvm", MODE="0660"
+  '';
 }
