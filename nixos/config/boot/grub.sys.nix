@@ -5,7 +5,7 @@
   passthroughExtra = if myHostname == "lux" then {
     initrd.kernelModules      = [ "vfio_pci" ];
     kernelModules             = [ "vfio" "vfio_iommu_type1" "kvmfr" ];
-    extraModulePackages       = [ pkgs.linuxKernel.packages.linux_6_14.kvmfr ];
+    extraModulePackages       = [ pkgs.linuxKernel.packages.linux_6_6.kvmfr ];
     blacklistedKernelModules  = [ "nvidia" "nouveau" ];
     extraModprobeConfig = ''
       options vfio-pci ids=10de:2482,10de:228b
