@@ -82,7 +82,7 @@
     "application/x-zip-compressed"  = archiver;
     # windows executables
     "application/vnd.microsoft.portable-executable" = "wine.desktop";
-    "application/x-msdownload" = wine.desktop;
+    "application/x-msdownload" = "wine.desktop";
     # misc applications
     "x-scheme-handler/discord" = "discord.desktop";
     "x-scheme-handler/magnet"  = "deluge.desktop";
