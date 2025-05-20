@@ -80,10 +80,13 @@
     "application/x-tar"             = archiver;
     "application/zip"               = archiver;
     "application/x-zip-compressed"  = archiver;
+    # windows executables
+    "application/vnd.microsoft.portable-executable" = "wine.desktop";
+    "application/x-msdownload" = wine.desktop;
     # misc applications
     "x-scheme-handler/discord" = "discord.desktop";
     "x-scheme-handler/magnet"  = "deluge.desktop";
-    "application/vnd.microsoft.portable-executable" = "wine.desktop";
+    # TODO: direct open win11 vm for things like xlsx?
   };
 in {
   xdg = {
