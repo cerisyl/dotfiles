@@ -3,11 +3,11 @@ if myHostname == "lux" then {
   services.samba = {
     enable        = true;
     securityType  = "user";
-    extraConfig   = ''
-      hosts allow = 192.168.122.0/24 127.0.0.1
-      interfaces = lo virbr0
-      bind interfaces only = yes
-    '';
+    settings.global   = {
+      "hosts allow" = "192.168.122.0/24 127.0";
+      "interfaces"  = "lo virbr0";
+      "bind interfaces only" = "yes";
+    };
     shares = {
       main = {
         path              = "/home/ceri";
