@@ -7,6 +7,7 @@
         ovmf.enable = true;
         ovmf.packages = [ pkgs.OVMFFull.fd ];
         verbatimConfig = ''
+          seccomp_sandbox = 0
           cgroup_device_acl = [
             "/dev/kvm", "/dev/kvmfr0", "/dev/kvmfr1", "/dev/kvmfr2",
             "/dev/shm/looking-glass",
