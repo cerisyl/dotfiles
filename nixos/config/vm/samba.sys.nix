@@ -13,7 +13,7 @@ if myHostname == "lux" then {
         path              = "/home/ceri";
         browseable        = "yes";
         writeable         = "yes";
-        "guest ok"        = no;
+        "guest ok"        = "no";
         "valid users"     = "ceri";
         "create mask"     = "0644";
         "directory mask"  = "0755";
