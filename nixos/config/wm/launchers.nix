@@ -137,13 +137,12 @@ in {
       Exec=wine ${homedir}/games/ArrowVortex/ArrowVortex.exe
       Icon=${homedir}/games/ArrowVortex/av.ico
     '';
-    # Looking Glass TODO: Replace with VM-specific startups
-    "applications/looking-glass-client.desktop" = ''
+    # Looking Glass
+    # TODO: Replace with VM-specific startups
+    "applications/looking-glass-client.desktop".text = ''
       [Desktop Entry]
-      Version=1.0
-      Type=Application
       Name=Looking Glass Client
-      Comment=Clent for Looking Glass KVMFR
+      Type=Application
       Exec=looking-glass-client -s -m 97
       Icon=looking-glass
     '';
