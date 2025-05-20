@@ -100,8 +100,9 @@
       (echo "Some error occured! Check ~/.switch.log!")'';
       homelog = "journalctl -xe --unit home-manager-ceri";
 
-      # GPU switching
-      gpu     = ''echo "NVIDIA Dedicated Graphics" | grep "NVIDIA" && lspci -nnk | grep "NVIDIA Corporation GA104" -A 2 | grep "Kernel driver in use" && echo "Intel Integrated Graphics" | grep "Intel" && lspci -nnk | grep "Intel.*Integrated Graphics Controller" -A 3 | grep "Kernel driver in use" && echo "Confirm which gpu libraries are in use with (active-gpu and active-gpu-prime)" && echo "Enable and disable the dedicated NVIDIA GPU with nvidia-enable and nvidia-disable"'';
+      # Virtual machine + GPU management
+      lg      = "looking-glass-client -s -m 97";
+      gpu     = ''echo "NVIDIA Dedicated Graphics" | grep "NVIDIA" && lspci -nnk | grep "NVIDIA Corporation GA104" -A 2 | grep "Kernel driver in use" && echo "Intel Integrated Graphics" | grep "Intel" && lspci -nnk | grep "Intel.*Integrated Graphics Controller" -A 3 | grep "Kernel driver in use"'';
       rtx-on  = ''sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU host-ready!" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed." && sudo modprobe -i nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED! (confirm with gpu, and active-gpu-prime)"'';
       rtx-off = ''sudo rmmod nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed." && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU VM-ready!" && echo "COMPLETED! (confirm with gpu and active-gpu)"'';
 

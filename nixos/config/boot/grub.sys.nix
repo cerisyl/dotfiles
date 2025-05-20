@@ -6,7 +6,7 @@
     initrd.kernelModules      = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
     kernelModules             = [ "kvmfr" ];
     extraModulePackages       = with config.boot.kernelPackages; [ kvmfr ];
-    blacklistedKernelModules  = [ "nvidia" "nouveau" ];
+    #blacklistedKernelModules  = [ "nvidia" "nouveau" ];
     extraModprobeConfig = ''
       options vfio-pci ids=10de:2482,10de:228b
       softdep nvidia pre: vfio-pci
@@ -17,7 +17,7 @@
     kernelModules                 = [];
     initrd.kernelModules          = [];
     extraModulePackages           = [];
-    blacklistedKernelModules      = [];
+    #blacklistedKernelModules      = [];
     extraModprobeConfig           = "";
   };
 in {

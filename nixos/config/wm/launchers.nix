@@ -81,7 +81,7 @@
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
     (overwrite "Rofi"                   "rofi"                          "rofi -show")
     (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
-    (overwrite "Syncthing Tray"         "syncthingtray"                 ''"syncthingtray" qt-widgets-gui --single-instance --wait'')
+    (overwrite "Syncthing Tray"         "syncthingtray"                 "syncthingtray --wait --single-instance")
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";
@@ -136,6 +136,16 @@ in {
       Type=Application
       Exec=wine ${homedir}/games/ArrowVortex/ArrowVortex.exe
       Icon=${homedir}/games/ArrowVortex/av.ico
+    '';
+    # Looking Glass TODO: Replace with VM-specific startups
+    "applications/looking-glass-client.desktop" = ''
+      [Desktop Entry]
+      Version=1.0
+      Type=Application
+      Name=Looking Glass Client
+      Comment=Clent for Looking Glass KVMFR
+      Exec=looking-glass-client -s -m 97
+      Icon=looking-glass
     '';
   } // mappedOverwrites;
 }
