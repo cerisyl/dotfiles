@@ -4,9 +4,10 @@ if myHostname == "lux" then {
     enable        = true;
     securityType  = "user";
     settings.global   = {
-      "hosts allow" = "192.168.122.0/24 127.0";
+      "hosts allow" = "192.168.122.0/24 192.168.123.0/24 127.0";
       "interfaces"  = "lo virbr0";
       "bind interfaces only" = "yes";
+      "server min protocol" = "NT1";
     };
     shares = {
       main = {
