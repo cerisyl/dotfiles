@@ -33,7 +33,7 @@
       file://${homedir}/sync
       file://${homedir}/util
       file://${homedir}/videos
-    '' ++ (if myHostname != "astore" then "sftp://192.168.200.240:50951/home/ceri astore" else "");
+    '' + (if myHostname != "astore" then "sftp://192.168.200.240:50951/home/ceri astore" else "");
 
     # Folder shortcuts
     "Thunar/uca.xml".text = ''
