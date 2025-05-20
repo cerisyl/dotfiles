@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, homedir, lib, ... }: {
+{ config, pkgMap, theme, getThemeFile, homedir, myHostname, lib, ... }: {
   # Default settings
   xfconf.settings.thunar = {
     last-separator-position           = 160;
@@ -33,7 +33,7 @@
       file://${homedir}/sync
       file://${homedir}/util
       file://${homedir}/videos
-    '';
+    '' ++ (if myHostname != "astore" then "sftp://192.168.200.240:50951/home/ceri astore" else "");
 
     # Folder shortcuts
     "Thunar/uca.xml".text = ''
