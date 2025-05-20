@@ -7,7 +7,10 @@ if myHostname == "lux" then {
       "hosts allow" = "192.168.122.0/24 192.168.123.0/24 127.0";
       "interfaces"  = "lo virbr0";
       "bind interfaces only" = "yes";
+      # Temp
       "server min protocol" = "NT1";
+      "lanman auth" = "yes";
+      "ntlm auth" = "yes";
     };
     shares = {
       main = {
