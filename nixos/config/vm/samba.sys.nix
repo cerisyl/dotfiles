@@ -9,11 +9,12 @@ if myHostname == "lux" then {
       "bind interfaces only" = "yes";
       # Temp
       "server min protocol" = "NT1";
+      "client min protocol" = "NT1";
       "lanman auth" = "yes";
       "ntlm auth" = "yes";
     };
     shares = {
-      main = {
+      share = {
         path              = "/home/ceri";
         browseable        = "yes";
         writeable         = "yes";
