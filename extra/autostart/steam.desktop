@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Steam
 Type=Application
-Exec=steam
+Exec=steam -silent
 Icon=ceri-steam

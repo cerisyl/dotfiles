@@ -5,4 +5,5 @@ in [
   #(p "011" false  "fadein") manual install
   (p "011" false  "kdePackages.kdenlive")
   (p "011" false  "obs-studio")
+  (p "001" false  "reaper")
 ]

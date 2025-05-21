@@ -28,12 +28,15 @@
       file://${homedir}/docs
       file://${homedir}/downloads
       file://${homedir}/games
+      ${if myHostname != "astore" then "file://${homedir}/itg" else ""}
       file://${homedir}/music
       file://${homedir}/pictures
+      ${if myHostname == "lux" then "file://${homedir}/.itgmania/Screenshots screenshots-itg" else ""}
       file://${homedir}/sync
       file://${homedir}/util
       file://${homedir}/videos
-    '' + (if myHostname != "astore" then "sftp://192.168.200.240:50951/home/ceri astore" else "");
+      ${if myHostname != "astore" then "sftp://192.168.200.240:50951/home/ceri astore" else ""}
+    '';
 
     # Folder shortcuts
     "Thunar/uca.xml".text = ''
