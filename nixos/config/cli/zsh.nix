@@ -101,10 +101,9 @@
       homelog = "journalctl -xe --unit home-manager-ceri";
 
       # Virtual machine + GPU management
-      lg      = "looking-glass-client -s -m 97";
-      gpu     = ''echo "NVIDIA Dedicated Graphics" | grep "NVIDIA" && lspci -nnk | grep "NVIDIA Corporation GA104" -A 2 | grep "Kernel driver in use" && echo "Intel Integrated Graphics" | grep "Intel" && lspci -nnk | grep "Intel.*Integrated Graphics Controller" -A 3 | grep "Kernel driver in use"'';
-      rtx-on  = ''sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU host-ready!" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed." && sudo modprobe -i nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED! (confirm with gpu, and active-gpu-prime)"'';
-      rtx-off = ''sudo rmmod nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed." && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU VM-ready!" && echo "COMPLETED! (confirm with gpu and active-gpu)"'';
+      looking-glass = "looking-glass-client -s -m 97 -F";
+      lg      = "looking-glass";
+      win11   = ''gpu vm && virsh --connect qemu:///system start "win11" && lg'';
 
       # Python
       py      = "python";

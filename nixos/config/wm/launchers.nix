@@ -11,7 +11,6 @@
     "thunar-bulk-rename"
     "thunar-settings"
     "syncthing-ui"
-    "syncthingtray"
     "volctl"
     "winetricks"
     "XColor"
@@ -33,34 +32,50 @@
     };
   }) removeLaunchers);
 
-  custom = name: filename: exec: icon: { inherit name filename exec icon; };
+  # Shortcut conditionals
+  onlyLux   = myHostname == "lux";
+  notAstore = myHostname != "astore";
+
+  # GPU command
+  gpuCmd = cmd: (if onlyLux
+    then "sh ${homedir}/.nix/extra/zshfx/gpu use ${cmd}"
+    else cmd);
+
+  custom = condition: name: filename: exec: icon: { inherit condition name filename exec icon; };
   customLaunchers = [
-    #custom Name,                     .desktop file,                    Exec (true if == .desktop file),    icon (true if == .desktop file)
-    (custom "lock"                    "Lock"                            "xflock4"                           true)
-    (custom "Restart"                 "restart"                         "reboot"                            "reboot")
-    (custom "Shutdown"                "shutdown"                        "shutdown now"                      true)
-    (custom "Discord Chat Exporter"   "discordchatexporter"             true                                "cord")
-    (custom "Deluge"                  "deluge"                          true                                true)
-    (custom "ITGmania"                "itgmania"                        "itgmania"                          "itg")
-    (custom "Minecraft"               "org.prismlauncher.PrismLauncher" "prismlauncher"                     "mc")
-    (custom "OBS Studio"              "com.obsproject.Studio"           "obs"                               "obs")
-    (custom "Kdenlive"                "org.kde.kdenlive"                "kdenlive"                          "kden")
-    (custom "Steam"                   "steam"                           true                                true)
-    (custom "VLC Media Player"        "vlc"                             true                                "media")
-    (custom "Tauon"                   "tauonmb"                         "tauon"                             "music")
-    (custom "Virtual Machine Manager" "virt-manager"                    true                                "vm")
-    (custom "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                         "pass")
-    (custom "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"  "files")
-    (custom "Email"                   "thunderbird"                     true                                "email")
+    #custom Condition Name,                     .desktop file,                    Exec (true if == .desktop file),    Icon (true if == .desktop file)
+    (custom true      "Lock"                    "lock"                            "xflock4"                           "ceri-lock")
+    (custom true      "Restart"                 "restart"                         "reboot"                            "ceri-reboot")
+    (custom true      "Shutdown"                "shutdown"                        "shutdown now"                      "ceri-shutdown")
+    (custom notAstore "Discord Chat Exporter"   "discordchatexporter"             true                                "ceri-cord")
+    (custom true      "Deluge"                  "deluge"                          true                                "ceri-deluge")
+    (custom notAstore "ITGmania"                "itgmania"                        (gpuCmd "itgmania")                 "ceri-itg")
+    (custom notAstore "Minecraft"               "org.prismlauncher.PrismLauncher" (gpuCmd "prismlauncher")            "ceri-mc")
+    (custom notAstore "OBS Studio"              "com.obsproject.Studio"           "obs"                               "ceri-obs")
+    (custom notAstore "Kdenlive"                "org.kde.kdenlive"                (gpuCmd "kdenlive")                 "ceri-kden")
+    (custom notAstore "Steam"                   "steam"                           true                                "ceri-steam")
+    (custom true      "VLC Media Player"        "vlc"                             true                                "ceri-media")
+    (custom notAstore "Tauon"                   "tauonmb"                         "tauon"                             "ceri-music")
+    (custom true      "Virtual Machine Manager" "virt-manager"                    true                                "ceri-vm")
+    (custom true      "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                         "ceri-pass")
+    (custom true      "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"  "ceri-files")
+    (custom notAstore "Email"                   "thunderbird"                     true                                "ceri-email")
+    (custom onlyLux   "Blender"                 "blender"                         (gpuCmd "blender %f")               true)
+    (custom onlyLux   "Looking Glass Client"    "looking-glass-client"            "looking-glass-client -s -m 97"     "looking-glass")
+    (custom notAstore "Dolphin Emulator"        "dolphin-emu"                     (gpuCmd "env QT_QPA_PLATFORM=xcb dolphin-emu")                                                            true)
+    (custom notAstore "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"                        "ceri-cord")
+    (custom notAstore "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"                                                       ${homedir}/games/ArrowVortex/av.ico)
+    (custom onlyLux   "Windows 11"              "win11"                           (gpuCmd "vm &&") + ''virsh --connect qemu:///system start "win11" && looking-glass-client -s -m 97 -F''   ${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg)
   ];
-  mappedCustoms = builtins.listToAttrs (map (obj: {
+  mappedCustoms = builtins.listToAttrs (map (obj:
+    if condition then {
     name = obj.filename;
     value = {
       name = obj.name;
       exec = if obj.exec == true then obj.filename else obj.exec;
-      icon = if obj.icon == true then "ceri-${obj.filename}" else "ceri-${obj.icon}";
+      icon = if obj.icon == true then obj.filename else obj.icon;
     };
-  }) customLaunchers);
+  } else {}) customLaunchers);
 
   # Used when removeLaunchers simply doesn't cut it.
   # These files go into .local/share/applications
@@ -81,7 +96,7 @@
     (overwrite "Web Browser"            "xfce4-web-browser"             "exo-open --launch WebBrowser %u")
     (overwrite "Rofi"                   "rofi"                          "rofi -show")
     (overwrite "Rofi Theme Selector"    "rofi-theme-selector"           true)
-    #(overwrite "Syncthing Tray"         "syncthingtray"                 "syncthingtray --wait --single-instance")
+    (overwrite "Syncthing Tray"         "syncthingtray"                 "syncthingtray --wait --single-instance")
   ];
   mappedOverwrites = builtins.listToAttrs (map (obj: {
     name = "applications/${obj.filename}.desktop";
@@ -93,6 +108,7 @@
       NoDisplay=true
     '';
   }) overwriteLaunchers);
+
 in {
   # Create custom launchers here
   xdg.desktopEntries = mappedCustoms // mappedRemovals;
@@ -121,30 +137,18 @@ in {
       Exec=floorp --new-window --enable-blink-features=MiddleClickAutoscroll
       Name=New Window
     '';
-    # Discord
-    "applications/discord.desktop".text = ''
-      [Desktop Entry]
-      Name=Discord
-      Type=Application
-      Exec=discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling
-      Icon=ceri-cord
-    '';
-    # ArrowVortex
-    "applications/arrowvortex.desktop".text = ''
-      [Desktop Entry]
-      Name=ArrowVortex
-      Type=Application
-      Exec=wine ${homedir}/games/ArrowVortex/ArrowVortex.exe
-      Icon=${homedir}/games/ArrowVortex/av.ico
-    '';
     # Looking Glass
-    # TODO: Replace with VM-specific startups
     "applications/looking-glass-client.desktop".text = ''
       [Desktop Entry]
       Name=Looking Glass Client
       Type=Application
       Exec=looking-glass-client -s -m 97
       Icon=looking-glass
+    '';
+    # Win11
+    "applications/looking-glass-client.desktop".text = ''
+      [Desktop Entry]
+      Name=
     '';
   } // mappedOverwrites;
 }

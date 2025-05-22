@@ -1,0 +1,66 @@
+# Get current driver in use
+cur_driver=$(lspci -nnk | grep "GeForce RTX 3070 Ti" -A 2 | grep -oP "(?<=Kernel driver in use: ).*")
+
+# Function to call when there is an unknown driver loaded
+unknown_driver() {
+  echo "Unknown driver loaded. Please run \"gpu info\" for more information!"
+  exit 1
+}
+
+# Function to swap GPU from VM -> host
+swap_vm_host() {
+  if [[ "$cur_driver" == "vfio-pci" ]]; then
+    sudo virsh nodedev-reattach pci_0000_01_00_0
+    sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1
+    sudo modprobe -i nvidia nvidia_uvm nvidia_modeset
+    echo "GPU host-ready! (confirm with \"gpu\")"
+  elif [[ "$cur_driver" == "nvidia" ]]; then
+    echo "GPU already mounted to host."
+  else
+    unknown_driver
+  fi
+}
+
+# Function to swap GPU from host -> VM
+swap_host_vm() {
+  if [[ "$cur_driver" == "nvidia" ]]; then
+    sudo rmmod nvidia_modeset nvidia_uvm nvidia
+    sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1
+    sudo virsh nodedev-detach pci_0000_01_00_0
+    echo "GPU VM-ready! (confirm with \"gpu\")"
+  elif [[ "$cur_driver" == "vfio-pci" ]]; then
+    echo "GPU already mounted to VM."
+  else
+    unknown_driver
+  fi
+}
+
+# Toggle function
+swap_toggle() {
+  if [[ "$cur_driver" == "vfio-pci" ]]; then
+    swap_vm_host
+  elif [[ "$cur_driver" == "nvidia" ]]; then
+    swap_host_vm
+  else
+    unknown_driver
+  fi
+}
+
+# Swap, then use an Nvidia prime wrapper on a target program
+swap_and_prime() {
+  swap_vm_host
+  __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia $1
+}
+
+if [[ -z "$1" ]]; then
+  echo $cur_driver            # Returns current GPU driver in use
+else
+  case "$1" in
+    info) echo $cur_driver;;  # Returns current GPU driver in use
+    swap) swap_toggle;;       # Toggles GPU between VM/host mount
+    host) swap_vm_host;;      # Explicitly mounts GPU to host
+    vm)   swap_host_vm;;      # Explicitly mounts GPU to VM
+    use)  swap_and_prime $2;; # Swap VM to host and pipe second argument in when running
+    *)    echo "Invalid argument.";;
+  esac
+fi

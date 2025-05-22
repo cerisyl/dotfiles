@@ -6,12 +6,13 @@
   archiver    = "engrampa.desktop";
   fileAssociations = {
     # audio
-    "audio/flac"    = mediaPlayer;
-    "audio/midi"    = mediaPlayer;
-    "audio/x-midi"  = mediaPlayer;
-    "audio/mpeg"    = mediaPlayer; #mp4
-    "audio/ogg"     = mediaPlayer;
-    "audio/wav"     = mediaPlayer;
+    "audio/flac"      = mediaPlayer;
+    "audio/midi"      = mediaPlayer;
+    "audio/x-midi"    = mediaPlayer;
+    "audio/mpeg"      = mediaPlayer; #mp4
+    "audio/ogg"       = mediaPlayer;
+    "audio/x-vorbis"  = mediaPlayer;
+    "audio/wav"       = mediaPlayer;
     # images
     "image/avif"    = imgViewer;
     "image/bmp"     = imgViewer;
