@@ -13,22 +13,26 @@
   toInit = str: (builtins.stringLength str > hostIndex && builtins.substring hostIndex 1 str == "1");
 
   # Create and/or bookmark directories based on hostname
-  filteredBookmarks = "";
-  filteredDirs      = {};
+  mkBookmark = init: path: alias: (
+    if toInit == true then
+      let bookmarkEntry = if alias == true
+        then path
+        else "${path} ${alias}";
+      in [ bookmarkEntry ]
+    else []
+  );
 
-  mkBookmark = init: path: alias: (if toInit then {
-    filteredBookmarks = lib.mkAfter ''\"${path} ${if alias != null then alias else ""}\"'';
-  } else {});
-
-  mkDir = init: path: type: bookmark: isExtra: (if toInit then {
-    inherit init path type bookmark isExtra;
-    runMkBookmark = if bookmark == true then (mkBookmark init "file://${homedir}/${path}") else ;
-    filteredDirs = if isExtra == true then {
-      extraConfig."XDG_${lib.toUpper (if type == true then path else type)}_DIR" = {};
-    } else {
-      "${if type == true then path else type}" = "${homedir}/${path}";
-    } // filteredDirs;
-  } else {});
+  mkDir = init: path: type: bookmark: isExtra:
+    if toInit then
+      let
+        dirEntry = if isExtra == true
+          then { extraConfig."XDG_${lib.toUpper type}_DIR" = "${homedir}/${path}"; }
+          else { "${key}" = "${homedir}/${path}"; };
+        bmEntry = if bookmark == true
+          then (mkBookmark init "file://${homedir}/${path}" true)
+          else [];
+      in { inherit dirEntry bmEntry; }
+    else { dirEntry = {}; bmEntry = []; };
 
   userDirs = [
     #cmd        init    path          type          bookmark  isExtra         bookmark:alias
@@ -54,9 +58,24 @@
     (mkBookmark "0100"  "//engr-archive/Archive/Microsoft/Windows/OS/ISOs"    "isos")
   ];
 
+  # Parse the defined list
+  filtered = lib.foldl' (acc: entry:
+    let
+      dirs = acc.dirs;
+      bookmarks = acc.bookmarks;
+    in
+      if lib.isAttrs entry && entry ? dirsEntry then {
+        dirs = dirs // entry.dirsEntry;
+        bookmarks = bookmarks ++ entry.bookmarkEntry;
+      } else if lib.isList entry then {
+        dirs = dirs;
+        bookmarks = bookmarks ++ entry;
+      } else acc
+  ) { dirs = {}; bookmarks = []; } myUserDirs;
+
 in {
-  xfconf.settings.xdg.userDirs            = filteredDirs;
-  xdg.configFile."gtk-3.0/bookmarks".text = filteredBookmarks;
+  xfconf.settings.xdg.userDirs            = filtered.dirs;
+  xdg.configFile."gtk-3.0/bookmarks".text = lib.concatStringsSep "\n" filtered.bookmarks;
 
   # Viewer/interactivity settings
   xfconf.settings.thunar = {
