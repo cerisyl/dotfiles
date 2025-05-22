@@ -36,9 +36,10 @@
   onlyLux   = myHostname == "lux";
   notAstore = myHostname != "astore";
 
-  # GPU command
+  # GPU command stuff
+  gpuShPath = "${homedir}/.nix/extra/zshfx/gpu";
   gpuCmd = cmd: (if onlyLux
-    then "sh ${homedir}/.nix/extra/zshfx/gpu use ${cmd}"
+    then "sh ${gpuShPath} use ${cmd}"
     else cmd);
 
   custom = condition: name: filename: exec: icon: { inherit condition name filename exec icon; };
@@ -62,10 +63,10 @@
     (custom notAstore "Email"                   "thunderbird"                     true                                "ceri-email")
     (custom onlyLux   "Blender"                 "blender"                         (gpuCmd "blender %f")               true)
     (custom onlyLux   "Looking Glass Client"    "looking-glass-client"            "looking-glass-client -s -m 97"     "looking-glass")
-    (custom notAstore "Dolphin Emulator"        "dolphin-emu"                     (gpuCmd "env QT_QPA_PLATFORM=xcb dolphin-emu")                                                            true)
-    (custom notAstore "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"                        "ceri-cord")
-    (custom notAstore "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"                                                       "${homedir}/games/ArrowVortex/av.ico")
-    (custom onlyLux   "Windows 11"              "win11"                           (gpuCmd "vm && virsh --connect qemu:///system start win11 && looking-glass-client -s -m 97 -F")           "${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg")
+    (custom notAstore "Dolphin Emulator"        "dolphin-emu"                     (gpuCmd "env QT_QPA_PLATFORM=xcb dolphin-emu")                                                              true)
+    (custom notAstore "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"                          "ceri-cord")
+    (custom notAstore "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"                                                         "${homedir}/games/ArrowVortex/av.ico")
+    (custom onlyLux   "Windows 11"              "win11"                           ''"sh ${gpuShPath} vm && virsh --connect qemu:///system start win11 && looking-glass-client -s -m 97 -F"''  "${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg")
   ];
   mappedCustoms = builtins.listToAttrs (map (obj:
     if obj.condition then {
