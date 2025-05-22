@@ -78,7 +78,7 @@
 
   # GPU command stuff
   gpuShPath = "${homedir}/.nix/extra/zshfx/gpu";
-  gpuCmd = cmd: (if onlyLux
+  gpuCmd = cmd: (if myHostname == "lux"
     then "sh ${gpuShPath} use ${cmd}"
     else cmd);
 

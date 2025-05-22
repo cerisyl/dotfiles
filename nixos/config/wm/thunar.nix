@@ -19,15 +19,14 @@
   mkBookmark = init: path: alias: (if toInit then {
     filteredBookmarks = lib.mkAfter ''\"${path} ${if alias != null then alias else ""}\"'';
   } else {});
+
   mkDir = init: path: type: bookmark: isExtra: (if toInit then {
-    realType = if type == true then path else type;
-    bookmark = if bookmark == true
-      then (mkBookmark init "file://${homedir}/${path}")
-      else "";
+    inherit init path type bookmark isExtra;
+    runMkBookmark = if bookmark == true then (mkBookmark init "file://${homedir}/${path}") else ;
     filteredDirs = if isExtra == true then {
-      extraConfig."XDG_${lib.toUpper realType}_DIR" = {};
+      extraConfig."XDG_${lib.toUpper (if type == true then path else type)}_DIR" = {};
     } else {
-      "${realType}" = "${homedir}/${path}";
+      "${if type == true then path else type}" = "${homedir}/${path}";
     } // filteredDirs;
   } else {});
 
@@ -49,34 +48,15 @@
     (mkDir      "1111"  "vm"          true          false     true)
     (mkDir      "1111"  "videos"      true          true      false)
     # network locations
+    # TODO: engrit - Test if mounting w/out CIFS works
     (mkBookmark "0011"  "sftp://192.168.200.240:50951/home/ceri"              "astore")
     (mkBookmark "0100"  "//engrit-file-01/engrit/Shares/admin/Building Maps"  "maps")
     (mkBookmark "0100"  "//engr-archive/Archive/Microsoft/Windows/OS/ISOs"    "isos")
   ];
 
-  filteredDirs = builtins.filter () userDirs;
-
-  # TODO: Make this more elegant
-  processedDirs = builtins.listToAttrs (map (obj: {
-    name = (if obj.type == true then obj.path else obj.type);
-    value = ''
-      [Desktop Entry]
-      Name=${obj.name}
-      Type=Application
-      exec=${if obj.exec == true then obj.filename else obj.exec}
-      icon=${if obj.icon == true then obj.filename else obj.icon}
-    '';
-  }) filteredDirs);
-  processedBookmarks = 0;
-
-
 in {
-  xfconf.settings.xdg.userDirs = {
-    extraConfig = {};
-  };
-
-  # TODO: engrit - Test if mounting w/out CIFS works
-  xdg.configFile."gtk-3.0/bookmarks".text = ""
+  xfconf.settings.xdg.userDirs            = filteredDirs;
+  xdg.configFile."gtk-3.0/bookmarks".text = filteredBookmarks;
 
   # Viewer/interactivity settings
   xfconf.settings.thunar = {
