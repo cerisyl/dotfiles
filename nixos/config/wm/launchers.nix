@@ -42,6 +42,7 @@
     then "sh ${gpuShPath} use ${cmd}"
     else cmd);
 
+  # TODO: Add engrit + remove some for engrit
   custom = condition: name: filename: exec: icon: { inherit condition name filename exec icon; };
   customLaunchers = [
     #custom Condition Name,                     .desktop file,                    Exec (true if == .desktop file),    Icon (true if == .desktop file)

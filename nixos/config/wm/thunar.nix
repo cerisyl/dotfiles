@@ -22,6 +22,7 @@
 
   xdg.configFile = {
     # Bookmarks
+    # TODO: Add engrit bookmarks + remove some for engrit
     "gtk-3.0/bookmarks".text = ''
       file://${homedir}/captures
       file://${homedir}/code

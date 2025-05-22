@@ -1,6 +1,6 @@
 { config, lib, myHostname, ... }:
 # Stupid, but should work
-if myHostname != "astore" then {
+if (myHostname != "engrit" || myHostname != "astore") then {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall       = true;
