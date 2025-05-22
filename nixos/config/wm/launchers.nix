@@ -64,11 +64,11 @@
     (custom onlyLux   "Looking Glass Client"    "looking-glass-client"            "looking-glass-client -s -m 97"     "looking-glass")
     (custom notAstore "Dolphin Emulator"        "dolphin-emu"                     (gpuCmd "env QT_QPA_PLATFORM=xcb dolphin-emu")                                                            true)
     (custom notAstore "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"                        "ceri-cord")
-    (custom notAstore "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"                                                       ${homedir}/games/ArrowVortex/av.ico)
-    (custom onlyLux   "Windows 11"              "win11"                           (gpuCmd "vm &&") + ''virsh --connect qemu:///system start "win11" && looking-glass-client -s -m 97 -F''   ${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg)
+    (custom notAstore "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"                                                       "${homedir}/games/ArrowVortex/av.ico")
+    (custom onlyLux   "Windows 11"              "win11"                           (gpuCmd ''vm && virsh --connect qemu:///system start "win11" && looking-glass-client -s -m 97 -F'')       "${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg")
   ];
   mappedCustoms = builtins.listToAttrs (map (obj:
-    if condition then {
+    if obj.condition then {
     name = obj.filename;
     value = {
       name = obj.name;
@@ -137,19 +137,5 @@ in {
       Exec=floorp --new-window --enable-blink-features=MiddleClickAutoscroll
       Name=New Window
     '';
-    # Looking Glass
-    "applications/looking-glass-client.desktop".text = ''
-      [Desktop Entry]
-      Name=Looking Glass Client
-      Type=Application
-      Exec=looking-glass-client -s -m 97
-      Icon=looking-glass
-    '';
-    # Win11
-    "applications/looking-glass-client.desktop".text = ''
-      [Desktop Entry]
-      Name=
-    '';
   } // mappedOverwrites;
 }
-

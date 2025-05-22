@@ -14,7 +14,7 @@
     last-details-view-visible-columns = "THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE";
     last-details-view-column-widths   = "50,50,185,104,50,158,50,50,291,50,50,64,50,694";
     misc-recursive-permissions        = "THUNAR_RECURSIVE_PERMISSIONS_ALWAYS";
-    misc-date-style tab               ="THUNAR_DATE_STYLE_CUSTOM";
+    misc-date-style                   = "THUNAR_DATE_STYLE_CUSTOM";
     misc-date-custom-style            = "%Y-%m-%d %I:%M %p";
     hidden-bookmarks                  = [ "trash:///" "recent:///" "network:///" ];
     hidden-devices                    = [ "192.168.200.240" ];
