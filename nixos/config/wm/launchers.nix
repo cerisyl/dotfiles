@@ -65,7 +65,7 @@
     (custom notAstore "Dolphin Emulator"        "dolphin-emu"                     (gpuCmd "env QT_QPA_PLATFORM=xcb dolphin-emu")                                                            true)
     (custom notAstore "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"                        "ceri-cord")
     (custom notAstore "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"                                                       "${homedir}/games/ArrowVortex/av.ico")
-    (custom onlyLux   "Windows 11"              "win11"                           (gpuCmd ''vm && virsh --connect qemu:///system start "win11" && looking-glass-client -s -m 97 -F'')       "${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg")
+    (custom onlyLux   "Windows 11"              "win11"                           (gpuCmd "vm && virsh --connect qemu:///system start win11 && looking-glass-client -s -m 97 -F")           "${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg")
   ];
   mappedCustoms = builtins.listToAttrs (map (obj:
     if obj.condition then {
