@@ -29,7 +29,7 @@
       zinit snippet OMZL::functions.zsh
       zinit snippet OMZL::termsupport.zsh
       zinit snippet OMZP::extract
-      zinit snippet OMZP::git
+      #zinit snippet OMZP::git <- clashes with gpu command
       zinit snippet OMZP::gitignore
       zinit snippet OMZP::tldr
       zinit snippet OMZP::sudo
