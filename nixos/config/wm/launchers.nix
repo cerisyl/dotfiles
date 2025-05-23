@@ -79,7 +79,7 @@
   # GPU command stuff
   gpuShPath = "${homedir}/.nix/extra/zshfx/gpu";
   gpuCmd = cmd: (if myHostname == "lux"
-    then ''sh -c "sh ${gpuShPath} use ${cmd}";''
+    then ''sh -c "sh ${gpuShPath} host; ${cmd};"''
     else cmd);
 
   custom = init: name: filename: exec: icon: { inherit init name filename exec icon; };
