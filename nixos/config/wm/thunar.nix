@@ -44,7 +44,7 @@
     (mkDir    "0011"  "itg"         true          true      true)
     (mkDir    "1111"  "music"       true          true      false)
     (mkDir    "1111"  "pictures"    true          true      false)
-    (mkPlace  "0001"  "${homedir}/.itgmania/Screenshots"                   "screenshots-itg")
+    (mkPlace  "0001"  "file://${homedir}/.itgmania/Screenshots"             "screenshots-itg")
     (mkDir    "1111"  "sync"        true          true      true)
     (mkDir    "1111"  "util"        "tools"       true      true)
     (mkDir    "1111"  "vm"          true          false     true)
