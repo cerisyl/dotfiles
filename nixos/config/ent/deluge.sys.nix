@@ -1,4 +1,5 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, myHostname, ... }:
+if (myHostname != "engrit") then {
   services.deluge = {
     enable        = true;
     declarative   = true;
@@ -17,4 +18,4 @@
       "utpex"                     = false;
     };
   };
-}
+} else {}

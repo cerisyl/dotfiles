@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Slack
+Comment=Slack Desktop
+Exec=slack -u
+Icon=slack
+Path=
+Terminal=false
+StartupNotify=true

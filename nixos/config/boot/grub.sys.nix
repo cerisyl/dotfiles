@@ -1,8 +1,13 @@
 { config, pkgs, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
-
+  hostKernelParams = {
+    lux     = [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ];
+    nova    = [];
+    engrit  = [ "nomodeset" ]; # TODO: Might want to fix this later...unsure how it will affect things.
+    astore  = [];
+    vm      = [];
+  };
   hostOptions = {
     lux = {
-      kernelParams          = [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ];
       initrd.kernelModules  = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
       kernelModules         = [ "kvmfr" ];
       extraModulePackages   = with config.boot.kernelPackages; [ kvmfr ];
@@ -14,28 +19,26 @@
       '';
     };
     nova = {
-      kernelParams          = [];
       initrd.kernelModules  = [];
       kernelModules         = [];
       extraModulePackages   = [];
       extraModprobeConfig   = "";
     };
     engrit = {
-      kernelParams          = [ "i915.force_probe=8086:7d55" ];
       initrd.kernelModules  = [];
-      kernelModules         = [];
+      kernelModules         = [ "kvm_intel" ];
       extraModulePackages   = [];
-      extraModprobeConfig   = "";
+      extraModprobeConfig   = ''
+        options snd_hda_intel power_save=1
+      '';
     };
     astore = {
-      kernelParams          = [];
       initrd.kernelModules  = [];
       kernelModules         = [];
       extraModulePackages   = [];
       extraModprobeConfig   = "";
     };
     vm = {
-      kernelParams          = [];
       initrd.kernelModules  = [];
       kernelModules         = [];
       extraModulePackages   = [];
@@ -47,7 +50,7 @@ in {
     kernelParams = [
       "quiet" "splash" "boot.shell_on_fail" "loglevel=3"
       "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3"
-    ];
+    ] ++ hostKernelParams."${myHostname}";
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
