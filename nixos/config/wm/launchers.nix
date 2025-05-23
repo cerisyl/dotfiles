@@ -142,10 +142,10 @@
   };
   winLauncher = ''
     [Desktop Entry]
-    Name=Windows 11
+    Name=Windows 11 VM
     Type=Application
     Exec=${if myHostname == "lux" then win11Cmd.gpu else win11Cmd.noGpu}
-    Icon="${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg"
+    Icon=${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg
     ${if myHostname == "astore" then "NoDisplay=true" else ""}
   '';
 
