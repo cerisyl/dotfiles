@@ -1,7 +1,7 @@
 { config, pkgs, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
   extraKernelParams = if myHostname == "lux" then
     [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ]
-  else if myHostname = "engrit" then
+  else if myHostname == "engrit" then
     [ "nomodeset" ]
   else
   [];
