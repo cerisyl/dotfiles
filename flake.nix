@@ -47,6 +47,7 @@
       nova    = defHost "nova";
       astore  = defHost "astore";
       vm      = defHost "vm";
+      engrit  = defHost "engrit";
     };
   };
 }

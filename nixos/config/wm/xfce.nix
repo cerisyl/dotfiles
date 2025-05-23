@@ -187,29 +187,14 @@ in {
     };
   };
 
-  # Home directories
+  # Home directories (see thunar.nix)
   xdg = {
     enable = true;
     userDirs = {
-      enable                = true;
-      createDirectories     = true;
-      desktop               = "${homedir}/desktop";
-      download              = "${homedir}/downloads";
-      documents             = "${homedir}/docs";
-      music                 = "${homedir}/music";
-      pictures              = "${homedir}/pictures";
-      videos                = "${homedir}/videos";
-      publicShare           = null;
-      templates             = null;
-      extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${homedir}/captures";
-        XDG_CODE_DIR        = "${homedir}/code";
-        XDG_TORRENTS_DIR    = "${homedir}/deluge";
-        XDG_GAMES_DIR       = "${homedir}/games";
-        XDG_SHARE_DIR       = "${homedir}/sync";
-        XDG_TOOLS_DIR       = "${homedir}/util";
-        XDG_VM_DIR          = "${homedir}/vm";
-      };
+      enable             = true;
+      createDirectories  = true;
+      publicShare        = null;
+      templates          = null;
     };
   };
 }

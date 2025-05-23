@@ -31,10 +31,11 @@
   # Package management
   # Use binary to determine what packages we should download
   hostIndexMap = {
-    "lux"     = 2;
-    "nova"    = 1;
+    "lux"     = 3;
+    "nova"    = 2;
+    "engrit"  = 1;
     "astore"  = 0;
-    "vm"      = 1;
+    "vm"      = 2;
   };
   hostIndex = hostIndexMap.${myHostname};
 
