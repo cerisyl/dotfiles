@@ -21,14 +21,14 @@
       extraModprobeConfig   = "";
     };
     engrit = {
-      kernelParams          = [];
+      kernelParams          = [ "i915.force_probe=8086:7d55" ];
       initrd.kernelModules  = [];
       kernelModules         = [];
       extraModulePackages   = [];
       extraModprobeConfig   = "";
     };
     astore = {
-      kernelParams          = [ "i915.force_probe=8086:7d55" ];
+      kernelParams          = [];
       initrd.kernelModules  = [];
       kernelModules         = [];
       extraModulePackages   = [];
