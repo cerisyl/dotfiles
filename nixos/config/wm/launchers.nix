@@ -130,14 +130,14 @@
       [Desktop Entry]
       Name=${obj.name}
       Type=Application
-      exec=${if obj.exec == true then obj.filename else obj.exec}
-      icon=${if obj.icon == true then obj.filename else obj.icon}
+      Exec=${if obj.exec == true then obj.filename else obj.exec}
+      Icon=${if obj.icon == true then obj.filename else obj.icon}
     '';
   }) filteredCustoms);
 
   # Windows 11 command (command varies by host)
   win11Cmd = {
-    gpu   = ''sh -c "sh ${gpuShPath} vm; && virsh --connect qemu:///system start win11; && looking-glass-client -s -m 97 -F;"'';
+    gpu   = ''sh -c "sh ${gpuShPath} vm; virsh --connect qemu:///system start win11; looking-glass-client -s -m 97 -F;"'';
     noGpu = "virt-manager --connect qemu:///system --show-domain-console win11";
   };
   winLauncher = ''
