@@ -6,6 +6,9 @@
     nova = {
       # "Default/DP-1/RefreshRate" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };
+    engrit = {
+      # "Default/None-1/RefreshRate" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+    };
     astore = {
       # "Default/HDMI-0/RefreshRate" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };

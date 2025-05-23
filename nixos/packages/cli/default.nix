@@ -14,7 +14,6 @@ in [
   (p "1000" false  "openssh")
   (p "1111" false  "pciutils") # mainly for lspci
   (p "1111" false  "p7zip")
-  (p "0110" false  "sof-firmware")
   (p "1111" false  "tealdeer")
   (p "1111" false  "unzip")
   (p "1111" true   "zinit" )
