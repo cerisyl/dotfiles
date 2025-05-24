@@ -8,11 +8,11 @@
     lesser  = [ "steam" "telegram" ];
   };
   hostExclusions = {
-    lux     = exclude.work;
+    lux     = [ "battery" ] ++ exclude.work;
     nova    = exclude.work ++ exclude.lesser;
     engrit  = [ "discord" "thunderbird" ] ++ exclude.lesser;
-    astore  = [ "discord" "thunderbird" ] ++ exclude.work ++ exclude.lesser;
-    vm      = exclude.work ++ exclude.lesser;
+    astore  = [ "battery" "discord" "thunderbird" ] ++ exclude.work ++ exclude.lesser;
+    vm      = [ "battery" ] ++ exclude.work ++ exclude.lesser;
   };
 
   filenames = builtins.filter (name:
