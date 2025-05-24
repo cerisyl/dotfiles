@@ -86,11 +86,14 @@
   customLaunchers = [
     #custom init      Name                      .desktop file                     Exec (true if == .desktop file)                       Icon (true if == .desktop file)
     # core
-    (custom "0111"    "Email"                   "thunderbird"                     true                                                  "ceri-email")
+    (custom "0011"    "Email"                   "thunderbird"                     true                                                  "ceri-email")
     (custom "1111"    "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                                           "ceri-pass")
     (custom "1111"    "Lock"                    "lock"                            "xflock4"                                             "ceri-lock")
     (custom "1111"    "Restart"                 "restart"                         "reboot"                                              "ceri-reboot")
     (custom "1111"    "Shutdown"                "shutdown"                        "shutdown now"                                        "ceri-shutdown")
+    # core (laptop)
+    (custom "0110"    "Suspend"                 "suspend"                         "systemctl suspend"                                   "ceri-lock")
+    (custom "0110"    "Hibernate"               "hibernate"                       "systemctl hibernate"                                 "ceri-lock")
     # create
     (custom "0001"    "Blender"                 "blender"                         (gpuCmd "blender %f")                                 true)
     (custom "0011"    "Kdenlive"                "org.kde.kdenlive"                (gpuCmd "kdenlive")                                   "ceri-kden")

@@ -26,7 +26,7 @@
     };
     engrit = {
       initrd.kernelModules  = [];
-      kernelModules         = [ "kvm_intel" ];
+      kernelModules         = [];
       extraModulePackages   = [];
       extraModprobeConfig   = ''
         options snd_hda_intel power_save=1

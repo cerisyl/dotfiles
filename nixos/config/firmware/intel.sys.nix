@@ -1,4 +1,4 @@
-{ config, lib, myHostname, ... }:
+{ config, lib, pkgs, myHostname, ... }:
 if myHostname == "engrit" then {
   hardware.graphics.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
@@ -8,5 +8,4 @@ if myHostname == "engrit" then {
     intel-ocl
     intel-media-driver
   ];
-  services.xserver.videoDrivers = [ "intel" ];
 } else {}

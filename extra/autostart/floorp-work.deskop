@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Floorp (Work)
+Type=Application
+Exec=floorp https://outlook.office.com/mail/ https://help.uillinois.edu/TDNext/Home/Desktop/Default.aspx

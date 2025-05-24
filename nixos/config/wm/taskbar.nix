@@ -149,11 +149,12 @@
     "4/menu-is-primary"     = false;
     "4/symbolic-icons"      = themeProps."${theme}".symbolicIcons;
     # order of icons (legacy, hidden)
-    # chrome_status_icon_1 = discord
-    "4/hidden-legacy-items" = [ "deluge" ];
+    ### chrome_status_icon_1 = discord
+    ### electron = teams
+    "4/hidden-legacy-items" = [                                           "deluge" ];
     "4/known-legacy-items"  = [ "networkmanager applet" ".volctl-wrapped" "deluge" ];
-    "4/hidden-items"        = [ "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
-    "4/known-items"         = [ "KeePassXC" "Syncthing Tray" "chrome_status_icon_1" "steam" "TelegramDesktop" "vlc" "obs" ];
+    "4/hidden-items"        = [                              "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
+    "4/known-items"         = [ "KeePassXC" "Syncthing Tray" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
 
     # clock
     "5"                     = "clock";

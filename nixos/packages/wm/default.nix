@@ -1,6 +1,7 @@
 # Window manager tools and add-ins.
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
+  (p "0110" false  "cbatticon")
   (p "1111" false  "gvfs")
   (p "1111" false  "haskellPackages.greenclip")
   (p "1111" false  "lightdm")
