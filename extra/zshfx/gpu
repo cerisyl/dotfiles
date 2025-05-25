@@ -60,7 +60,7 @@ else
     swap) swap_toggle;;       # Toggles GPU between VM/host mount
     host) swap_vm_host;;      # Explicitly mounts GPU to host
     vm)   swap_host_vm;;      # Explicitly mounts GPU to VM
-    use)  swap_and_prime $2;; # Swap VM to host and pipe second argument in when running
+    run)  swap_and_prime $2;; # Swap VM to host and pipe second argument in when running
     *)    echo "Invalid argument.";;
   esac
 fi
