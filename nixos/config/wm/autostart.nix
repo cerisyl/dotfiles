@@ -4,7 +4,7 @@
   
   # Launcher exclusions
   exclude = {
-    work    = [ "slack" "teams" ];
+    work    = [ "floorp-work" "slack" "teams" ];
     lesser  = [ "steam" "telegram" ];
   };
   hostExclusions = {

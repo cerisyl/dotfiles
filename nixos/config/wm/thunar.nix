@@ -16,7 +16,7 @@
   mkPlace = init: path: alias:
     if (toInit init == true) then {
       dirs = {};
-      places = [ (if alias == true then path else ''"${path}" ${alias}'') ];
+      places = [ (if alias == true then path else "${path} ${alias}") ];
     } else { dirs = {}; places = []; };
 
   mkDir = init: path: type: place: isExtra:
@@ -33,7 +33,7 @@
     else { dirs = {}; places = []; };
 
   userDirs = [
-    #cmd      init    path          type          place     isExtra         place:alias
+    #cmd      init    path          type          place     isExtra           place:alias
     (mkDir    "1111"  "captures"    "screenshots" true      true)
     (mkDir    "1111"  "code"        true          true      true)
     (mkDir    "1111"  "desktop"     true          false     false)
@@ -43,17 +43,18 @@
     (mkDir    "1011"  "games"       true          true      true)
     (mkDir    "0011"  "itg"         true          true      true)
     (mkDir    "1111"  "music"       true          true      false)
+    (mkPlace  "0100"  "file://${homedir}/OneDrive"                            "onedrive")
     (mkDir    "1111"  "pictures"    true          true      false)
-    (mkPlace  "0001"  "file://${homedir}/.itgmania/Screenshots"             "screenshots-itg")
+    (mkPlace  "0001"  "file://${homedir}/.itgmania/Screenshots"               "screenshots-itg")
     (mkDir    "1111"  "sync"        true          true      true)
     (mkDir    "1111"  "util"        "tools"       true      true)
     (mkDir    "1111"  "vm"          true          false     true)
     (mkDir    "1111"  "videos"      true          true      false)
     # network locations
-    # TODO: engrit - Test if mounting w/out CIFS works
-    (mkPlace  "0011"  "sftp://192.168.200.240:50951/home/ceri"              "astore")
-    (mkPlace  "0100"  "//engrit-file-01/engrit/Shares/admin/Building Maps"  "maps")
-    (mkPlace  "0100"  "//engr-archive/Archive/Microsoft/Windows/OS/ISOs"    "isos")
+    # TODO: engrit - Test if mounting w/out CIFS works    
+    (mkPlace  "0011"  "sftp://192.168.200.240:50951/home/ceri"                "astore")
+    (mkPlace  "0100"  "//engrit-file-01/engrit/Shares/admin/Building%20Maps"  "maps")
+    (mkPlace  "0100"  "//engr-archive/Archive/Microsoft/Windows/OS/ISOs"      "isos")
   ];
 
   # Parse the defined list

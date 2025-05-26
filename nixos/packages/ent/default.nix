@@ -5,7 +5,6 @@ in [
   (p "1011" false  "deluge-gtk")
   (p "0011" false  "dolphin-emu")
   (p "0011" true   "itgmania")
-  (p "0011" false  "lightspark")
   (p "0011" false  "melonDS")
   (p "0011" false  "prismlauncher")
   (p "0011" false  "soulseekqt")
