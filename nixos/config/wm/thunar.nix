@@ -39,6 +39,7 @@
     (mkDir    "1111"  "desktop"     true          false     false)
     (mkDir    "1011"  "deluge"      "torrents"    false     true)
     (mkDir    "1111"  "docs"        "documents"   true      false)
+    (mkPlace  "0001"  "file://${homedir}/Dropbox"                             "dropbox")
     (mkDir    "1111"  "downloads"   "download"    true      false)
     (mkDir    "1011"  "games"       true          true      true)
     (mkDir    "0011"  "itg"         true          true      true)

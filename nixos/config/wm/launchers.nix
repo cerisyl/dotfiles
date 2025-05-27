@@ -101,7 +101,6 @@
     # ent
     (custom "0011"    "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"   "${homedir}/games/ArrowVortex/av.ico")
     (custom "1011"    "Deluge"                  "deluge"                          true                                                  "ceri-deluge")
-    (custom "0011"    "Dolphin Emulator"        "dolphin-emu"                     (gpuCmd "env QT_QPA_PLATFORM=xcb dolphin-emu")        true)
     (custom "0011"    "ITGmania"                "itgmania"                        "itgmania"                                            "ceri-itg")
     (custom "0011"    "Minecraft"               "org.prismlauncher.PrismLauncher" (gpuCmd "prismlauncher")                              "ceri-mc")
     (custom "0011"    "Steam"                   "steam"                           true                                                  "ceri-steam")

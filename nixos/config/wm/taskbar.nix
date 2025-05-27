@@ -153,8 +153,8 @@
     ### electron = teams
     "4/hidden-legacy-items" = [                                                                 "deluge" ];
     "4/known-legacy-items"  = [ "networkmanager applet" ".volctl-wrapped" "xfce4-power-manager" "deluge" ];
-    "4/hidden-items"        = [                              "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
-    "4/known-items"         = [ "KeePassXC" "Syncthing Tray" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
+    "4/hidden-items"        = [                              "dropbox" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
+    "4/known-items"         = [ "KeePassXC" "Syncthing Tray" "dropbox" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
 
     # clock
     "5"                     = "clock";
