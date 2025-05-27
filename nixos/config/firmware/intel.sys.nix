@@ -8,4 +8,5 @@ if myHostname == "engrit" then {
     intel-ocl
     intel-media-driver
   ];
+  services.xserver.videoDrivers = [ "i915" "displaylink" "modesetting" ];
 } else {}
