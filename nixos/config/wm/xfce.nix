@@ -88,40 +88,44 @@
     };
   };
 
+  # Command for running currentSystem bins
+  runCmd = cmd: "/run/current-system/sw/bin/${cmd}";
+
 in {
   # Check a hash and if we're connected to the internet
   # If hash is different, download, unpack zips
-  home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    checkConnection=$(ping -c1 8.8.8.8 | grep "100% packet loss")
-    if [[ "$checkConnection" == ""]]; then
-      curl -L -o /tmp/themes.zip "https://www.dropbox.com/scl/fo/lym7a5h68pxibl2fwkl4r/AObWCCVHSwMMA6YnJHckmzo?rlkey=hsjqv6dnle5ysgsppyj0gtfm7&st=m5axlvg7&dl=1" -s
-      getNewHash=$(cat /tmp/themes.zip | md5sum | awk "{print $1}")
-      getCurrentHash=$(cat ${homedir}/.themeHash)
-      if [[ "$getNewHash" != "$getCurrentHash" ]]; then
-        cat /tmp/themes.zip | md5sum | awk "{print $1}" > ${homedir}/.themeHash
-        ${pkgMap.unzip}/bin/unzip -qq /tmp/themes.zip -d /tmp/themes
-        for zip in $(${pkgMap.fd}/bin/fd ".*\.zip$" /tmp/themes); do
-          theme=$(basename $(dirname $zip))
-          file=$(basename $zip)
-          type=''\${file%.*}
-          if [[ $zip == *"main"* ]] || [[ $zip == *"window"* ]]; then
-            mkdir -p "${homedir}/.local/share/themes/$theme-$type"
-            rm -rf "${homedir}/.local/share/themes/$theme-$type"
-            ${pkgMap.unzip}/bin/unzip -qq $zip -d "${homedir}/.local/share/themes/$theme-$type"
-          else
-            mkdir -p "${homedir}/.icons/$theme-$type"
-            rm -rf "${homedir}/.icons/$theme-$type"
-            ${pkgMap.unzip}/bin/unzip -qq $zip -d "${homedir}/.icons/$theme-$type"
-          fi
-        done
-        rm -rf /tmp/themes
-      else
-        echo "Hash signifies no change to themes.zip. Skipping installThemes hook..."
-      fi
-    else
-      echo "No ping reply from 8.8.8.8. Skipping installThemes hook..."
-    fi
-  '';
+  ## home.activation.installThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  ##   checkConnection=$(${runCmd "ping"} -c1 8.8.8.8 | grep "100% packet loss")
+  ##   if [[ "$checkConnection" == "" ]]; then
+  ##     ${runCmd "curl"} -L -o /tmp/themes.zip "https://www.dropbox.com/scl/fo/lym7a5h68pxibl2fwkl4r/AObWCCVHSwMMA6YnJHckmzo?rlkey=hsjqv6dnle5ysgsppyj0gtfm7&st=m5axlvg7&dl=1" -s
+  ##     getNewHash=$(${runCmd "cat"} /tmp/themes.zip | md5sum | awk "{print $1}")
+  ##     getCurrentHash=$(${runCmd "cat"} ${homedir}/.themeHash)
+  ##     if [[ "$getNewHash" != "$getCurrentHash" ]]; then
+  ##       ${runCmd "cat"} /tmp/themes.zip | md5sum | awk "{print $1}" > ${homedir}/.themeHash
+  ##       ${runCmd "unzip"} -qq /tmp/themes.zip -d /tmp/themes
+  ##       for zip in $(${runCmd "fd"} ".*\.zip$" /tmp/themes); do
+  ##         theme=$(basename $(dirname $zip))
+  ##         file=$(basename $zip)
+  ##         type=''\${file%.*}
+  ##         if [[ $zip == *"main"* ]] || [[ $zip == *"window"* ]]; then
+  ##           mkdir -p "${homedir}/.local/share/themes/$theme-$type"
+  ##           rm -rf "${homedir}/.local/share/themes/$theme-$type"
+  ##           ${runCmd "unzip"} -qq $zip -d "${homedir}/.local/share/themes/$theme-$type"
+  ##         else
+  ##           mkdir -p "${homedir}/.icons/$theme-$type"
+  ##           rm -rf "${homedir}/.icons/$theme-$type"
+  ##           ${runCmd "unzip"} -qq $zip -d "${homedir}/.icons/$theme-$type"
+  ##         fi
+  ##       done
+  ##       rm -rf /tmp/themes
+  ##     else
+  ##       echo "Hash signifies no change to themes.zip. Skipping installThemes hook..."
+  ##     fi
+  ##     rm -rf /tmp/themes.zip
+  ##   else
+  ##     echo "No ping reply from 8.8.8.8. Skipping installThemes hook..."
+  ##   fi
+  ## '';
 
   # Remove backup files on activation
   home.activation.removeBackups = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
