@@ -6,7 +6,5 @@ in [
   (p "0100" false  "dbus")
   (p "0100" false  "displaylink")
   (p "0100" false  "linux-firmware")
-  (p "0110" false  "light")
-  #(p "0100" false  "mesa")
   (p "0110" false  "sof-firmware")
 ]

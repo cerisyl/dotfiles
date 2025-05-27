@@ -1,4 +1,15 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, myHostname, ... }: let
+  vmNetworkOptions = if myHostname == "engrit" then {
+    useDHCP = false;
+    bridges.br0.interfaces = [ "enp0s31f6" "enp0s13f0u3u4u4" ];
+    interfaces = {
+      br0.useDHCP             = true;
+      enp0s31f6.useDHCP       = false;
+      enp0s13f0u3u4u4.useDHCP = false;
+    };
+  } else {};
+
+in {
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -26,4 +37,7 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="kvmfr", OWNER="ceri", GROUP="kvm", MODE="0660"
   '';
+
+  # Bridge device (for work laptop)
+  networking = vmNetworkOptions;
 }

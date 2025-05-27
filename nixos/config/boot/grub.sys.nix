@@ -2,7 +2,7 @@
   hostKernelParams = {
     lux     = [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ];
     nova    = [];
-    engrit  = [ "nomodeset" ]; # TODO: Might want to fix this later...unsure how it will affect things.
+    engrit  = [];
     astore  = [];
     vm      = [];
   };
@@ -19,7 +19,7 @@
       '';
     };
     nova = {
-      initrd.kernelModules  = [];
+      initrd.kernelModules  = [ "i915" ];
       kernelModules         = [];
       extraModulePackages   = [];
       extraModprobeConfig   = "";
