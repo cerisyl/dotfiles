@@ -1,7 +1,6 @@
 { config, pkgMap, theme, getThemeFile, lib, ... }: {
   programs.keepassxc = {
     enable = true;
-    browserIntegration.firefox = true;
     settings = {
       General = {
         ConfigVersion = 2;

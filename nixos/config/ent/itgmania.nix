@@ -316,7 +316,7 @@ in if pkgMap ? "itgmania" then {
       AutoDownloadUnlocks=true
       AutoStyle=none
       CasualMaxMeter=10
-      CloseFolderCodes=CloseFolder1
+      CloseFolderCodes=CloseFolder3
       DefaultGameMode=ITG
       EditModeLastSeenDifficulty=
       EditModeLastSeenSong=

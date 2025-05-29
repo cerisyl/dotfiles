@@ -51,13 +51,13 @@
     "brightness-on-battery"             = 120;
     # On AC
     "inactivity-sleep-mode-on-ac"       = 1;
-    "inactivity-on-ac"                  = 14; # never
+    "inactivity-on-ac"                  = 0; # never
     "lid-action-on-ac"                  = 1;
     "blank-on-ac"                       = 0; # never
     "dpms-on-ac-sleep"                  = 0;
     "dpms-on-ac-off"                    = 0;
     "brightness-level-on-ac"            = 20;
-    "brightness-on-ac"                  = 9; # never
+    "brightness-on-ac"                  = 0; # never
     # system
     "critical-power-level"              = 10;
     "critical-power-action"             = 0;
