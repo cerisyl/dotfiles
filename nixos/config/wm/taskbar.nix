@@ -1,5 +1,5 @@
 # Shoutouts mimvoid@github
-{ config, pkgMap, theme, getThemeFile, timezone, homedir, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, timezone, homedir, myHostname, lib, ... }: let
   # Make life easier - prefixes a key in an attribute set
   prependAttrs = prefix:
     lib.attrsets.mapAttrs' (name: value:
@@ -120,7 +120,7 @@
 
   # For multiple displays
   extraPanels = if myHostname == "engrit" then prependAttrs "panels/panel-" {
-    "2/output-name"       = "DP-2-2";
+    "2/output-name"       = "DP-1-2";
     "2/position"          = "p=8;x=2688;y=1413";
     "2/position-locked"   = true;
     "2/background-style"  = themeProps."${theme}".bgStyle;
