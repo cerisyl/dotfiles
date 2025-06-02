@@ -105,17 +105,31 @@
     };
   };
 
-  # Define panel
-  panels = prependAttrs "panels/panel-1/" {
-    "position-locked"   = true;
-    "background-style"  = themeProps."${theme}".bgStyle;
-    "background-rgba"   = themeProps."${theme}".bgColor;
-    "position"          = "p=8;x=640;y=786";
-    "length"            = 100;
-    "size"              = themeProps."${theme}".height;
-    "icon-size"         = themeProps."${theme}".iconSize;
-    "plugin-ids"        = [ 1 2 3 4 5 6 ];
+  # Define panels
+  mainPanels = prependAttrs "panels/panel-" {
+    "1/output-name"       = "Primary";
+    "1/position"          = "p=8;x=640;y=786";
+    "1/position-locked"   = true;
+    "1/background-style"  = themeProps."${theme}".bgStyle;
+    "1/background-rgba"   = themeProps."${theme}".bgColor;
+    "1/length"            = 100;
+    "1/size"              = themeProps."${theme}".height;
+    "1/icon-size"         = themeProps."${theme}".iconSize;
+    "1/plugin-ids"        = [ 1 2 3 4 5 6 ];
   };
+
+  # For multiple displays
+  extraPanels = if myHostname == "engrit" then prependAttrs "panels/panel-" {
+    "2/output-name"       = "DP-2-2";
+    "2/position"          = "p=8;x=2688;y=1413";
+    "2/position-locked"   = true;
+    "2/background-style"  = themeProps."${theme}".bgStyle;
+    "2/background-rgba"   = themeProps."${theme}".bgColor;
+    "2/length"            = 100;
+    "2/size"              = themeProps."${theme}".height;
+    "2/icon-size"         = themeProps."${theme}".iconSize;
+    "2/plugin-ids"        = [ 1 2 3 4 5 6 ];
+  } else {};
 
   # Define plugins / panel sections
   startMenuFile = "${if themeProps."${theme}".cssStartMenu != true then "rofi" else "rofi-alt"}.desktop";
@@ -179,5 +193,5 @@ in {
   xfconf.settings.xfce4-panel = {
     "panels"            = [ 1 ];
     "panels/dark-mode"  = themeProps."${theme}".darkMode;
-  } // panels // plugins;
+  } // mainPanels // extraPanels // plugins;
 }

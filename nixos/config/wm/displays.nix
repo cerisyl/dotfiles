@@ -10,9 +10,13 @@
       # Left DP monitor
       "Default/DP-1-1/Primary"      = true;
       "Default/DP-1-1/RefreshRate"  = 120;
+      "Default/DP-2-1/Primary"      = true;
+      "Default/DP-2-1/RefreshRate"  = 120;
       # Right DP monitor
       "Default/DP-1-2/Primary"      = false;
       "Default/DP-1-2/RefreshRate"  = 120;
+      "Default/DP-2-2/Primary"      = false;
+      "Default/DP-2-2/RefreshRate"  = 120;
     };
     astore = {
       # "Default/HDMI-0/RefreshRate" = "${homedir}/.nix/themes/${theme}/img/bg.png";
