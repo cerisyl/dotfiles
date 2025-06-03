@@ -14,7 +14,7 @@
       }
     ];
     # Init
-    initExtraBeforeCompInit = ''
+    initContent = lib.mkOrder 550 ''
       # Set up / source zinit
       # TODO: Remove the need for surpressing source output
       export ZINIT_HOME="${homedir}/.local/share/zinit/"
@@ -51,7 +51,19 @@
       # Mute beeps
       unsetopt BEEP
     '';
-    initExtra = ''
+    # History
+    history = {
+      size          = 10000;
+      save          = 10000;
+      append        = true;
+      share         = true;
+      ignoreSpace   = true;
+      saveNoDups    = true;
+      ignoreDups    = true;
+      ignoreAllDups = true;
+      findNoDups    = true;
+    };
+    initContent = ''
       # Completion styling
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
@@ -67,18 +79,6 @@
       # Init omp
       eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"
     '';
-    # History
-    history = {
-      size          = 10000;
-      save          = 10000;
-      append        = true;
-      share         = true;
-      ignoreSpace   = true;
-      saveNoDups    = true;
-      ignoreDups    = true;
-      ignoreAllDups = true;
-      findNoDups    = true;
-    };
     # Aliases
     shellAliases = {
       # General
@@ -106,28 +106,25 @@
       win11   = ''gpu vm && virsh --connect qemu:///system start "win11" && lg'';
 
       # Python
-      py      = "python";
-      pipin   = "python -m pip install";
-      pipun   = "python -m pip uninstall";
-      pyv     = "./.venv/bin/python";
-      pyvin   = "pyv -m pip install";
-      pyvun   = "pyv -m pip uninstall";
+      py        = "python";
+      pipin     = "python -m pip install";
+      pipun     = "python -m pip uninstall";
+      init-venv = "python -m venv .venv"; 
+      pyv       = "./.venv/bin/python";
+      pyvin     = "pyv -m pip install";
+      pyvun     = "pyv -m pip uninstall";
 
       # Instant run
       chatter = "cd ~/code/sites/chatter && npm run dev";
       dalle   = "for file in *; do mv \"$file\" \"${file:0:26}.png\"; done";
       package = "~/itg/package.sh";
 
-      # NPM
+      # NPM TODO: remove
       npmi    = "npm install";
       run     = "npm run";
       dev     = "npm run dev";
       deploy  = "npm run deploy";
       redev   = "npm run redev";
-
-      # RPL directories
-      rpl     = "cd ~/code/rpl";
-      www     = "cd ~/code/rpl/www";
     };
   };
 }
