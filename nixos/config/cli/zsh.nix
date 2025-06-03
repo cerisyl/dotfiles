@@ -14,7 +14,7 @@
       }
     ];
     # Init
-    initContent = lib.mkOrder 550 ''
+    initExtraBeforeCompInit = ''
       # Set up / source zinit
       # TODO: Remove the need for surpressing source output
       export ZINIT_HOME="${homedir}/.local/share/zinit/"
@@ -63,7 +63,7 @@
       ignoreAllDups = true;
       findNoDups    = true;
     };
-    initContent = ''
+    initExtra = ''
       # Completion styling
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
