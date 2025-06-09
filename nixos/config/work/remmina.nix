@@ -1,6 +1,6 @@
 { config, lib, pkgMap, myHostname, ... }:
 if myHostname == "engrit" then {
-  programs.remmina = {
+  services.remmina = {
     enable  = true;
     package = pkgMap.remmina;
   };
