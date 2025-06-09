@@ -139,14 +139,17 @@
 
   # Windows 11 command (command varies by host)
   win11Cmd = {
-    gpu   = ''sh -c "sh ${gpuShPath} vm; virsh --connect qemu:///system start win11; looking-glass-client -s -m 97 -F;"'';
-    noGpu = "virt-manager --connect qemu:///system --show-domain-console win11";
+    lux     = ''sh -c "sh ${gpuShPath} vm; virsh --connect qemu:///system start win11; looking-glass-client -s -m 97 -F;"'';
+    nova    = "virt-manager --connect qemu:///system --show-domain-console win11";
+    engrit  = "virt-manager --connect qemu:///system --show-domain-console win11";
+    astore  = "remmina /home/ceri/.local/share/remmina/win11.remmina"; #TODO: generate this on the fly
+    vm      = "virt-manager --connect qemu:///system --show-domain-console win11";
   };
   winLauncher = ''
     [Desktop Entry]
-    Name=Windows 11 VM
+    Name=Windows 11
     Type=Application
-    Exec=${if myHostname == "lux" then win11Cmd.gpu else win11Cmd.noGpu}
+    Exec=${win11Cmd.${myHostname}}
     Icon=${homedir}/.icons/ceres-icons/apps/scalable/ceri-start.svg
     ${if myHostname == "astore" then "NoDisplay=true" else ""}
   '';
