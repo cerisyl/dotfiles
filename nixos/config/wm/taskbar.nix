@@ -108,6 +108,8 @@
   # Define plugins / panel sections
   startMenuFile = "${if themeProps."${theme}".cssStartMenu != true then "rofi" else "rofi-alt"}.desktop";
 
+  # Plugins---------------------------------------------------------------------
+
   # rofi / start menu / launcher
   rofi = id: prependAttrs "plugins/plugin-${id}" {
     ""                  = "launcher";
@@ -148,8 +150,8 @@
     ### electron = teams
     "/hidden-legacy-items"  = [                                                                          "deluge" ];
     "/known-legacy-items"   = [ "networkmanager applet" "volume" ".volctl-wrapped" "xfce4-power-manager" "deluge" ];
-    "/hidden-items"         = [                              "dropbox" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
-    "/known-items"          = [ "KeePassXC" "Syncthing Tray" "dropbox" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "vlc" "obs" ];
+    "/hidden-items"         = [                              "dropbox" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "remmina" "vlc" "obs" ];
+    "/known-items"          = [ "KeePassXC" "Syncthing Tray" "dropbox" "blueman" "chrome_status_icon_1" "steam" "TelegramDesktop" "electron" "slack" "remmina" "vlc" "obs" ];
   };
 
   # clock
@@ -173,6 +175,8 @@
     "/enable-single-row"   = true;
     "/font"                = themeProps."${theme}".font;
   };
+
+  #-----------------------------------------------------------------------------
 
   # Define panels
   mainPanel = prependAttrs "panels/panel-" {

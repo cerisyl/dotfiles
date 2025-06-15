@@ -17,6 +17,7 @@
     "xfce4-about"
     "xfce-backdrop-settings"
     "xfce4-notifyd-config"
+    "xfce4-power-manager"
     "xfce4-screensaver-preferences"
     "xfce-wm-settings"
     "xfce-wmtweaks-settings"
@@ -141,8 +142,8 @@
   win11Cmd = {
     lux     = ''sh -c "sh ${gpuShPath} vm; virsh --connect qemu:///system start win11; looking-glass-client -s -m 97 -F;"'';
     nova    = "virt-manager --connect qemu:///system --show-domain-console win11";
-    engrit  = "virt-manager --connect qemu:///system --show-domain-console win11";
-    astore  = "remmina /home/ceri/.local/share/remmina/win11.remmina"; #TODO: generate this on the fly
+    astore  = "virt-manager --connect qemu:///system --show-domain-console win11";
+    engrit  = "remmina /home/ceri/.local/share/remmina/win11.remmina";
     vm      = "virt-manager --connect qemu:///system --show-domain-console win11";
   };
   winLauncher = ''
