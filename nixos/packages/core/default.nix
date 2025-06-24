@@ -4,7 +4,7 @@ in [
   (p "0011" false  "birdtray")
   (p "0001" true   "ungoogled-chromium") # Specifically for WebFSR
   (p "1111" true   "mate.engrampa")
-  (p "1111" true   "floorp")
+  (p "1111" false  "floorp")
   (p "1111" true   "gnome-keyring")
   (p "1111" true   "keepassxc")
   (p "1111" true   "kitty")
