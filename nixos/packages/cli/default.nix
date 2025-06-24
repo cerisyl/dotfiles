@@ -6,6 +6,7 @@ in [
   (p "1111" true   "fd")
   (p "1111" true   "fzf")
   (p "1111" true   "git")
+  (p "1011" true   "git-lfs")
   (p "1111" false  "home-manager")
   (p "1111" false  "killall")
   (p "1111" false  "libnotify")

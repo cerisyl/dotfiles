@@ -52,7 +52,6 @@
     (mkDir    "1111"  "vm"          true          false     true)
     (mkDir    "1111"  "videos"      true          true      false)
     # network locations
-    # TODO: engrit - Test if mounting w/out CIFS works    
     (mkPlace  "0011"  "sftp://192.168.200.240:50951/home/ceri"          "astore")
     (mkPlace  "0100"  "smb://sgunning@engrit-file-01.ad.uillinois.edu/engrit/Shares/admin/Building%20Maps"  "maps")
     (mkPlace  "0100"  "smb://sgunning@engr-archive.ad.uillinois.edu/Archive/Microsoft/Windows/OS/ISOs"      "isos")

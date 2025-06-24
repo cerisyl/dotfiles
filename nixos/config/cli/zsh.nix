@@ -58,6 +58,18 @@
       # Mute beeps
       unsetopt BEEP
     '';
+    # History
+    history = {
+      size          = 10000;
+      save          = 10000;
+      append        = true;
+      share         = true;
+      ignoreSpace   = true;
+      saveNoDups    = true;
+      ignoreDups    = true;
+      ignoreAllDups = true;
+      findNoDups    = true;
+    };
     initExtra = ''
       # Completion styling
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -74,18 +86,6 @@
       # Init omp
       eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"
     '';
-    # History
-    history = {
-      size          = 10000;
-      save          = 10000;
-      append        = true;
-      share         = true;
-      ignoreSpace   = true;
-      saveNoDups    = true;
-      ignoreDups    = true;
-      ignoreAllDups = true;
-      findNoDups    = true;
-    };
     # Aliases
     shellAliases = {
       # General
@@ -113,19 +113,20 @@
       win11   = ''gpu vm && virsh --connect qemu:///system start "win11" && lg'';
 
       # Python
-      py      = "python";
-      pipin   = "python -m pip install";
-      pipun   = "python -m pip uninstall";
-      pyv     = "./.venv/bin/python";
-      pyvin   = "pyv -m pip install";
-      pyvun   = "pyv -m pip uninstall";
+      py        = "python";
+      pipin     = "python -m pip install";
+      pipun     = "python -m pip uninstall";
+      init-venv = "python -m venv .venv"; 
+      pyv       = "./.venv/bin/python";
+      pyvin     = "pyv -m pip install";
+      pyvun     = "pyv -m pip uninstall";
 
       # Instant run
       chatter = "cd ~/code/sites/chatter && npm run dev";
       dalle   = "for file in *; do mv \"$file\" \"${file:0:26}.png\"; done";
       package = "~/itg/package.sh";
 
-      # NPM
+      # NPM TODO: remove
       npmi    = "npm install";
       run     = "npm run";
       dev     = "npm run dev";

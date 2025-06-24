@@ -133,6 +133,21 @@ in {
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
 
+  # Load ITG versions that aren't on unstable yet
+  nixpkgs.overlays = [
+    (self: super: { 
+      itgmania = super.itgmania.overrideAttrs (old: { 
+        src = super.fetchFromGitHub {
+          owner = "itgmania";
+          repo = "itgmania";
+          rev = "v1.1.0";
+          fetchSubmodules = true;
+          hash = "sha256-C9qVUZdRnKbQgfgbXnzT+lI2+FEXBaMQv/U6UF5wyzo=";
+        };
+      }); 
+    })
+  ];
+
   # NEVER EVER CHANGE THIS.
   system.stateVersion = "24.11";
 }

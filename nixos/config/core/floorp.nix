@@ -133,8 +133,8 @@ in {
       id = 0;
       settings = defaultSettings;
       search = {
-        default         = "Google";
-        privateDefault  = "Google";
+        default         = "google";
+        privateDefault  = "google";
       };
     };
   };

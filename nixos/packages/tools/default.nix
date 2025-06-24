@@ -6,7 +6,7 @@ in [
   (p "0011" false  "freac")
   (p "0011" false  "handbrake")
   (p "1111" false  "imagemagick")
-  #(p "0001" false  "imgbrd-grabber") TODO: wait until build is fixed...
+  # (p "0001" false  "imgbrd-grabber")
   #(p "0011" false  "libreoffice-fresh") on windows
   (p "0111" false  "meld")
   #(p "0011" false  "nine-or-null") manual install
