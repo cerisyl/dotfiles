@@ -2,6 +2,7 @@
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
   (p "0011" true   "discordchatexporter-desktop")
+  (p "0101" false  "dmg2img")
   (p "0111" false  "ffmpeg")
   (p "0011" false  "freac")
   (p "0011" false  "handbrake")
@@ -19,7 +20,7 @@ in [
   (p "1111" false  "qdiskinfo")
   (p "1101" false  "rclone")
   (p "0001" false  "rubyripper")
-  (p "0111" false  "tesseract")
+  (p "1111" false  "tesseract")
   #(p "0001" false  "unmined-gui") manual install
   (p "0011" false  "wineWowPackages.stable")
   (p "0011" false  "winetricks")
