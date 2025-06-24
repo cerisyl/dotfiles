@@ -137,7 +137,7 @@ in {
   nixpkgs.overlays = [
     (self: super: { 
       itgmania = super.itgmania.overrideAttrs (old: { 
-        src = fetchFromGitHub {
+        src = super.fetchFromGitHub {
           owner = "itgmania";
           repo = "itgmania";
           rev = "v1.1.0";
