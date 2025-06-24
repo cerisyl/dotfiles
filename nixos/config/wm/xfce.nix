@@ -81,6 +81,8 @@
       "backdrop/screen0/monitoreDP-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
       "backdrop/screen0/monitorDP-1-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
       "backdrop/screen0/monitorDP-1-2/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+      "backdrop/screen0/monitorDP-2-1/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
+      "backdrop/screen0/monitorDP-2-2/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };
     astore = {
       "backdrop/screen0/monitorHDMI-0/workspace0/last-image" = "${homedir}/.nix/themes/${theme}/img/bg.png";

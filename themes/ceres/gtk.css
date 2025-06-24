@@ -30,15 +30,18 @@
   background-color: #25252e;
 }
 
-#genmon-6 .genmon_imagebutton {
+#genmon-6 .genmon_imagebutton,
+#genmon-11 .genmon_imagebutton {
   border-left: 1px solid #515167;
   background-color: #131316;
 }
 
-#genmon-6 .genmon_imagebutton:hover {
+#genmon-6 .genmon_imagebutton:hover,
+#genmon-11 .genmon_imagebutton:hover {
   background-color: #25252e;
 }
 
-#genmon-6 image {
+#genmon-6 image,
+#genmon-11 image {
   -gtk-icon-transform: scale(0);
 }

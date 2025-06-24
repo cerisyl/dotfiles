@@ -23,6 +23,13 @@
       fi
       source ${pkgMap.zinit}/share/zinit/zinit.zsh > /dev/null 2>&1
 
+      # Search engines
+      ZSH_WEB_SEARCH_ENGINES=(
+        netid "https://my.engr.illinois.edu/usersearch/index.asp?search="
+        atlas "https://uofi.atlassian.net/wiki/search?text="
+        tix "https://help.uillinois.edu/TDNext/Apps/Search/LookupItem?searchText="
+      )
+
       # Add in snippets
       zinit snippet OMZL::clipboard.zsh
       zinit snippet OMZL::directories.zsh
@@ -125,6 +132,16 @@
       dev     = "npm run dev";
       deploy  = "npm run deploy";
       redev   = "npm run redev";
+
+      # Work
+      tdx       = "floorp https://help.uillinois.edu/TDNext/Home/Desktop/Default.aspx";
+      iris      = "floorp https://iris.techservices.illinois.edu";
+      ipam      = "floorp https://ipam.illinois.edu/ui";
+      jenk      = "floorp https://helptools-importer.engrit.illinois.edu";
+      lens      = "floorp https://ctweb1.techservices.illinois.edu/ipm";
+      filter    = "floorp https://my.engr.illinois.edu/cts/macfilter.asp";
+      ibuy      = "floorp https://www.busfin.uillinois.edu/applications/i_buy";
+      purchase  = "floorp https://my.engr.illinois.edu/login.asp?/purchasing/index.asp";
     };
   };
 }

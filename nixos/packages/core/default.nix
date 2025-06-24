@@ -1,7 +1,7 @@
 # Essential programs for everyday use.
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
-  (p "0111" false  "birdtray")
+  (p "0011" false  "birdtray")
   (p "0001" true   "ungoogled-chromium") # Specifically for WebFSR
   (p "1111" true   "mate.engrampa")
   (p "1111" true   "floorp")
@@ -12,5 +12,5 @@ in [
   (p "1011" false  "rustdesk")
   (p "1111" true   "syncthing")
   (p "1111" true   "syncthingtray")
-  (p "0111" true   "thunderbird")
+  (p "0011" true   "thunderbird")
 ]
