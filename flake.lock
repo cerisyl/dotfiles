@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749154018,
-        "narHash": "sha256-gjN3j7joRvT3a8Zgcylnd4NFsnXeDBumqiu4HmY1RIg=",
+        "lastModified": 1750792728,
+        "narHash": "sha256-Lh3dopA8DdY+ZoaAJPrtkZOZaFEJGSYjOdAYYgOPgE4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7aae0ee71a17b19708b93b3ed448a1a0952bf111",
+        "rev": "366f00797b1efb70f2882d3da485e3c10fd3d557",
         "type": "github"
       },
       "original": {
@@ -39,11 +39,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1750506804,
-        "narHash": "sha256-VLFNc4egNjovYVxDGyBYTrvVCgDYgENp5bVi9fPTDYc=",
+        "lastModified": 1750741721,
+        "narHash": "sha256-Z0djmTa1YmnGMfE9jEe05oO4zggjDmxOGKwt844bUhE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4206c4cb56751df534751b058295ea61357bbbaa",
+        "rev": "4b1164c3215f018c4442463a27689d973cffd750",
         "type": "github"
       },
       "original": {
@@ -64,11 +64,11 @@
     "zmod": {
       "flake": false,
       "locked": {
-        "lastModified": 1750725619,
-        "narHash": "sha256-f1Vu08v0Ox9QebPXjZDAU/DD/urho/CrE52DgOCqGDo=",
+        "lastModified": 1750890671,
+        "narHash": "sha256-K7qYYuFs0i9TeSy9sYdLr+awm3uypkPwSf627UVBXHc=",
         "owner": "zarzob",
         "repo": "Simply-Love-SM5",
-        "rev": "de2a30b58fd384cb64ab951b65c5e25ff345a46f",
+        "rev": "11a9f0c79e0b7f2fbf3e237553886f5c6b58b8a8",
         "type": "github"
       },
       "original": {
