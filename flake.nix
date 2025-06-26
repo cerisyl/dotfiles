@@ -24,20 +24,6 @@
         pkgsUnstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
-          # Load ITG versions that aren't on unstable yet
-          overlays = [
-            (self: super: { 
-              itgmania = super.itgmania.overrideAttrs (old: { 
-                src = super.fetchFromGitHub {
-                  owner = "itgmania";
-                  repo = "itgmania";
-                  rev = "v1.1.0";
-                  fetchSubmodules = true;
-                  hash = "sha256-C9qVUZdRnKbQgfgbXnzT+lI2+FEXBaMQv/U6UF5wyzo=";
-                };
-              }); 
-            })
-          ];
         };
         pkgsGit = { inherit zmod; };
         inherit inputs system;
