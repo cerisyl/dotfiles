@@ -1,0 +1,140 @@
+lname |   | btop
+lname |   | fastfetch
+lname | * | fd
+lname | * | fzf
+lname | * | git
+lna.e | * | git-lfs
+lname |   | home-manager
+lname |   | killall
+lname |   | libnotify
+lname |   | micro
+lname | * | oh-my-posh
+..a.. |   | openssh
+lname |   | pciutils
+lname |   | p7zip
+lname |   | tealdeer
+lname |   | unzip
+lname |   | usbutils
+lname | * | zinit
+lname |   | zip
+lname | * | zsh
+lname | * | zsh-autosuggestions
+lname | * | zsh-completions
+lname | * | zsh-fzf-tab
+lname | * | zsh-syntax-highlighting
+
+ln... |   | birdtray
+l.... | * | ungoogled-chromium
+lname | * | mate.engrampa
+lname |   | floorp
+lname | * | gnome-keyring
+lna.e | * | keepassxc
+lname | * | kitty
+lname |   | imv
+lnam. |   | rustdesk
+lna.e | * | syncthing
+lna.e | * | syncthingtray
+ln... | * | thunderbird
+
+l.... |   | blender
+ln... |   | kdePackages.kdenlive
+ln... |   | obs-studio
+l.... |   | reaper
+
+lna.e | * | bun
+l.... | * | nodejs_24
+ln... |   | python311
+lna.e |   | python313
+lna.e | * | vscode-fhs
+
+l.... |   | arduino-ide
+"1011" |   | deluge-gtk
+ln... |   | dolphin-emu
+ln... | * | itgmania
+ln... |   | melonDS
+ln... |   | prismlauncher
+ln... |   | soulseekqt
+ln... | * | steam
+ln... | * | steam-unwrapped
+ln... | * | steam-run
+ln..e |   | tauon
+lname |   | vlc
+
+.n.me |   | blueman
+....e |   | bolt
+....e |   | dbus
+....e |   | displaylink
+....e |   | linux-firmware
+.n.me |   | sof-firmware
+
+l.... |   | grive2
+l.... |   | dropbox
+l.... |   | xfce.thunar-dropbox-plugin
+
+ln... | * | discord
+ln... | * | telegram-desktop
+
+ln... | * | discordchatexporter-desktop
+"0101" |   | dmg2img
+ln..e |   | ffmpeg
+ln... |   | freac
+ln... |   | handbrake
+lname |   | imagemagick
+ln..e |   | meld
+ln..e | * | obsidian
+l.... |   | openrgb
+lname |   | partclone
+l.... |   | puddletag
+lname |   | qdirstat
+lname |   | qdiskinfo
+"1101" |   | rclone
+l.... |   | rubyripper
+lname |   | tesseract
+ln... |   | wineWowPackages.stable
+ln... |   | winetricks
+ln... |   | xcolor
+ln... | * | yt-dlg
+ln... | * | yt-dlp
+
+l.... |   | looking-glass-client
+lname |   | spice
+lname |   | spice-protocol
+lname |   | qemu_full
+lname |   | virt-manager
+lname |   | win-virtio
+lname |   | win-spice
+l.... |   | samba # for gpu passthrough
+.n.me |   | virtiofsd # default
+
+lname |   | gvfs
+lname |   | haskellPackages.greenclip
+lname |   | lightdm
+lname |   | networkmanager
+lname |   | networkmanagerapplet
+lname |   | plymouth
+lname |   | pulseaudio
+lname | * | rofi
+lname |   | rofimoji
+lname |   | volctl
+lname |   | wmctrl
+lname |   | xclip
+lname |   | xfce.thunar-archive-plugin
+lname |   | xfce.thunar-media-tags-plugin
+.n.me |   | xfce.xfce4-battery-plugin
+lname |   | xfce.xfce4-docklike-plugin
+lname |   | xfce.xfce4-genmon-plugin
+lname |   | xfce.xfce4-mailwatch-plugin
+lname |   | xfce.xfce4-notifyd
+lname |   | xfce.xfce4-pulseaudio-plugin
+lname |   | xfce.xfce4-screenshooter
+lname |   | xfce.xfwm4
+lname |   | xmousepasteblock
+
+....e | * | boxfs
+....e | * | onedrive
+....e | * | openconnect
+....e | * | powershell
+....e | * | remmina
+....e | * | slack
+....e | * | teams-for-linux
+....e | * | zoom-us

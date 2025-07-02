@@ -3,11 +3,12 @@
   # TODO: Pull this from main config file- possibly see if this is syncable with the init defined in /packages
   # maybe it could be an extra option in pkgMap...
   hostIndexMap = {
-    "lux"     = 3;
-    "nova"    = 2;
-    "vm"      = 2;
-    "engrit"  = 1;
-    "astore"  = 0;
+    "lux"     = "l";
+    "nova"    = "n";
+    "vm"      = "n";
+    "astore"  = "a";
+    "medea"   = "m";
+    "engrit"  = "e";
   };
   hostIndex = hostIndexMap.${myHostname};
   toInit = str: (builtins.stringLength str > hostIndex && builtins.substring hostIndex 1 str == "1");
