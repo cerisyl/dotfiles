@@ -1,4 +1,4 @@
-{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, ... }: let
+{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, lib, ... }: let
   # Utility functions to translate 
   # TODO: Move this in its own file.
   getAttrByList = set: pathList:
@@ -29,8 +29,8 @@
   );
 
   # Package management
-  # Use binary to determine what packages we should download
-  hostIndexMap = {
+  # Determine what packages we should download
+  hostMap = {
     "lux"     = "l";
     "nova"    = "n";
     "vm"      = "n";
@@ -38,16 +38,12 @@
     "medea"   = "m";
     "engrit"  = "e";
   };
-  hostIndex = hostIndexMap.${myHostname};
+  hostID = hostMap.${myHostname};
 
+  # Only import packages containing the hostID in the init string
   allPackages = import ./packages;
-
-  # Only import packages with an init flag in the
-  # specified hostIndexMap position marked "1"
   enabledPackages = builtins.filter (entry:
-    let flagString = entry.init;
-    in builtins.stringLength flagString > hostIndex &&
-      builtins.substring hostIndex 1 flagString == "1"
+    lib.strings.hasInfix hostID entry.init
   ) allPackages;
 
   # TODO: Would be cool if we can combine these two blocks into

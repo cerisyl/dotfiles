@@ -68,7 +68,7 @@
   # Use binary to determine what packages we should download
   # TODO: Pull this from main config file- possibly see if this is syncable with the init defined in /packages
   # maybe it could be an extra option in pkgMap...
-  hostIndexMap = {
+  hostMap = {
     "lux"     = "l";
     "nova"    = "n";
     "vm"      = "n";
@@ -76,7 +76,7 @@
     "medea"   = "m";
     "engrit"  = "e";
   };
-  hostIndex = hostIndexMap.${myHostname};
+  hostID = hostMap.${myHostname};
 
   # GPU command stuff
   gpuShPath = "${homedir}/.nix/extra/zshfx/gpu";
@@ -88,43 +88,40 @@
   customLaunchers = [
     #custom init      Name                      .desktop file                     Exec (true if == .desktop file)                       Icon (true if == .desktop file)
     # core
-    (custom "0011"    "Email"                   "thunderbird"                     true                                                  "ceri-email")
-    (custom "1111"    "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                                           "ceri-pass")
-    (custom "1111"    "Lock"                    "lock"                            "xflock4"                                             "ceri-lock")
-    (custom "1111"    "Restart"                 "restart"                         "reboot"                                              "ceri-reboot")
-    (custom "1111"    "Shutdown"                "shutdown"                        "shutdown now"                                        "ceri-shutdown")
+    (custom "ln..."   "Email"                   "thunderbird"                     true                                                  "ceri-email")
+    (custom "lname"   "KeePassXC"               "org.keepassxc.KeePassXC"         "keepassxc"                                           "ceri-pass")
+    (custom "lname"   "Lock"                    "lock"                            "xflock4"                                             "ceri-lock")
+    (custom "lname"   "Restart"                 "restart"                         "reboot"                                              "ceri-reboot")
+    (custom "lname"   "Shutdown"                "shutdown"                        "shutdown now"                                        "ceri-shutdown")
     # core (laptop)
-    (custom "0110"    "Suspend"                 "suspend"                         "systemctl suspend"                                   "ceri-lock")
-    (custom "0110"    "Hibernate"               "hibernate"                       "systemctl hibernate"                                 "ceri-lock")
+    (custom ".n.me"   "Suspend"                 "suspend"                         "systemctl suspend"                                   "ceri-lock")
+    (custom ".n.me"   "Hibernate"               "hibernate"                       "systemctl hibernate"                                 "ceri-lock")
     # create
-    (custom "0001"    "Blender"                 "blender"                         (gpuCmd "blender %f")                                 true)
-    (custom "0011"    "Kdenlive"                "org.kde.kdenlive"                (gpuCmd "kdenlive")                                   "ceri-kden")
-    (custom "0011"    "OBS Studio"              "com.obsproject.Studio"           "obs"                                                 "ceri-obs")
+    (custom "l...."   "Blender"                 "blender"                         (gpuCmd "blender %f")                                 true)
+    (custom "ln..."   "Kdenlive"                "org.kde.kdenlive"                (gpuCmd "kdenlive")                                   "ceri-kden")
+    (custom "ln..."   "OBS Studio"              "com.obsproject.Studio"           "obs"                                                 "ceri-obs")
     # ent
-    (custom "0011"    "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"   "${homedir}/games/ArrowVortex/av.ico")
-    (custom "1011"    "Deluge"                  "deluge"                          true                                                  "ceri-deluge")
-    (custom "0011"    "ITGmania"                "itgmania"                        "itgmania"                                            "ceri-itg")
-    (custom "0011"    "Minecraft"               "org.prismlauncher.PrismLauncher" (gpuCmd "prismlauncher")                              "ceri-mc")
-    (custom "0011"    "Steam"                   "steam"                           true                                                  "ceri-steam")
-    (custom "0111"    "Tauon"                   "tauonmb"                         "tauon"                                               "ceri-music")
-    (custom "1111"    "VLC Media Player"        "vlc"                             true                                                  "ceri-media")
+    (custom "ln..."   "ArrowVortex"             "av"                              "wine ${homedir}/games/ArrowVortex/ArrowVortex.exe"   "${homedir}/games/ArrowVortex/av.ico")
+    (custom "lnam."   "Deluge"                  "deluge"                          true                                                  "ceri-deluge")
+    (custom "ln..."   "ITGmania"                "itgmania"                        "itgmania"                                            "ceri-itg")
+    (custom "ln..."   "Minecraft"               "org.prismlauncher.PrismLauncher" (gpuCmd "prismlauncher")                              "ceri-mc")
+    (custom "ln..."   "Steam"                   "steam"                           true                                                  "ceri-steam")
+    (custom "ln..e"   "Tauon"                   "tauonmb"                         "tauon"                                               "ceri-music")
+    (custom "lname"   "VLC Media Player"        "vlc"                             true                                                  "ceri-media")
     # soc
-    (custom "0011"    "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"      "ceri-cord")
+    (custom "ln..."   "Discord"                 "discord"                         "discord --enable-blink-features=MiddleClickAutoscroll --disable-smooth-scrolling"      "ceri-cord")
     # util
-    (custom "0011"    "Discord Chat Exporter"   "discordchatexporter"             true                                                  "ceri-cord")
+    (custom "ln..."   "Discord Chat Exporter"   "discordchatexporter"             true                                                  "ceri-cord")
     # vm
-    (custom "0001"    "Looking Glass Client"    "looking-glass-client"            "looking-glass-client -s -m 97"                       "looking-glass")
-    (custom "1111"    "Virtual Machine Manager" "virt-manager"                    true                                                  "ceri-vm")
+    (custom "l...."   "Looking Glass Client"    "looking-glass-client"            "looking-glass-client -s -m 97"                       "looking-glass")
+    (custom "lname"   "Virtual Machine Manager" "virt-manager"                    true                                                  "ceri-vm")
     # wm
-    (custom "1111"    "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"                    "ceri-files")
+    (custom "lname"   "File Manager"            "xfce4-file-manager"              "exo-open --launch FileManager %u"                    "ceri-files")
   ];
 
-  # Only create custom launchers with init flag in the
-  # specified hostIndexMap position marked "1"
+  # Only import packages containing the hostID in the init string
   filteredCustoms = builtins.filter (entry:
-    let flagString = entry.init;
-    in builtins.stringLength flagString > hostIndex &&
-      builtins.substring hostIndex 1 flagString == "1"
+    lib.strings.hasInfix hostID entry.init
   ) customLaunchers;
 
   # TODO: Maybe combine this into one command

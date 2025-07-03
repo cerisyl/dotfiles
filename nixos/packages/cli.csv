@@ -1,3 +1,4 @@
+# Essential/system commands and CLI tools.
 lname |   | btop
 lname |   | fastfetch
 lname | * | fd
@@ -10,11 +11,11 @@ lname |   | libnotify
 lname |   | micro
 lname | * | oh-my-posh
 ..a.. |   | openssh
-lname |   | pciutils
+lname |   | pciutils |-> lspci
 lname |   | p7zip
 lname |   | tealdeer
 lname |   | unzip
-lname |   | usbutils
+lname |   | usbutils |-> lsusb
 lname | * | zinit
 lname |   | zip
 lname | * | zsh
@@ -23,8 +24,9 @@ lname | * | zsh-completions
 lname | * | zsh-fzf-tab
 lname | * | zsh-syntax-highlighting
 
+# Essential programs for everyday use.
 ln... |   | birdtray
-l.... | * | ungoogled-chromium
+l.... | * | ungoogled-chromium |-> Specifically for WebFSR
 lname | * | mate.engrampa
 lname |   | floorp
 lname | * | gnome-keyring
@@ -36,10 +38,13 @@ lna.e | * | syncthing
 lna.e | * | syncthingtray
 ln... | * | thunderbird
 
+# Programs for creative output.
+# still need: fadein
 l.... |   | blender
 ln... |   | kdePackages.kdenlive
 ln... |   | obs-studio
 l.... |   | reaper
+
 
 lna.e | * | bun
 l.... | * | nodejs_24
@@ -47,8 +52,9 @@ ln... |   | python311
 lna.e |   | python313
 lna.e | * | vscode-fhs
 
+
 l.... |   | arduino-ide
-"1011" |   | deluge-gtk
+lnam. |   | deluge-gtk
 ln... |   | dolphin-emu
 ln... | * | itgmania
 ln... |   | melonDS
@@ -60,6 +66,7 @@ ln... | * | steam-run
 ln..e |   | tauon
 lname |   | vlc
 
+
 .n.me |   | blueman
 ....e |   | bolt
 ....e |   | dbus
@@ -67,15 +74,18 @@ lname |   | vlc
 ....e |   | linux-firmware
 .n.me |   | sof-firmware
 
+
 l.... |   | grive2
 l.... |   | dropbox
 l.... |   | xfce.thunar-dropbox-plugin
 
+
 ln... | * | discord
 ln... | * | telegram-desktop
 
+
 ln... | * | discordchatexporter-desktop
-"0101" |   | dmg2img
+l...e |   | dmg2img
 ln..e |   | ffmpeg
 ln... |   | freac
 ln... |   | handbrake
@@ -87,7 +97,7 @@ lname |   | partclone
 l.... |   | puddletag
 lname |   | qdirstat
 lname |   | qdiskinfo
-"1101" |   | rclone
+l.a.e |   | rclone
 l.... |   | rubyripper
 lname |   | tesseract
 ln... |   | wineWowPackages.stable
@@ -96,6 +106,7 @@ ln... |   | xcolor
 ln... | * | yt-dlg
 ln... | * | yt-dlp
 
+
 l.... |   | looking-glass-client
 lname |   | spice
 lname |   | spice-protocol
@@ -103,8 +114,9 @@ lname |   | qemu_full
 lname |   | virt-manager
 lname |   | win-virtio
 lname |   | win-spice
-l.... |   | samba # for gpu passthrough
-.n.me |   | virtiofsd # default
+l.... |   | samba
+.n.me |   | virtiofsd
+
 
 lname |   | gvfs
 lname |   | haskellPackages.greenclip
@@ -130,6 +142,8 @@ lname |   | xfce.xfce4-screenshooter
 lname |   | xfce.xfwm4
 lname |   | xmousepasteblock
 
+
+# Applications related to work.
 ....e | * | boxfs
 ....e | * | onedrive
 ....e | * | openconnect

@@ -32,6 +32,12 @@
         options snd_hda_intel power_save=1
       '';
     };
+    medea = {
+      initrd.kernelModules  = [];
+      kernelModules         = [];
+      extraModulePackages   = [];
+      extraModprobeConfig   = "";
+    };
     astore = {
       initrd.kernelModules  = [];
       kernelModules         = [];
