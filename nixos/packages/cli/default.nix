@@ -1,6 +1,7 @@
 # Essential/system commands and CLI tools.
 let p = init: isUnstable: pkg: { inherit init isUnstable pkg; };
 in [
+  (p "1111" false  "bar")
   (p "1111" false  "btop")
   (p "1111" false  "fastfetch")
   (p "1111" true   "fd")
@@ -15,7 +16,6 @@ in [
   (p "1000" false  "openssh")
   (p "1111" false  "p7zip")
   (p "1111" false  "pciutils") # lspci
-  (p "1111" false  "pv")
   (p "1111" false  "tealdeer")
   (p "1111" false  "unzip")
   (p "1111" false  "usbutils") # lsusb
