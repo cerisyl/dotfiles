@@ -13,8 +13,9 @@ in [
   (p "1111" false  "micro")
   (p "1111" true   "oh-my-posh")
   (p "1000" false  "openssh")
-  (p "1111" false  "pciutils") # lspci
   (p "1111" false  "p7zip")
+  (p "1111" false  "pciutils") # lspci
+  (p "1111" false  "pv")
   (p "1111" false  "tealdeer")
   (p "1111" false  "unzip")
   (p "1111" false  "usbutils") # lsusb
