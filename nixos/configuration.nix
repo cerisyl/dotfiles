@@ -41,17 +41,17 @@
   hostID = hostMap.${myHostname};
 
   # Load and parse our pkgs.csv
-  pkgsCsv = builtins.readFile pkgs.csv;
+  pkgsCsv = builtins.readFile ./pkgs.csv;
   pkgsClean = builtins.filter (entry:
-    !(lib.strings.hasInfix "#" entry)
-  ) lib.strings.splitString "\n" pkgsCsv;
+    !(lib.strings.hasInfix "#" entry) && !(entry == "")
+  ) (lib.strings.splitString "\n" pkgsCsv);
   pkgsSplit = map (entry:
     lib.strings.splitString "|" entry
   ) pkgsClean;
   allPkgs = map (entry: {
     init        = builtins.elemAt entry 0;
-    isUnstable  = lib.strings.hasInfix "*" builtins.elemAt entry 1;
-    pkg         = lib.strings.trimWith " " builtins.elemAt entry 2;
+    isUnstable  = lib.strings.hasInfix "*" (builtins.elemAt entry 1);
+    pkg         = lib.strings.trim (builtins.elemAt entry 2);
   }) pkgsSplit;
 
   # Only import packages containing the hostID in the init string

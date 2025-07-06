@@ -2,7 +2,7 @@
 
   # TODO: Pull this from main config file- possibly see if this is syncable with the init defined in /packages
   # maybe it could be an extra option in pkgMap...
-  hostIndexMap = {
+  hostMap = {
     "lux"     = "l";
     "nova"    = "n";
     "vm"      = "n";
@@ -10,8 +10,8 @@
     "medea"   = "m";
     "engrit"  = "e";
   };
-  hostIndex = hostIndexMap.${myHostname};
-  toInit = str: (builtins.stringLength str > hostIndex && builtins.substring hostIndex 1 str == "1");
+  hostID = hostMap.${myHostname};
+  toInit = str: (lib.strings.hasInfix hostID str);
 
   # Create and/or bookmark directories based on hostname
   mkPlace = init: path: alias:
