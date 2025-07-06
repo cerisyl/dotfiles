@@ -40,28 +40,41 @@
   };
   hostID = hostMap.${myHostname};
 
+  # Load and parse our pkgs.csv
+  pkgsCsv = builtins.readFile pkgs.csv;
+  pkgsClean = builtins.filter (entry:
+    !(lib.strings.hasInfix "#" entry)
+  ) lib.strings.splitString "\n" pkgsCsv;
+  pkgsSplit = map (entry:
+    lib.strings.splitString "|" entry
+  ) pkgsClean;
+  allPkgs = map (entry: {
+    init        = builtins.elemAt entry 0;
+    isUnstable  = lib.strings.hasInfix "*" builtins.elemAt entry 1;
+    pkg         = lib.strings.trimWith " " builtins.elemAt entry 2;
+  }) pkgsSplit;
+
   # Only import packages containing the hostID in the init string
-  allPackages = import ./packages;
-  enabledPackages = builtins.filter (entry:
+  enabledPkgs = builtins.filter (entry:
     lib.strings.hasInfix hostID entry.init
-  ) allPackages;
+  ) allPkgs;
 
   # TODO: Would be cool if we can combine these two blocks into
   # a single call- research later.
 
   # Get our packages using the specified channel of choice (isUnstable)
-  systemPackages = map (entry:
+  systemPkgs = map (entry:
     if entry.isUnstable == true
     then getAttrByStr pkgsUnstable entry.pkg
     else getAttrByStr pkgs entry.pkg
-  ) enabledPackages;
+  ) enabledPkgs;
 
   # Also spawn an object to use in loading proper packages in config
   pkgMap = builtins.listToAttrs (map (entry:
     if entry.isUnstable == true
     then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
     else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
-  ) enabledPackages);
+  ) enabledPkgs);
 in {
   # Main params
   networking.hostName = myHostname;
@@ -111,7 +124,7 @@ in {
 
   # Define packages
   nixpkgs.config.allowUnfree  = true;
-  environment.systemPackages  = systemPackages;
+  environment.systemPackages  = systemPkgs;
 
   # Allow dynamically linked executables
   programs.nix-ld.enable    = true;

@@ -1,4 +1,4 @@
-# Essential/system commands and CLI tools.
+# cli: Essential/system commands and CLI tools.
 lname |   | btop
 lname |   | fastfetch
 lname | * | fd
@@ -24,7 +24,7 @@ lname | * | zsh-completions
 lname | * | zsh-fzf-tab
 lname | * | zsh-syntax-highlighting
 
-# Essential programs for everyday use.
+# core: Essential GUI programs for everyday use.
 ln... |   | birdtray
 l.... | * | ungoogled-chromium |-> Specifically for WebFSR
 lname | * | mate.engrampa
@@ -38,21 +38,21 @@ lna.e | * | syncthing
 lna.e | * | syncthingtray
 ln... | * | thunderbird
 
-# Programs for creative output.
-# still need: fadein
+# create: Programs for creative output.
 l.... |   | blender
+# ln... |   | fade-in
 ln... |   | kdePackages.kdenlive
 ln... |   | obs-studio
 l.... |   | reaper
 
-
+# dev : Development tools.
 lna.e | * | bun
-l.... | * | nodejs_24
-ln... |   | python311
+l.... | * | nodejs_24 |-> parcel
+ln... |   | python311 |-> 9ornull
 lna.e |   | python313
 lna.e | * | vscode-fhs
 
-
+# ent: Entertainment / gaming programs.
 l.... |   | arduino-ide
 lnam. |   | deluge-gtk
 ln... |   | dolphin-emu
@@ -66,7 +66,7 @@ ln... | * | steam-run
 ln..e |   | tauon
 lname |   | vlc
 
-
+# firmware: Firmware/drivers and applications to interact with them.
 .n.me |   | blueman
 ....e |   | bolt
 ....e |   | dbus
@@ -74,22 +74,24 @@ lname |   | vlc
 ....e |   | linux-firmware
 .n.me |   | sof-firmware
 
-
+# fs: Cloud file storage services.
 l.... |   | grive2
 l.... |   | dropbox
 l.... |   | xfce.thunar-dropbox-plugin
 
-
+# soc: Social media and other messaging programs.
 ln... | * | discord
 ln... | * | telegram-desktop
 
-
+# tools: Mixed tools and utilities; typically lesser-used.
 ln... | * | discordchatexporter-desktop
 l...e |   | dmg2img
 ln..e |   | ffmpeg
 ln... |   | freac
 ln... |   | handbrake
 lname |   | imagemagick
+# l.... | * | imgbrd-grabber |-> uncomment when fixed
+# ln... |   | libreoffice-fresh
 ln..e |   | meld
 ln..e | * | obsidian
 l.... |   | openrgb
@@ -106,23 +108,25 @@ ln... |   | xcolor
 ln... | * | yt-dlg
 ln... | * | yt-dlp
 
-
+# vm: Virtualization libraries.
 l.... |   | looking-glass-client
-lname |   | spice
-lname |   | spice-protocol
-lname |   | qemu_full
-lname |   | virt-manager
-lname |   | win-virtio
-lname |   | win-spice
+lna.e |   | spice
+lna.e |   | spice-protocol
+lna.e |   | qemu_full
+lna.e |   | virt-manager
+lna.e |   | win-virtio
+lna.e |   | win-spice
+# VM share methods
 l.... |   | samba
-.n.me |   | virtiofsd
+.n..e |   | virtiofsd
 
-
+# wm: Window manager tools and add-ins.
 lname |   | gvfs
 lname |   | haskellPackages.greenclip
 lname |   | lightdm
 lname |   | networkmanager
 lname |   | networkmanagerapplet
+# lname |   | nody-greeter |-> still on the fence about using this
 lname |   | plymouth
 lname |   | pulseaudio
 lname | * | rofi
@@ -142,8 +146,7 @@ lname |   | xfce.xfce4-screenshooter
 lname |   | xfce.xfwm4
 lname |   | xmousepasteblock
 
-
-# Applications related to work.
+# work: Work-related applications.
 ....e | * | boxfs
 ....e | * | onedrive
 ....e | * | openconnect
