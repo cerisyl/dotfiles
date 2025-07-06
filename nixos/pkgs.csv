@@ -90,7 +90,7 @@ ln..e |   | ffmpeg
 ln... |   | freac
 ln... |   | handbrake
 lname |   | imagemagick
-# l.... | * | imgbrd-grabber |-> uncomment when fixed
+ln... | * | imgbrd-grabber |-> uncomment when fixed
 # ln... |   | libreoffice-fresh
 ln..e |   | meld
 ln..e | * | obsidian
