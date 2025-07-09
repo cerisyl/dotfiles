@@ -112,7 +112,7 @@ ln... | * | yt-dlp
 l.... |   | looking-glass-client
 lna.e |   | spice
 lna.e |   | spice-protocol
-lna.e | * | qemu_full
+lna.e |   | qemu_full
 lna.e |   | virt-manager
 lna.e |   | win-virtio
 lna.e |   | win-spice
