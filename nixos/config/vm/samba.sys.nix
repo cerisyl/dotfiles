@@ -9,7 +9,7 @@ if myHostname == "lux" then {
       "bind interfaces only" = "yes";
     };
     shares = {
-      share = {
+      home = {
         path              = "/home/ceri";
         browseable        = "yes";
         writeable         = "yes";
@@ -17,6 +17,17 @@ if myHostname == "lux" then {
         "valid users"     = "ceri";
         "create mask"     = "0644";
         "directory mask"  = "0755";
+      };
+      share = {
+        path              = "/mnt/share";
+        browseable        = "yes";
+        writeable         = "yes";
+        "guest ok"        = "no";
+        "valid users"     = "ceri mang";
+        "create mask"     = "0644";
+        "directory mask"  = "0755";
+        "hosts allow"     = "192.168.200.245 192.168.200.246";
+        "interfaces"      = "lo enp5s0";
       };
     };
   };
