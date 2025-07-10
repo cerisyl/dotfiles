@@ -107,6 +107,12 @@ in {
           <description>Recursively sends selected files to a ZIP</description>
           <range>*</range>
           <patterns>*</patterns>
+	        <directories/>
+	        <audio-files/>
+	        <image-files/>
+	        <other-files/>
+	        <text-files/>
+	        <video-files/>
         </action>
         <action>
           <icon>engrampa</icon>
@@ -117,6 +123,12 @@ in {
           <description>Recursively sends selected files to a 7z</description>
           <range>*</range>
           <patterns>*</patterns>
+	        <directories/>
+	        <audio-files/>
+	        <image-files/>
+	        <other-files/>
+	        <text-files/>
+	        <video-files/>
         </action>
         </actions>
       '';
