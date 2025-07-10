@@ -98,6 +98,26 @@ in {
           <patterns>*</patterns>
           <directories/>
         </action>
+        <action>
+          <icon>engrampa</icon>
+          <name>Compress to ZIP</name>
+          <submenu></submenu>
+          <unique-id>1752110568612037-1</unique-id>
+          <command>zip -r %n.zip %F</command>
+          <description>Recursively sends selected files to a ZIP</description>
+          <range>*</range>
+          <patterns>*</patterns>
+        </action>
+        <action>
+          <icon>engrampa</icon>
+          <name>Compress to 7z</name>
+          <submenu></submenu>
+          <unique-id>1752110568612037-1</unique-id>
+          <command>7z a %n.7z %F</command>
+          <description>Recursively sends selected files to a 7z</description>
+          <range>*</range>
+          <patterns>*</patterns>
+        </action>
         </actions>
       '';
     };
