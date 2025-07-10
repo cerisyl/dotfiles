@@ -13,26 +13,29 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e7936fa3-7f71-4593-942a-5ca0187cd599";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/e7936fa3-7f71-4593-942a-5ca0187cd599";
       fsType = "ext4";
     };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/40FB-E015";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/40FB-E015";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
-
-  fileSystems."/mnt/alt" =
-    { device = "/dev/disk/by-uuid/63979a69-2d7f-4f09-8a8f-6c2b6b9a26bf";
+    "/mnt/astore" = {
+      device = "/dev/disk/by-uuid/2ea991dc-cf75-421d-8f1e-2df130645e43";
       fsType = "ext4";
     };
-
-  fileSystems."/mnt/astore" =
-    { device = "/dev/disk/by-uuid/2ea991dc-cf75-421d-8f1e-2df130645e43";
+    "/mnt/extra" = {
+      device = "/dev/disk/by-uuid/63979a69-2d7f-4f09-8a8f-6c2b6b9a26bf";
       fsType = "ext4";
     };
+    "/mnt/share" = {
+      device = "/dev/disk/by-uuid/57128f71-a084-4239-8bec-61f6113c8ebb";
+      fsType = "ext4";
+    };
+  }
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/718cb90b-1744-4e02-853c-6ba26ffd4289"; }

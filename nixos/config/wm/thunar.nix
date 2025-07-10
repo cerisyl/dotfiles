@@ -48,12 +48,14 @@
     (mkPlace  "....e" "file://${homedir}/OneDrive"                      "onedrive")
     (mkDir    "lname" "pictures"    true          true      false)
     (mkPlace  "l...." "file://${homedir}/.itgmania/Screenshots"         "screenshots-itg")
+    (mkPlace  "l...." "/mnt/share"  "share")
     (mkDir    "lname" "sync"        true          true      true)
     (mkDir    "lname" "util"        "tools"       true      true)
     (mkDir    "lname" "vm"          true          false     true)
     (mkDir    "lname" "videos"      true          true      false)
-    # network locations
-    (mkPlace  "ln..." "sftp://192.168.200.240:50951/home/ceri"          "astore")
+    # external/network locations
+    (mkPlace  "l...." "/mnt/astore" "astore")
+    (mkPlace  "l...." "/mnt/alt"    "extra")
     (mkPlace  "....e" "smb://sgunning@engrit-file-01.ad.uillinois.edu/engrit/Shares/admin/Building%20Maps"  "maps")
     (mkPlace  "....e" "smb://sgunning@engr-archive.ad.uillinois.edu/Archive/Microsoft/Windows/OS/ISOs"      "isos")
   ];
