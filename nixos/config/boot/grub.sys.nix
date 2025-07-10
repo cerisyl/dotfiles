@@ -1,7 +1,7 @@
 { config, pkgs, pkgMap, theme, getThemeFile, myHostname, lib, ... }: let
   # ,10de:1381,10de:0fbc
   hostKernelParams = {
-    lux     = [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b" ];
+    lux     = [ "intel_iommu=on" "iommu.passthrough=1" "iommu=pt" "vfio-pci.ids=10de:2482,10de:228b,10de:1381,10de:0fbc" ];
     nova    = [];
     engrit  = [];
     astore  = [];
@@ -13,7 +13,7 @@
       kernelModules         = [ "kvmfr" ];
       extraModulePackages   = with config.boot.kernelPackages; [ kvmfr ];
       extraModprobeConfig   = ''
-        options vfio-pci ids=10de:2482,10de:228b
+        options vfio-pci ids=10de:2482,10de:228b,10de:1381,10de:0fbc
         softdep nvidia pre: vfio-pci
         softdep nvidia_modeset pre: vfio-pci
         options kvmfr static_size_mb=128
