@@ -91,20 +91,24 @@ in {
 
   # Users
   programs.zsh.enable = true;
-  users.users = {
-    ceri = {
-      isNormalUser  = true;
-      shell         = pkgsUnstable.zsh;
-      extraGroups   = [ "wheel" "input" "networkmanager" "deluge" "libvirtd" "share" ];
-    };
-  # Only add mang as a secondary user on lux host
-  } // (if myHostname == "lux" then {
-    mang = {
-      isSystemUser  = true;
-      shell         = pkgsUnstable.zsh;
-      extraGroups   = [ "deluge" "share" ];
-    };
-  } else {});
+  users = {
+    groups.share = {};
+    users = {
+      ceri = {
+        isNormalUser  = true;
+        shell         = pkgsUnstable.zsh;
+        extraGroups   = [ "wheel" "input" "networkmanager" "deluge" "libvirtd" "share" ];
+      };
+    # Only add mang as a secondary user on lux host
+    } // (if myHostname == "lux" then {
+      mang = {
+        isSystemUser  = true;
+        shell         = pkgsUnstable.zsh;
+        group         = "share";
+        extraGroups   = [ "deluge" ];
+      };
+    } else {});
+  };
 
   # Import/set home configuration
   home-manager = {
