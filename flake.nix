@@ -46,6 +46,7 @@
       lux     = defHost "lux";
       nova    = defHost "nova";
       astore  = defHost "astore";
+      medea   = defHost "medea";
       vm      = defHost "vm";
       engrit  = defHost "engrit";
     };

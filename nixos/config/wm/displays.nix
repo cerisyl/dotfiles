@@ -18,6 +18,9 @@
       "Default/DP-2-2/Primary"      = false;
       "Default/DP-2-2/RefreshRate"  = 120;
     };
+    medea = {
+      # ...
+    };
     astore = {
       # "Default/HDMI-0/RefreshRate" = "${homedir}/.nix/themes/${theme}/img/bg.png";
     };

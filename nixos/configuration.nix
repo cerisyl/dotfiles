@@ -1,4 +1,4 @@
-{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, ... }: let
+{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, lib, ... }: let
   # Utility functions to translate 
   # TODO: Move this in its own file.
   getAttrByList = set: pathList:
@@ -29,42 +29,52 @@
   );
 
   # Package management
-  # Use binary to determine what packages we should download
-  hostIndexMap = {
-    "lux"     = 3;
-    "nova"    = 2;
-    "engrit"  = 1;
-    "astore"  = 0;
-    "vm"      = 2;
+  # Determine what packages we should download
+  hostMap = {
+    "lux"     = "l";
+    "nova"    = "n";
+    "vm"      = "n";
+    "astore"  = "a";
+    "medea"   = "m";
+    "engrit"  = "e";
   };
-  hostIndex = hostIndexMap.${myHostname};
+  hostID = hostMap.${myHostname};
 
-  allPackages = import ./packages;
+  # Load and parse our pkgs.csv
+  pkgsCsv = builtins.readFile ./pkgs.csv;
+  pkgsClean = builtins.filter (entry:
+    !(lib.strings.hasInfix "#" entry) && !(entry == "")
+  ) (lib.strings.splitString "\n" pkgsCsv);
+  pkgsSplit = map (entry:
+    lib.strings.splitString "|" entry
+  ) pkgsClean;
+  allPkgs = map (entry: {
+    init        = builtins.elemAt entry 0;
+    isUnstable  = lib.strings.hasInfix "*" (builtins.elemAt entry 1);
+    pkg         = lib.strings.trim (builtins.elemAt entry 2);
+  }) pkgsSplit;
 
-  # Only import packages with an init flag in the
-  # specified hostIndexMap position marked "1"
-  enabledPackages = builtins.filter (entry:
-    let flagString = entry.init;
-    in builtins.stringLength flagString > hostIndex &&
-      builtins.substring hostIndex 1 flagString == "1"
-  ) allPackages;
+  # Only import packages containing the hostID in the init string
+  enabledPkgs = builtins.filter (entry:
+    lib.strings.hasInfix hostID entry.init
+  ) allPkgs;
 
   # TODO: Would be cool if we can combine these two blocks into
   # a single call- research later.
 
   # Get our packages using the specified channel of choice (isUnstable)
-  systemPackages = map (entry:
+  systemPkgs = map (entry:
     if entry.isUnstable == true
     then getAttrByStr pkgsUnstable entry.pkg
     else getAttrByStr pkgs entry.pkg
-  ) enabledPackages;
+  ) enabledPkgs;
 
   # Also spawn an object to use in loading proper packages in config
   pkgMap = builtins.listToAttrs (map (entry:
     if entry.isUnstable == true
     then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
     else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
-  ) enabledPackages);
+  ) enabledPkgs);
 in {
   # Main params
   networking.hostName = myHostname;
@@ -81,10 +91,23 @@ in {
 
   # Users
   programs.zsh.enable = true;
-  users.users.ceri = {
-    isNormalUser  = true;
-    shell         = pkgsUnstable.zsh;
-    extraGroups   = [ "wheel" "input" "networkmanager" "deluge" "libvirtd" ];
+  users = {
+    groups.share = {};
+    users = {
+      ceri = {
+        isNormalUser  = true;
+        shell         = pkgsUnstable.zsh;
+        extraGroups   = [ "wheel" "input" "networkmanager" "deluge" "libvirtd" "share" ];
+      };
+    # Only add mang as a secondary user on lux host
+    } // (if myHostname == "lux" then {
+      mang = {
+        isSystemUser  = true;
+        shell         = pkgsUnstable.zsh;
+        group         = "share";
+        extraGroups   = [ "deluge" ];
+      };
+    } else {});
   };
 
   # Import/set home configuration
@@ -114,7 +137,7 @@ in {
 
   # Define packages
   nixpkgs.config.allowUnfree  = true;
-  environment.systemPackages  = systemPackages;
+  environment.systemPackages  = systemPkgs;
 
   # Allow dynamically linked executables
   programs.nix-ld.enable    = true;

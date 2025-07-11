@@ -2,15 +2,16 @@
 
   # TODO: Pull this from main config file- possibly see if this is syncable with the init defined in /packages
   # maybe it could be an extra option in pkgMap...
-  hostIndexMap = {
-    "lux"     = 3;
-    "nova"    = 2;
-    "vm"      = 2;
-    "engrit"  = 1;
-    "astore"  = 0;
+  hostMap = {
+    "lux"     = "l";
+    "nova"    = "n";
+    "vm"      = "n";
+    "astore"  = "a";
+    "medea"   = "m";
+    "engrit"  = "e";
   };
-  hostIndex = hostIndexMap.${myHostname};
-  toInit = str: (builtins.stringLength str > hostIndex && builtins.substring hostIndex 1 str == "1");
+  hostID = hostMap.${myHostname};
+  toInit = str: (lib.strings.hasInfix hostID str);
 
   # Create and/or bookmark directories based on hostname
   mkPlace = init: path: alias:
@@ -34,27 +35,29 @@
 
   userDirs = [
     #cmd      init    path          type          place     isExtra     place:alias
-    (mkDir    "1111"  "captures"    "screenshots" true      true)
-    (mkDir    "1111"  "code"        true          true      true)
-    (mkDir    "1111"  "desktop"     true          false     false)
-    (mkDir    "1011"  "deluge"      "torrents"    false     true)
-    (mkDir    "1111"  "docs"        "documents"   true      false)
-    (mkPlace  "0001"  "file://${homedir}/Dropbox"                       "dropbox")
-    (mkDir    "1111"  "downloads"   "download"    true      false)
-    (mkDir    "1011"  "games"       true          true      true)
-    (mkDir    "0011"  "itg"         true          true      true)
-    (mkDir    "1111"  "music"       true          true      false)
-    (mkPlace  "0100"  "file://${homedir}/OneDrive"                      "onedrive")
-    (mkDir    "1111"  "pictures"    true          true      false)
-    (mkPlace  "0001"  "file://${homedir}/.itgmania/Screenshots"         "screenshots-itg")
-    (mkDir    "1111"  "sync"        true          true      true)
-    (mkDir    "1111"  "util"        "tools"       true      true)
-    (mkDir    "1111"  "vm"          true          false     true)
-    (mkDir    "1111"  "videos"      true          true      false)
-    # network locations
-    (mkPlace  "0011"  "sftp://192.168.200.240:50951/home/ceri"          "astore")
-    (mkPlace  "0100"  "smb://sgunning@engrit-file-01.ad.uillinois.edu/engrit/Shares/admin/Building%20Maps"  "maps")
-    (mkPlace  "0100"  "smb://sgunning@engr-archive.ad.uillinois.edu/Archive/Microsoft/Windows/OS/ISOs"      "isos")
+    (mkDir    "lname" "captures"    "screenshots" true      true)
+    (mkDir    "lname" "code"        true          true      true)
+    (mkDir    "lname" "desktop"     true          false     false)
+    (mkDir    "lnam." "deluge"      "torrents"    false     true)
+    (mkDir    "lname" "docs"        "documents"   true      false)
+    (mkPlace  "l...." "file://${homedir}/Dropbox"                       "dropbox")
+    (mkDir    "lname" "downloads"   "download"    true      false)
+    (mkDir    "lna.." "games"       true          true      true)
+    (mkDir    "ln..." "itg"         true          true      true)
+    (mkDir    "lname" "music"       true          true      false)
+    (mkPlace  "....e" "file://${homedir}/OneDrive"                      "onedrive")
+    (mkDir    "lname" "pictures"    true          true      false)
+    (mkPlace  "l...." "file://${homedir}/.itgmania/Screenshots"         "screenshots-itg")
+    (mkPlace  "l...." "file:///mnt/share"  "share")
+    (mkDir    "lname" "sync"        true          true      true)
+    (mkDir    "lname" "util"        "tools"       true      true)
+    (mkDir    "lname" "vm"          true          false     true)
+    (mkDir    "lname" "videos"      true          true      false)
+    # external/network locations
+    (mkPlace  "l...." "file:///mnt/astore" "astore")
+    (mkPlace  "l...." "file:///mnt/extra"  "extra")
+    (mkPlace  "....e" "smb://sgunning@engrit-file-01.ad.uillinois.edu/engrit/Shares/admin/Building%20Maps"  "maps")
+    (mkPlace  "....e" "smb://sgunning@engr-archive.ad.uillinois.edu/Archive/Microsoft/Windows/OS/ISOs"      "isos")
   ];
 
   # Parse the defined list
@@ -94,6 +97,38 @@ in {
           <range>*</range>
           <patterns>*</patterns>
           <directories/>
+        </action>
+        <action>
+          <icon>engrampa</icon>
+          <name>Compress to ZIP</name>
+          <submenu></submenu>
+          <unique-id>1752110568612037-1</unique-id>
+          <command>zip -r %n.zip %F</command>
+          <description>Recursively sends selected files to a ZIP</description>
+          <range>*</range>
+          <patterns>*</patterns>
+	        <directories/>
+	        <audio-files/>
+	        <image-files/>
+	        <other-files/>
+	        <text-files/>
+	        <video-files/>
+        </action>
+        <action>
+          <icon>engrampa</icon>
+          <name>Compress to 7z</name>
+          <submenu></submenu>
+          <unique-id>1752110568612037-1</unique-id>
+          <command>7z a %n.7z %F</command>
+          <description>Recursively sends selected files to a 7z</description>
+          <range>*</range>
+          <patterns>*</patterns>
+	        <directories/>
+	        <audio-files/>
+	        <image-files/>
+	        <other-files/>
+	        <text-files/>
+	        <video-files/>
         </action>
         </actions>
       '';
