@@ -1,4 +1,4 @@
-{ config, pkgMap, theme, getThemeFile, homedir, zmod, lib, ... }: let
+{ config, pkgMap, theme, getThemeFile, homedir, zmod, lib, myHostname, ... }: let
   # Get commit shortstring
   zmodRev = "zmod_${builtins.substring 0 8 zmod.rev}";
   itgShare = if myHostname == "lux" then "/home/ceri/itg/play/songs-share/" else "";
