@@ -84,6 +84,7 @@ ln... | * | discord
 ln... | * | telegram-desktop
 
 # tools: Mixed tools and utilities; typically lesser-used.
+l...e |   | dd_rescue
 ln... | * | discordchatexporter-desktop
 l...e |   | dmg2img
 ln..e |   | ffmpeg
