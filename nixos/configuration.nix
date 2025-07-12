@@ -72,7 +72,7 @@
   # Also spawn an object to use in loading proper packages in config
   pkgMap = builtins.listToAttrs (map (entry:
     if entry.isUnstable == true
-    then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
+      then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
     else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
   ) enabledPkgs);
 in {

@@ -110,12 +110,12 @@ ln... | * | yt-dlp
 
 # vm: Virtualization libraries.
 l.... | * | looking-glass-client
-lna.e |   | spice
-lna.e |   | spice-protocol
-lna.e | * | qemu_full
+lna.e | * | spice
+lna.e | * | spice-protocol
+lna.e | * | qemu
 lna.e | * | virt-manager
 lna.e | * | win-virtio
-lna.e |   | win-spice
+lna.e | * | win-spice
 # VM share methods
 l.... |   | samba
 .n..e |   | virtiofsd
