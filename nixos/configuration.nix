@@ -1,4 +1,4 @@
-{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsGit, lib, ... }: let
+{ inputs, myHostname, config, pkgs, pkgsUnstable, pkgsLegacy, pkgsGit, lib, ... }: let
   # Utility functions to translate 
   # TODO: Move this in its own file.
   getAttrByList = set: pathList:
@@ -51,6 +51,7 @@
   allPkgs = map (entry: {
     init        = builtins.elemAt entry 0;
     isUnstable  = lib.strings.hasInfix "*" (builtins.elemAt entry 1);
+    isLegacy    = lib.strings.hasInfix "@" (builtins.elemAt entry 1);
     pkg         = lib.strings.trim (builtins.elemAt entry 2);
   }) pkgsSplit;
 
@@ -72,7 +73,9 @@
   # Also spawn an object to use in loading proper packages in config
   pkgMap = builtins.listToAttrs (map (entry:
     if entry.isUnstable == true
-    then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
+      then { name = entry.pkg; value = getAttrByStr pkgsUnstable entry.pkg; }
+    else if entry.isLegacy == true
+      then { name = entry.pkg; value = getAttrByStr pkgsLegacy entry.pkg; }
     else { name = entry.pkg; value = getAttrByStr pkgs entry.pkg; }
   ) enabledPkgs);
 in {

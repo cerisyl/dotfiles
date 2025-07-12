@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-legacy.url = "github:nixos/nixpkgs/5395fb3ab3f97b9b7abca147249fa2e8ed27b192"; # for qemu_full
     zmod = {
       url = "github:zarzob/Simply-Love-SM5/itgmania-release";
       flake = false;
@@ -15,13 +16,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, zmod, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-legacy, zmod, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     defHost = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
         myHostname = hostname;
         pkgsUnstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgsLegacy = import nixpkgs-legacy {
           inherit system;
           config.allowUnfree = true;
         };
